@@ -18,7 +18,6 @@ exports.create = function(req, res) {
   /* Instantiate a Listing */
   var listing = new Listing(req.body);
 
-
   /* Then save the listing */
   listing.save(function(err) {
     if(err) {
@@ -43,6 +42,7 @@ exports.update = function(req, res) {
   /** TODO **/
   /* Replace the article's properties with the new properties found in req.body */
   /* Save the article */
+  console.log('updating:', listing);
 };
 
 /* Delete a listing */
@@ -51,12 +51,21 @@ exports.delete = function(req, res) {
 
   /** TODO **/
   /* Remove the article */
+  console.log('deleting:', listing);
 };
 
 /* Retreive all the directory listings, sorted alphabetically by listing code */
 exports.list = function(req, res) {
-  /** TODO **/
-  /* Your code here */
+  //get all listings from mongo
+  Listing.find({}, function(err, listings) {
+    if (err) throw err;
+    // sort list
+    var sortedListings = listings.sort((listing, nextListing) => 
+    {
+      return listing.code.localeCompare(nextListing.code)
+    });
+    res.json(sortedListings);
+  });
 };
 
 /* 
