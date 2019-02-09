@@ -10,7 +10,7 @@
         <h1>UF Directory App</h1>
       </div>
       <div class="row" ng-controller="ListingsController">
-        <div class="col-md-6">
+        <div class="col-md-4 bot-margin">
           <div class="input-group" id="searchBar">
             <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
             <input type="text" class="form-control" placeholder="Search" ng-model="query">
@@ -29,20 +29,29 @@
               </tr>
             </table>
           </div>
-          <form novalidate class="simple-form">
-            <h2>Add New Listing</h2>
-            Code: <input type="text" ng-model="newListing.code" /><br />
-            Name: <input type="text" ng-model="newListing.name" /><br />
-            Address: <input type="text" ng-model="newListing.address" /><br />
-            <button class="btn btn-primary" ng-click="addListing()">Add Listing</button>
-          </form>
         </div>
-        <div class="col-md-6">
-          <div class="jumbotron">
-            <h2>Detailed Information</h2>
-            <h4>{{detailedInfo.name}}</h4>
-            <p>Address: {{detailedInfo.address}}</p>
-            <p>Building Code: {{detailedInfo.code}}</p>
+        <div class="col-md-4 bot-margin">
+          <div class="card">
+            <h2 class="details-header">Detailed Information</h2>
+            <div class="details-container">
+              <h4>{{detailedInfo.name}}</h4>
+              <p>Address: {{detailedInfo.address}}</p>
+              <p>Building Code: {{detailedInfo.code}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 bot-margin">
+          <div class="card">
+            <form novalidate class="simple-form form-container">
+              <h2 class="form-title">Add New Listing</h2>
+              <label class="form-label">Code: </label> <br>
+              <input class="form-input" type="text" ng-model="newListing.code" /><br/>
+              <label class="form-label">Name: </label> <br>
+              <input class="form-input" type="text" ng-model="newListing.name" /><br/>
+              <label class="form-label">Address: </label> <br>
+              <input class="form-input" type="text" ng-model="newListing.address" /><br/>
+              <button class="btn slateGray bot-margin" ng-click="addListing()">Add Listing</button>
+            </form>
           </div>
         </div>
       </div>

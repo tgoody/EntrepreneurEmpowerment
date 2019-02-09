@@ -6,3 +6,60 @@
   max-height: 400px;
   overflow: auto;
 }
+
+ul {
+  list-style: none;
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  padding: 2px 16px;
+  transition: 0.3s;
+  min-height: 420px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.form-container {
+  padding: 2px 16px;
+}
+
+.form-title {
+  text-align: center;
+}
+
+.form-label {
+  width: 100%;
+}
+
+.form-input {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.details-container {
+  padding: 2px 16px;
+}
+
+.btn {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.bot-margin {
+  margin-bottom: 20px;
+}
+
+.red {
+  background-color: rgb(230, 84, 84);
+  color: white;
+}
+
+.slateGray {
+  background-color: darkslategray;
+  color: white;
+}

@@ -14,7 +14,6 @@ var mongoose = require('mongoose'),
 
 /* Create a listing */
 exports.create = function(req, res) {
-
   /* Instantiate a Listing */
   var listing = new Listing(req.body);
 
@@ -38,20 +37,33 @@ exports.read = function(req, res) {
 /* Update a listing */
 exports.update = function(req, res) {
   var listing = req.listing;
-
-  /** TODO **/
+  var newListing = req.body;
   /* Replace the article's properties with the new properties found in req.body */
   /* Save the article */
-  console.log('updating:', listing);
+  Listing.findByIdAndUpdate(listing._id, newListing, {new: true}, function(err, updatedListing) {
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      res.json(updatedListing);
+    }
+  });
+
 };
 
 /* Delete a listing */
 exports.delete = function(req, res) {
   var listing = req.listing;
-
-  /** TODO **/
-  /* Remove the article */
-  console.log('deleting:', listing);
+  var id = listing._id;
+    /* Remove the article */
+  Listing.findByIdAndRemove(id, function(err, deletedListing){
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      res.json(deletedListing);
+    }
+  });
 };
 
 /* Retreive all the directory listings, sorted alphabetically by listing code */
