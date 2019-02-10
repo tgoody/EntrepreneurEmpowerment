@@ -28,7 +28,7 @@ module.exports.init = function() {
 
   /** Go to homepage for all routes not specified */ 
   app.use(function(req, res) {
-    res.redirect("http://localhost:8080/");
+    res.redirect("/");
   });
 
   return app;
