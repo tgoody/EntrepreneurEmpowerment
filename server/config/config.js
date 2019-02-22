@@ -8,7 +8,7 @@ if (port == null || port == "") {
 
 module.exports = {
   db: {
-    uri: '', //place the URI of your mongo database here.
+    uri: 'mongodb://root:notr00t@ds249035.mlab.com:49035/entrepreneurempowerment', //place the URI of your mongo database here.
   }, 
   port: port
 };
