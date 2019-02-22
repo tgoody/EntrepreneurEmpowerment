@@ -3,12 +3,12 @@
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 8000;
+  port = 8080;
 }
 
 module.exports = {
   db: {
-    uri: 'mongodb://admin:adminPassword1@ds141704.mlab.com:41704/bootcamp3', //place the URI of your mongo database here.
+    uri: '', //place the URI of your mongo database here.
   }, 
   port: port
 };
