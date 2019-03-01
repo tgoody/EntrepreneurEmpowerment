@@ -1,65 +1,58 @@
-#searchBar {
+#searchBar  {
   margin: 15px 10px;
 }
 
+.header {
+  background-color: #F3701A;
+  opacity: 0.9;
+  padding-top: 1px;
+  padding-bottom: 5px;
+}
+
+
 .tableWrapper {
-  max-height: 400px;
+  max-height: 640px;
   overflow: auto;
 }
 
-ul {
-  list-style: none;
+th{
+  background-color: #F5F5F5;
+  position: sticky;
 }
 
-.card {
-  /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  padding: 2px 16px;
-  transition: 0.3s;
-  min-height: 420px;
-}
-
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-}
-
-.form-container {
-  padding: 2px 16px;
-}
-
-.form-title {
+h1  {
+  font:  Helvetica;
   text-align: center;
+  color:white;
 }
 
-.form-label {
-  width: 100%;
+h2  {
+  font: 10px;
+  color: #00529b;
 }
 
-.form-input {
-  margin-bottom: 15px;
-  width: 100%;
-}
 
-.details-container {
-  padding: 2px 16px;
-}
-
-.btn {
-  width: 100%;
-  margin-bottom: 5px;
-}
-
-.bot-margin {
-  margin-bottom: 20px;
-}
-
-.red {
-  background-color: rgb(230, 84, 84);
+button {
+  background-color: #00529b;
   color: white;
+  padding: 3px 8px;
+  text-align: center;
+  display: inline-block;
 }
 
-.slateGray {
-  background-color: darkslategray;
-  color: white;
+button:hover, a:active {
+  background-color: #4C87B5;
 }
+
+.jumbotron {
+  background-color: #FFFDF5;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  margin-top: -5px;
+}
+
+
+body{
+  font-family: Helvetica, sans-serif;
+}
+
