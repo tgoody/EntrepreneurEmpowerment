@@ -3,21 +3,18 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /* Create your schema */
-var listingSchema = new Schema({
-  name: {
+var calendarSchema = new Schema({
+    eventName: {
     type: String, 
     required: true
   }, 
-  code: {
-    type: String, 
+  eventDate: {
+    type: Date,
     required: true, 
-    unique: true
-  }, 
-  address: String, 
-  coordinates: {
-    latitude: Number, 
-    longitude: Number
   },
+  time: String,
+  address: String,
+  description: String,
   created_at: Date,
   updated_at: Date
 });
@@ -34,7 +31,7 @@ listingSchema.pre('save', function(next) {
 });
 
 /* Use your schema to instantiate a Mongoose model */
-var Listing = mongoose.model('Listing', listingSchema);
+var calendarModel = mongoose.model('calendarModel', calendarSchema);
 
 /* Export the model to make it avaiable to other parts of your Node application */
-module.exports = Listing;
+module.exports = calendarModel;
