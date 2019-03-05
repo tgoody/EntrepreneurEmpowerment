@@ -3,8 +3,8 @@ var path = require('path'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
-    config = require('./config'),
-    listingsRouter = require('../routes/listings.server.routes');
+    config = require('./config');
+    //listingsRouter = require('../routes/listings.server.routes');
 
 module.exports.init = function() {
   //connect to database
@@ -24,7 +24,7 @@ module.exports.init = function() {
   app.use(express.static('client'));
 
   /** Use the listings router for requests to the api */
-  app.use('/api/listings', listingsRouter);
+  //app.use('/api/listings', listingsRouter);
 
   /** Go to homepage for all routes not specified */ 
   app.use(function(req, res) {
