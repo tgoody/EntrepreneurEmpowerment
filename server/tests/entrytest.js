@@ -1,16 +1,20 @@
 var should = require('should'),
 mongoose = require('mongoose'),
 Event = require('../models/calendar.server.model.js'),
+vidModels = require('../models/video.server.model.js'),
+Account = require('../models/account.server.model.js')
 config = require('../config/config');
 
-var tempEvent, id;
+var tempComment1, tempComment2, id;
 
-tempEvent =  {
-    eventName: "Joe's Bar Get-together",
-    eventDate: ('01.02.2012'),
-    time: "12:00",
-    address: "butt street",
-    description: "we love bbq",
+tempComment1 =  {
+username: "myUser",
+commentText: "This is a comment!"
+}
+
+tempComment2 = {
+username: "user2",
+commentText: "This is not a comment!"
 }
 
 describe('Event Schema Unit Tests', function() {
@@ -27,20 +31,70 @@ describe('Event Schema Unit Tests', function() {
                    */
                   this.timeout(10000);
                   
-                  it('saves properly when code and name provided', function(done){
+                  it('saves event with data', function(done){
                      
                      saveEvent = new Event({
-                        eventName: tempEvent.eventName,
-                        eventDate: tempEvent.eventDate,
-                        time: tempEvent.time,
-                        address: tempEvent.address,
-                        description: tempEvent.description
+                        eventName: "Joe's Bar Get-together",
+                        eventDate: ('01.02.2012'),
+                        time: "12:00",
+                        address: "temp street",
+                        description: "we love bbq",
                      }).save(function(err, saveEvent){
                         should.not.exist(err);
                         id = saveEvent._id;
                         done();
                         });
                      });
+                  
+                  
+                  it('saves comment with data', function(done){
+                     
+                     saveComment = new vidModels.Comment({
+                         username: "user3",
+                         commentText: "How do I comment?!!"
+                         }).save(function(err, saveComment){
+                             should.not.exist(err);
+                             id = saveComment._id;
+                             done();
+                             });
+                     
+                     
+                     });
+                  
+                  it('saves video with data', function(done){
+                  
+                     saveVideo = new vidModels.Video({
+                     
+                        link: "github.com/tgoody",
+                        forUsers: false,
+                        comments: [tempComment1, tempComment2]
+                     
+                        }).save(function(err, saveVideo){
+                            should.not.exist(err);
+                            id = saveVideo._id;
+                            done();
+                            });
+                  
+                  
+                     });
+                  
+                  
+                  it('saves account with data', function(done){
+                     saveAccount = new Account({
+                     
+                                               email: "test@test.com",
+                                               username: "test",
+                                               password: "tester!",
+                                               admin: true
+
+                     }).save(function(err, saveAccount){
+                             should.not.exist(err);
+                             id = saveAccount._id;
+                             done();
+                             });
+                     })
+                  
+                  
                   });
          });
                      

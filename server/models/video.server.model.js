@@ -17,7 +17,7 @@ var videoSchema = new Schema({
     type: String,
     required: true
   },
-  forUsers: boolean,
+  forUsers: Boolean,
   comments: [commentSchema],
   created_at: Date,
   updated_at: Date

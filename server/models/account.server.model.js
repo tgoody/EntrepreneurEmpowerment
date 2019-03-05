@@ -4,23 +4,23 @@ Schema = mongoose.Schema;
 
 /* Create your schema */
 var accountSchema = new Schema({
-                               email: {
-                               type: String,
-                               required: true
-                               },
-                               username: {
-                               type: String,
-                               required: true,
-                               unique: true
-                               },
-                               password: {
-                               type: String,
-                               required: true
-                               },
-                               admin: false,
-                               created_at: Date,
-                               updated_at: Date
-                               });
+    email: {
+        type: String,
+        required: true
+    },
+    username: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    admin: false,
+    created_at: Date,
+    updated_at: Date
+    });
 
 /* create a 'pre' function that adds the updated_at (and created_at if not already there) property */
 /* Added functionality
