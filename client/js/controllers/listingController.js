@@ -1,4 +1,4 @@
-angular.module('listings').controller('ListingsController', ['$scope', 'Listings', 
+angular.module('listings').controller('ListingsController', ['$scope', 'Listings',
   function($scope, Listings) {
     /* Get all the listings, then bind it to the scope */
     Listings.getAll().then(function(response) {
@@ -9,8 +9,8 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 
     $scope.detailedInfo = undefined;
 
-    $scope.addListing = function() {
-	  /*Save the article using the Listings factory. If the object is successfully 
+    $scope.addAccount = function() {
+	  /*Save the article using the Listings factory. If the object is successfully
 	  saved redirect back to the list page. Otherwise, display the error
 	 */
       Listings.create($scope.newListing).then(function(response) {
@@ -34,8 +34,8 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     };
 
     $scope.deleteListing = function(id) {
-	   /*Delete the article using the Listings factory. If the removal is successful, 
-		navigate back to 'listing.list'. Otherwise, display the error. 
+	   /*Delete the article using the Listings factory. If the removal is successful,
+		navigate back to 'listing.list'. Otherwise, display the error.
        */
       Listings.delete(id).then(function(response) {
         if (response.status === 200) {
@@ -48,7 +48,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
           // set show details to undefined
           $scope.detailedInfo = undefined;
         } else {
-          
+
         }
       }, function(error) {
         console.log('Unable to delete listing:', error);
@@ -57,6 +57,33 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 
     $scope.showDetails = function(index) {
       $scope.detailedInfo = $scope.listings[index];
+    };
+
+//------------------------------------------------------------------------------//
+//TESTING FUNCTIONS
+
+    $scope.GoToBlog = function() {
+      Listings.GoToBlog().then(function(response) {
+        console.log('Sucessfully went to blog!');
+      }, function(error) {
+        console.log('Error in going to blog!');
+      });
+    };
+
+    $scope.GoToCalendar = function() {
+      Listings.GoToCalendar().then(function(response) {
+        console.log('Sucessfully went to Calendar!');
+      }, function(error) {
+        console.log('Error in going to Calendar!');
+      });
+    };
+
+    $scope.GoToResources = function() {
+      Listings.GoToResources().then(function(response) {
+        console.log('Successfully went to Resources!');
+      }, function(error) {
+        console.log('Error in going to Resources!');
+      });
     };
   }
 ]);
