@@ -1,16 +1,16 @@
 /* Import mongoose and define any variables needed to create the schema */
-var mongoose = require('mongoose'), 
+var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 /* Create your schema */
 var calendarSchema = new Schema({
     eventName: {
-    type: String, 
+    type: String,
     required: true
-  }, 
+  },
   eventDate: {
     type: Date,
-    required: true, 
+    required: true,
   },
   time: String,
   address: String,
@@ -31,7 +31,7 @@ calendarSchema.pre('save', function(next) {
 });
 
 /* Use your schema to instantiate a Mongoose model */
-var event = mongoose.model('Event', calendarSchema);
+var calendarModel = mongoose.model('calendarModel', calendarSchema);
 
 /* Export the model to make it avaiable to other parts of your Node application */
-module.exports = event;
+module.exports = calendarModel;
