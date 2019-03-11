@@ -6,7 +6,9 @@ var path = require('path'),
     config = require('./config'),
     eventsRouter = require('../routes/events.server.routes'),
     blogRouter = require('../routes/blog.server.routes'),
-    resourcesRouter = require('../routes/resources.server.routes');
+    resourcesRouter = require('../routes/resources.server.routes'),
+    accountsRouter = require('../routes/account.server.routes.js'),
+    aboutRouter = require('../routes/about.server.routes.js');
 
 module.exports.init = function() {
   //connect to database
@@ -25,15 +27,25 @@ module.exports.init = function() {
   /** Serve static files */
   app.use(express.static('client'));
 
-  //Routes for requests dealing with the blog.
+  //Routes for requests dealing with accounts.
+  app.use('/api/accounts', accountsRouter);
+
+  //Routes for requests dealing with the about page.
+  app.use('/about', aboutRouter);
+
+  //Routes for requests dealing with the blog page.
   app.use('/blog', blogRouter);
 
-  //Routes for request dealing with the calendar.
+  //Routes for request dealing with the calendar page.
   app.use('/calendar', eventsRouter);
 
-  //Routes for request dealing with the resources.
+  //Routes for request dealing with the resources page.
   app.use('/resources', resourcesRouter);
 
+  //Redirects user to Register Page
+  app.use('/register', function(req, res) {
+    res.redirect("/pages/register/testing.html");
+  });
   /** Go to homepage for all routes not specified */
   app.use(function(req, res) {
     res.redirect("/");
