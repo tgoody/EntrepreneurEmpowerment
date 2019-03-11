@@ -44,7 +44,7 @@ module.exports.init = function() {
 
   //Redirects user to Register Page
   app.use('/register', function(req, res) {
-    res.redirect("/pages/register/testing.html");
+    res.redirect("/pages/register/register.html");
   });
   /** Go to homepage for all routes not specified */
   app.use(function(req, res) {
