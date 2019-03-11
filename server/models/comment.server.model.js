@@ -1,10 +1,11 @@
 /* Import mongoose and define any variables needed to create the schema */
 var mongoose = require('mongoose'),
+    accountModel = require('../models/account.server.model.js'),
     Schema = mongoose.Schema;
 
 var commentSchema = new Schema({
 
-    username: String,
+    account: accountModel.schema,
     commentText: String,
     created_at: Date,
     updated_at: Date

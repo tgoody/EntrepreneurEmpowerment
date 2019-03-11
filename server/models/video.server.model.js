@@ -1,8 +1,7 @@
 /* Import mongoose and define any variables needed to create the schema */
 var mongoose = require('mongoose'),
-    commentModel = require('./comment.server.model.js'),
     Schema = mongoose.Schema,
-    commentModel = commentModel.commentSchema;
+    commentSchema = require('../models/comment.server.model.js');
 
 
 var videoSchema = new Schema({
@@ -11,7 +10,7 @@ var videoSchema = new Schema({
     required: true
   },
   forUsers: Boolean,
-  comments: [commentModel.commentSchema],
+  comments: [commentSchema.schema],
   created_at: Date,
   updated_at: Date
 });

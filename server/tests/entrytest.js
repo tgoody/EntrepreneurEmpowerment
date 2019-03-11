@@ -1,21 +1,33 @@
 var should = require('should'),
 mongoose = require('mongoose'),
 Event = require('../models/calendar.server.model.js'),
-vidModels = require('../models/video.server.model.js'),
+Video = require('../models/video.server.model.js'),
+Comment = require('../models/comment.server.model.js'),
 Account = require('../models/account.server.model.js')
 config = require('../config/config');
 
 var tempComment1, tempComment2, id;
 
+var tempAccount = new Account({
+    email: "test2@test.com",
+    username: "test2",
+    password: "tester!",
+    admin: true
+});
+
+
 tempComment1 =  {
-username: "myUser",
+account: tempAccount,
 commentText: "This is a comment!"
 }
 
 tempComment2 = {
-username: "user2",
+account: tempAccount,
 commentText: "This is not a comment!"
 }
+
+
+
 
 describe('Event Schema Unit Tests', function() {
          
@@ -49,8 +61,8 @@ describe('Event Schema Unit Tests', function() {
                   
                   it('saves comment with data', function(done){
                      
-                     saveComment = new vidModels.Comment({
-                         username: "user3",
+                     saveComment = new Comment({
+                         account: tempAccount,
                          commentText: "How do I comment?!!"
                          }).save(function(err, saveComment){
                              should.not.exist(err);
@@ -63,7 +75,7 @@ describe('Event Schema Unit Tests', function() {
                   
                   it('saves video with data', function(done){
                   
-                     saveVideo = new vidModels.Video({
+                     saveVideo = new Video({
                      
                         link: "github.com/tgoody",
                         forUsers: false,
@@ -82,16 +94,24 @@ describe('Event Schema Unit Tests', function() {
                   it('saves account with data', function(done){
                      saveAccount = new Account({
                      
-                                               email: "test@test.com",
-                                               username: "test",
-                                               password: "tester!",
-                                               admin: true
+                        email: "test@test.com",
+                        username: "test",
+                        password: "tester!",
+                        admin: true
 
                      }).save(function(err, saveAccount){
-                             should.not.exist(err);
-                             id = saveAccount._id;
-                             done();
-                             });
+                        should.not.exist(err);
+                        id = saveAccount._id;
+                             
+                        });
+                     
+                     tempAccount.save(function(err, tempAccount){
+                        should.not.exist(err);
+                        id = tempAccount._id;
+                        done();
+                    });
+                     
+                     
                      })
                   
                   
