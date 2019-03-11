@@ -1,6 +1,6 @@
 
 /* Dependencies */
-var mongoose = require('mongoose'), 
+var mongoose = require('mongoose'),
     calendarEvent = require('../models/calendar.server.model.js');
 
 
@@ -62,7 +62,7 @@ exports.delete = function(req, res) {
   Listing.find({}, function(err, listings) {
     if (err) throw err;
     // sort list
-    var sortedListings = listings.sort((listing, nextListing) => 
+    var sortedListings = listings.sort((listing, nextListing) =>
     {
       return listing.code.localeCompare(nextListing.code)
     });
@@ -71,11 +71,11 @@ exports.delete = function(req, res) {
 };*/
 
 
-/* 
-  Middleware: find a listing by its ID, then pass it to the next request handler. 
+/*
+  Middleware: find a listing by its ID, then pass it to the next request handler.
 
-  Find the listing using a mongoose query, 
-        bind it to the request object as the property 'listing', 
+  Find the listing using a mongoose query,
+        bind it to the request object as the property 'listing',
         then finally call next
  */
 

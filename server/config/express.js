@@ -1,10 +1,12 @@
-var path = require('path'),  
-    express = require('express'), 
+var path = require('path'),
+    express = require('express'),
     mongoose = require('mongoose'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     config = require('./config'),
-    listingsRouter = require('../routes/listings.server.routes');
+    eventsRouter = require('../routes/events.server.routes'),
+    blogRouter = require('../routes/blog.server.routes'),
+    resourcesRouter = require('../routes/resources.server.routes');
 
 module.exports.init = function() {
   //connect to database
@@ -16,20 +18,26 @@ module.exports.init = function() {
   //enable request logging for development debugging
   app.use(morgan('dev'));
 
-  //body parsing middleware 
+  //body parsing middleware
   app.use(bodyParser.json());
 
-  
+
   /** Serve static files */
   app.use(express.static('client'));
 
-  /** Use the listings router for requests to the api */
-  app.use('/api/listings', listingsRouter);
+  //Routes for requests dealing with the blog.
+  app.use('/blog', blogRouter);
 
-  /** Go to homepage for all routes not specified */ 
+  //Routes for request dealing with the calendar.
+  app.use('/calendar', eventsRouter);
+
+  //Routes for request dealing with the resources.
+  app.use('/resources', resourcesRouter);
+
+  /** Go to homepage for all routes not specified */
   app.use(function(req, res) {
     res.redirect("/");
   });
 
   return app;
-};  
+};

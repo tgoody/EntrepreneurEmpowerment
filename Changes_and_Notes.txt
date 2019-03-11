@@ -1,0 +1,55 @@
+Date: 3/7/19
+
+NEW FEATURES:
+- Manually typing in the URL will redirect users to the correct page. For example,
+  typing in http://localhost:8080/blog will redirect you to the blog page (it should
+  just text saying "Homepage of Blog Page"). The same thing works for the resources
+  page except you would type http://localhost:8080/resources.
+
+________________________________________________________________________________
+
+NEW FILES:
+server/controllers/blog.server.controller.js
+server/controllers/resources.server.controller.js
+
+server/models/comment.server.model.js
+server/models/video.server.model.js
+
+server/routes/blog.server.routes.js
+server/routes/resources.server.routes.js
+
+________________________________________________________________________________
+
+ADDED:
+- Controllers for blog and resources.
+- Models for Comments and Videos (Video schema depends on Comment schema).
+- Routes for blog and resources.
+
+________________________________________________________________________________
+
+CHANGES IN...
+
+server/config/express.js
+- Added new router variables at the top (eventsRouter, blogRouter, and
+  resourcesRouter).
+- Added routes for blog, calendar, and resourcesRouter
+
+client/js/controllers/listingController.js
+- Added testing functions. These functions were supposed to redirect the users
+  to the different pages (blog, calendar, and resources page) but it did not work.
+- Testing functions are at the bottom and are separated from the rest of the
+  functions.
+
+client/js/factories/listingFactory.js
+- Added testing functions. These functions were supposed to redirect the users
+  to the different pages, but it didn't work.
+- Testing functions are at the bottom and are separated from the rest of the
+  other functions.
+
+client/index.html
+- Added buttons to go the different pages. They do NOT work.
+
+________________________________________________________________________________
+
+RESOURCES:
+- For routing help: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes
