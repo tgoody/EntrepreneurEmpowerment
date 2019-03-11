@@ -74,7 +74,7 @@ exports.list = function(req, res) {
     // sort list
     var sortedAccounts = accounts.sort((account, nextAccount) =>
     {
-      return account.code.localeCompare(nextAccount.code)
+      return account.username.localeCompare(nextAccount.username)
     });
     res.json(sortedAccounts);
   });
