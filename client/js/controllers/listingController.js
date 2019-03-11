@@ -2,7 +2,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
   function($scope, Listings) {
     /* Get all the listings, then bind it to the scope */
     Listings.getAll().then(function(response) {
-      $scope.listings = response.data;
+      $scope.accountList = response.data;
     }, function(error) {
       console.log('Unable to retrieve listings:', error);
     });
@@ -10,21 +10,24 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     $scope.detailedInfo = undefined;
 
     $scope.addAccount = function() {
+      if ($scope.account.password !== $scope.confirmPassword) {
+        return;
+      }
 	  /*Save the article using the Listings factory. If the object is successfully
 	  saved redirect back to the list page. Otherwise, display the error
 	 */
-      Listings.create($scope.newListing).then(function(response) {
+      Listings.create($scope.account).then(function(response) {
         if (response.status === 200) {
           // response was successful, refresh list
           Listings.getAll().then(function(response) {
-            $scope.listings = response.data;
+            $scope.accountList = response.data;
           }, function(error) {
             console.log('Unable to retrieve listings:', error);
           });
           // Clear form inputs
-          $scope.newListing.name = '';
-          $scope.newListing.code = '';
-          $scope.newListing.address = '';
+          $scope.account.name = '';
+          $scope.account.code = '';
+          $scope.account.address = '';
         } else {
 
         }
@@ -33,7 +36,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       });
     };
 
-    $scope.deleteListing = function(id) {
+    $scope.deleteAccount = function(id) {
 	   /*Delete the article using the Listings factory. If the removal is successful,
 		navigate back to 'listing.list'. Otherwise, display the error.
        */
@@ -41,7 +44,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
         if (response.status === 200) {
           // response was successful, refresh list
           Listings.getAll().then(function(response) {
-            $scope.listings = response.data;
+            $scope.accountList = response.data;
           }, function(error) {
             console.log('Unable to retrieve listings:', error);
           });
@@ -56,7 +59,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     };
 
     $scope.showDetails = function(index) {
-      $scope.detailedInfo = $scope.listings[index];
+      $scope.detailedInfo = $scope.accountList[index];
     };
 
 //------------------------------------------------------------------------------//
