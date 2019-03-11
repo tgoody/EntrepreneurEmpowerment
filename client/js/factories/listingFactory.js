@@ -5,13 +5,13 @@ angular.module('listings', []).factory('Listings', function($http) {
     },
 
     create: function(listing) {
-      return $http.post('http://localhost:8080/api/accounts', listing);
+      return $http.post('https://localhost:8080/api/accounts', listing);
       },
 
     delete: function(id) {
       /* return result of HTTP delete method
         */
-      return $http.delete('http://localhost:8080/api/accounts/' + id);
+      return $http.delete('https://localhost:8080/api/accounts/' + id);
     },
 
 //------------------------------------------------------------------------------//
