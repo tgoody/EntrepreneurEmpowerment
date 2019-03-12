@@ -34,6 +34,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       }, function(error) {
         console.log('Unable to add new listing:', error);
       });
+      $windows.location.href = '../../index.html';
     };
 
     $scope.deleteAccount = function(id) {
