@@ -1,9 +1,9 @@
-.top-padding {
-  padding-top: 150px;
+body {
+  color: black;
 }
 
-table {
-  color: black !important;
+.top-padding {
+  padding-top: 150px;
 }
 
 #searchBar {
