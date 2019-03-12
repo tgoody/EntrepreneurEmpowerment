@@ -3,6 +3,9 @@
 var mongoose = require('mongoose'),
     calendarEvent = require('../models/calendar.server.model.js');
 
+exports.homepage = function(req, res) {
+  res.redirect('/pages/calendar/calendar.html');
+};
 
 exports.create = function(req, res) {
   /* Instantiate an event */
