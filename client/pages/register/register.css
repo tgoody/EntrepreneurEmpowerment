@@ -6,6 +6,10 @@ body {
   padding-top: 150px;
 }
 
+.footer {
+  color: white !important;
+}
+
 #searchBar {
   margin: 15px 10px;
 }
