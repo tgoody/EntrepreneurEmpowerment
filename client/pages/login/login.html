@@ -1,0 +1,106 @@
+<!-- <!DOCTYPE html> -->
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="styles/animate.css">
+      <link rel="stylesheet" href="styles/font-awesome.min.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <link rel="stylesheet" href="login.css">
+  </head>
+  <body ng-app="EntrepreneurApp">
+    <!-- Nav bar -->
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+          <div class="navigation">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-brand">
+                  <a href="/"><h1><span>Entrepreneur</span> Empowerment</h1></a>
+                </div>
+              </div>
+  
+              <div class="navbar-collapse collapse">
+                <div class="menu">
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation"><a href="/">Home</a></li>
+                    <li role="presentation"><a href="/blog">Blog</a></li>
+                    <li role="presentation"><a href="/calendar">Calendar</a></li>
+                    <li role="presentation"><a href="/login">Login</a></li>
+                    <li role="presentation"><a href="/register" class="active">Register</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+    </header>
+    <div class="container">
+      <div class="row top-padding" ng-controller="ListingsController">
+        <div class="col-md-4 bot-margin">
+        </div>
+        <div class="col-md-4 bot-margin">
+          <div class="card">
+            <form novalidate class="simple-form form-container">
+              <h2 class="form-title">Login</h2>
+              <label class="form-label">Email: </label> <br>
+              <input class="form-input" type="text" ng-model="account.email" /><br/>  
+              <label class="form-label">Password: </label> <br>
+              <input class="form-input" type="password" ng-model="account.password" /><br/>
+              <button class="btn slateGray bot-margin" ng-click="addAccount()">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+        <div class="footer">
+          <div class="container">
+            <div class="social-icon">
+              <div class="col-md-4">
+                <ul class="social-network">
+                  <li><a href="#" class="fb tool-tip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#" class="twitter tool-tip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#" class="gplus tool-tip" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                  <li><a href="#" class="linkedin tool-tip" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                  <li><a href="#" class="ytube tool-tip" title="You Tube"><i class="fa fa-youtube-play"></i></a></li>
+                </ul>
+              </div>
+            </div>
+  
+            <div class="col-md-4 col-md-offset-4">
+              <div class="copyright">
+                <!-- Adrress/Contact info -->
+                Address and Contact info <br>
+                &copy; Entrepreneur Empowerment. All Rights Reserved.
+              </div>
+            </div>
+          </div>
+        </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="../../js/app.js"></script>
+    <script src="../../js/factories/listingFactory.js"></script>
+    <script src="../../js/controllers/listingController.js"></script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../../js/frontend/jquery-2.1.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../../js/frontend/jquery.prettyPhoto.js"></script>
+    <script src="../../js/frontend/jquery.isotope.min.js"></script>
+    <script src="../../js/frontend/wow.min.js"></script>
+    <script src="../../js/frontend/homePageAnimations.js"></script>
+  </body>
+</html>
