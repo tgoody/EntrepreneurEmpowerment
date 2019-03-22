@@ -1213,7 +1213,7 @@ ul.sidebar-gallery {
 }
 
 a.scrollup{
-    color:#fff;
+  color:#fff;
 	height:40px;
 	width:40px;
 	font-size:12px;
@@ -1223,9 +1223,9 @@ a.scrollup{
 	position:fixed;
 	bottom:30px;
 	right:40px;
-	opacity:0,5;
+	opacity:0.5;
 	border-radius:50%;
-	z-index:999;
+  z-index:999;
 }
 a.scrollup:hover{
 	opacity:1;
