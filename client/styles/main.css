@@ -240,6 +240,7 @@ a:hover {
 
 
 #main-slider .carousel .item {
+  background-image: linear-gradient(90deg, rgb(129, 209, 209) 25%, rgb(17, 175, 248) 75%);
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
