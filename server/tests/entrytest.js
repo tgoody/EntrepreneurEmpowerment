@@ -1,4 +1,5 @@
 var should = require('should'),
+assert = require('assert'),
 mongoose = require('mongoose'),
 Event = require('../models/calendar.server.model.js'),
 Video = require('../models/video.server.model.js'),
@@ -29,7 +30,7 @@ commentText: "This is not a comment!"
 
 
 
-describe('Event Schema Unit Tests', function() {
+describe('Unit Tests', function() {
          
          before(function(done) {
                 mongoose.connect(config.db.uri);
@@ -58,37 +59,7 @@ describe('Event Schema Unit Tests', function() {
                         });
                      });
                   
-                  
-                  it('saves comment with data', function(done){
-                     
-                     saveComment = new Comment({
-                         account: tempAccount,
-                         commentText: "How do I comment?!!"
-                         }).save(function(err, saveComment){
-                             should.not.exist(err);
-                             id = saveComment._id;
-                             done();
-                             });
-                     
-                     
-                     });
-                  
-                  it('saves video with data', function(done){
-                  
-                     saveVideo = new Video({
-                     
-                        link: "github.com/tgoody",
-                        forUsers: false,
-                        comments: [tempComment1, tempComment2]
-                     
-                        }).save(function(err, saveVideo){
-                            should.not.exist(err);
-                            id = saveVideo._id;
-                            done();
-                            });
-                  
-                  
-                     });
+		
                   
                   
                   it('saves account with data', function(done){
@@ -110,46 +81,56 @@ describe('Event Schema Unit Tests', function() {
                         id = tempAccount._id;
                         done();
                     });
-                     
-                     
-                     })
+					})
+					
+
+				  it('saves comment with data', function(done){
+					 saveComment = new Comment({
+						 account: tempAccount,
+						 commentText: "How do I comment?!!"
+						 }).save(function(err, saveComment){
+							 should.not.exist(err);
+							 id = saveComment._id;
+							 done();
+							 });
+					 });
+				  
+                  it('saves video with data', function(done){
+					 
+                     saveVideo = new Video({
+										   
+                        link: "github.com/tgoody",
+                        forUsers: false,
+                        comments: [tempComment1, tempComment2]
+										   
+                        }).save(function(err, saveVideo){
+                            should.not.exist(err);
+                            id = saveVideo._id;
+                            done();
+                            });
+                     });
+					
+					
+					
+					it('should log in', function(done){
+					
+						tempAccount.comparePassword("tester!", function(err, isMatch){
+							console.log("tester!" + ": " + isMatch);
+							assert.equal(isMatch, true)
+						})
+						
+						done();
+				  	});
+				  
+				  	it('should fail to log in with bad password ', function(done){
+					
+						tempAccount.comparePassword("shazam", function(err, isMatch){
+							console.log("shazam" + ": " + isMatch);
+							assert.equal(isMatch, false)
+						})
+						done();
+				  	});
                   
                   
                   });
          });
-                     
-                     /*new Event({
-                                 name: tempEvent.name,
-                                 code: tempEvent.code
-                                 }).save(function(err, listing){
-                                         should.not.exist(err);
-                                         id = listing._id;
-                                         done();
-                                         });
-                     });
-                  
-                  it('saves properly when all three properties provided', function(done){
-                     new Listing(listing).save(function(err, listing){
-                                               should.not.exist(err);
-                                               id = listing._id;
-                                               done();
-                                               });
-                     });
-                  
-                  it('throws an error when name not provided', function(done){
-                     new Listing({
-                                 code: listing.code
-                                 }).save(function(err){
-                                         should.exist(err);
-                                         done();
-                                         })
-                     });
-                  
-                  it('throws an error when code not provided', function(done){
-                     new Listing({
-                                 name: listing.name
-                                 }).save(function(err){
-                                         should.exist(err);
-                                         done();
-                                         })
-                     });*/
