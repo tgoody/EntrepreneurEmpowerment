@@ -24,7 +24,7 @@
                 <span class="icon-bar"></span>
               </button>
               <div class="navbar-brand">
-                <a href="/"><h1><span>Entrepreneur</span> Empowerment</h1></a>
+                <a href="/"><h1><span>Entrepreneurship</span> Empowerment</h1></a>
               </div>
             </div>
 
@@ -34,7 +34,7 @@
                   <li role="presentation"><a href="/">Home</a></li>
                   <li role="presentation"><a href="/blog" class="active">Blog</a></li>
                   <li role="presentation"><a href="/calendar">Calendar</a></li>
-                  <li role="presentation"><a href="#">Login</a></li>
+                  <li role="presentation"><a href="/pages/login/login.html">Login</a></li>
                   <li role="presentation"><a href="/register">Register</a></li>
                 </ul>
               </div>
@@ -45,52 +45,78 @@
     </header>
 
     <section>
-      <!-- input for blog -->
-      <textarea style="width: 100%" type="text" placeholder="blog text"></textarea>
-      <!-- add post -->
-      <button>Add Post</button>
-      <!-- edit post -->
-      <button>Edit Post</button>
-      <!-- delete post -->
-      <button>Delete Post</button>
-      <!-- input for comment -->
-      <input type="text" placeholder="comment text"/>
-      <!-- add comment -->
-      <button>Add Comment</button>
-      <!-- edit comment -->
-      <button>Edit Comment</button>
-      <!-- delete comment -->
-      <button>Delete Comment</button>
+      <div class="blogSection">
+        <div class="row">
+          <div class="col-md-6 align-center">
+            <h2>Latest Blog</h2>
+            <div class="blogPost">
+              <div class="postHeader">
+                <h3>
+                  "Post title"
+                  <span class="postDate">month day, year</span>
+                </h3>
+              </div>
+              <p class="postContent">
+                "Something"
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h2>Post to blog</h2>
+            <!-- input for blog -->
+            <input type="text" placeholder="Post title"/>
+            <textarea type="text" placeholder="Enter post"></textarea>
+            <div class="btnContainer">
+              <!-- add post -->
+              <button class="btn-secondary">Add Post</button>
+              <!-- edit post -->
+              <button class="btn-secondary">Edit Post</button>
+              <!-- delete post -->
+              <button class="btn-secondary">Delete Post</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="commentSection">
+        <h2>Comments</h2>
+        <!-- input for comment -->
+        <input type="text" placeholder="comment text"/>
+        <div class="btnContainer">
+          <!-- add comment -->
+          <button class="btn-secondary">Add Comment</button>
+          <!-- edit comment -->
+          <button class="btn-secondary">Edit Comment</button>
+          <!-- delete comment -->
+          <button class="btn-secondary">Delete Comment</button>
+        </div>
+      </div>
     </section>
 
     <footer>
-        <div class="footer">
-          <div class="container">
-            <div class="social-icon">
-              <div class="col-md-4">
-                <ul class="social-network">
-                  <li><a href="#" class="fb tool-tip" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#" class="twitter tool-tip" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#" class="gplus tool-tip" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-                  <li><a href="#" class="linkedin tool-tip" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                  <li><a href="#" class="ytube tool-tip" title="You Tube"><i class="fa fa-youtube-play"></i></a></li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="col-md-4 col-md-offset-4">
-              <div class="copyright">
-                <!-- Adrress/Contact info -->
-                Address and Contact info <br>
-                &copy; Entrepreneur Empowerment. All Rights Reserved.
-              </div>
-            </div>
+      <div class="footer">
+        <div class="container">
+          <div class="col-md-4">
+            <ul class="social-network">
+              <li><a href="#" class="fb tool-tip"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#" class="twitter tool-tip"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#" class="gplus tool-tip"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="#" class="linkedin tool-tip"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="#" class="ytube tool-tip"><i class="fa fa-youtube-play"></i></a></li>
+            </ul>
           </div>
 
-          <div class="pull-right">
-            <a href="#home" class="scrollup"><i class="fa fa-angle-up fa-3x"></i></a>
+          <div class="col-md-4 col-md-offset-4">
+            <div class="copyright">
+              Address and Contact info <br>
+              &copy; Entrepreneur Empowerment. All Rights Reserved.
+            </div>
           </div>
         </div>
+
+        <div class="pull-right">
+          <a href="#home" class="scrollup"><i class="fa fa-angle-up fa-3x"></i></a>
+        </div>
+      </div>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
