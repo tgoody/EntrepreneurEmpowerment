@@ -1,5 +1,5 @@
 section {
-    padding-top: 130px;
+    padding-top: 90px;
     color: black;
     padding-bottom: 50px;
 }
@@ -12,12 +12,27 @@ section {
     margin-bottom: 10px;
 }
 
+.posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .blogPost {
     text-align: left;
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 80%;
+}
+
+.blogPost:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 .postHeader {
     padding: 5px;
+    border-bottom: 0.5px solid #25436B;
 }
 
 .postDate {
@@ -26,8 +41,7 @@ section {
 }
 
 .postContent {
-    padding: 5px 15px 5px 15px;
-    border: 1px solid #25436B;
+    padding: 2px 16px;
     border-radius: 5px;
 }
 
@@ -42,4 +56,11 @@ section {
 
 .align-center {
     text-align: center;
+}
+
+.tag-container {
+    width: 150px;
+    height: 200px;
+    border: 1px solid black;
+    margin-top: 20px;
 }
