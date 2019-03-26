@@ -158,6 +158,13 @@ textarea {
 	color:  #018662;
 }
 
+.web-header {
+  display: block;
+}
+.mobile-header {
+  display: none;
+}
+
 .menu {
 	font-size:12px;
 	float:right;
@@ -200,8 +207,17 @@ textarea {
 	-webkit-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 }
+/* 460px */
+/* 550px */
 
 @media (max-width: 768px) {
+  .web-header {
+		display: none;
+  }
+  .mobile-header {
+    display: block;
+  }
+
 	.navbar-brand {
 		padding-top: 6px;
 	}
