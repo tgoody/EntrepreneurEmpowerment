@@ -45,22 +45,51 @@
     </header>
 
     <section>
-      <!-- input for blog -->
-      <textarea style="width: 100%" type="text" placeholder="blog text"></textarea>
-      <!-- add post -->
-      <button>Add Post</button>
-      <!-- edit post -->
-      <button>Edit Post</button>
-      <!-- delete post -->
-      <button>Delete Post</button>
-      <!-- input for comment -->
-      <input type="text" placeholder="comment text"/>
-      <!-- add comment -->
-      <button>Add Comment</button>
-      <!-- edit comment -->
-      <button>Edit Comment</button>
-      <!-- delete comment -->
-      <button>Delete Comment</button>
+      <div class="blogSection">
+        <div class="row">
+          <div class="col-md-6 align-center">
+            <h2>Latest Blog</h2>
+            <div class="blogPost">
+              <div class="postHeader">
+                <h3>
+                  "Post title"
+                  <span class="postDate">month day, year</span>
+                </h3>
+              </div>
+              <p class="postContent">
+                "Something"
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h2>Post to blog</h2>
+            <!-- input for blog -->
+            <input type="text" placeholder="Post title"/>
+            <textarea type="text" placeholder="Enter post"></textarea>
+            <div class="btnContainer">
+              <!-- add post -->
+              <button class="btn-secondary">Add Post</button>
+              <!-- edit post -->
+              <button class="btn-secondary">Edit Post</button>
+              <!-- delete post -->
+              <button class="btn-secondary">Delete Post</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="commentSection">
+        <h2>Comments</h2>
+        <!-- input for comment -->
+        <input type="text" placeholder="comment text"/>
+        <div class="btnContainer">
+          <!-- add comment -->
+          <button class="btn-secondary">Add Comment</button>
+          <!-- edit comment -->
+          <button class="btn-secondary">Edit Comment</button>
+          <!-- delete comment -->
+          <button class="btn-secondary">Delete Comment</button>
+        </div>
+      </div>
     </section>
 
     <footer>

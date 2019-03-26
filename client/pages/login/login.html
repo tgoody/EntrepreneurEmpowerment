@@ -39,8 +39,8 @@
                     <li role="presentation"><a href="/">Home</a></li>
                     <li role="presentation"><a href="/blog">Blog</a></li>
                     <li role="presentation"><a href="/calendar">Calendar</a></li>
-                    <li role="presentation"><a href="/pages/login/login.html">Login</a></li>
-                    <li role="presentation"><a href="/register" class="active">Register</a></li>
+                    <li role="presentation"><a href="/pages/login/login.html" class="active">Login</a></li>
+                    <li role="presentation"><a href="/register">Register</a></li>
                   </ul>
                 </div>
               </div>
@@ -50,14 +50,14 @@
     </header>
 
 
-    <div class="container">
+    <div class="content">
       <form novalidate class="simple-form form-container">
-        <h2 class="form-title">Login</h2>
-        <label class="form-label">Email: </label> <br>
-        <input class="form-input" type="text" ng-model="account.email" /><br/>
-        <label class="form-label">Password: </label> <br>
-        <input class="form-input" type="password" ng-model="account.password" /><br/>
-        <button class="btn slateGray bot-margin" ng-click="addAccount()">Log In</button>
+        <h2 class="form-title">Log in</h2>
+        <input class="form-input" type="text" placeholder="Email address" ng-model="account.email" /><br/>
+        <input class="form-input" type="password" placeholder="Password" ng-model="account.password" /><br/>
+        <!-- <button class="btn slateGray bot-margin" ng-click="addAccount()">Log In</button> -->
+        <button ng-click="addAccount()">Log in</button>
+        
 
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
@@ -85,7 +85,12 @@
             }
           </script>
       
+      <hr class="u-bw0 u-bbw1 u-bss u-bc--light-gray u-mt24 u-mb24">
+
+      <h4><a href="/pages/register/register.html">Create a new account</a></h4>
       </form>
+
+      
     </div>
 
 

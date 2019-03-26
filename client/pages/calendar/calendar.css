@@ -1,7 +1,7 @@
 section {
-    height: 500px;
     width: 800px;
-    margin-top: 130px;
-    margin-left: 300px;
+    padding-top: 130px;
     color: black;
+    padding-bottom: 50px;
+    text-align: center;
 }

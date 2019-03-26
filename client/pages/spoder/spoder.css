@@ -1,0 +1,34 @@
+#content    {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+#letters h1 span {
+    font-size: 150px;
+    font-weight:bold;
+    text-align-last: center;
+    color: white;
+    text-align: center;
+    /* font-family: 'Archivo Black', sans-serif; */
+    position: relative; 
+    /* top: 10px; 
+    padding: 0 10px; */
+    border-style: rounded;
+    border-color: #22AC94;
+    border-radius: 5px;
+    background: #22AC94;
+    opacity: 0.75;
+    display:block;
+    height: 180px;
+    width:180px;
+    padding-top: 65px;
+    margin-left: 15px;
+}
+
+.description    {
+    margin-left: -175px;
+    margin-top: 25px;
+    /* margin-bottom: 20px; */
+    height: 160px;
+    text-align:justify;
+}
