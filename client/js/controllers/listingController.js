@@ -9,6 +9,28 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 
     $scope.detailedInfo = undefined;
 
+    $scope.googleSignIn = function(id_token) {
+      Listings.create(id_token).then(function(response) {
+        if (response.status === 200) {
+          // response was successful, refresh list
+          Listings.getAll().then(function(response) {
+            $scope.accountList = response.data;
+          }, function(error) {
+            console.log('Unable to retrieve listings:', error);
+          });
+          // Clear form inputs
+          $scope.account.name = '';
+          $scope.account.code = '';
+          $scope.account.address = '';
+        } else {
+
+        }
+      }, function(error) {
+        console.log('Unable to add new listing:', error);
+      });
+      $windows.location.href = '../../index.html';
+    };
+
     $scope.addAccount = function() {
       if ($scope.account.password !== $scope.confirmPassword) {
         return;
