@@ -17,6 +17,16 @@ angular.module('listings', []).factory('Listings', function($http) {
 //------------------------------------------------------------------------------//
 //TESTING FUNCTIONS
 
+
+
+	addPost: function(blogpost){
+		return $http.post('/blog', blogpost);
+	},
+	
+	addEvent: function(event){
+		return $http.post('/calendar', event)
+	},
+
     GoToBlog: function() {
       return $http.get('/blog');
     },

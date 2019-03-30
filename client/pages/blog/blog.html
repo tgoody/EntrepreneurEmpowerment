@@ -46,16 +46,16 @@
     </header>
 
     <section>
-      <div class="blogSection">
+      <div class="blogSection" ng-controller="ListingsController">
         <div class="row">
           <div class="col-md-12">
             <h2>Post to blog</h2>
             <!-- input for blog -->
-            <input type="text" placeholder="Post title"/>
-            <textarea type="text" placeholder="Enter post"></textarea>
+            <input type="text" placeholder="Post title" ng-model="blogpost.title"/>
+            <textarea type="text" placeholder="Enter post" ng-model="blogpost.body"></textarea>
             <div class="btnContainer">
               <!-- add post -->
-              <button class="btn-secondary">Add Post</button>
+              <button class="btn-secondary" ng-click="addPost()">Add Post</button>
               <!-- edit post -->
               <button class="btn-secondary">Edit Post</button>
               <!-- delete post -->

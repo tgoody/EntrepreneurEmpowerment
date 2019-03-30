@@ -9,7 +9,7 @@ exports.homepage = function(req, res) {
 
 exports.create = function(req, res) {
   /* Instantiate an event */
-  var tempEvent = new calendarEvent(req.body);
+  var tempEvent = new event(req.body);
 
   /* Then save the event */
   tempEvent.save(function(err) {

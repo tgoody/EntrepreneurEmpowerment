@@ -11,12 +11,13 @@ var blogSchema = new Schema({
   },
   forUsers: Boolean,
   comments: [commentSchema.schema],
+  tags: [String],
   created_at: Date,
   updated_at: Date
 });
 
 
-videoSchema.pre('save', function(next) {
+blogSchema.pre('save', function(next) {
   var currentTime = new Date;
   this.updated_at = currentTime;
   if(!this.created_at)
