@@ -48,10 +48,6 @@
 <!-- PROBLEMS:
     - modal form isnt centered
    -->
-
-
-
-
     <section id="content">
       <div class="container">
         <div class="googleCalendar">
@@ -93,41 +89,12 @@
   
                 <div class="form-group"> 
                   <div class="col-sm-offset-2 col-sm-10">
-                    <button class="btn-primary">Submit event</button>
+                    <button class="btn-primary" ng-click="submitEvent()">Submit event</button>
                   </div>
                 </div>
               </form>
             </div>
           </div>
-
-          <script>
-              // Get the modal
-              var modal = document.getElementById('myModal');
-              
-              // Get the button that opens the modal
-              var btn = document.getElementById("myBtn");
-              
-              // Get the <span> element that closes the modal
-              var span = document.getElementsByClassName("close")[0];
-              
-              // When the user clicks the button, open the modal 
-              btn.onclick = function() {
-                modal.style.display = "block";
-              }
-              
-              // When the user clicks on <span> (x), close the modal
-              span.onclick = function() {
-                modal.style.display = "none";
-              }
-              
-              // When the user clicks anywhere outside of the modal, close it
-              window.onclick = function(event) {
-                if (event.target == modal) {
-                  modal.style.display = "none";
-                }
-              }
-          </script>
-
         </section>
 
       <!--the next 3 might actually be built into google calendar idk-->
@@ -177,5 +144,6 @@
     <script src="../../js/frontend/jquery.isotope.min.js"></script>
     <script src="../../js/frontend/wow.min.js"></script>
     <script src="../../js/frontend/homePageAnimations.js"></script>
+    <script src="calendar.js"></script>
   </body>
 </html>
