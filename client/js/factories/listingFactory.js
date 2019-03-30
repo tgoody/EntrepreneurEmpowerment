@@ -16,6 +16,11 @@ angular.module('listings', []).factory('Listings', function($http) {
 
 //------------------------------------------------------------------------------//
 //TESTING FUNCTIONS
+    uploadFile: function(file) {
+      var fileFormData = new FormData();
+      fileFormData.append('file', file);
+      return $http.post('/resources/create', fileFormData);
+    },
 
     GoToBlog: function() {
       return $http.get('/blog');

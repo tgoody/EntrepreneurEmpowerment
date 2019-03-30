@@ -1,3 +1,11 @@
-$('input[type=file]').change(function () {
-    console.log(this.files[0]);
-});
+angular.module('listings').controller('ListingsController', ['$scope', 'Listings',
+  function($scope, Listings) { 
+        $scope.uploadFile = function () {
+            var file = $scope.myFile;
+            // console.log('file: ', file);
+            Listings.uploadFile(file).then(function(response){
+                console.log('done');
+            });
+        };
+    }
+]);
