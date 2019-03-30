@@ -23,10 +23,9 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-angular.module('listings').controller('ListingsController', ['$scope', function($scope) {
 
+angular.module('EntrepreneurApp', []).controller('calendarCtrl', ['$scope', function($scope) {
+    $scope.submitEvent = function() {
+        console.log('test');
+    }
 }]);
-
-function submitEvent() {
-    console.log('test');
-}
