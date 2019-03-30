@@ -9,9 +9,8 @@ var events = require('../controllers/event.server.controller.js'),
  */
 
 //TODO: What to do with this?
-router.route('/')
-  .get(events.homepage)
-  .post(events.create);
+router.get('/', events.homepage)
+router.post('/', events.create);
 
 //TODO: What to work with on these?
 router.route('/:eventID')

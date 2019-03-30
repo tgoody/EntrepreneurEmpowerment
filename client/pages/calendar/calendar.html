@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../../styles/main.css">
     <link rel="stylesheet" href="calendar.css">
   </head>
-  <body ng-app="EntrepreneurApp">
+  <body ng-app="EntrepreneurApp" ng-controller="ListingsController">
     <!-- Nav bar -->
     <header>
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -49,14 +49,14 @@
     - modal form isnt centered
    -->
     <section id="content">
-      <div class="container">
+      <div class="container" >
         <div class="googleCalendar">
             <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=mq4sttje198ocf2o9cekh76m9s%40group.calendar.google.com&amp;color=%23711616&amp;ctz=America%2FNew_York" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
         </div>
       </div>
 
       
-      <section id="submit">
+      <section id="submit" ng-controller="ListingsController">
           <button id="myBtn" class="btn-primary">Submit new event</button>
   
           <div id="myModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
@@ -68,19 +68,19 @@
               <form class="form-horizontal">
                 <h3>Submit new event</h3>
                 <div class="form-group">
-                  <input class="form-input" type="text" placeholder="Event name"></input>
+                  <input class="form-input" type="text" placeholder="Event name" ng-model="event.name"></input>
                 </div>
   
                 <div class="form-group">
-                    <input class="form-input" type="text" placeholder="Date"></input>
+                    <input class="form-input" type="text" placeholder="Date" ng-model="event.date"></input>
                 </div>
   
                 <div class="form-group">
-                    <input class="form-input" type="text" placeholder="Location"></input>
+                    <input class="form-input" type="text" placeholder="Address" ng-model="event.address"></input>
                 </div>
   
                 <div class="form-group">
-                    <input class="form-input" type="text" placeholder="Details"></input>
+                    <input class="form-input" type="text" placeholder="Details" ng-model="event.description"></input>
                 </div>
   
                 <div class="form-group">
@@ -89,7 +89,7 @@
   
                 <div class="form-group"> 
                   <div class="col-sm-offset-2 col-sm-10">
-                    <button class="btn-primary" ng-click="submitEvent()">Submit event</button>
+                    <button class="btn-primary" ng-click="addEvent()">Submit event</button>
                   </div>
                 </div>
               </form>

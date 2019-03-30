@@ -1,5 +1,6 @@
 /* Dependencies */
 var mongoose = require('mongoose');
+var Blog = require('../models/blogpost.server.model.js');
 
 //TODO: Define model for blog post
 
@@ -11,7 +12,20 @@ exports.list = function(req, res) {
 
 //Handles the creation of a new blog post
 exports.create = function(req, res) {
-  res.send('Creation of a new blog post');
+
+	var blog = new Blog(req.body);
+	
+	
+	blog.save(function(err){
+		if(err){
+			console.log(err);
+			res.status(400).send(err);
+		}
+		else{res.json(blog);}
+	});
+
+	
+  //res.send('Creation of a new blog post');
 };
 
 //Handles the update of a blog post

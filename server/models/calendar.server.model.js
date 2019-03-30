@@ -31,7 +31,7 @@ calendarSchema.pre('save', function(next) {
 });
 
 /* Use your schema to instantiate a Mongoose model */
-var calendarModel = mongoose.model('calendarModel', calendarSchema);
+var event = mongoose.model('event', calendarSchema);
 
 /* Export the model to make it avaiable to other parts of your Node application */
-module.exports = calendarModel;
+module.exports = event;

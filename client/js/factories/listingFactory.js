@@ -22,6 +22,16 @@ angular.module('listings', []).factory('Listings', function($http) {
       return $http.post('/resources/create', fileFormData);
     },
 
+
+
+	addPost: function(blogpost){
+		return $http.post('/blog', blogpost);
+	},
+	
+	addEvent: function(event){
+		return $http.post('/calendar', event)
+	},
+
     GoToBlog: function() {
       return $http.get('/blog');
     },

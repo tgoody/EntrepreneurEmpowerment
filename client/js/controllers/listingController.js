@@ -66,6 +66,24 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 //------------------------------------------------------------------------------//
 //TESTING FUNCTIONS
 
+	$scope.addPost = function() {
+		  Listings.addPost($scope.blogpost).then(function(response) {
+			console.log('Sucessfully tried to add post!');
+		  }, function(error) {
+			console.log('Error in trying to add post!');
+		  });
+		};
+		
+	$scope.addEvent = function() {
+		  Listings.addEvent($scope.event).then(function(response) {
+			console.log('Sucessfully tried to add event!');
+		  }, function(error) {
+			console.log('Error in trying to add event!');
+		  });
+		};
+
+
+
     $scope.GoToBlog = function() {
       Listings.GoToBlog().then(function(response) {
         console.log('Sucessfully went to blog!');
