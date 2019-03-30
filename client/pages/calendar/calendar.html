@@ -24,7 +24,8 @@
                 <span class="icon-bar"></span>
               </button>
               <div class="navbar-brand">
-                <a href="/"><h1><span>Entrepreneurship</span> Empowerment</h1></a>
+                <a href="/" class="web-header"><h1><span>Entrepreneurship</span> Empowerment</h1></a>
+                <a href="/" class="mobile-header"><h1><span>E</span>E</h1></a>
               </div>
             </div>
 
@@ -44,53 +45,60 @@
       </nav>
     </header>
 
-    <section>
-        <form class="form-horizontal">
-            <h3>Submit new event</h3>
-            <div class="form-group">
-              <label class="control-label col-sm-2">Event name</label>
-              <div class="col-sm-10">
-                <input></input>
-              </div>
-            </div>
+<!-- PROBLEMS:
+    - modal form isnt centered
+   -->
+    <section id="content">
+      <div class="container">
+        <div class="googleCalendar">
+            <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=mq4sttje198ocf2o9cekh76m9s%40group.calendar.google.com&amp;color=%23711616&amp;ctz=America%2FNew_York" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        </div>
+      </div>
+
       
-            <div class="form-group">
-              <label class="control-label col-sm-2">Date</label>
-              <div class="col-sm-10">
-                <input></input>
-              </div>
+      <section id="submit">
+          <button id="myBtn" class="btn-primary">Submit new event</button>
+  
+          <div id="myModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
+  
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+  
+              <form class="form-horizontal">
+                <h3>Submit new event</h3>
+                <div class="form-group">
+                  <input class="form-input" type="text" placeholder="Event name"></input>
+                </div>
+  
+                <div class="form-group">
+                    <input class="form-input" type="text" placeholder="Date"></input>
+                </div>
+  
+                <div class="form-group">
+                    <input class="form-input" type="text" placeholder="Location"></input>
+                </div>
+  
+                <div class="form-group">
+                    <input class="form-input" type="text" placeholder="Details"></input>
+                </div>
+  
+                <div class="form-group">
+                    <input class="form-input" type="text" placeholder="Hosted by"></input>
+                </div>
+  
+                <div class="form-group"> 
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn-primary" ng-click="submitEvent()">Submit event</button>
+                  </div>
+                </div>
+              </form>
             </div>
-      
-            <div class="form-group">
-              <label class="control-label col-sm-2">Location</label>
-              <div class="col-sm-10">
-                <input></input>
-              </div>
-            </div>
-      
-            <div class="form-group">
-              <label class="control-label col-sm-2">Details</label>
-              <div class="col-sm-10">
-                <input></input>
-              </div>
-            </div>
-      
-            <div class="form-group">
-              <label class="control-label col-sm-2">Hosted by</label>
-              <div class="col-sm-10">
-                <input></input>
-              </div>
-            </div>
-      
-            <div class="form-group"> 
-              <div class="col-sm-offset-2 col-sm-10">
-                <button class="btn-primary">Submit event</button>
-              </div>
-            </div>
-        </form>
-      
+          </div>
+        </section>
+
       <!--the next 3 might actually be built into google calendar idk-->
-      <button  class="btn-primary">View event</button> 
+      <!-- <button  class="btn-primary">View event</button>  -->
       
       <h3>Admin controls</h3>
       <button  class="btn-primary">Delete event</button>
@@ -136,5 +144,6 @@
     <script src="../../js/frontend/jquery.isotope.min.js"></script>
     <script src="../../js/frontend/wow.min.js"></script>
     <script src="../../js/frontend/homePageAnimations.js"></script>
+    <script src="calendar.js"></script>
   </body>
 </html>

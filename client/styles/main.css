@@ -5,7 +5,6 @@
 @import url('animate.css');
 
 /* Theme colors
-  #018662 : orange
   #22AC94 : light greenish
   #7284A8 : ocean blue
   #25436B : dark blue
@@ -43,18 +42,29 @@ a {
     outline: none;
 	color:#333;
 }
+
 a:hover {
 	text-decoration: none;
 	color:#eee;
-	}
+}
+
+.row {
+  margin: 0 !important;
+}
 
 .btn-primary {
   padding: 8px 20px;
   background:  #018662;
   color: #fff;
   border-radius: 4px;
-  border:none;
-  margin-top: 10px;
+  border: 0.5px solid transparent;
+  /* border:none; */
+}
+
+.btn-primary:hover {
+  background-color: white;
+  border: 0.5px solid #018662;
+	color: #018662;
 }
 
 .btn-secondary {
@@ -62,8 +72,14 @@ a:hover {
   background:  #25436B;
   color: #fff;
   border-radius: 4px;
-  border:none;
-  margin-top: 10px;
+  border: 0.5px solid transparent;
+  /* border:none; */
+}
+
+.btn-secondary:hover {
+  background-color: white;
+  border: 0.5px solid #25436B;
+	color: #25436B;
 }
 
 .text-center h2 {
@@ -142,6 +158,13 @@ textarea {
 	color:  #018662;
 }
 
+.web-header {
+  display: block;
+}
+.mobile-header {
+  display: none;
+}
+
 .menu {
 	font-size:12px;
 	float:right;
@@ -184,8 +207,17 @@ textarea {
 	-webkit-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 }
+/* 460px */
+/* 550px */
 
 @media (max-width: 768px) {
+  .web-header {
+		display: none;
+  }
+  .mobile-header {
+    display: block;
+  }
+
 	.navbar-brand {
 		padding-top: 6px;
 	}
