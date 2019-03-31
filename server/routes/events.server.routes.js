@@ -13,6 +13,8 @@ router.route('/')
   .get(events.homepage)
   .post(events.create);
 
+router.route('/events').get(events.getEvents);
+
 //TODO: What to work with on these?
 router.route('/:eventID')
   .get(events.read)
