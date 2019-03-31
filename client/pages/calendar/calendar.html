@@ -68,7 +68,7 @@
               <form class="form-horizontal">
                   <input class="form-input" type="text" placeholder="Event name" ng-model="event.eventName"></input>
 
-                  <input class="form-input" type="text" placeholder="Date" ng-model="event.eventDate"></input>
+                  <input class="form-input" type="date" placeholder="Date" ng-model="event.eventDate"></input>
 
                   <input class="form-input" type="text" placeholder="Address" ng-model="event.address"></input>
 
@@ -91,7 +91,7 @@
       <button  class="btn-primary">Edit event</button>
     </section>
 
-    <tr ng-repeat="account in eventList | filter: query" ng-click="showDetails($index)">
+    <tr ng-repeat="event in eventList | filter: query" ng-click="showDetails($index)">
       <td>{{account.email}}</td>
       <td>{{account.username}}</td>
       <td>{{account.password}}</td>
