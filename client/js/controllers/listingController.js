@@ -67,14 +67,6 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 
 //------------------------------------------------------------------------------//
 //TESTING FUNCTIONS
-
-	$scope.addPost = function() {
-		  Listings.addPost($scope.blogpost).then(function(response) {
-			console.log('Sucessfully tried to add post!');
-		  }, function(error) {
-			console.log('Error in trying to add post!');
-		  });
-		};
 		
 	$scope.addEvent = function() {
 		  Listings.addEvent($scope.event).then(function(response) {
@@ -82,13 +74,8 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 		  }, function(error) {
 			console.log('Error in trying to add event!');
 		  });
-		};
-
-    $scope.getRecentBlog = function() {
-      Listings.getMostRecentBlog().then(function(response) {
-        console.log(response);
-      });
-    }
+    };
+    
 	$scope.checkLogin = function(){
 	
 		//console.log("CHECKING LOGIN");

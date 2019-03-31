@@ -26,6 +26,14 @@ angular.module('listings', []).factory('Listings', function($http) {
       return $http.post('/resources/read', {name: filename});
     },
 
+    getDocs: function(category) {
+      return $http.post('/resources/docs', {'category': category});
+    },
+
+    getViedos: function(category) {
+      return $http.post('/resources/videos', {'category': category} );
+    },
+
 
 	checkLogin: function(account){
 		return $http.post('/api/accounts/login', account);
@@ -45,6 +53,10 @@ angular.module('listings', []).factory('Listings', function($http) {
 
   getEvents: function() {
     return $http.get('/calendar/events');
+  },
+
+  getBlogs: function() {
+    return $http.get('/blog/all');
   },
 
   getMostRecentBlog: function() {

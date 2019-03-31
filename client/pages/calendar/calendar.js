@@ -25,14 +25,6 @@ window.onclick = function(event) {
 }
 angular.module('listings').controller('ListingsController', ['$scope', 'Listings', function($scope, Listings) {
 
-  Listings.getEvents().then(function(response) {
-    $scope.eventList = response.data;
-    console.log('Sucessfully got events!');
-    console.log(response.data);
-    }, function(error) {
-    console.log('Error in trying to get events!');
-    });
-
   $scope.addEvent = function() {
     console.log('add event');
     Listings.addEvent($scope.event).then(function(response) {
@@ -49,14 +41,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       });
     };
 
-    $scope.verifyEvent = function(id) {
-      console.log('verify Event');
-  	  Listings.verifyEvent(id).then(function(response) {
-  			console.log('Sucessfully verified a post!');
-  		  }, function(error) {
-  			console.log('Error in verifying a post!');
-  		  });
-  		};
+
 }]);
 
 function submitEvent() {

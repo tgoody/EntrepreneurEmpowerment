@@ -7,20 +7,26 @@ var Blog = require('../models/blogpost.server.model.js');
 //Homepage for blog page
 exports.list = function(req, res) {
   res.redirect('/pages/blog/blog.html');
-  //res.send('Homepage of blog page');
+};
+
+exports.getBlogs = function(req, res) {
+	Blog.find({}, {}, { sort: {'updated_at': -1} }, function(err, blogs){
+		if(err) res.status(400).send("Error in getting all blogs: ", err);
+		res.json(blogs);
+	});
 };
 
 exports.recentBlog = function(req, res) {
 	Blog.findOne({}, {},{ sort: {'updated_at': -1} }, function(err, blog){
+		if(err) res.status(400).send("Error in getting most recent blog: ", err);
 		res.json(blog)
 	});
 };
 
 //Handles the creation of a new blog post
 exports.create = function(req, res) {
-
+	req.body.comments = [];
 	var blog = new Blog(req.body);
-	
 	
 	blog.save(function(err){
 		if(err){
