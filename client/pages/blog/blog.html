@@ -35,7 +35,7 @@
                   <li role="presentation"><a href="/">Home</a></li>
                   <li role="presentation"><a href="/blog" class="active">Blog</a></li>
                   <li role="presentation"><a href="/calendar">Calendar</a></li>
-                  <li role="presentation"><a href="/pages/login/login.html">Login</a></li>
+                  <li role="presentation"><a href="/login">Login</a></li>
                   <li role="presentation"><a href="/register">Register</a></li>
                 </ul>
               </div>
@@ -47,22 +47,6 @@
 
     <section>
       <div class="blogSection" ng-controller="ListingsController">
-        <div class="row">
-          <div class="col-md-12">
-            <h2>Post to blog</h2>
-            <!-- input for blog -->
-            <input type="text" placeholder="Post title" ng-model="blogpost.title"/>
-            <textarea type="text" placeholder="Enter post" ng-model="blogpost.body"></textarea>
-            <div class="btnContainer">
-              <!-- add post -->
-              <button class="btn-secondary" ng-click="addPost()">Add Post</button>
-              <!-- edit post -->
-              <button class="btn-secondary">Edit Post</button>
-              <!-- delete post -->
-              <button class="btn-secondary">Delete Post</button>
-            </div>
-          </div>
-        </div>
         <div class="row">
           <div class="col-md-10 align-center">
             <h2>Latest Blog</h2>

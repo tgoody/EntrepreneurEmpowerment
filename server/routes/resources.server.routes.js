@@ -7,6 +7,10 @@ var resourceController = require('../controllers/resources.server.controller'),
 //Gets info for the homepage of resources
 router.get('/', resourceController.list);
 
+router.post('/docs', resourceController.getDocs);
+
+router.post('/videos', resourceController.getVideos);
+
 //Adds a new resource
 router.post('/create', upload.single('file'), resourceController.create);
 

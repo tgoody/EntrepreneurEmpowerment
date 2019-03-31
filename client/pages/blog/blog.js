@@ -10,14 +10,6 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       }
     });
 
-    $scope.addPost = function() {
-		  Listings.addPost({'body': $scope.blogpost.body}).then(function(response) {
-			  console.log('Sucessfully tried to add post!');
-		  }, function(error) {
-			  console.log('Error in trying to add post!');
-		  });
-		};
-
     // $scope.getRecentBlog = function() {
     //   Listings.getMostRecentBlog().then(function(response) {
     //     console.log(response);

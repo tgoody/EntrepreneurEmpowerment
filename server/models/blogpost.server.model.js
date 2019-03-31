@@ -1,7 +1,6 @@
 /* Import mongoose and define any variables needed to create the schema */
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-
+    Schema = mongoose.Schema;
 
 var blogSchema = new Schema({
   title: {
@@ -13,6 +12,7 @@ var blogSchema = new Schema({
     required: true
   },
   comments: [{
+    username: {type: String, required: true},
     user_id: {type: String, required: true},
     message: {type: String, required: true},
     created_at: Date,

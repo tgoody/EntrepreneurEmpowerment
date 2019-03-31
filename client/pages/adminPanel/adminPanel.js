@@ -1,13 +1,5 @@
 angular.module('listings').controller('ListingsController', ['$scope', 'Listings',
   function($scope, Listings) { 
-        $scope.currentCategory = 'Business Plans and Business Models';
-        $scope.docs = [];
-        $scope.videos = [];
-
-        Listings.getDocs($scope.currentCategory).then(function(response) {
-            $scope.docs = response.data;
-        });
-
         $("#uploadFileForm").submit(function(e){
             e.preventDefault(); 
             // Upload file to database
@@ -32,11 +24,12 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
                 }
             });
         });
-
-        $scope.downloadFile = function (filename) {
-            Listings.downloadFile(filename).then(function(response){
-                console.log(response);
-                alert('File '+ filename + ' downloaded');
+        
+        $scope.addPost = function() {
+            Listings.addPost($scope.blogpost).then(function(response) {
+                console.log('Sucessfully tried to add post!');
+            }, function(error) {
+                console.log('Error in trying to add post!');
             });
         };
     }
