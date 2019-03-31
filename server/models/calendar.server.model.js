@@ -18,11 +18,12 @@ var calendarSchema = new Schema({
   time: String,
   created_at: Date,
   updated_at: Date,
-  approved: false
+  approved: Boolean
 });
 
 /* create a 'pre' function that adds the updated_at (and created_at if not already there) property */
 calendarSchema.pre('save', function(next) {
+  this.approved = false;
   var currentTime = new Date;
   this.updated_at = currentTime;
   if(!this.created_at)
