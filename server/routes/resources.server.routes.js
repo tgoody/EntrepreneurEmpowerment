@@ -8,7 +8,10 @@ var resourceController = require('../controllers/resources.server.controller'),
 router.get('/', resourceController.list);
 
 //Adds a new resource
-router.post('/create', upload.single('myFile'), resourceController.create);
+router.post('/create', upload.single('file'), resourceController.create);
+
+// Download resource
+router.post('/read', resourceController.read);
 
 //Deletes a resource
 router.delete('/delete', resourceController.delete);

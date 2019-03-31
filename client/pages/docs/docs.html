@@ -91,13 +91,13 @@
                   <ul>
                     <li class="docItem">
                       <p>"Document title"</p>
-                      <form method="post" enctype="multipart/form-data" action="/resources/create">
+                      <button ng-click="downloadFile()" class = "btn btn-primary">File name</button>
+                      <form id="uploadFileForm">
                           <div class="form-group">
                               <label for="myFileField">Select a file: </label>
                               <input type="file" demo-file-model="myFile" name="myFile"/>
                           </div>
                           <input type="submit" value="Upload" />
-                          <!-- <button ng-click="uploadFile()" class = "btn btn-primary">Upload File</button> -->
                       </form>
                       <!-- Comment section -->
                       <h4>Comments</h4>
