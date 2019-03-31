@@ -10,6 +10,12 @@ exports.list = function(req, res) {
   //res.send('Homepage of blog page');
 };
 
+exports.recentBlog = function(req, res) {
+	Blog.findOne({}, {},{ sort: {'updated_at': -1} }, function(err, blog){
+		res.json(blog)
+	});
+};
+
 //Handles the creation of a new blog post
 exports.create = function(req, res) {
 

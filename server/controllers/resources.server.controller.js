@@ -25,11 +25,9 @@ exports.create = function(req, res) {
 
   fs.createReadStream(req.file.path).pipe(writestream);
   writestream.on('close', function(file) {
-    console.log(file);
+    // Delete file
       fs.unlink(req.file.path, function(err) {
         // handle error
-        // TODO: delete temp files
-
         return res.json({'uploaded': true});
       });
   });

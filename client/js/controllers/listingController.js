@@ -82,6 +82,11 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 		  });
 		};
 
+    $scope.getRecentBlog = function() {
+      Listings.getMostRecentBlog().then(function(response) {
+        console.log(response);
+      });
+    }
 
 
     $scope.GoToBlog = function() {

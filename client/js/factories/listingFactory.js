@@ -34,7 +34,11 @@ angular.module('listings', []).factory('Listings', function($http) {
 	
 	addEvent: function(event){
 		return $http.post('/calendar', event)
-	},
+  },
+  
+  getMostRecentBlog: function() {
+    return $http.get('/blog/recent');
+  },
 
     GoToBlog: function() {
       return $http.get('/blog');

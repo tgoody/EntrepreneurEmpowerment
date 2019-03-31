@@ -23,10 +23,12 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-angular.module('listings').controller('ListingsController', ['$scope', function($scope) {
-
-}]);
-
 function submitEvent() {
     console.log('test');
 }
+
+angular.module('listings').controller('ListingsController', ['$scope', 'Listings',
+  function($scope, Listings) {
+      $scope.addEvent = function() {
+      }
+  }]);
