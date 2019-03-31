@@ -113,43 +113,28 @@ describe('Event Schema Unit Tests', function() {
                      
                      
                      })
+				  
+				  
+				it('Should validate password correctly', function(done){
+				
+					tempAccount.comparePassword("tester!", function(err, isMatch) {
+					if (err) throw err;
+            		isMatch.should.eql(true);
+            		done();
+				
+				});})
+				
+				it('Should fail incorrect passwords', function(done){
+				
+					tempAccount.comparePassword("badpass", function(err, isMatch) {
+					if (err) throw err;
+            		isMatch.should.eql(false);
+            		done();
+				
+				});})
                   
                   
                   });
          });
-                     
-                     /*new Event({
-                                 name: tempEvent.name,
-                                 code: tempEvent.code
-                                 }).save(function(err, listing){
-                                         should.not.exist(err);
-                                         id = listing._id;
-                                         done();
-                                         });
-                     });
-                  
-                  it('saves properly when all three properties provided', function(done){
-                     new Listing(listing).save(function(err, listing){
-                                               should.not.exist(err);
-                                               id = listing._id;
-                                               done();
-                                               });
-                     });
-                  
-                  it('throws an error when name not provided', function(done){
-                     new Listing({
-                                 code: listing.code
-                                 }).save(function(err){
-                                         should.exist(err);
-                                         done();
-                                         })
-                     });
-                  
-                  it('throws an error when code not provided', function(done){
-                     new Listing({
-                                 name: listing.name
-                                 }).save(function(err){
-                                         should.exist(err);
-                                         done();
-                                         })
-                     });*/
+
+

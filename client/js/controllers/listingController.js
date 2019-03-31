@@ -66,6 +66,45 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 //------------------------------------------------------------------------------//
 //TESTING FUNCTIONS
 
+	$scope.addPost = function() {
+		  Listings.addPost($scope.blogpost).then(function(response) {
+			console.log('Sucessfully tried to add post!');
+		  }, function(error) {
+			console.log('Error in trying to add post!');
+		  });
+		};
+		
+	$scope.addEvent = function() {
+		  Listings.addEvent($scope.event).then(function(response) {
+			console.log('Sucessfully tried to add event!');
+		  }, function(error) {
+			console.log('Error in trying to add event!');
+		  });
+		};
+
+	$scope.checkLogin = function(){
+	
+		//console.log("CHECKING LOGIN");
+		//console.log($scope.account);
+		Listings.checkLogin($scope.account).then(
+			function(response){
+		
+				//console.log('Successfully tried to log in!');
+				console.log(response);
+				
+				
+				
+			},
+
+			function(error){console.log('Error trying to log in');
+		
+			
+		
+		
+		})
+	
+	}
+
     $scope.GoToBlog = function() {
       Listings.GoToBlog().then(function(response) {
         console.log('Sucessfully went to blog!');
