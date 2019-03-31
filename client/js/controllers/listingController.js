@@ -87,7 +87,28 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
         console.log(response);
       });
     }
+	$scope.checkLogin = function(){
+	
+		//console.log("CHECKING LOGIN");
+		//console.log($scope.account);
+		Listings.checkLogin($scope.account).then(
+			function(response){
+		
+				//console.log('Successfully tried to log in!');
+				console.log(response);
+				
+				
+				
+			},
 
+			function(error){console.log('Error trying to log in');
+		
+			
+		
+		
+		})
+	
+	}
 
     $scope.GoToBlog = function() {
       Listings.GoToBlog().then(function(response) {

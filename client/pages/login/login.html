@@ -51,13 +51,13 @@
     </header>
 
 
-    <div class="content">
+    <div class="content" ng-controller="ListingsController">
       <form novalidate class="simple-form form-container">
         <h2 class="form-title">Log in</h2>
         <input class="form-input" type="text" placeholder="Email address" ng-model="account.email" /><br/>
         <input class="form-input" type="password" placeholder="Password" ng-model="account.password" /><br/>
         <!-- <button class="btn slateGray bot-margin" ng-click="addAccount()">Log In</button> -->
-        <button ng-click="addAccount()">Log in</button>
+        <button ng-click="checkLogin()">Log in</button>
         
 
         <div class="g-signin2" data-onsuccess="onSignIn"></div>

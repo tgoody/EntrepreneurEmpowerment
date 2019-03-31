@@ -9,14 +9,16 @@ var calendarSchema = new Schema({
     required: true
   },
   eventDate: {
-    type: Date,
+    type: String,
     required: true,
   },
-  time: String,
   address: String,
-  description: String,
+  details: String,
+  host: String,
+  time: String,
   created_at: Date,
-  updated_at: Date
+  updated_at: Date,
+  approved: false
 });
 
 /* create a 'pre' function that adds the updated_at (and created_at if not already there) property */

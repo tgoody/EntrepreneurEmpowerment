@@ -27,6 +27,9 @@ angular.module('listings', []).factory('Listings', function($http) {
     },
 
 
+	checkLogin: function(account){
+		return $http.post('/api/accounts/login', account);
+	},
 
 	addPost: function(blogpost){
 		return $http.post('/blog', blogpost);

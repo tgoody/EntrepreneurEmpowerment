@@ -1,4 +1,3 @@
-
 /* Dependencies */
 var mongoose = require('mongoose'),
     calendarEvent = require('../models/calendar.server.model.js');
@@ -9,7 +8,8 @@ exports.homepage = function(req, res) {
 
 exports.create = function(req, res) {
   /* Instantiate an event */
-  var tempEvent = new event(req.body);
+  console.log(req.body);
+  var tempEvent = new calendarEvent(req.body);
 
   /* Then save the event */
   tempEvent.save(function(err) {

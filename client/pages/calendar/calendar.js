@@ -7,7 +7,7 @@ var btn = document.getElementById("myBtn");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
+// When the user clicks the button, open the modal
 btn.onclick = function() {
     modal.style.display = "block";
 }
@@ -23,12 +23,26 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+angular.module('listings').controller('ListingsController', ['$scope', 'Listings', function($scope, Listings) {
+  $scope.addEvent = function() {
+    console.log('add event');
+    Listings.addEvent($scope.event).then(function(response) {
+      console.log('Sucessfully tried to add event!');
+      }, function(error) {
+      console.log('Error in trying to add event!');
+      });
+    };
+
+    $scope.verifyEvent = function() {
+      console.log('verify Event');
+  	  Listings.verifyPost().then(function(response) {
+  			console.log('Sucessfully verified a post!');
+  		  }, function(error) {
+  			console.log('Error in verifying a post!');
+  		  });
+  		};
+}]);
+
 function submitEvent() {
     console.log('test');
 }
-
-angular.module('listings').controller('ListingsController', ['$scope', 'Listings',
-  function($scope, Listings) {
-      $scope.addEvent = function() {
-      }
-  }]);
