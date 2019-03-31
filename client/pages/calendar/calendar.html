@@ -76,7 +76,7 @@
 
                   <input class="form-input" type="text" placeholder="Hosted by" ng-model="event.host"></input>
 
-                  <input class="form-input" type="text" placeholder="Time" ng-model="event.time"></input>
+                  <input class="form-input" type="time" placeholder="Time" ng-model="event.time"></input>
 
                   <button class="btn-primary" ng-click="addEvent()">Submit event</button>
               </form>
@@ -87,17 +87,28 @@
       <!--the next 3 might actually be built into google calendar idk-->
       <!-- <button  class="btn-primary">View event</button>  -->
       <h3>Admin controls</h3>
-      <button  class="btn-primary">Delete event</button>
-      <button  class="btn-primary">Edit event</button>
+      <div ng-controller="ListingsController">
+        <button  class="btn-primary">Delete event</button>
+        <button  class="btn-primary">Edit Events</button>
+        <h2>Pending Events</h2>
+        <div class="tableWrapper">
+          <table class="table table-striped table-hover">
+            <tr>
+              <th>Event</th>
+              <th>Date</th>
+              <th>Details</th>
+              <th></th>
+            </tr>
+            <tr ng-repeat="event in eventList">
+              <td>{{event.eventName}}</td>
+              <td>{{event.eventDate}}</td>
+              <td>{{event.details}}</td>
+              <td ng-click="verifyEvent(event._id)"><button  class="btn-primary">Verify</button></td-->
+            </tr>
+          </table>
+        </div>
+      </div>
     </section>
-
-    <tr ng-repeat="event in eventList | filter: query" ng-click="showDetails($index)">
-      <td>{{account.email}}</td>
-      <td>{{account.username}}</td>
-      <td>{{account.password}}</td>
-      <button  class="btn-primary" ng-click="verifyEvent()">Verify event</button>
-      <td ng-click="deleteAccount(account._id)"><span style="color: red;" class="glyphicon glyphicon-remove"></span></td>
-    </tr>
 
     <footer>
       <div class="footer">

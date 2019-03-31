@@ -24,21 +24,34 @@ window.onclick = function(event) {
     }
 }
 angular.module('listings').controller('ListingsController', ['$scope', 'Listings', function($scope, Listings) {
-  Listings.getEvents().then(function(response){
-    console.log(response);
-  });
+
+  Listings.getEvents().then(function(response) {
+    $scope.eventList = response.data;
+    console.log('Sucessfully got events!');
+    console.log(response.data);
+    }, function(error) {
+    console.log('Error in trying to get events!');
+    });
+
   $scope.addEvent = function() {
     console.log('add event');
     Listings.addEvent($scope.event).then(function(response) {
       console.log('Sucessfully tried to add event!');
+      $scope.eventName = '';
+      $scope.eventDate = '';
+      $scope.address = '';
+      $scope.details = '';
+      $scope.host = '';
+      $scope.time = '';
+
       }, function(error) {
       console.log('Error in trying to add event!');
       });
     };
 
-    $scope.verifyEvent = function() {
+    $scope.verifyEvent = function(id) {
       console.log('verify Event');
-  	  Listings.verifyPost().then(function(response) {
+  	  Listings.verifyEvent(id).then(function(response) {
   			console.log('Sucessfully verified a post!');
   		  }, function(error) {
   			console.log('Error in verifying a post!');
