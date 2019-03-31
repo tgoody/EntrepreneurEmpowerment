@@ -1,16 +1,23 @@
 /* Import mongoose and define any variables needed to create the schema */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    commentSchema = require('../models/comment.server.model.js');
 
 
 var blogSchema = new Schema({
+  title: {
+    type: String,
+    required: true
+  },
   body: {
     type: String,
     required: true
   },
-  forUsers: Boolean,
-  comments: [commentSchema.schema],
+  comments: [{
+    user_id: {type: String, required: true},
+    message: {type: String, required: true},
+    created_at: Date,
+    updated_at: Date
+  }],
   tags: [String],
   created_at: Date,
   updated_at: Date
@@ -32,4 +39,4 @@ blogSchema.pre('save', function(next) {
 /* Use your schema to instantiate a Mongoose model */
 var blogPost = mongoose.model('blogPost', blogSchema);
 /* Export the model to make it avaiable to other parts of your Node application */
-module.exports = blogPost
+module.exports = blogPost;
