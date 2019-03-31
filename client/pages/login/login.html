@@ -29,7 +29,8 @@
                   <span class="icon-bar"></span>
                 </button>
                 <div class="navbar-brand">
-                  <a href="/"><h1><span>Entrepreneurship</span> Empowerment</h1></a>
+                  <a href="/" class="web-header"><h1><span>Entrepreneurship</span> Empowerment</h1></a>
+                  <a href="/" class="mobile-header"><h1><span>E</span>E</h1></a>
                 </div>
               </div>
 
@@ -39,7 +40,7 @@
                     <li role="presentation"><a href="/">Home</a></li>
                     <li role="presentation"><a href="/blog">Blog</a></li>
                     <li role="presentation"><a href="/calendar">Calendar</a></li>
-                    <li role="presentation"><a href="/pages/login/login.html" class="active">Login</a></li>
+                    <li role="presentation"><a href="/login" class="active">Login</a></li>
                     <li role="presentation"><a href="/register">Register</a></li>
                   </ul>
                 </div>
@@ -50,18 +51,49 @@
     </header>
 
 
-    <div class="container">
+    <div class="content" ng-controller="ListingsController">
       <form novalidate class="simple-form form-container">
-        <h2 class="form-title">Login</h2>
-        <label class="form-label">Email: </label> <br>
-        <input class="form-input" type="text" ng-model="account.email" /><br/>
-        <label class="form-label">Password: </label> <br>
-        <input class="form-input" type="password" ng-model="account.password" /><br/>
-        <button class="btn slateGray bot-margin" ng-click="addAccount()">Log In</button>
+        <h2 class="form-title">Log in</h2>
+        <input class="form-input" type="text" placeholder="Email address" ng-model="account.email" /><br/>
+        <input class="form-input" type="password" placeholder="Password" ng-model="account.password" /><br/>
+        <!-- <button class="btn slateGray bot-margin" ng-click="addAccount()">Log In</button> -->
+        <button ng-click="checkLogin()">Log in</button>
+        
 
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
+<<<<<<< HEAD
+=======
+        <script>
+            function onSignIn(googleUser) {
+              // Useful data for your client-side scripts:
+              
+              // Do not use a user's email address or user ID to communicate the currently 
+              // signed-in user to your app's backend server. Instead, send the user's ID token
+              // to your backend server and validate the token on the server, or use the server
+              // auth code flow.
+
+              var profile = googleUser.getBasicProfile();
+              console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+              console.log('Full Name: ' + profile.getName());
+              console.log('Given Name: ' + profile.getGivenName());
+              // console.log('Family Name: ' + profile.getFamilyName());
+              // console.log("Image URL: " + profile.getImageUrl());
+              console.log("Email: " + profile.getEmail());
+      
+              // The ID token you need to pass to your backend:
+              var id_token = googleUser.getAuthResponse().id_token;
+              console.log("ID Token: " + id_token);
+            }
+          </script>
+      
+      <hr class="u-bw0 u-bbw1 u-bss u-bc--light-gray u-mt24 u-mb24">
+
+      <h4><a href="/register">Create a new account</a></h4>
+>>>>>>> 8b5467391204df39a83e7570b5a38e6de3e54e2e
       </form>
+
+      
     </div>
 
 

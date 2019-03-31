@@ -16,6 +16,52 @@ angular.module('listings', []).factory('Listings', function($http) {
 
 //------------------------------------------------------------------------------//
 //TESTING FUNCTIONS
+    uploadFile: function(file) {
+      var fileFormData = new FormData();
+      fileFormData.append('file', file);
+      return $http.post('/resources/create', fileFormData, {'contentType': 'multipart/form-data'});
+    },
+
+    downloadFile:  function(filename) {
+      return $http.post('/resources/read', {name: filename});
+    },
+
+    getDocs: function(category) {
+      return $http.post('/resources/docs', {'category': category});
+    },
+
+    getViedos: function(category) {
+      return $http.post('/resources/videos', {'category': category} );
+    },
+
+
+	checkLogin: function(account){
+		return $http.post('/api/accounts/login', account);
+	},
+
+	addPost: function(blogpost){
+		return $http.post('/blog', blogpost);
+	},
+
+	addEvent: function(event){
+		return $http.post('/calendar', event)
+  },
+
+  verifyEvent: function(id) {
+    return $http.put('/calendar/' + id);
+  },
+
+  getEvents: function() {
+    return $http.get('/calendar/events');
+  },
+
+  getBlogs: function() {
+    return $http.get('/blog/all');
+  },
+
+  getMostRecentBlog: function() {
+    return $http.get('/blog/recent');
+  },
 
     GoToBlog: function() {
       return $http.get('/blog');

@@ -24,7 +24,8 @@
                 <span class="icon-bar"></span>
               </button>
               <div class="navbar-brand">
-                <a href="/"><h1><span>Entrepreneurship</span> Empowerment</h1></a>
+                <a href="/" class="web-header"><h1><span>Entrepreneurship</span> Empowerment</h1></a>
+                <a href="/" class="mobile-header"><h1><span>E</span>E</h1></a>
               </div>
             </div>
 
@@ -34,7 +35,7 @@
                   <li role="presentation"><a href="/">Home</a></li>
                   <li role="presentation"><a href="/blog" class="active">Blog</a></li>
                   <li role="presentation"><a href="/calendar">Calendar</a></li>
-                  <li role="presentation"><a href="/pages/login/login.html">Login</a></li>
+                  <li role="presentation"><a href="/login">Login</a></li>
                   <li role="presentation"><a href="/register">Register</a></li>
                 </ul>
               </div>
@@ -45,34 +46,28 @@
     </header>
 
     <section>
-      <div class="blogSection">
+      <div class="blogSection" ng-controller="ListingsController">
         <div class="row">
-          <div class="col-md-6 align-center">
+          <div class="col-md-10 align-center">
             <h2>Latest Blog</h2>
-            <div class="blogPost">
-              <div class="postHeader">
-                <h3>
-                  "Post title"
-                  <span class="postDate">month day, year</span>
-                </h3>
+            <div class="posts">
+              <div class="blogPost" ng-repeat="blog in blogPosts">
+                <div class="postHeader">
+                  <h3>
+                    {{ blog.title }}
+                    <span class="postDate">{{ blog.created_at }}</span>
+                  </h3>
+                </div>
+                <p class="postContent">
+                  {{ blog.body }}
+                </p>
               </div>
-              <p class="postContent">
-                "Something"
-              </p>
             </div>
           </div>
-          <div class="col-md-6">
-            <h2>Post to blog</h2>
-            <!-- input for blog -->
-            <input type="text" placeholder="Post title"/>
-            <textarea type="text" placeholder="Enter post"></textarea>
-            <div class="btnContainer">
-              <!-- add post -->
-              <button class="btn-secondary">Add Post</button>
-              <!-- edit post -->
-              <button class="btn-secondary">Edit Post</button>
-              <!-- delete post -->
-              <button class="btn-secondary">Delete Post</button>
+          <div class="col-md-2">
+            <!-- Tag Filters -->
+            <div class="tag-container">
+                <h3>Tags</h3>
             </div>
           </div>
         </div>
@@ -133,5 +128,6 @@
     <script src="../../js/frontend/jquery.isotope.min.js"></script>
     <script src="../../js/frontend/wow.min.js"></script>
     <script src="../../js/frontend/homePageAnimations.js"></script>
+    <script src="blog.js"></script>
   </body>
 </html>

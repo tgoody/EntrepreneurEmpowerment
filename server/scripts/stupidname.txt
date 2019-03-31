@@ -8,7 +8,6 @@ var path = require('path'),
     blogRouter = require('../routes/blog.server.routes'),
     resourcesRouter = require('../routes/resources.server.routes'),
     accountsRouter = require('../routes/account.server.routes.js'),
-    adminRouter = require('../routes/admin.server.routes.js'),
     aboutRouter = require('../routes/about.server.routes.js');
 
 module.exports.init = function() {
@@ -30,7 +29,7 @@ module.exports.init = function() {
 
   //Routes for requests dealing with accounts.
   app.use('/api/accounts', accountsRouter);
-	
+
   //Routes for requests dealing with the about page.
   app.use('/about', aboutRouter);
 
@@ -43,23 +42,9 @@ module.exports.init = function() {
   //Routes for request dealing with the resources page.
   app.use('/resources', resourcesRouter);
 
-  app.use('/admin', adminRouter);
-
   //Redirects user to Register Page
   app.use('/register', function(req, res) {
     res.redirect("/pages/register/register.html");
-  });
-
-  app.use('/login', function(req, res) {
-    res.redirect("/pages/login/login.html");
-  });
-
-  app.use('/spoder', function(req, res) {
-    res.redirect("/pages/spoder/spoder.html");
-  });
-
-  app.use('/research', function(req, res) {
-    res.redirect("/pages/research/research.html");
   });
   /** Go to homepage for all routes not specified */
   app.use(function(req, res) {

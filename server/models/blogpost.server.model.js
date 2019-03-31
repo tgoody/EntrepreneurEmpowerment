@@ -2,17 +2,15 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-
-var videoSchema = new Schema({
-  link: {
+var blogSchema = new Schema({
+  title: {
     type: String,
     required: true
   },
-  category: {
+  body: {
     type: String,
-    required: true 
+    required: true
   },
-  forUsers: Boolean,
   comments: [{
     username: {type: String, required: true},
     user_id: {type: String, required: true},
@@ -20,12 +18,13 @@ var videoSchema = new Schema({
     created_at: Date,
     updated_at: Date
   }],
+  tags: [String],
   created_at: Date,
   updated_at: Date
 });
 
 
-videoSchema.pre('save', function(next) {
+blogSchema.pre('save', function(next) {
   var currentTime = new Date;
   this.updated_at = currentTime;
   if(!this.created_at)
@@ -38,6 +37,6 @@ videoSchema.pre('save', function(next) {
 
 
 /* Use your schema to instantiate a Mongoose model */
-var Video = mongoose.model('Video', videoSchema);
+var blogPost = mongoose.model('blogPost', blogSchema);
 /* Export the model to make it avaiable to other parts of your Node application */
-module.exports = Video
+module.exports = blogPost;

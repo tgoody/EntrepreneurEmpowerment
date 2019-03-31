@@ -9,18 +9,21 @@ var calendarSchema = new Schema({
     required: true
   },
   eventDate: {
-    type: Date,
+    type: String,
     required: true,
   },
-  time: String,
   address: String,
-  description: String,
+  details: String,
+  host: String,
+  time: String,
   created_at: Date,
-  updated_at: Date
+  updated_at: Date,
+  approved: Boolean
 });
 
 /* create a 'pre' function that adds the updated_at (and created_at if not already there) property */
 calendarSchema.pre('save', function(next) {
+  this.approved = false;
   var currentTime = new Date;
   this.updated_at = currentTime;
   if(!this.created_at)
@@ -31,7 +34,7 @@ calendarSchema.pre('save', function(next) {
 });
 
 /* Use your schema to instantiate a Mongoose model */
-var calendarModel = mongoose.model('calendarModel', calendarSchema);
+var event = mongoose.model('event', calendarSchema);
 
 /* Export the model to make it avaiable to other parts of your Node application */
-module.exports = calendarModel;
+module.exports = event;

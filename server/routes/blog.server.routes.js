@@ -5,8 +5,12 @@ var blogController = require('../controllers/blog.server.controller'),
 //Gets info for the homepage of the blog
 router.get('/', blogController.list);
 
+router.get('/all', blogController.getBlogs);
+
+router.get('/recent', blogController.recentBlog);
+
 //Creates a blog post
-router.post('/create',blogController.create);
+router.post('/', blogController.create);
 
 //Updates a blog post that the user created
 router.put('/update', blogController.update);

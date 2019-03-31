@@ -80,6 +80,53 @@ exports.list = function(req, res) {
   });
 };
 
+
+exports.checkLogin = function(req, res) {
+
+	//console.log(req.body);
+	var tempAcctData = req.body;
+	var accountEmail = tempAcctData.email;
+	var tempPass = tempAcctData.password;
+
+	var foundAcct;
+
+	Account.findOne({email: accountEmail}, function(err, docs){
+	
+		if(err){
+			console.log("ERROR FINDING ACCOUNT, WTF\n" + err);
+		}
+	
+		if(docs == null){
+			console.log("DID NOT FIND ACCOUNT, BAD EMAIL\n");
+			return res.status(400).send(false);;
+		}
+	
+		foundAcct = docs;
+		console.log("FOUND ACCT HERE: " + foundAcct);
+		//console.log("temp pass: " + tempPass);
+		
+		var foundAcctSchema = mongoose.model
+		
+		docs.comparePassword(tempPass, function(err, isMatch){
+		
+			if(err){
+				console.log("error when checking passwords");
+			}
+		
+			if(isMatch){console.log("MATCHED");}
+			if(!isMatch){console.log("NOT MATCHED");}
+			return res.json(isMatch);
+		
+		})
+		
+		
+
+	});
+	
+
+}
+
+
 /*
   Middleware: find a account by its ID, then pass it to the next request handler.
 
