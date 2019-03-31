@@ -11,124 +11,118 @@
     <link rel="stylesheet" href="calendar.css">
   </head>
   <body ng-app="EntrepreneurApp">
-    <div ng-controller="calendarCtrl">
     <!-- Nav bar -->
     <header>
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-          <div class="navigation">
-            <div class="container">
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <div class="navbar-brand">
-                  <a href="/" class="web-header"><h1><span>Entrepreneurship</span> Empowerment</h1></a>
-                  <a href="/" class="mobile-header"><h1><span>E</span>E</h1></a>
-                </div>
-              </div>
-  
-              <div class="navbar-collapse collapse">
-                <div class="menu">
-                  <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation"><a href="/">Home</a></li>
-                    <li role="presentation"><a href="/blog">Blog</a></li>
-                    <li role="presentation"><a href="/calendar" class="active">Calendar</a></li>
-                    <li role="presentation"><a href="/pages/login/login.html">Login</a></li>
-                    <li role="presentation"><a href="/register">Register</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </header>
-  
-  <!-- PROBLEMS:
-      - modal form isnt centered
-     -->
-      <section id="content">
-        <div class="container">
-          <div class="googleCalendar">
-              <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=mq4sttje198ocf2o9cekh76m9s%40group.calendar.google.com&amp;color=%23711616&amp;ctz=America%2FNew_York" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-          </div>
-        </div>
-  
-        
-        <section id="submit">
-            <button id="myBtn" class="btn-primary">Submit new event</button>
-    
-            <div id="myModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
-    
-              <!-- Modal content -->
-              <div class="modal-content">
-                <span class="close">&times;</span>
-    
-                <form class="form-horizontal">
-                  <h3>Submit new event</h3>
-                  <div class="form-group">
-                    <input class="form-input" type="text" placeholder="Event name"></input>
-                  </div>
-    
-                  <div class="form-group">
-                      <input class="form-input" type="text" placeholder="Date"></input>
-                  </div>
-    
-                  <div class="form-group">
-                      <input class="form-input" type="text" placeholder="Location"></input>
-                  </div>
-    
-                  <div class="form-group">
-                      <input class="form-input" type="text" placeholder="Details"></input>
-                  </div>
-    
-                  <div class="form-group">
-                      <input class="form-input" type="text" placeholder="Hosted by"></input>
-                  </div>
-    
-                  <div class="form-group"> 
-                    <div class="col-sm-offset-2 col-sm-10">
-                      <button class="btn-primary" ng-click="submitEvent()">Submit event</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </section>
-  
-        <!--the next 3 might actually be built into google calendar idk-->
-        <!-- <button  class="btn-primary">View event</button>  -->
-        
-        <h3>Admin controls</h3>
-        <button  class="btn-primary">Delete event</button>
-        <button  class="btn-primary">Edit event</button>
-      </section>
-  
-      <footer>
-        <div class="footer">
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navigation">
           <div class="container">
-            <div class="col-md-4">
-              <ul class="social-network">
-                <li><a href="#" class="fb tool-tip"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#" class="twitter tool-tip"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#" class="gplus tool-tip"><i class="fa fa-google-plus"></i></a></li>
-                <li><a href="#" class="linkedin tool-tip"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#" class="ytube tool-tip"><i class="fa fa-youtube-play"></i></a></li>
-              </ul>
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <div class="navbar-brand">
+                <a href="/" class="web-header"><h1><span>Entrepreneurship</span> Empowerment</h1></a>
+                <a href="/" class="mobile-header"><h1><span>E</span>E</h1></a>
+              </div>
             </div>
-  
-            <div class="col-md-4 col-md-offset-4">
-              <div class="copyright">
-                Address and Contact info <br>
-                &copy; Entrepreneur Empowerment. All Rights Reserved.
+
+            <div class="navbar-collapse collapse">
+              <div class="menu">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation"><a href="/">Home</a></li>
+                  <li role="presentation"><a href="/blog">Blog</a></li>
+                  <li role="presentation"><a href="/calendar" class="active">Calendar</a></li>
+                  <li role="presentation"><a href="/pages/login/login.html">Login</a></li>
+                  <li role="presentation"><a href="/register">Register</a></li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
-      </footer>  
-    </div>
+      </nav>
+    </header>
+
+<!-- PROBLEMS:
+    - modal form isnt centered
+   -->
+    <section id="content">
+      <div class="container" >
+        <div class="googleCalendar">
+            <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=mq4sttje198ocf2o9cekh76m9s%40group.calendar.google.com&amp;color=%23711616&amp;ctz=America%2FNew_York" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        </div>
+      </div>
+
+
+      <section id="submit">
+          <button id="myBtn" class="btn-primary">Submit new event</button>
+
+          <div id="myModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
+
+            <!-- Modal content -->
+            <div class="modal-content" ng-controller="ListingsController">
+              <span class="close">&times;</span>
+
+              <form class="form-horizontal">
+                  <input class="form-input" type="text" placeholder="Event name" ng-model="event.eventName"></input>
+
+                  <input class="form-input" type="date" placeholder="Date" ng-model="event.eventDate"></input>
+
+                  <input class="form-input" type="text" placeholder="Address" ng-model="event.address"></input>
+
+                  <input class="form-input" type="text" placeholder="Details" ng-model="event.details"></input>
+
+                  <input class="form-input" type="text" placeholder="Hosted by" ng-model="event.host"></input>
+
+                  <input class="form-input" type="text" placeholder="Time" ng-model="event.time"></input>
+
+                  <button class="btn-primary" ng-click="addEvent()">Submit event</button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+      <!--the next 3 might actually be built into google calendar idk-->
+      <!-- <button  class="btn-primary">View event</button>  -->
+      <h3>Admin controls</h3>
+      <button  class="btn-primary">Delete event</button>
+      <button  class="btn-primary">Edit event</button>
+    </section>
+
+    <tr ng-repeat="event in eventList | filter: query" ng-click="showDetails($index)">
+      <td>{{account.email}}</td>
+      <td>{{account.username}}</td>
+      <td>{{account.password}}</td>
+      <button  class="btn-primary" ng-click="verifyEvent()">Verify event</button>
+      <td ng-click="deleteAccount(account._id)"><span style="color: red;" class="glyphicon glyphicon-remove"></span></td>
+    </tr>
+
+    <footer>
+      <div class="footer">
+        <div class="container">
+          <div class="col-md-4">
+            <ul class="social-network">
+              <li><a href="#" class="fb tool-tip"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#" class="twitter tool-tip"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#" class="gplus tool-tip"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="#" class="linkedin tool-tip"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="#" class="ytube tool-tip"><i class="fa fa-youtube-play"></i></a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-4 col-md-offset-4">
+            <div class="copyright">
+              Address and Contact info <br>
+              &copy; Entrepreneur Empowerment. All Rights Reserved.
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
