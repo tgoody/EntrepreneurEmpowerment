@@ -45,8 +45,8 @@
       </nav>
     </header>
 
-    <section>
-      <div class="blogSection" ng-controller="ListingsController">
+    <section ng-controller="ListingsController">
+      <div class="blogSection">
         <div class="row">
           <div class="col-md-12">
             <h2>Post to blog</h2>
@@ -77,6 +77,23 @@
                 <p class="postContent">
                   {{ blog.body }}
                 </p>
+
+                <div class="commentSection">
+                  <h2>Comments</h2>
+                  <!-- input for comment -->
+                  <input type="text" placeholder="comment text" ng-model="blogpostdata.commentMsg"/>
+                  <div class="btnContainer">
+                    <!-- add comment -->
+                    <button class="btn-secondary" ng-click="addComment(blog)">Add Comment</button>
+                    <!-- edit comment -->
+                    <button class="btn-secondary">Edit Comment</button>
+                    <!-- delete comment -->
+                    <button class="btn-secondary">Delete Comment</button>
+                  </div>
+                </div>
+
+
+
               </div>
             </div>
           </div>
@@ -88,19 +105,7 @@
           </div>
         </div>
       </div>
-      <div class="commentSection">
-        <h2>Comments</h2>
-        <!-- input for comment -->
-        <input type="text" placeholder="comment text"/>
-        <div class="btnContainer">
-          <!-- add comment -->
-          <button class="btn-secondary">Add Comment</button>
-          <!-- edit comment -->
-          <button class="btn-secondary">Edit Comment</button>
-          <!-- delete comment -->
-          <button class="btn-secondary">Delete Comment</button>
-        </div>
-      </div>
+
     </section>
 
     <footer>

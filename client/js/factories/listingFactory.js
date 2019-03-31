@@ -34,7 +34,12 @@ angular.module('listings', []).factory('Listings', function($http) {
 	addPost: function(blogpost){
 		return $http.post('/blog', blogpost);
 	},
-	
+  
+  addComment: function(comment) {
+    return $http.post('/blog', comment);
+  },
+
+
 	addEvent: function(event){
 		return $http.post('/calendar', event)
   },
