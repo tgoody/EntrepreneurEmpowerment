@@ -58,17 +58,15 @@
         <input class="form-input" type="password" placeholder="Password" ng-model="account.password" /><br/>
         <!-- <button class="btn slateGray bot-margin" ng-click="addAccount()">Log In</button> -->
         <button ng-click="checkLogin()">Log in</button>
-        
+
 
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-<<<<<<< HEAD
-=======
         <script>
             function onSignIn(googleUser) {
               // Useful data for your client-side scripts:
-              
-              // Do not use a user's email address or user ID to communicate the currently 
+
+              // Do not use a user's email address or user ID to communicate the currently
               // signed-in user to your app's backend server. Instead, send the user's ID token
               // to your backend server and validate the token on the server, or use the server
               // auth code flow.
@@ -80,20 +78,19 @@
               // console.log('Family Name: ' + profile.getFamilyName());
               // console.log("Image URL: " + profile.getImageUrl());
               console.log("Email: " + profile.getEmail());
-      
+
               // The ID token you need to pass to your backend:
               var id_token = googleUser.getAuthResponse().id_token;
               console.log("ID Token: " + id_token);
             }
           </script>
-      
+
       <hr class="u-bw0 u-bbw1 u-bss u-bc--light-gray u-mt24 u-mb24">
 
       <h4><a href="/register">Create a new account</a></h4>
->>>>>>> 8b5467391204df39a83e7570b5a38e6de3e54e2e
       </form>
 
-      
+
     </div>
 
 
