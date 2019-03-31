@@ -94,9 +94,27 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="row calendarContent">
-
+              <div class="row calendarContent">
+                <button  class="btn-primary">Delete event</button>
+                <button  class="btn-primary">Edit Events</button>
+                <h2>Pending Events</h2>
+                <div class="tableWrapper">
+                  <table class="table table-striped table-hover">
+                    <tr>
+                      <th>Event</th>
+                      <th>Date</th>
+                      <th>Details</th>
+                      <th></th>
+                    </tr>
+                    <tr ng-repeat="event in eventList">
+                      <td>{{event.eventName}}</td>
+                      <td>{{event.eventDate}}</td>
+                      <td>{{event.details}}</td>
+                      <td ng-click="verifyEvent(event._id)"><button  class="btn-primary">Verify</button></td-->
+                    </tr>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
         </div>

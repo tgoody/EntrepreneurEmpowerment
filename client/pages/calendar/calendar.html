@@ -77,7 +77,7 @@
 
                   <input class="form-input" type="text" placeholder="Hosted by" ng-model="event.host"></input>
 
-                  <input class="form-input" type="text" placeholder="Time" ng-model="event.time"></input>
+                  <input class="form-input" type="time" placeholder="Time" ng-model="event.time"></input>
 
                   <button class="btn-primary" ng-click="addEvent()">Submit event</button>
               </form>
@@ -87,14 +87,6 @@
 
       <!--the next 3 might actually be built into google calendar idk-->
     </section>
-
-    <tr ng-repeat="event in eventList | filter: query" ng-click="showDetails($index)">
-      <td>{{account.email}}</td>
-      <td>{{account.username}}</td>
-      <td>{{account.password}}</td>
-      <button  class="btn-primary" ng-click="verifyEvent()">Verify event</button>
-      <td ng-click="deleteAccount(account._id)"><span style="color: red;" class="glyphicon glyphicon-remove"></span></td>
-    </tr>
 
     <footer>
       <div class="footer">

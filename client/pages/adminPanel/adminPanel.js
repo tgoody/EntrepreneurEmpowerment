@@ -24,7 +24,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
                 }
             });
         });
-        
+
         $scope.addPost = function() {
             Listings.addPost($scope.blogpost).then(function(response) {
                 console.log('Sucessfully tried to add post!');
@@ -32,5 +32,22 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
                 console.log('Error in trying to add post!');
             });
         };
+
+        $scope.verifyEvent = function(id) {
+            console.log('verify Event');
+            Listings.verifyEvent(id).then(function(response) {
+                console.log('Sucessfully verified a post!');
+            }, function(error) {
+                console.log('Error in verifying a post!');
+            });
+        };
+
+        Listings.getEvents().then(function(response) {
+            $scope.eventList = response.data;
+            console.log('Sucessfully got events!');
+            // console.log(response.data);
+        }, function(error) {
+                console.log('Error in trying to get events!');
+        });
     }
 ]);

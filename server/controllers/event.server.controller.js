@@ -1,14 +1,14 @@
 /* Dependencies */
 var mongoose = require('mongoose'),
-    calendarEvent = require('../models/calendar.server.model.js');
+    CalendarEvent = require('../models/calendar.server.model.js');
 
 exports.homepage = function(req, res) {
   res.redirect('/pages/calendar/calendar.html');
 };
 
 exports.getEvents = function(req, res) {
-  calendarEvent.find({}, function(err, events){
-    console.log(events);
+  CalendarEvent.find({}, function(err, events){
+    //console.log(events);
     res.json(events);
   });
 };
@@ -16,7 +16,7 @@ exports.getEvents = function(req, res) {
 exports.create = function(req, res) {
   /* Instantiate an event */
   console.log(req.body);
-  var tempEvent = new calendarEvent(req.body);
+  var tempEvent = new CalendarEvent(req.body);
 
   /* Then save the event */
   tempEvent.save(function(err) {
@@ -38,10 +38,20 @@ exports.read = function(req, res) {
 /* Update an event */
 exports.update = function(req, res) {
   var event = req.event;
-  var newEvent = req.body;
+  var newEvent = {
+    eventName: req.event.eventName,
+    eventDate: req.event.eventDate,
+    address: req.event.address,
+    details: req.event.details,
+    host: req.event.host,
+    time: req.event.time,
+    created_at: req.event.created_at,
+    updated_at: new Date,
+    approved: true
+  };
   /* Replace the article's properties with the new properties found in req.body */
   /* Save the article */
-  Listing.findByIdAndUpdate(event._id, newEvent, {new: true}, function(err, updatedEvent) {
+  CalendarEvent.findByIdAndUpdate(event._id, newEvent, {new: true}, function(err, updatedEvent) {
     if(err) {
       console.log(err);
       res.status(400).send(err);
@@ -57,7 +67,7 @@ exports.delete = function(req, res) {
   var event = req.event;
   var id = event._id;
     /* Remove the article */
-  Listing.findByIdAndRemove(id, function(err, deletedEvent){
+  CalendarEvent.findByIdAndRemove(id, function(err, deletedEvent){
     if(err) {
       console.log(err);
       res.status(400).send(err);
@@ -91,7 +101,7 @@ exports.delete = function(req, res) {
 
 
 exports.eventByID = function(req, res, next, id) {
-  calendarEvent.findById(id).exec(function(err, event) {
+  CalendarEvent.findById(id).exec(function(err, event) {
     if(err) {
       res.status(400).send(err);
     } else {

@@ -25,6 +25,7 @@ exports.recentBlog = function(req, res) {
 
 //Handles the creation of a new blog post
 exports.create = function(req, res) {
+	req.body.comments = [];
 	var blog = new Blog(req.body);
 	
 	blog.save(function(err){
