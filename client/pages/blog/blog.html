@@ -65,31 +65,19 @@
         </div>
         <div class="row">
           <div class="col-md-10 align-center">
-            <button ng-click="getRecentBlog()">Go!</button>
             <h2>Latest Blog</h2>
             <div class="posts">
-              <div class="blogPost">
+              <div class="blogPost" ng-repeat="blog in blogPosts">
                 <div class="postHeader">
                   <h3>
                     "Post title"
-                    <span class="postDate">month day, year</span>
+                    <span class="postDate">{{ blog.created_at }}</span>
                   </h3>
                 </div>
                 <p class="postContent">
-                  "Something"
+                  {{ blog.body }}
                 </p>
               </div>
-              <div class="blogPost">
-                  <div class="postHeader">
-                    <h3>
-                      "Post title"
-                      <span class="postDate">month day, year</span>
-                    </h3>
-                  </div>
-                  <p class="postContent">
-                    "Something"
-                  </p>
-                </div>
             </div>
           </div>
           <div class="col-md-2">

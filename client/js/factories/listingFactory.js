@@ -42,7 +42,11 @@ angular.module('listings', []).factory('Listings', function($http) {
   getEvents: function() {
     return $http.get('/calendar/events');
   },
-  
+
+  getBlogs: function() {
+    return $http.get('/blog/all');
+  },
+
   getMostRecentBlog: function() {
     return $http.get('/blog/recent');
   },
