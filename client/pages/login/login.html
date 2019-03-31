@@ -18,36 +18,37 @@
   <body ng-app="EntrepreneurApp">
     <!-- Nav bar -->
     <header>
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-          <div class="navigation">
-            <div class="container">
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <div class="navbar-brand">
-                  <a href="/" class="web-header"><h1><span>Entrepreneurship</span> Empowerment</h1></a>
-                  <a href="/" class="mobile-header"><h1><span>E</span>E</h1></a>
-                </div>
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <div class="navbar-brand">
+                <a href="/" class="web-header"><h1><span>E</span>E</h1></a>
+                <a href="/" class="mobile-header"><h1><span>E</span>E</h1></a>
               </div>
-  
-              <div class="navbar-collapse collapse">
-                <div class="menu">
-                  <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation"><a href="/">Home</a></li>
-                    <li role="presentation"><a href="/blog">Blog</a></li>
-                    <li role="presentation"><a href="/calendar">Calendar</a></li>
-                    <li role="presentation"><a href="/pages/login/login.html" class="active">Login</a></li>
-                    <li role="presentation"><a href="/register">Register</a></li>
-                  </ul>
-                </div>
+            </div>
+
+            <div class="navbar-collapse collapse">
+              <div class="menu">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation"><a href="/" class="active">Home</a></li>
+                  <li role="presentation"><a href="/blog">Blog</a></li>
+                  <li role="presentation"><a href="/calendar">Calendar</a></li>
+                  <li role="presentation"><a href="/login">Login</a></li>
+                  <li role="presentation"><a href="/register">Register</a></li>
+                  <li role="presentation"><a href="/admin">Admin</a></li>
+                </ul>
               </div>
             </div>
           </div>
-        </nav>
+        </div>
+      </nav>
     </header>
 
 
@@ -62,7 +63,7 @@
 
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-        <script>
+        <!-- <script>
             function onSignIn(googleUser) {
               // Useful data for your client-side scripts:
               
@@ -83,11 +84,11 @@
               var id_token = googleUser.getAuthResponse().id_token;
               console.log("ID Token: " + id_token);
             }
-          </script>
+          </script> -->
       
       <hr class="u-bw0 u-bbw1 u-bss u-bc--light-gray u-mt24 u-mb24">
 
-      <h4><a href="/pages/register/register.html">Create a new account</a></h4>
+      <h4><a href="/register">Create a new account</a></h4>
       </form>
 
       
@@ -131,5 +132,7 @@
     <script src="../../js/frontend/jquery.isotope.min.js"></script>
     <script src="../../js/frontend/wow.min.js"></script>
     <script src="../../js/frontend/homePageAnimations.js"></script>
+    <script src="login.js"></script>
+
   </body>
 </html>

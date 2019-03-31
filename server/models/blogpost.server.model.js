@@ -2,7 +2,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-
 var blogSchema = new Schema({
   title: {
     type: String,
@@ -13,6 +12,7 @@ var blogSchema = new Schema({
     required: true
   },
   comments: [{
+    username: {type: String, required: true},
     user_id: {type: String, required: true},
     message: {type: String, required: true},
     created_at: Date,

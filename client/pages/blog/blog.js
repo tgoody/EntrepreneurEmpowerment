@@ -10,13 +10,13 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       }
     });
 
-    $scope.addPost = function() {
-		  Listings.addPost($scope.blogpost).then(function(response) {
-			  console.log('Sucessfully tried to add post!');
-		  }, function(error) {
-			  console.log('Error in trying to add post!');
-		  });
-    };
+    // $scope.addPost = function() {
+		//   Listings.addPost($scope.blogpost).then(function(response) {
+		// 	  console.log('Sucessfully tried to add post!');
+		//   }, function(error) {
+		// 	  console.log('Error in trying to add post!');
+		//   });
+    // };
     
     $scope.addComment = function(blog)  {
 

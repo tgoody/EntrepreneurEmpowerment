@@ -41,7 +41,7 @@ exports.create = function(req, res) {
 
 
 exports.addComment = function(req, res)	{
-	// var post = req.body;			// idk???????
+	var post = req.body;			// idk???????
 	// need to find the id first
 	Blog.findById(req.body._id), exec(function(err, post)	{
 		if (post.results)	{
