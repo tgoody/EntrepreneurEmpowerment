@@ -62,6 +62,10 @@ angular.module('listings', []).factory('Listings', function($http) {
   getMostRecentBlog: function() {
     return $http.get('/blog/recent');
   },
+  
+  addComment: function(blog){
+  	return $http.post('/blog/add', blog);
+  },
 
     GoToBlog: function() {
       return $http.get('/blog');

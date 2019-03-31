@@ -97,7 +97,9 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 		
 		})
 	
-	}
+	};
+	
+
 
     $scope.GoToBlog = function() {
       Listings.GoToBlog().then(function(response) {
