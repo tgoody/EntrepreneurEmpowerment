@@ -37,7 +37,15 @@ angular.module('listings', []).factory('Listings', function($http) {
 	
 	addEvent: function(event){
 		return $http.post('/calendar', event)
-	},
+  },
+
+  getEvents: function() {
+    return $http.get('/calendar/events');
+  },
+  
+  getMostRecentBlog: function() {
+    return $http.get('/blog/recent');
+  },
 
     GoToBlog: function() {
       return $http.get('/blog');

@@ -19,6 +19,8 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       Listings.create($scope.account).then(function(response) {
         if (response.status === 200) {
           // response was successful, refresh list
+          var id = response.data._id;
+          localStorage.setItem('userId', id);
           Listings.getAll().then(function(response) {
             $scope.accountList = response.data;
           }, function(error) {
@@ -34,7 +36,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       }, function(error) {
         console.log('Unable to add new listing:', error);
       });
-      $windows.location.href = '../../index.html';
+      // window.location.href = '../../index.html';
     };
 
     $scope.deleteAccount = function(id) {
@@ -82,6 +84,11 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 		  });
 		};
 
+    $scope.getRecentBlog = function() {
+      Listings.getMostRecentBlog().then(function(response) {
+        console.log(response);
+      });
+    }
 	$scope.checkLogin = function(){
 	
 		//console.log("CHECKING LOGIN");
@@ -91,8 +98,8 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 		
 				//console.log('Successfully tried to log in!');
 				console.log(response);
-				
-				
+				var id = response.data._id;
+				localStorage.setItem('userId', id);
 				
 			},
 

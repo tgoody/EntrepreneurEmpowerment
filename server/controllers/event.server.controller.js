@@ -6,6 +6,13 @@ exports.homepage = function(req, res) {
   res.redirect('/pages/calendar/calendar.html');
 };
 
+exports.getEvents = function(req, res) {
+  calendarEvent.find({}, function(err, events){
+    console.log(events);
+    res.json(events);
+  });
+};
+
 exports.create = function(req, res) {
   /* Instantiate an event */
   console.log(req.body);

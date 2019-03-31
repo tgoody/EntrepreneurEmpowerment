@@ -24,6 +24,9 @@ window.onclick = function(event) {
     }
 }
 angular.module('listings').controller('ListingsController', ['$scope', 'Listings', function($scope, Listings) {
+  Listings.getEvents().then(function(response){
+    console.log(response);
+  });
   $scope.addEvent = function() {
     console.log('add event');
     Listings.addEvent($scope.event).then(function(response) {
