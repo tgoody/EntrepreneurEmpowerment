@@ -51,6 +51,10 @@ angular.module('listings', []).factory('Listings', function($http) {
     return $http.put('/calendar/' + id);
   },
 
+  deleteEvent: function(id) {
+    return $http.delete('/calendar/' + id);
+  },
+
   getEvents: function() {
     return $http.get('/calendar/events');
   },
@@ -61,6 +65,10 @@ angular.module('listings', []).factory('Listings', function($http) {
 
   getMostRecentBlog: function() {
     return $http.get('/blog/recent');
+  },
+  
+  addComment: function(blog){
+  	return $http.post('/blog/add', blog);
   },
 
     GoToBlog: function() {
