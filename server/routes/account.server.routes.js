@@ -8,7 +8,6 @@ var accounts = require('../controllers/account.server.controller.js'),
   Take note that it is possible for different controller functions to handle requests to the same route.
  */
 router.route('/')
-  .get(accounts.list)
   .post(accounts.create);
 
 router.post('/login/', accounts.checkLogin);

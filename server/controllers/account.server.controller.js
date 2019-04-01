@@ -67,18 +67,18 @@ exports.delete = function(req, res) {
 };
 
 /* Retreive all the directory accounts, sorted alphabetically by account code */
-exports.list = function(req, res) {
-  //get all accounts from mongo
-  Account.find({}, function(err, accounts) {
-    if (err) throw err;
-    // sort list
-    var sortedAccounts = accounts.sort((account, nextAccount) =>
-    {
-      return account.username.localeCompare(nextAccount.username)
-    });
-    res.json(sortedAccounts);
-  });
-};
+// exports.list = function(req, res) {
+//   //get all accounts from mongo
+//   Account.find({}, function(err, accounts) {
+//     if (err) throw err;
+//     // sort list
+//     var sortedAccounts = accounts.sort((account, nextAccount) =>
+//     {
+//       return account.username.localeCompare(nextAccount.username)
+//     });
+//     res.json(sortedAccounts);
+//   });
+// };
 
 
 exports.checkLogin = function(req, res) {
