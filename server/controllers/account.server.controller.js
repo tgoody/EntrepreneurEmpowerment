@@ -15,7 +15,6 @@ var mongoose = require('mongoose'),
 exports.create = function(req, res) {
   /* Instantiate a Account */
   var account = new Account(req.body);
-
   /* Then save the account */
   account.save(function(err) {
     if(err) {
