@@ -10,7 +10,7 @@
       <link rel="stylesheet" href="../../styles/main.css">
       <link rel="stylesheet" href="register.css">
   </head>
-  <body ng-app="EntrepreneurApp">
+  <body ng-app="EntrepreneurApp" ng-controller="ListingsController">
     <!-- Nav bar -->
     <header>
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -35,9 +35,10 @@
                   <li role="presentation"><a href="/" >Home</a></li>
                   <li role="presentation"><a href="/blog">Blog</a></li>
                   <li role="presentation"><a href="/calendar">Calendar</a></li>
-                  <li role="presentation"><a href="/login">Login</a></li>
-                  <li role="presentation"><a href="/register" class="active">Register</a></li>
-                  <li role="presentation"><a href="/admin">Admin</a></li>
+                  <li ng-if="userId === 'false'" role="presentation"><a href="/login">Login</a></li>
+                  <li ng-if="userId === 'false'" role="presentation"><a href="/register">Register</a></li>
+                  <li ng-if="isAdmin" role="presentation"><a href="/admin">Admin</a></li>
+                  <li ng-if="userId !== 'false'" role="presentation" ng-click="logout()"><a href="#">Logout</a></li>
                 </ul>
               </div>
             </div>
@@ -46,7 +47,7 @@
       </nav>
     </header>
     <div class="content">
-      <div class="row top-padding" ng-controller="ListingsController">
+      <div class="row top-padding">
         <!-- <div class="col-md-4 bot-margin">
           <div class="input-group" id="searchBar">
             <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>

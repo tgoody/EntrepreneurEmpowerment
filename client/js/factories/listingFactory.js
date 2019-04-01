@@ -14,6 +14,9 @@ angular.module('listings', []).factory('Listings', function($http) {
       return $http.delete('/api/accounts/' + id);
     },
 
+    getUser: function(id) {
+      return $http.get('/api/accounts/'+ id);
+    },
 //------------------------------------------------------------------------------//
 //TESTING FUNCTIONS
     uploadFile: function(file) {

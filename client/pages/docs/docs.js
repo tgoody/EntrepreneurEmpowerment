@@ -1,5 +1,20 @@
 angular.module('listings').controller('ListingsController', ['$scope', 'Listings',
   function($scope, Listings) { 
+    $scope.userId = localStorage.getItem('userId');
+    $scope.isAdmin = false;
+    
+    if ($scope.userId !== 'false') {
+      Listings.getUser($scope.userId).then(function(response) {
+        $scope.isAdmin = response.data.admin;
+      });
+    }
+
+    $scope.logout = function() {
+      localStorage.setItem('userId', 'false');
+      $scope.userId = 'false';
+      $scope.isAdmin = false;
+    }
+    
         $scope.currentCategory = '0';
         $scope.docs = [];
         $scope.videos = [];
