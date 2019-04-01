@@ -13,41 +13,41 @@
       <meta name="google-signin-scope" content="profile email">
       <meta name="google-signin-client_id" content="527369447821-1m0ivto7g7ls4utmv8bm5tcujv10pi2i.apps.googleusercontent.com">
       <script src="https://apis.google.com/js/platform.js" async defer></script>
-  
+
   </head>
   <body ng-app="EntrepreneurApp">
     <!-- Nav bar -->
     <header>
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-          <div class="navigation">
-            <div class="container">
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <div class="navbar-brand">
-                  <a href="/" class="web-header"><h1><span>Entrepreneurship</span> Empowerment</h1></a>
-                  <a href="/" class="mobile-header"><h1><span>E</span>E</h1></a>
-                </div>
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <div class="navbar-brand">
+                <a href="/" class="web-header"><h1><span>E</span>E</h1></a>
+                <a href="/" class="mobile-header"><h1><span>E</span>E</h1></a>
               </div>
-  
-              <div class="navbar-collapse collapse">
-                <div class="menu">
-                  <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation"><a href="/">Home</a></li>
-                    <li role="presentation"><a href="/blog">Blog</a></li>
-                    <li role="presentation"><a href="/calendar">Calendar</a></li>
-                    <li role="presentation"><a href="/login" class="active">Login</a></li>
-                    <li role="presentation"><a href="/register">Register</a></li>
-                  </ul>
-                </div>
+            </div>
+            <div class="navbar-collapse collapse">
+              <div class="menu">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation"><a href="/">Home</a></li>
+                  <li role="presentation"><a href="/blog">Blog</a></li>
+                  <li role="presentation"><a href="/calendar">Calendar</a></li>
+                  <li role="presentation"><a href="/login" class="active">Login</a></li>
+                  <li role="presentation"><a href="/register">Register</a></li>
+                  <li role="presentation"><a href="/admin">Admin</a></li>
+                </ul>
               </div>
             </div>
           </div>
-        </nav>
+        </div>
+      </nav>
     </header>
 
 
@@ -58,15 +58,15 @@
         <input class="form-input" type="password" placeholder="Password" ng-model="account.password" /><br/>
         <!-- <button class="btn slateGray bot-margin" ng-click="addAccount()">Log In</button> -->
         <button ng-click="checkLogin()">Log in</button>
-        
+
 
         <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-        <script>
+        <!-- <script>
             function onSignIn(googleUser) {
               // Useful data for your client-side scripts:
-              
-              // Do not use a user's email address or user ID to communicate the currently 
+
+              // Do not use a user's email address or user ID to communicate the currently
               // signed-in user to your app's backend server. Instead, send the user's ID token
               // to your backend server and validate the token on the server, or use the server
               // auth code flow.
@@ -78,19 +78,20 @@
               // console.log('Family Name: ' + profile.getFamilyName());
               // console.log("Image URL: " + profile.getImageUrl());
               console.log("Email: " + profile.getEmail());
-      
+
               // The ID token you need to pass to your backend:
               var id_token = googleUser.getAuthResponse().id_token;
               console.log("ID Token: " + id_token);
             }
-          </script>
+          </script> -->
       
+
       <hr class="u-bw0 u-bbw1 u-bss u-bc--light-gray u-mt24 u-mb24">
 
       <h4><a href="/register">Create a new account</a></h4>
       </form>
 
-      
+
     </div>
 
 
@@ -131,5 +132,7 @@
     <script src="../../js/frontend/jquery.isotope.min.js"></script>
     <script src="../../js/frontend/wow.min.js"></script>
     <script src="../../js/frontend/homePageAnimations.js"></script>
+    <script src="login.js"></script>
+
   </body>
 </html>

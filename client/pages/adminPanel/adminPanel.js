@@ -1,7 +1,7 @@
 angular.module('listings').controller('ListingsController', ['$scope', 'Listings',
-  function($scope, Listings) { 
+  function($scope, Listings) {
         $("#uploadFileForm").submit(function(e){
-            e.preventDefault(); 
+            e.preventDefault();
             // Upload file to database
             var file = $scope.myFile;
             var fileFormData = new FormData();
@@ -79,10 +79,26 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
             });
         };
 
+        $scope.deleteEvent = function(id) {
+            console.log('Delete Event');
+            Listings.deleteEvent(id).then(function(response) {
+                console.log('Sucessfully deleted a post!');
+            }, function(error) {
+                console.log('Error in deleted a post!');
+            });
+        };
+
         Listings.getEvents().then(function(response) {
-            $scope.eventList = response.data;
-            console.log('Sucessfully got events!');
-            // console.log(response.data);
+          $scope.eventList = response.data;
+          console.log('response: ', response.data);
+          for(var i = 0; i < $scope.eventList.length; i++) {
+            console.log(response.data.length);
+            if(response.data[i].approved) {
+              $scope.eventList.splice(i, 1);
+              i = i - 1;
+            }
+          }
+          console.log('Sucessfully got events!');
         }, function(error) {
                 console.log('Error in trying to get events!');
         });

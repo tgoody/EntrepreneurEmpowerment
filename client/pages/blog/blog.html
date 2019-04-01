@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../../styles/main.css">
     <link rel="stylesheet" href="blog.css">
   </head>
-  <body ng-app="EntrepreneurApp">
+  <body ng-app="EntrepreneurApp" ng-controller="ListingsController">
     <!-- Nav bar -->
     <header>
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -24,7 +24,7 @@
                 <span class="icon-bar"></span>
               </button>
               <div class="navbar-brand">
-                <a href="/" class="web-header"><h1><span>Entrepreneurship</span> Empowerment</h1></a>
+                <a href="/" class="web-header"><h1><span>E</span>E</h1></a>
                 <a href="/" class="mobile-header"><h1><span>E</span>E</h1></a>
               </div>
             </div>
@@ -37,6 +37,7 @@
                   <li role="presentation"><a href="/calendar">Calendar</a></li>
                   <li role="presentation"><a href="/login">Login</a></li>
                   <li role="presentation"><a href="/register">Register</a></li>
+                  <li role="presentation"><a href="/admin">Admin</a></li>
                 </ul>
               </div>
             </div>
@@ -46,7 +47,7 @@
     </header>
 
     <section>
-      <div class="blogSection" ng-controller="ListingsController">
+      <div class="blogSection">
         <div class="row">
           <div class="col-md-10 align-center">
             <h2>Latest Blog</h2>
@@ -61,6 +62,20 @@
                 <p class="postContent">
                   {{ blog.body }}
                 </p>
+
+				 <div class="commentSection">
+					<h2>Comments</h2>
+					<!-- input for comment -->
+					<input type="text" placeholder="comment text" ng-model="blog.comment"/>
+					<div class="btnContainer">
+					  <!-- add comment -->
+					  <button class="btn-secondary" ng-click="addComment(blog)">Add Comment</button>
+					  <!-- edit comment -->
+					  <button class="btn-secondary">Edit Comment</button>
+					  <!-- delete comment -->
+					  <button class="btn-secondary">Delete Comment</button>
+					</div>
+				  </div>
               </div>
             </div>
           </div>
@@ -72,21 +87,7 @@
           </div>
         </div>
       </div>
-      <div class="commentSection">
-        <h2>Comments</h2>
-        <!-- input for comment -->
-        <input type="text" placeholder="comment text"/>
-        <div class="btnContainer">
-          <!-- add comment -->
-          <button class="btn-secondary">Add Comment</button>
-          <!-- edit comment -->
-          <button class="btn-secondary">Edit Comment</button>
-          <!-- delete comment -->
-          <button class="btn-secondary">Delete Comment</button>
-        </div>
-      </div>
     </section>
-
     <footer>
       <div class="footer">
         <div class="container">
