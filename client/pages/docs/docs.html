@@ -86,17 +86,11 @@
                   <div class="contentHeader">
                     <h2>Resources</h2>
                     <button class="btn-secondary">View Videos</button>
-                    <form id="uploadFileForm">
-                        <div class="form-group">
-                            <label for="myFileField">Select a file: </label>
-                            <input type="file" demo-file-model="myFile" name="myFile"/>
-                        </div>
-                        <input type="submit" value="Add Resource"/>
-                    </form>
                   </div>
+                  <!-- <a id="myimg" target="_blank" href="" download="test.pdf">doc</a> -->
                   <ul>
                     <li class="docItem" ng-repeat="doc in docs">
-                      <button ng-click="downloadFile(doc.name)" class="btn-primary">{{ doc.name }}</button>
+                      <a id="doc{{$index}}" target="_blank" href="" download="{{ doc.name }}" ng-click="downloadFile($index, doc._id)" class="btn-primary">{{ doc.name }}</a>
                       <!-- Comment section -->
                       <h4>Comments</h4>
                       <ul>
@@ -143,7 +137,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
-    <script type="text/javascript" src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.js" ></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDB4MRWcfyJdL6Mqxg-ZE2BCZimjFH4Is0",
+        authDomain: "centest-3a744.firebaseapp.com",
+        databaseURL: "https://centest-3a744.firebaseio.com",
+        projectId: "centest-3a744",
+        storageBucket: "gs://centest-3a744.appspot.com",
+        messagingSenderId: "353572290091"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.2.0/angularfire.min.js"></script>
+    <!-- <script type="text/javascript" src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.js" ></script> -->
     <script src="../../js/app.js"></script>
     <script src="../../js/factories/listingFactory.js"></script>
     <script src="../../js/controllers/listingController.js"></script>

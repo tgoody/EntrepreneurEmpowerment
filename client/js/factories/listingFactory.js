@@ -17,9 +17,7 @@ angular.module('listings', []).factory('Listings', function($http) {
 //------------------------------------------------------------------------------//
 //TESTING FUNCTIONS
     uploadFile: function(file) {
-      var fileFormData = new FormData();
-      fileFormData.append('file', file);
-      return $http.post('/resources/create', fileFormData, {'contentType': 'multipart/form-data'});
+      return $http.post('/resources/create', file);
     },
 
     downloadFile:  function(filename) {
