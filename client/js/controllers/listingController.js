@@ -23,11 +23,11 @@ function onSignIn(googleUser) {
 angular.module('listings').controller('ListingsController', ['$scope', 'Listings',
   function($scope, Listings) {
     /* Get all the listings, then bind it to the scope */
-    Listings.getAll().then(function(response) {
-      $scope.accountList = response.data;
-    }, function(error) {
-      console.log('Unable to retrieve listings:', error);
-    });
+    // Listings.getAll().then(function(response) {
+    //   $scope.accountList = response.data;
+    // }, function(error) {
+    //   console.log('Unable to retrieve listings:', error);
+    // });
 
     $scope.detailedInfo = undefined;
 

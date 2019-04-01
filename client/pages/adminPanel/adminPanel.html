@@ -11,87 +11,86 @@
     <link rel="stylesheet" href="adminPanel.css">
   </head>
   <body ng-app="EntrepreneurApp">
-    <div ng-controller="ListingsController">
       <!-- Nav bar -->
       <header>
-          <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="navigation">
-              <div class="container">
-                <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </button>
-                  <div class="navbar-brand">
-                    <a href="/" class="web-header"><h1><span>Entrepreneurship</span> Empowerment</h1></a>
-                    <a href="/" class="mobile-header"><h1><span>E</span>E</h1></a>
-                  </div>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+          <div class="navigation">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse.collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <div class="navbar-brand">
+                  <a href="/" class="web-header"><h1><span>E</span>E</h1></a>
+                  <a href="/" class="mobile-header"><h1><span>E</span>E</h1></a>
                 </div>
-
-                <div class="navbar-collapse collapse">
-                  <div class="menu">
-                    <ul class="nav nav-tabs" role="tablist">
-                      <li role="presentation"><a href="/"  class="active">Home</a></li>
-                      <li role="presentation"><a href="/blog">Blog</a></li>
-                      <li role="presentation"><a href="/calendar">Calendar</a></li>
-                      <li role="presentation"><a href="/login">Login</a></li>
-                      <li role="presentation"><a href="/register">Register</a></li>
-                    </ul>
-                  </div>
+              </div>
+  
+              <div class="navbar-collapse collapse">
+                <div class="menu">
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation"><a href="/">Home</a></li>
+                    <li role="presentation"><a href="/blog">Blog</a></li>
+                    <li role="presentation"><a href="/calendar">Calendar</a></li>
+                    <li role="presentation"><a href="/login">Login</a></li>
+                    <li role="presentation"><a href="/register">Register</a></li>
+                    <li role="presentation"><a href="/admin" class="active">Admin</a></li>
+                  </ul>
                 </div>
               </div>
             </div>
-          </nav>
-        </header>
+          </div>
+        </nav>
+      </header>
 
-        <section>
-          <div class="row">
-            <!-- sub nav -->
-            <div class="col-md-3 side-nav">
-                <h2>Topics</h2>
-                <ul>
-                  <li class="side-nav-active">
-                    <button class="side-nav-btn">Resources</button>
-                  </li>
-                  <li>
-                    <button class="side-nav-btn">Blog</button>
-                  </li>
-                  <li>
-                    <button class="side-nav-btn">Calendar Events</button>
-                  </li>
-                </ul>
-            </div>
-            <div class="col-md-9 content">
-              <div class="row docContent">
-                <div class="contentType">
-                  <div class="contentHeader">
-                    <form id="uploadFileForm">
-                        <div class="form-group">
-                            <label for="myFileField">Select a file: </label>
-                            <input type="file" demo-file-model="myFile" name="myFile"/>
-                        </div>
-                        <input type="submit" value="Add Resource"/>
-                    </form>
-                  </div>
+      <section>
+        <div class="row">
+          <!-- sub nav -->
+          <div class="col-md-3 side-nav">
+              <h2>Topics</h2>
+              <ul>
+                <li class="side-nav-active">
+                  <button class="side-nav-btn">Resources</button>
+                </li>
+                <li>
+                  <button class="side-nav-btn">Blog</button>
+                </li>
+                <li>
+                  <button class="side-nav-btn">Calendar Events</button>
+                </li>
+              </ul>
+          </div>
+          <div class="col-md-9 content">
+            <div class="row docContent">
+              <div class="contentType">
+                <div class="contentHeader">
+                  <form id="uploadFileForm">
+                      <div class="form-group">
+                          <label for="myFileField">Select a file: </label>
+                          <input type="file" demo-file-model="myFile" name="myFile"/>
+                      </div>
+                      <input type="submit" value="Add Resource"/>
+                  </form>
                 </div>
               </div>
-              <div class="row blogContent">
-                <div class="row">
-                  <div class="col-md-12">
-                    <h2>Post to blog</h2>
-                    <!-- input for blog -->
-                    <input type="text" placeholder="Post title" ng-model="blogpost.title"/>
-                    <textarea type="text" placeholder="Enter post" ng-model="blogpost.body"></textarea>
-                    <div class="btnContainer">
-                      <!-- add post -->
-                      <button class="btn-secondary" ng-click="addPost()">Add Post</button>
-                      <!-- edit post -->
-                      <button class="btn-secondary">Edit Post</button>
-                      <!-- delete post -->
-                      <button class="btn-secondary">Delete Post</button>
-                    </div>
+            </div>
+            <div class="row blogContent">
+              <div class="row">
+                <div class="col-md-12">
+                  <h2>Post to blog</h2>
+                  <!-- input for blog -->
+                  <input type="text" placeholder="Post title" ng-model="blogpost.title"/>
+                  <textarea type="text" placeholder="Enter post" ng-model="blogpost.body"></textarea>
+                  <div class="btnContainer">
+                    <!-- add post -->
+                    <button class="btn-secondary" ng-click="addPost()">Add Post</button>
+                    <!-- edit post -->
+                    <button class="btn-secondary">Edit Post</button>
+                    <!-- delete post -->
+                    <button class="btn-secondary">Delete Post</button>
                   </div>
                 </div>
               </div>
@@ -119,30 +118,31 @@
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <footer>
-          <div class="footer">
-            <div class="container">
-              <div class="col-md-4">
-                <ul class="social-network">
-                  <li><a href="#" class="fb tool-tip"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#" class="twitter tool-tip"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#" class="gplus tool-tip"><i class="fa fa-google-plus"></i></a></li>
-                  <li><a href="#" class="linkedin tool-tip"><i class="fa fa-linkedin"></i></a></li>
-                  <li><a href="#" class="ytube tool-tip"><i class="fa fa-youtube-play"></i></a></li>
-                </ul>
-              </div>
+      <footer>
+        <div class="footer">
+          <div class="container">
+            <div class="col-md-4">
+              <ul class="social-network">
+                <li><a href="#" class="fb tool-tip"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#" class="twitter tool-tip"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#" class="gplus tool-tip"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#" class="linkedin tool-tip"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#" class="ytube tool-tip"><i class="fa fa-youtube-play"></i></a></li>
+              </ul>
+            </div>
 
-              <div class="col-md-4 col-md-offset-4">
-                <div class="copyright">
-                  Address and Contact info <br>
-                  &copy; Entrepreneur Empowerment. All Rights Reserved.
-                </div>
+            <div class="col-md-4 col-md-offset-4">
+              <div class="copyright">
+                Address and Contact info <br>
+                &copy; Entrepreneur Empowerment. All Rights Reserved.
               </div>
             </div>
           </div>
-        </footer>
+        </div>
+      </footer>
 
     </div>
 

@@ -83,6 +83,33 @@ exports.create = function(req, res) {
   //res.send('Creation of a new blog post');
 };
 
+
+exports.addComment = function(req, res)	{
+	var post = req.body;			// idk???????
+	// need to find the id first
+	Blog.findById(req.body._id), exec(function(err, post)	{
+		if (post.results)	{
+			var now = new Date();
+			post.comments.push({
+				user_id: post.results.user_id, 
+				message: post.results.message, 
+				created_at: now, 
+				updated_at: now 
+			});
+		};
+	});	
+
+	listing.save(function(err) {
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      res.json(post);
+    }
+  });
+};
+
+
 //Handles the update of a blog post
 exports.update = function(req, res){
   res.send('Updating a blog post');
