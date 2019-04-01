@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../../styles/main.css">
     <link rel="stylesheet" href="blog.css">
   </head>
-  <body ng-app="EntrepreneurApp">
+  <body ng-app="EntrepreneurApp" ng-controller="ListingsController">
     <!-- Nav bar -->
     <header>
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -46,24 +46,8 @@
       </nav>
     </header>
 
-    <section ng-controller="ListingsController">
+    <section>
       <div class="blogSection">
-        <div class="row">
-          <div class="col-md-12">
-            <h2>Post to blog</h2>
-            <!-- input for blog -->
-            <input type="text" placeholder="Post title" ng-model="blogpost.title"/>
-            <textarea type="text" placeholder="Enter post" ng-model="blogpost.body"></textarea>
-            <div class="btnContainer">
-              <!-- add post -->
-              <button class="btn-secondary" ng-click="addPost()">Add Post</button>
-              <!-- edit post -->
-              <button class="btn-secondary">Edit Post</button>
-              <!-- delete post -->
-              <button class="btn-secondary">Delete Post</button>
-            </div>
-          </div>
-        </div>
         <div class="row">
           <div class="col-md-10 align-center">
             <h2>Latest Blog</h2>
@@ -79,22 +63,19 @@
                   {{ blog.body }}
                 </p>
 
-                <div class="commentSection">
-                  <h2>Comments</h2>
-                  <!-- input for comment -->
-                  <input type="text" placeholder="comment text" ng-model="blogpostdata.commentMsg"/>
-                  <div class="btnContainer">
-                    <!-- add comment -->
-                    <button class="btn-secondary" ng-click="addComment(blog)">Add Comment</button>
-                    <!-- edit comment -->
-                    <button class="btn-secondary">Edit Comment</button>
-                    <!-- delete comment -->
-                    <button class="btn-secondary">Delete Comment</button>
-                  </div>
-                </div>
-
-
-
+				 <div class="commentSection">
+					<h2>Comments</h2>
+					<!-- input for comment -->
+					<input type="text" placeholder="comment text" ng-model="blog.comment"/>
+					<div class="btnContainer">
+					  <!-- add comment -->
+					  <button class="btn-secondary" ng-click="addComment(blog)">Add Comment</button>
+					  <!-- edit comment -->
+					  <button class="btn-secondary">Edit Comment</button>
+					  <!-- delete comment -->
+					  <button class="btn-secondary">Delete Comment</button>
+					</div>
+				  </div>
               </div>
             </div>
           </div>
@@ -106,9 +87,7 @@
           </div>
         </div>
       </div>
-
     </section>
-
     <footer>
       <div class="footer">
         <div class="container">
