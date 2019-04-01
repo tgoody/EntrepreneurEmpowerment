@@ -53,19 +53,7 @@ exports.read = function(req, res) {
   //write content to file system
   // Todo: make sure correct extension is added
   var gfs = Grid(conn.db);
-  var fs_write_stream = fs.createWriteStream(filename);
-
-  // gfs.findOne({filename: filename}, function(err, file) {
-  //   if (err) {
-  //     return res.status(400).send(err);
-  //   }
-  //   else if (!file) {
-  //       return res.status(404).send('Error on the database looking for the file.');
-  //   }
-  //   // console.log(file);
-  //   // res.set('Content-Type', file.contentType);
-  //   // res.set('Content-Disposition', 'attachment; filename="' + file.filename + '"');
-  // });
+  // var fs_write_stream = fs.createWriteStream(filename);
 
   //read from mongodb
   var readstream = gfs.createReadStream({
@@ -75,14 +63,14 @@ exports.read = function(req, res) {
   readstream.on('error', function(err) {
     res.end();
   });
+
   readstream.pipe(res);
 
-  // TODO: handle case in which file doesn't exist
-  readstream.pipe(fs_write_stream);
-  // TODO: Download through browser instead
-  fs_write_stream.on('close', function () {
-
-  });
+  // // TODO: handle case in which file doesn't exist
+  // readstream.pipe(fs_write_stream);
+  // // TODO: Download through browser instead
+  // fs_write_stream.on('close', function () {
+  // });
 };
 
 exports.getDocs = function(req, res) {

@@ -36,7 +36,9 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
         $scope.downloadFile = function (filename) {
             Listings.downloadFile(filename).then(function(response){
                 console.log(response);
-                alert('File '+ filename + ' downloaded');
+                // var blob = new Blob([response.data], {type: "application/pdf"});
+                // saveAs(blob, filename);
+                // alert('File '+ filename + ' downloaded');
             });
         };
     }
