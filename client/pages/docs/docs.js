@@ -44,5 +44,13 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
                 // Handle any errors
             });
         };
+
+        $scope.addComment = function(doc)  {
+          Listings.addDocComment(doc).then(function(response)  {
+            console.log('Sucessfully added comment!', response);
+          }, function(error) {
+            console.log('Error in commenting!');
+          });
+        };
     }
 ]);

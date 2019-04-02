@@ -96,12 +96,13 @@
                       <h4>Comments</h4>
                       <ul>
                         <li ng-repeat="comment in doc.comments">
-                          {{ comment.message }}
+                          user: {{ comment.username }} <br>
+                          message: {{ comment.message }}
                         </li>
                       </ul>
                       <div class="commentInput">
-                        <input type="text"/>
-                        <button class="btn-primary">send</button>
+                        <input type="text" ng-model="doc.comment"/>
+                        <button class="btn-primary" ng-click="addComment(doc)">send</button>
                       </div>
                     </li>
                   </ul>

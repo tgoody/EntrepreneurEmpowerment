@@ -26,9 +26,9 @@ exports.recentBlog = function(req, res) {
 
 exports.addComment = function(req, res) {
 
-	console.log(req.body);
+	// console.log(req.body);
 	
-	var currentTime = new Date;
+	var currentTime = new Date();
 	var updated_at = currentTime;
 	var created_at = currentTime;
 
@@ -41,28 +41,20 @@ exports.addComment = function(req, res) {
 		created_at : created_at,
 		updated_at : updated_at
 	};
-	
 
 	Blog.findOneAndUpdate({_id: req.body._id},
 	
 		{$push: {comments: fullComment}},
 		{new: true},
 		(err, result) => {
-		
+		console.log(result);
 		if(err){
 			console.log(err);
 			res.status(400).send(err);
 		}
-		else{res.json(fullComment);}
+		else{res.json(result);}
 		
 		});
-	
-	
-	
-	
-
-//	Blog.findOne()
-
 
 };
 
@@ -82,33 +74,6 @@ exports.create = function(req, res) {
 	
   //res.send('Creation of a new blog post');
 };
-
-
-exports.addComment = function(req, res)	{
-	var post = req.body;			// idk???????
-	// need to find the id first
-	Blog.findById(req.body._id), exec(function(err, post)	{
-		if (post.results)	{
-			var now = new Date();
-			post.comments.push({
-				user_id: post.results.user_id, 
-				message: post.results.message, 
-				created_at: now, 
-				updated_at: now 
-			});
-		};
-	});	
-
-	listing.save(function(err) {
-    if(err) {
-      console.log(err);
-      res.status(400).send(err);
-    } else {
-      res.json(post);
-    }
-  });
-};
-
 
 //Handles the update of a blog post
 exports.update = function(req, res){
