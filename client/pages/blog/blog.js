@@ -24,28 +24,6 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
         $scope.blogPosts = response.data;
       }
     });
-    
-    
-	$scope.addComment = function(blog){
-		
-		console.log(blog);
-		Listings.addComment(blog).then(
-		function(response){
-		
-				//console.log('Successfully tried to log in!');
-				console.log(response);
-				
-			},
-
-			function(error){console.log('Error trying to log in');
-		
-			
-		
-		
-		})
-	
-	 };
-    
 
     // $scope.addPost = function() {
 		//   Listings.addPost($scope.blogpost).then(function(response) {
@@ -54,6 +32,15 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 		// 	  console.log('Error in trying to add post!');
 		//   });
     // };
+    
+    $scope.addComment = function(blog)  {
+      
+      Listings.addComment(blog).then(function(response)  {
+        console.log('Sucessfully added comment!', response);
+		  }, function(error) {
+			  console.log('Error in commenting!');
+		  });
+    };
 
     // $scope.getRecentBlog = function() {
     //   Listings.getMostRecentBlog().then(function(response) {

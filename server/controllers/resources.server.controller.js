@@ -74,7 +74,7 @@ exports.read = function(req, res) {
 };
 
 exports.getDocs = function(req, res) {
-  Resource.find({category: req.body.category}, function(err, docs){
+  Resource.find({category: req.body.category}, {}, { sort: {'created_at': 1} }, function(err, docs){
     if(err) res.status(400).send("Error in retreiving resources: ", err);
 
     res.json(docs);
@@ -87,6 +87,40 @@ exports.getVideos = function(req, res) {
 
     res.json(videos);
   });
+};
+
+exports.addComment = function(req, res) {
+
+	// console.log(req.body);
+	
+	var currentTime = new Date();
+	var updated_at = currentTime;
+	var created_at = currentTime;
+
+	//TODO: TAKE IN USERNAME
+	
+	var fullComment = {
+		username: "thisisausername",
+		user_id : "thisisauserid",
+		message : req.body.comment,
+		created_at : created_at,
+		updated_at : updated_at
+	};
+
+	Resource.findOneAndUpdate({_id: req.body._id},
+	
+		{$push: {comments: fullComment}},
+		{new: true},
+		(err, result) => {
+		console.log(result);
+		if(err){
+			console.log(err);
+			res.status(400).send(err);
+		}
+		else{res.json(result);}
+		
+		});
+
 };
 
 //Handles deletion of resources (ADMIN FEATURE ONLY)

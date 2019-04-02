@@ -65,9 +65,15 @@
                 </p>
 
 				 <div class="commentSection">
-					<h2>Comments</h2>
+          <h2>Comments</h2>
+          <ul>
+            <li ng-repeat="comment in blog.comments">
+              name: {{ comment.username }} <br>
+              message: {{ comment.message }}
+            </li>
+          </ul>
 					<!-- input for comment -->
-					<input type="text" placeholder="comment text" ng-model="blog.comment"/>
+          <input type="text" placeholder="comment text" ng-model="blog.comment"/>
 					<div class="btnContainer">
 					  <!-- add comment -->
 					  <button class="btn-secondary" ng-click="addComment(blog)">Add Comment</button>

@@ -11,6 +11,8 @@ router.post('/docs', resourceController.getDocs);
 
 router.post('/videos', resourceController.getVideos);
 
+router.post('/add', resourceController.addComment);
+
 //Adds a new resource
 router.post('/create', resourceController.create);
 

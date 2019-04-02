@@ -72,6 +72,10 @@ angular.module('listings', []).factory('Listings', function($http) {
   	return $http.post('/blog/add', blog);
   },
 
+  addDocComment: function(doc){
+  	return $http.post('/resources/add', doc);
+  },
+
     GoToBlog: function() {
       return $http.get('/blog');
     },
