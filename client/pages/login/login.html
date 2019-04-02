@@ -15,7 +15,7 @@
       <script src="https://apis.google.com/js/platform.js" async defer></script>
 
   </head>
-  <body ng-app="EntrepreneurApp">
+  <body ng-app="EntrepreneurApp"  ng-controller="ListingsController">
     <!-- Nav bar -->
     <header>
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -39,9 +39,10 @@
                   <li role="presentation"><a href="/">Home</a></li>
                   <li role="presentation"><a href="/blog">Blog</a></li>
                   <li role="presentation"><a href="/calendar">Calendar</a></li>
-                  <li role="presentation"><a href="/login" class="active">Login</a></li>
-                  <li role="presentation"><a href="/register">Register</a></li>
-                  <li role="presentation"><a href="/admin">Admin</a></li>
+                  <li ng-if="userId === 'false'" role="presentation"><a href="/login">Login</a></li>
+                  <li ng-if="userId === 'false'" role="presentation"><a href="/register">Register</a></li>
+                  <li ng-if="isAdmin" role="presentation"><a href="/admin">Admin</a></li>
+                  <li ng-if="userId !== 'false'" role="presentation" ng-click="logout()"><a href="#">Logout</a></li>
                 </ul>
               </div>
             </div>
@@ -51,7 +52,7 @@
     </header>
 
 
-    <div class="content" ng-controller="ListingsController">
+    <div class="content">
       <form novalidate class="simple-form form-container">
         <h2 class="form-title">Log in</h2>
         <input class="form-input" type="text" placeholder="Email address" ng-model="account.email" /><br/>
@@ -60,32 +61,7 @@
         <button ng-click="checkLogin()">Log in</button>
 
 
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-
-        <!-- <script>
-            function onSignIn(googleUser) {
-              // Useful data for your client-side scripts:
-
-              // Do not use a user's email address or user ID to communicate the currently
-              // signed-in user to your app's backend server. Instead, send the user's ID token
-              // to your backend server and validate the token on the server, or use the server
-              // auth code flow.
-
-              var profile = googleUser.getBasicProfile();
-              console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-              console.log('Full Name: ' + profile.getName());
-              console.log('Given Name: ' + profile.getGivenName());
-              // console.log('Family Name: ' + profile.getFamilyName());
-              // console.log("Image URL: " + profile.getImageUrl());
-              console.log("Email: " + profile.getEmail());
-
-              // The ID token you need to pass to your backend:
-              var id_token = googleUser.getAuthResponse().id_token;
-              console.log("ID Token: " + id_token);
-            }
-          </script> -->
-      
-
+        <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
       <hr class="u-bw0 u-bbw1 u-bss u-bc--light-gray u-mt24 u-mb24">
 
       <h4><a href="/register">Create a new account</a></h4>

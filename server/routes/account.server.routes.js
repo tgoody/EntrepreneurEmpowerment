@@ -11,7 +11,6 @@ router.route('/')
   .post(accounts.create);
 
 router.post('/login/', accounts.checkLogin);
-
 /*
   The ':' specifies a URL parameter.
  */

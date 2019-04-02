@@ -18,24 +18,24 @@ exports.list = function(req, res) {
 //Handles adding new resources (ADMIN FEATURE ONLY)
 exports.create = function(req, res) {
   // Upload file
-  var gfs = Grid(conn.db);
-  var writestream = gfs.createWriteStream({
-    filename: req.file.originalname,
-    mode: 'w',
-    content_type: req.file.mimetype,
-    metadata: req.body
-  });
+  // var gfs = Grid(conn.db);
+  // var writestream = gfs.createWriteStream({
+  //   filename: req.file.originalname,
+  //   mode: 'w',
+  //   content_type: req.file.mimetype,
+  //   metadata: req.body
+  // });
 
-  fs.createReadStream(req.file.path).pipe(writestream);
-  writestream.on('close', function(file) {
-    // Delete file locally
-      fs.unlink(req.file.path, function(err) {
-        // handle error
-      });
-  });
+  // fs.createReadStream(req.file.path).pipe(writestream);
+  // writestream.on('close', function(file) {
+  //   // Delete file locally
+  //     fs.unlink(req.file.path, function(err) {
+  //       // handle error
+  //     });
+  // });
   // Add to doc list
   var newDoc = new Resource({
-    name: req.file.originalname,
+    name: req.body.filename,
     category: req.body.category
   });
 
@@ -52,41 +52,29 @@ exports.read = function(req, res) {
   var filename = req.body.name;
   //write content to file system
   // Todo: make sure correct extension is added
-  var gfs = Grid(conn.db);
-  var fs_write_stream = fs.createWriteStream(filename);
-
-  // gfs.findOne({filename: filename}, function(err, file) {
-  //   if (err) {
-  //     return res.status(400).send(err);
-  //   }
-  //   else if (!file) {
-  //       return res.status(404).send('Error on the database looking for the file.');
-  //   }
-  //   // console.log(file);
-  //   // res.set('Content-Type', file.contentType);
-  //   // res.set('Content-Disposition', 'attachment; filename="' + file.filename + '"');
-  // });
+  // var gfs = Grid(conn.db);
+  // var fs_write_stream = fs.createWriteStream(filename);
 
   //read from mongodb
-  var readstream = gfs.createReadStream({
-    filename: filename
-  });
+  // var readstream = gfs.createReadStream({
+  //   filename: filename
+  // });
 
-  readstream.on('error', function(err) {
-    res.end();
-  });
-  readstream.pipe(res);
+  // readstream.on('error', function(err) {
+  //   res.end();
+  // });
 
-  // TODO: handle case in which file doesn't exist
-  readstream.pipe(fs_write_stream);
-  // TODO: Download through browser instead
-  fs_write_stream.on('close', function () {
+  // readstream.pipe(res);
 
-  });
+  // // TODO: handle case in which file doesn't exist
+  // readstream.pipe(fs_write_stream);
+  // // TODO: Download through browser instead
+  // fs_write_stream.on('close', function () {
+  // });
 };
 
 exports.getDocs = function(req, res) {
-  Resource.find({category: req.body.category}, function(err, docs){
+  Resource.find({category: req.body.category}, {}, { sort: {'created_at': 1} }, function(err, docs){
     if(err) res.status(400).send("Error in retreiving resources: ", err);
 
     res.json(docs);
@@ -99,6 +87,40 @@ exports.getVideos = function(req, res) {
 
     res.json(videos);
   });
+};
+
+exports.addComment = function(req, res) {
+
+	// console.log(req.body);
+	
+	var currentTime = new Date();
+	var updated_at = currentTime;
+	var created_at = currentTime;
+
+	//TODO: TAKE IN USERNAME
+	
+	var fullComment = {
+		username: "thisisausername",
+		user_id : "thisisauserid",
+		message : req.body.comment,
+		created_at : created_at,
+		updated_at : updated_at
+	};
+
+	Resource.findOneAndUpdate({_id: req.body._id},
+	
+		{$push: {comments: fullComment}},
+		{new: true},
+		(err, result) => {
+		console.log(result);
+		if(err){
+			console.log(err);
+			res.status(400).send(err);
+		}
+		else{res.json(result);}
+		
+		});
+
 };
 
 //Handles deletion of resources (ADMIN FEATURE ONLY)
