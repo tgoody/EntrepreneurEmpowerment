@@ -14,12 +14,13 @@ angular.module('listings', []).factory('Listings', function($http) {
       return $http.delete('/api/accounts/' + id);
     },
 
+    getUser: function(id) {
+      return $http.get('/api/accounts/'+ id);
+    },
 //------------------------------------------------------------------------------//
 //TESTING FUNCTIONS
     uploadFile: function(file) {
-      var fileFormData = new FormData();
-      fileFormData.append('file', file);
-      return $http.post('/resources/create', fileFormData, {'contentType': 'multipart/form-data'});
+      return $http.post('/resources/create', file);
     },
 
     downloadFile:  function(filename) {

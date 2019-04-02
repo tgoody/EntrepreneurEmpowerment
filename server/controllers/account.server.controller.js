@@ -80,7 +80,6 @@ exports.delete = function(req, res) {
 //   });
 // };
 
-
 exports.checkLogin = function(req, res) {
 
 	//console.log(req.body);
@@ -105,7 +104,7 @@ exports.checkLogin = function(req, res) {
 		console.log("FOUND ACCT HERE: " + foundAcct);
 		//console.log("temp pass: " + tempPass);
 		
-		var foundAcctSchema = mongoose.model
+		var foundAcctSchema = mongoose.model;
 		
 		docs.comparePassword(tempPass, function(err, isMatch){
 		
@@ -113,10 +112,12 @@ exports.checkLogin = function(req, res) {
 				console.log("error when checking passwords");
 			}
 		
-			if(isMatch){console.log("MATCHED");}
-			if(!isMatch){console.log("NOT MATCHED");}
-			return res.json(isMatch);
-		
+			if(isMatch){
+        res.json(foundAcct);
+      }else {
+        res.status(400).send("incorrect password");
+      }
+
 		})
 		
 		
@@ -135,12 +136,16 @@ exports.checkLogin = function(req, res) {
         then finally call next
  */
 exports.accountByID = function(req, res, next, id) {
-  Account.findById(id).exec(function(err, account) {
-    if(err) {
-      res.status(400).send(err);
-    } else {
-      req.account = account;
-      next();
-    }
-  });
+  if (id) {
+    Account.findById(id).exec(function(err, account) {
+      if(err) {
+        res.status(400).send(err);
+      } else {
+        req.account = account;
+        next();
+      }
+    });
+  } else {
+    res.status(400).send("Invalid id");
+  }
 };

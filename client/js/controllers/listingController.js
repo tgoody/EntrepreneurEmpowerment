@@ -31,6 +31,15 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 
     $scope.detailedInfo = undefined;
 
+    $scope.userId = localStorage.getItem('userId');
+    $scope.isAdmin = false;
+
+    if ($scope.userId !== 'false') {
+      Listings.getUser($scope.userId).then(function(response) {
+        $scope.isAdmin = response.data.admin;
+      });
+    }
+
     $scope.addAccount = function() {
       if ($scope.account.password !== $scope.confirmPassword) {
         return;
@@ -43,11 +52,10 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
           // response was successful, refresh list
           var id = response.data._id;
           localStorage.setItem('userId', id);
-          Listings.getAll().then(function(response) {
-            $scope.accountList = response.data;
-          }, function(error) {
-            console.log('Unable to retrieve listings:', error);
-          });
+          $scope.userId = id;
+
+          // send to home page
+          window.location.href = "../../index.html";
           // Clear form inputs
           $scope.account.name = '';
           $scope.account.code = '';
@@ -104,22 +112,23 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 		//console.log($scope.account);
 		Listings.checkLogin($scope.account).then(
 			function(response){
-		
 				//console.log('Successfully tried to log in!');
-				console.log(response);
 				var id = response.data._id;
-				localStorage.setItem('userId', id);
-				
+        localStorage.setItem('userId', id);
+        $scope.userId = id;
+        // send to home page
+        window.location.href = "../../index.html";
 			},
-
 			function(error){console.log('Error trying to log in');
-		
-			
-		
-		
-		})
+		});
 	
-	};
+  };
+  
+  $scope.logout = function() {
+    localStorage.setItem('userId', 'false');
+    $scope.userId = 'false';
+    $scope.isAdmin = false;
+  }
 	
 
 
