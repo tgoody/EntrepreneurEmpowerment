@@ -107,8 +107,6 @@ exports.addComment = function(req, res) {
 		updated_at : updated_at
 	};
 
-	console.log(req.body);
-
 	Resource.findOneAndUpdate({_id: req.body._id},
 	
 		{$push: {comments: fullComment}},
