@@ -37,6 +37,7 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       
       Listings.addComment(blog).then(function(response)  {
         console.log('Sucessfully added comment!', response);
+        window.location.href = "./blog.html";
 		  }, function(error) {
 			  console.log('Error in commenting!');
 		  });
