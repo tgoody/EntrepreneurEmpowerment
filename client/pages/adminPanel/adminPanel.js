@@ -80,6 +80,9 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
         $scope.addPost = function() {
             Listings.addPost($scope.blogpost).then(function(response) {
                 console.log('Sucessfully tried to add post!');
+                $scope.blogpost.title='';
+				$scope.blogpost.body='';
+
             }, function(error) {
                 console.log('Error in trying to add post!');
             });

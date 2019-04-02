@@ -43,12 +43,12 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
     console.log('add event');
     Listings.addEvent($scope.event).then(function(response) {
       console.log('Sucessfully tried to add event!');
-      $scope.eventName = '';
-      $scope.eventDate = '';
-      $scope.address = '';
-      $scope.details = '';
-      $scope.host = '';
-      $scope.time = '';
+      $scope.event.eventName = '';
+      $scope.event.eventDate = '';
+      $scope.event.address = '';
+      $scope.event.details = '';
+      $scope.event.host = '';
+      $scope.event.time = '';
 
       }, function(error) {
       console.log('Error in trying to add event!');
