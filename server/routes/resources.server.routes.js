@@ -12,7 +12,7 @@ router.post('/docs', resourceController.getDocs);
 router.post('/videos', resourceController.getVideos);
 
 //Adds a new resource
-router.post('/create', upload.single('file'), resourceController.create);
+router.post('/create', resourceController.create);
 
 // Download resource
 router.post('/read', resourceController.read);
