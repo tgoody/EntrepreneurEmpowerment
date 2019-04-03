@@ -1,11 +1,11 @@
-#content    {
+.researchContent    {
     margin: auto;
   
     padding: 100px;
     align-self: auto;
 }
 
-  li {    
+.researchContent li {    
     list-style: none;
     /* padding: 10px; */
 }
@@ -21,7 +21,7 @@
     max-height: 0;
 }
 
-.description    {
+.researchContent .description    {
     margin-top: 20px;
     height: 160px;
     text-align:justify;

@@ -2,9 +2,6 @@ var blogController = require('../controllers/blog.server.controller'),
     express = require('express'),
     router = express.Router();
 
-//Gets info for the homepage of the blog
-router.get('/', blogController.list);
-
 router.get('/all', blogController.getBlogs);
 
 router.get('/recent', blogController.recentBlog);

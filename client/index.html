@@ -6,10 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/about.css">
+    <link rel="stylesheet" href="styles/adminPanel.css">
+    <link rel="stylesheet" href="styles/blog.css">
+    <link rel="stylesheet" href="styles/calendar.css">
+    <link rel="stylesheet" href="styles/docs.css">
+    <link rel="stylesheet" href="styles/calendar.css">
+    <link rel="stylesheet" href="styles/docs.css">
+    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/partners.css">
+    <link rel="stylesheet" href="styles/register.css">
+    <link rel="stylesheet" href="styles/research.css">
+    <link rel="stylesheet" href="styles/spoder.css">
     <link rel="stylesheet" href="styles/animate.css">
     <link rel="stylesheet" href="styles/font-awesome.min.css">
   </head>
-  <body ng-app="EntrepreneurApp" ng-controller="ListingsController">
+  <body ng-app="EntrepreneurApp">
     <!-- Nav bar -->
     <header>
       <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -23,20 +35,20 @@
                 <span class="icon-bar"></span>
               </button>
               <div class="navbar-brand">
-                <a href="/" class="web-header"><h1><span>E</span>E</h1></a>
-                <a href="/" class="mobile-header"><h1><span>E</span>E</h1></a>
+                <a href="#/" class="web-header"><h1><span>E</span>E</h1></a>
+                <a href="#/" class="mobile-header"><h1><span>E</span>E</h1></a>
               </div>
             </div>
 
             <div class="navbar-collapse collapse">
               <div class="menu">
                 <ul class="nav nav-tabs" role="tablist">
-                  <li role="presentation"><a href="/" class="active">Home</a></li>
-                  <li role="presentation"><a href="/blog">Blog</a></li>
-                  <li role="presentation"><a href="/calendar">Calendar</a></li>
-                  <li ng-if="userId === 'false'" role="presentation"><a href="/login">Login</a></li>
-                  <li ng-if="userId === 'false'" role="presentation"><a href="/register">Register</a></li>
-                  <li ng-if="isAdmin" role="presentation"><a href="/admin">Admin</a></li>
+                  <li role="presentation"><a href="#/" class="active">Home</a></li>
+                  <li role="presentation"><a href="#/blog">Blog</a></li>
+                  <li role="presentation"><a href="#/calendar">Calendar</a></li>
+                  <li ng-if="userId === 'false'" role="presentation"><a href="#/login">Login</a></li>
+                  <li ng-if="userId === 'false'" role="presentation"><a href="#/register">Register</a></li>
+                  <li ng-if="isAdmin" role="presentation"><a href="#/admin">Admin</a></li>
                   <li ng-if="userId !== 'false'" role="presentation" ng-click="logout()"><a href="#">Logout</a></li>
                 </ul>
               </div>
@@ -46,80 +58,7 @@
       </nav>
     </header>
 
-    <section id="main-slider" class="no-margin">
-      <div class="carousel slide">
-        <div class="carousel-inner">
-          <div class="item active">
-            <div class="container">
-              <div class="row slide-margin">
-                <div class="col-sm-8">
-                  <div class="carousel-content">
-                    <h2 class="animation animated-item-1">Entrepreneurship Empowerment</h2>
-                    <p class="animation animated-item-2">We aim to end poverty through entrepreneurial opportunity</p>
-                    <a class="btn-slide animation animated-item-3" href="/about">Read More</a>
-                  </div>
-                </div>
-
-                <!-- <div class="col-sm-6 hidden-xs animation animated-item-4">
-                  <div class="slider-img">
-                    <img src="images/slider/img3.png" class="img-responsive">
-                  </div>
-                </div> -->
-
-              </div>
-            </div>
-          </div>
-          <!--/.item-->
-        </div>
-        <!--/.carousel-inner-->
-      </div>
-      <!--/.carousel-->
-    </section>
-
-    <div class="feature">
-      <div class="container">
-        <div class="text-center">
-          <div class="col-md-4">
-            <div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-              <a href="/spoder">
-                <i class="fa fa-book"></i>
-                <h2>SPODER</h2>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-              <a href="/research">
-                <i class="fa fa-laptop"></i>
-                <h2>Research</h2>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms">
-              <a href="/resources">
-                <i class="fa fa-book"></i>
-                <h2>Resources</h2>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="feature">
-      <div class="container">
-        <div class="text-center">
-          <p>"Date of Post"</p>
-          <h2>"Most Recent Blog Post Title Goes here"</h2>
-          <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum erat libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque libero,
-              pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque
-          </p>
-          <a class="btn-slide animation animated-item-3" href="/blog">Read More</a>
-        </div>
-      </div>
-    </div>
+    <div ng-view></div>
 
     <footer>
       <div class="footer">
@@ -151,13 +90,29 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="https://code.angularjs.org/1.5.0/angular-route.js"></script>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+    <script>
+      // Set up Firebase configurations
+      var config = {
+          apiKey: "AIzaSyBXnHZlfDp1gZZTelro4wmI_9k7AFfrGQI",
+          authDomain: "entrepreneurship-9edce.firebaseapp.com",
+          databaseURL: "https://entrepreneurship-9edce.firebaseio.com",
+          projectId: "entrepreneurship-9edce",
+          storageBucket: "gs://entrepreneurship-9edce.appspot.com/",
+          messagingSenderId: "1058715944518"
+        };
+        firebase.initializeApp(config);
+    </script>
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.2.0/angularfire.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/factories/listingFactory.js"></script>
     <script src="js/controllers/listingController.js"></script>
+    <script src="js/factories/authService.js"></script>
+    <script src="js/controllers/listingController.js"></script>
+    <script src="js/config.routes.js"></script>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- <script src="js/frontend/jquery-2.1.1.min.js"></script> -->

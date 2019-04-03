@@ -1,22 +1,12 @@
 (function(){
     'use strict';
-// Set up Firebase configurations
-var config = {
-    apiKey: "AIzaSyBXnHZlfDp1gZZTelro4wmI_9k7AFfrGQI",
-    authDomain: "entrepreneurship-9edce.firebaseapp.com",
-    databaseURL: "https://entrepreneurship-9edce.firebaseio.com",
-    projectId: "entrepreneurship-9edce",
-    storageBucket: "gs://entrepreneurship-9edce.appspot.com/",
-    messagingSenderId: "1058715944518"
-  };
-  firebase.initializeApp(config);
-  
+
   /* register the modules the application depends upon here*/
   angular.module('listings', []);
   angular.module('app.auth', []);
   
   /* register the application and inject all the necessary dependencies */
-  var app = angular.module('EntrepreneurApp', ['firebase', 'listings', 'app.auth']);
+  var app = angular.module('EntrepreneurApp', ['ngRoute', 'firebase', 'listings', 'app.auth']);
   
   /*
       A directive to enable two way binding of file field
