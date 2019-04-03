@@ -6,7 +6,7 @@
     configFunction.$inject = ['$routeProvider'];
 
     function configFunction($routeProvider) {
-        $routeProvider.when('/', {
+        $routeProvider.when('/home', {
             templateUrl: '../pages/home.html'
             // resolve: { user: resolveUser }
         })
@@ -16,22 +16,22 @@
         })
         .when('/admin', {
             templateUrl: '../pages/adminPanel.html',
-            controller: 'ListingsController'
+            controller: 'adminController'
             // resolve: { user: resolveUser }
         })
         .when('/blog', {
             templateUrl: '../pages/blog.html',
-            controller: 'ListingsController'
+            controller: 'blogController'
             // resolve: { user: resolveUser }
         })
         .when('/calendar', {
             templateUrl: '../pages/calendar.html',
-            controller: 'ListingsController'
+            controller: 'calendarController'
             // resolve: { user: resolveUser }
         })
         .when('/resources', {
             templateUrl: '../pages/docs.html',
-            controller: 'ListingsController'
+            controller: 'docsController'
             // resolve: { user: resolveUser }
         })
         .when('/login', {

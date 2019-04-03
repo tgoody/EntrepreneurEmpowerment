@@ -35,21 +35,26 @@
                 <span class="icon-bar"></span>
               </button>
               <div class="navbar-brand">
-                <a href="#/" class="web-header"><h1><span>E</span>E</h1></a>
-                <a href="#/" class="mobile-header"><h1><span>E</span>E</h1></a>
+                <a href="#/home" class="web-header"><h1><span>E</span>E</h1></a>
+                <a href="#/home" class="mobile-header"><h1><span>E</span>E</h1></a>
               </div>
             </div>
+            
+            <!-- <li id="nav-login" role="presentation"><a href="#/login">Login</a></li>
+            <li id="nav-register" role="presentation"><a href="#/register">Register</a></li>
+            <li id="nav-admin" role="presentation"><a href="#/admin">Admin</a></li>
+            <li id="nav-logout" role="presentation" ng-click="logout()"><a href="#">Logout</a></li> -->
 
             <div class="navbar-collapse collapse">
               <div class="menu">
-                <ul class="nav nav-tabs" role="tablist">
-                  <li role="presentation"><a href="#/" class="active">Home</a></li>
-                  <li role="presentation"><a href="#/blog">Blog</a></li>
-                  <li role="presentation"><a href="#/calendar">Calendar</a></li>
-                  <li ng-if="userId === 'false'" role="presentation"><a href="#/login">Login</a></li>
-                  <li ng-if="userId === 'false'" role="presentation"><a href="#/register">Register</a></li>
-                  <li ng-if="isAdmin" role="presentation"><a href="#/admin">Admin</a></li>
-                  <li ng-if="userId !== 'false'" role="presentation" ng-click="logout()"><a href="#">Logout</a></li>
+                <ul class="nav nav-tabs" role="tablist" ng-controller="navController">
+                  <li ng-click="setActiveBtn('home')" role="presentation"><a href="#/home" class="active nav-btn" id="nav-home">Home</a></li>
+                  <li ng-click="setActiveBtn('blog')" role="presentation"><a href="#/blog" class="nav-btn" id="nav-blog">Blog</a></li>
+                  <li ng-click="setActiveBtn('calendar')" role="presentation"><a href="#/calendar" class="nav-btn" id="nav-calendar">Calendar</a></li>
+                  <li ng-click="setActiveBtn('login')" ng-show="!loggedIn" role="presentation"><a href="#/login" class="nav-btn" id="nav-login">Login</a></li>
+                  <li ng-click="setActiveBtn('register')" ng-show="!loggedIn" role="presentation"><a href="#/register" class="nav-btn" id="nav-register">Register</a></li>
+                  <li ng-click="setActiveBtn('admin')" ng-show="loggedIn" role="presentation"><a href="#/admin" class="nav-btn" id="nav-admin">Admin</a></li>
+                  <li ng-show="loggedIn" role="presentation" ng-click="logout()"><a href="#">Logout</a></li>
                 </ul>
               </div>
             </div>
@@ -109,9 +114,16 @@
     <script src="https://cdn.firebase.com/libs/angularfire/2.2.0/angularfire.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/factories/listingFactory.js"></script>
-    <script src="js/controllers/listingController.js"></script>
     <script src="js/factories/authService.js"></script>
+    <!-- Controllers -->
     <script src="js/controllers/listingController.js"></script>
+    <script src="js/controllers/authController.js"></script>
+    <script src="js/controllers/navController.js"></script>
+    <script src="js/controllers/adminController.js"></script>
+    <script src="js/controllers/blogController.js"></script>
+    <script src="js/controllers/calendarController.js"></script>
+    <script src="js/controllers/docsController.js"></script>
+    <!-- Route config -->
     <script src="js/config.routes.js"></script>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -11,6 +11,11 @@ var accountSchema = new Schema({
 		required: true,
 		unique: true
 	},
+	uid: {
+		type: String,
+		required: true,
+		unique: true
+	},
 	// username: {
 	// 	type: String,
 	// 	required: true,

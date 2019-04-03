@@ -1,5 +1,5 @@
-angular.module('app.auth').controller('AuthController', ['$scope', 'authService',
-  function($scope, authService) {
+angular.module('app.auth').controller('AuthController', ['$scope', 'authService', '$location',
+  function($scope, authService, $location) {
     $scope.addAccount = function() {
         if ($scope.account.email !== '' 
             && $scope.account.password != '' && $scope.confirmPassword != '') {
@@ -8,18 +8,19 @@ angular.module('app.auth').controller('AuthController', ['$scope', 'authService'
                     authService.register($scope.account).then(function(response) {
                         console.log('registered user', response);
                         // Create user object in database
+                        $scope.account.uid = response.uid;
                         authService.addUser($scope.account).then(function(response) {
                             console.log('added user', response);
-                            var id = response.data._id;
-                            localStorage.setItem('userId', id);
-                            $scope.userId = id;
+                            localStorage.setItem('userId', $scope.account.uid);
+                            $scope.userId = $scope.account.uid;
                 
                             // send to home page
-                            window.location.href = "../../index.html";
+                            $location.path('home');
                             // Clear form inputs
                             $scope.account.name = '';
-                            $scope.account.code = '';
-                            $scope.account.address = '';
+                            $scope.account.password = '';
+                            $scope.confirmPassword = '';
+                            $scope.account.uid = '';
                         });
                     });
                 } else {
@@ -30,10 +31,15 @@ angular.module('app.auth').controller('AuthController', ['$scope', 'authService'
         }
     }
 
-    $scope.logout = function() {
-        authService.logout();
-        localStorage.setItem('userId', 'false');
-        $scope.userId = 'false';
-        $scope.isAdmin = false;
+    $scope.login = function() {
+        authService.login($scope.account).then(function(response) {
+            console.log('logged in', response);
+            var id = response.uid;
+            localStorage.setItem('userId', id);
+            $scope.userId = id;
+            
+            // send to home page
+            $location.path('home');
+        });
     };
   }]);
