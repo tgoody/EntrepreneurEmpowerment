@@ -50,6 +50,20 @@ exports.update = function(req, res) {
 
 };
 
+exports.exists = function(req, res) {
+  var uid = req.body;
+  Account.findOne({uid: uid}, function(err, account) {
+    if(err) {
+      console.log(err);
+      res.json({exists: false});
+    } else if(account) {
+      res.json({exists: true});
+    } else {
+      res.json({exists: false});
+    }
+  });
+};
+
 /* Delete a account */
 exports.delete = function(req, res) {
   var account = req.account;

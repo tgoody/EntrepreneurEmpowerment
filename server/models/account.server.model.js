@@ -21,11 +21,8 @@ var accountSchema = new Schema({
 	// 	required: true,
 	// 	unique: true
 	// },
-	password: {
-		type: String,
-		required: true
-	},
 		admin: false,
+		password: String,
 		created_at: Date,
 		updated_at: Date
 });

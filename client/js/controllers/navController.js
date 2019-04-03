@@ -2,7 +2,8 @@ angular.module('app.auth').controller('navController', ['$scope', 'authService',
   function($scope, authService, $location) {
     // console.log(authService.firebaseAuthObject);
     // highlight correct nav btn
-    activebtn($location.$$path.substring(1));
+    console.log($location);
+    activebtn($location.$$url.substring(1));
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           // User is signed in.
@@ -18,7 +19,7 @@ angular.module('app.auth').controller('navController', ['$scope', 'authService',
           $scope.userId = null;
           $scope.$apply(function(){
             $scope.loggedIn = false;
-        });
+          });
         }
     });
 

@@ -53,6 +53,9 @@
         .when('/spoder', {
             templateUrl: '../pages/spoder.html'
         })
+        .otherwise({
+            redirectTo: 'home'
+        })
     }
 
     // resolveUser.$inject = ['authService'];

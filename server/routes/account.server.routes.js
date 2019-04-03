@@ -11,6 +11,8 @@ router.route('/')
   .post(accounts.create);
 
 router.post('/login/', accounts.checkLogin);
+
+router.post('/exists', accounts.exists);
 /*
   The ':' specifies a URL parameter.
  */

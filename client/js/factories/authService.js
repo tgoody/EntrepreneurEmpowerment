@@ -14,7 +14,9 @@
             authObject: authObject,
             register: register,
             addUser: addUser,
+            userExists: userExists,
             login: login,
+            googleSignIn: googleSignIn,
             logout: logout,
             isLoggedIn: isLoggedIn
         };
@@ -31,8 +33,17 @@
             return $http.post('/api/accounts', user);
         }
 
+        function userExists(uid) {
+            return $http.post('/api/accounts/exists', uid);
+        }
+
         function login(user) {
             return firebaseAuthObject.$signInWithEmailAndPassword(user.email, user.password);
+        }
+
+        function googleSignIn() {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            return firebase.auth().signInWithPopup(provider);
         }
 
         function logout() {

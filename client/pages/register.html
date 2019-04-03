@@ -7,13 +7,9 @@
           <input class="form-input" type="text" placeholder="Email address" ng-model="account.email" /><br/>
           <input class="form-input" type="password" placeholder="Password" ng-model="account.password" /><br/>
           <input class="form-input" type="password" placeholder="Confirm password" ng-model="confirmPassword" /><br/>
-
-          <!-- <label class="form-label">Email: </label> <br>
-          <input class="form-input" type="text" ng-model="account.email" /><br/>
-          <label class="form-label">Confirm Password: </label> <br>
-          <input class="form-input" type="password" ng-model="confirmPassword" /><br/> -->
           <button ng-click="addAccount()">Create account</button>
-
+          
+          <button ng-click="googleLogin()" class="btn-primary">Google Sign In</button>
         </form>
       <!-- </div> -->
     </div>
