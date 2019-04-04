@@ -21,7 +21,7 @@ angular.module('app.auth').controller('navController', ['$scope', 'authService',
           });
         }
     });
-    // TODO: FIX bug where it goes to location /, instead of home after logout
+
     $scope.logout = function() {
         authService.logout();
         $scope.userId = null;

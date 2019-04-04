@@ -48,6 +48,7 @@ angular.module('app.auth').controller('AuthController', ['$scope', 'authService'
                     if (!exists) {
                         var account = {
                             email: email,
+                            password: '',
                             uid: uid
                         }
                         
