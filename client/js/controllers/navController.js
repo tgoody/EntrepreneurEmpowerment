@@ -2,7 +2,6 @@ angular.module('app.auth').controller('navController', ['$scope', 'authService',
   function($scope, authService, $location) {
     // console.log(authService.firebaseAuthObject);
     // highlight correct nav btn
-    console.log($location);
     activebtn($location.$$url.substring(1));
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -22,7 +21,7 @@ angular.module('app.auth').controller('navController', ['$scope', 'authService',
           });
         }
     });
-
+    // TODO: FIX bug where it goes to location /, instead of home after logout
     $scope.logout = function() {
         authService.logout();
         $location.path('home');
