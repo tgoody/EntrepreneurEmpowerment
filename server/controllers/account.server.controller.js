@@ -64,6 +64,17 @@ exports.exists = function(req, res) {
   });
 };
 
+exports.checkAdmin = function(req, res) {
+  var uid = req.body.uid;
+  Account.findOne({uid: uid}, function(err, account) {
+    if(account) {
+      res.json(account.admin);
+    } else {
+      res.json(false);
+    }
+  });
+};
+
 /* Delete a account */
 exports.delete = function(req, res) {
   var account = req.account;

@@ -13,6 +13,8 @@ router.route('/')
 router.post('/login/', accounts.checkLogin);
 
 router.post('/exists', accounts.exists);
+
+router.post('/checkAdmin', accounts.checkAdmin);
 /*
   The ':' specifies a URL parameter.
  */

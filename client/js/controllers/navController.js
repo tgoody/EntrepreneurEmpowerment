@@ -1,5 +1,6 @@
 angular.module('app.auth').controller('navController', ['$scope', 'authService', '$location',
   function($scope, authService, $location) {
+    $scope.isAdmin = false;
     // console.log(authService.firebaseAuthObject);
     // highlight correct nav btn
     activebtn($location.$$url.substring(1));
@@ -8,10 +9,13 @@ angular.module('app.auth').controller('navController', ['$scope', 'authService',
           // User is signed in.
           console.log('logged in');
           $scope.userId = user.uid;
-          // makes sure ng-show actually updates
+          authService.isAdmin({uid: $scope.userId}).then(function(response) {
+            // makes sure ng-show actually updates
+            $scope.isAdmin = response.data;
+          });
           $scope.$apply(function(){
             $scope.loggedIn = true;
-        });
+          });
         } else {
           // No user is signed in.
           console.log('signed out');
@@ -19,6 +23,7 @@ angular.module('app.auth').controller('navController', ['$scope', 'authService',
           $scope.$apply(function(){
             $scope.loggedIn = false;
           });
+          $scope.isAdmin = false;
         }
     });
 

@@ -15,6 +15,7 @@
             register: register,
             addUser: addUser,
             userExists: userExists,
+            isAdmin: isAdmin,
             login: login,
             googleSignIn: googleSignIn,
             logout: logout
@@ -34,6 +35,10 @@
 
         function userExists(uid) {
             return $http.post('/api/accounts/exists', uid);
+        }
+
+        function isAdmin(uid) {
+            return $http.post('/api/accounts/checkAdmin', uid);
         }
 
         function login(user) {

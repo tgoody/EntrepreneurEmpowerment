@@ -53,7 +53,7 @@
                   <li ng-click="setActiveBtn('calendar')" role="presentation"><a href="#/calendar" class="nav-btn" id="nav-calendar">Calendar</a></li>
                   <li ng-click="setActiveBtn('login')" ng-show="!loggedIn" role="presentation"><a href="#/login" class="nav-btn" id="nav-login">Login</a></li>
                   <li ng-click="setActiveBtn('register')" ng-show="!loggedIn" role="presentation"><a href="#/register" class="nav-btn" id="nav-register">Register</a></li>
-                  <li ng-click="setActiveBtn('admin')" ng-show="loggedIn" role="presentation"><a href="#/admin" class="nav-btn" id="nav-admin">Admin</a></li>
+                  <li ng-click="setActiveBtn('admin')" ng-show="loggedIn && isAdmin" role="presentation"><a href="#/admin" class="nav-btn" id="nav-admin">Admin</a></li>
                   <li ng-show="loggedIn" role="presentation" ng-click="logout()"><a href="#/home">Logout</a></li>
                 </ul>
               </div>
