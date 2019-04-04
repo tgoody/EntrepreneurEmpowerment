@@ -17,8 +17,7 @@
             userExists: userExists,
             login: login,
             googleSignIn: googleSignIn,
-            logout: logout,
-            isLoggedIn: isLoggedIn
+            logout: logout
         };
 
         return service;
@@ -48,10 +47,6 @@
 
         function logout() {
             firebaseAuthObject.$signOut();
-        }
-
-        function isLoggedIn() {
-            return firebaseAuthObject.$getAuth();
         }
 
     }

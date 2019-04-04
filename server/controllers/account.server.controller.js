@@ -51,15 +51,15 @@ exports.update = function(req, res) {
 };
 
 exports.exists = function(req, res) {
-  var uid = req.body;
+  var uid = req.body.uid;
   Account.findOne({uid: uid}, function(err, account) {
     if(err) {
       console.log(err);
-      res.json({exists: false});
+      res.json(false);
     } else if(account) {
-      res.json({exists: true});
+      res.json(true);
     } else {
-      res.json({exists: false});
+      res.json(false);
     }
   });
 };

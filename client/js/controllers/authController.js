@@ -43,8 +43,8 @@ angular.module('app.auth').controller('AuthController', ['$scope', 'authService'
                 var uid = user.uid;
                 $scope.userId = uid;
 
-                authService.userExists(uid).then(function(response) {
-                    var exists = response.data.exists;
+                authService.userExists({uid: uid}).then(function(response) {
+                    var exists = response.data;
                     if (!exists) {
                         var account = {
                             email: email,
