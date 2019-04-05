@@ -1,7 +1,8 @@
-angular.module('listings').controller('blogController', ['$scope', 'Listings',
-  function($scope, Listings) {
+angular.module('listings').controller('blogController', ['$rootScope', '$scope', 'Listings',
+  function($rootScope, $scope, Listings) {
     // initialize empty array for blog posts
     $scope.blogPosts = [];
+    $scope.latestPost = null;
 
     Listings.getBlogs().then(function(response) {
       console.log(response);
@@ -11,18 +12,21 @@ angular.module('listings').controller('blogController', ['$scope', 'Listings',
     });
     
     $scope.addComment = function(blog)  {
-      
-      Listings.addComment(blog).then(function(response)  {
-        console.log('Sucessfully added comment!', response);
-        window.location.href = "./blog.html";
-		  }, function(error) {
-			  console.log('Error in commenting!');
-		  });
+      if ($rootScope.loggedIn) {
+        blog.user_id = $rootScope.userId;
+        Listings.addComment(blog).then(function(response)  {
+          console.log('Sucessfully added comment!', response);
+          window.location.href = "./blog.html";
+        }, function(error) {
+          console.log('Error in commenting!');
+        });
+      } else {
+        alert('not logged in');
+      }
     };
 
-    // $scope.getRecentBlog = function() {
-    //   Listings.getMostRecentBlog().then(function(response) {
-    //     console.log(response);
-    //   });
-    // }
+    Listings.getMostRecentBlog().then(function(response) {
+      console.log(response);
+      $scope.latestPost = response.data;
+    });
   }]);

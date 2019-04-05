@@ -48,12 +48,12 @@
             <div class="navbar-collapse collapse">
               <div class="menu">
                 <ul class="nav nav-tabs" role="tablist" ng-controller="navController">
-                  <li ng-click="setActiveBtn('home')" role="presentation"><a href="#/home" class="active nav-btn" id="nav-home">Home</a></li>
-                  <li ng-click="setActiveBtn('blog')" role="presentation"><a href="#/blog" class="nav-btn" id="nav-blog">Blog</a></li>
-                  <li ng-click="setActiveBtn('calendar')" role="presentation"><a href="#/calendar" class="nav-btn" id="nav-calendar">Calendar</a></li>
-                  <li ng-click="setActiveBtn('login')" ng-show="!loggedIn" role="presentation"><a href="#/login" class="nav-btn" id="nav-login">Login</a></li>
-                  <li ng-click="setActiveBtn('register')" ng-show="!loggedIn" role="presentation"><a href="#/register" class="nav-btn" id="nav-register">Register</a></li>
-                  <li ng-click="setActiveBtn('admin')" ng-show="loggedIn && isAdmin" role="presentation"><a href="#/admin" class="nav-btn" id="nav-admin">Admin</a></li>
+                  <li role="presentation" class="active-{{currentPage}}"><a href="#/home" id="nav-home">Home</a></li>
+                  <li role="presentation" class="active-{{currentPage}}"><a href="#/blog" id="nav-blog">Blog</a></li>
+                  <li role="presentation" class="active-{{currentPage}}"><a href="#/calendar" id="nav-calendar">Calendar</a></li>
+                  <li ng-show="!loggedIn" role="presentation" class="active-{{currentPage}}"><a href="#/login" id="nav-login">Login</a></li>
+                  <li ng-show="!loggedIn" role="presentation" class="active-{{currentPage}}"><a href="#/register" id="nav-register">Register</a></li>
+                  <li ng-show="loggedIn && isAdmin" role="presentation" class="active-{{currentPage}}"><a href="#/admin" id="nav-admin">Admin</a></li>
                   <li ng-show="loggedIn" role="presentation" ng-click="logout()"><a href="#/home">Logout</a></li>
                 </ul>
               </div>

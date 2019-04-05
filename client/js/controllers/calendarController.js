@@ -1,20 +1,24 @@
-angular.module('listings').controller('calendarController', ['$scope', 'Listings',
- function($scope, Listings) {
+angular.module('listings').controller('calendarController', ['$rootScope', '$scope', 'Listings',
+ function($rootScope, $scope, Listings) {
 
-  $scope.addEvent = function() {
-    console.log('add event');
-    Listings.addEvent($scope.event).then(function(response) {
-      console.log('Sucessfully tried to add event!');
-      $scope.event.eventName = '';
-      $scope.event.eventDate = '';
-      $scope.event.address = '';
-      $scope.event.details = '';
-      $scope.event.host = '';
-      $scope.event.time = '';
-
-      }, function(error) {
-      console.log('Error in trying to add event!');
-      });
+    $scope.addEvent = function() {
+        console.log('add event');
+        if ($rootScope.loggedIn) {
+            Listings.addEvent($scope.event).then(function(response) {
+                console.log('Sucessfully tried to add event!');
+                $scope.event.eventName = '';
+                $scope.event.eventDate = '';
+                $scope.event.address = '';
+                $scope.event.details = '';
+                $scope.event.host = '';
+                $scope.event.time = '';
+        
+                }, function(error) {
+                console.log('Error in trying to add event!');
+                });   
+        } else {
+            alert('Not logged in');
+        }
     };
 
     // Modal setup

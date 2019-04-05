@@ -62,13 +62,10 @@
   <div class="feature">
     <div class="container">
       <div class="text-center">
-        <p>"Date of Post"</p>
-        <h2>"Most Recent Blog Post Title Goes here"</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus interdum erat libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque libero, pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque libero,
-            pulvinar tincidunt leo consectetur eget. Curabitur lacinia pellentesque
-        </p>
-        <a class="btn-slide animation animated-item-3" href="/blog">Read More</a>
+        <p> {{ latestPost.created_at }} </p>
+        <h2> {{ latestPost.title }} </h2>
+        <p> {{ latestPost.body }} </p>
+        <a class="btn-slide animation animated-item-3" href="#/blog">Read More</a>
       </div>
     </div>
   </div>
