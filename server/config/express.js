@@ -44,23 +44,6 @@ module.exports.init = function() {
   app.use('/resources', resourcesRouter);
 
   app.use('/admin', adminRouter);
-
-  //Redirects user to Register Page
-  app.use('/register', function(req, res) {
-    res.redirect("/pages/register/register.html");
-  });
-
-  app.use('/login', function(req, res) {
-    res.redirect("/pages/login/login.html");
-  });
-
-  app.use('/spoder', function(req, res) {
-    res.redirect("/pages/spoder/spoder.html");
-  });
-
-  app.use('/research', function(req, res) {
-    res.redirect("/pages/research/research.html");
-  });
   /** Go to homepage for all routes not specified */
   app.use(function(req, res) {
     res.redirect("/");

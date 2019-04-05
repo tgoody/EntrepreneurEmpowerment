@@ -10,7 +10,6 @@ var events = require('../controllers/event.server.controller.js'),
 
 //TODO: What to do with this?
 router.route('/')
-  .get(events.homepage)
   .post(events.create);
 
 router.route('/events').get(events.getEvents);

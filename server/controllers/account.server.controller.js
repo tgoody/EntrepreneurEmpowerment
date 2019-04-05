@@ -15,7 +15,6 @@ var mongoose = require('mongoose'),
 exports.create = function(req, res) {
   /* Instantiate a Account */
   var account = new Account(req.body);
-
   /* Then save the account */
   account.save(function(err) {
     if(err) {
@@ -49,6 +48,31 @@ exports.update = function(req, res) {
     }
   });
 
+};
+
+exports.exists = function(req, res) {
+  var uid = req.body.uid;
+  Account.findOne({uid: uid}, function(err, account) {
+    if(err) {
+      console.log(err);
+      res.json(false);
+    } else if(account) {
+      res.json(true);
+    } else {
+      res.json(false);
+    }
+  });
+};
+
+exports.checkAdmin = function(req, res) {
+  var uid = req.body.uid;
+  Account.findOne({uid: uid}, function(err, account) {
+    if(account) {
+      res.json(account.admin);
+    } else {
+      res.json(false);
+    }
+  });
 };
 
 /* Delete a account */

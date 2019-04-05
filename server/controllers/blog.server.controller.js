@@ -2,13 +2,6 @@
 var mongoose = require('mongoose');
 var Blog = require('../models/blogpost.server.model.js');
 
-//TODO: Define model for blog post
-
-//Homepage for blog page
-exports.list = function(req, res) {
-  res.redirect('/pages/blog/blog.html');
-};
-
 exports.getBlogs = function(req, res) {
 	Blog.find({}, {}, { sort: {'updated_at': -1} }, function(err, blogs){
 		if(err) res.status(400).send("Error in getting all blogs: ", err);

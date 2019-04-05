@@ -2,10 +2,6 @@ var resourceController = require('../controllers/resources.server.controller'),
     express = require('express'),
     router = express.Router(),
     multer  = require('multer')
-    upload = multer({ dest: 'uploads/' });
-
-//Gets info for the homepage of resources
-router.get('/', resourceController.list);
 
 router.post('/docs', resourceController.getDocs);
 

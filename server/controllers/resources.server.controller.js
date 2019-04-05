@@ -8,13 +8,6 @@ Grid.mongo = mongoose.mongo;
 var Resource = require('../models/resource.server.model.js');
 var Video = require('../models/video.server.model.js');
 
-//TODO: Define model for resources
-
-//Homepage for resources page
-exports.list = function(req, res) {
-  res.redirect("/pages/docs/docs.html");
-};
-
 //Handles adding new resources (ADMIN FEATURE ONLY)
 exports.create = function(req, res) {
   // Upload file

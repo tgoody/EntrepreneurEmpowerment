@@ -43,6 +43,12 @@ a {
 	color:#333;
 }
 
+section {
+  padding-top: 90px;
+  color: black;
+  padding-bottom: 50px;
+}
+
 a:hover {
 	text-decoration: none;
 	color:#eee;
