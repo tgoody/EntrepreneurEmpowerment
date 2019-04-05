@@ -1,7 +1,7 @@
 /* Dependencies */
 var mongoose = require('mongoose');
 var Blog = require('../models/blogpost.server.model.js');
-Account = require('../models/account.server.model.js');
+var Account = require('../models/account.server.model.js');
 
 exports.getBlogs = function(req, res) {
 	Blog.find({}, {}, { sort: {'updated_at': -1} }, function(err, blogs){

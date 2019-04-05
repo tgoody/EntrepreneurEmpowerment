@@ -7,6 +7,7 @@ var fs = require('fs');
 Grid.mongo = mongoose.mongo;
 var Resource = require('../models/resource.server.model.js');
 var Video = require('../models/video.server.model.js');
+var Account = require('../models/account.server.model.js');
 
 //Handles adding new resources (ADMIN FEATURE ONLY)
 exports.create = function(req, res) {
@@ -90,31 +91,36 @@ exports.addComment = function(req, res) {
 	var updated_at = currentTime;
 	var created_at = currentTime;
 
-	//TODO: TAKE IN USERNAME
+	// get email
+	Account.findOne({uid: req.body.user_id}, function(err, account) {
+		if (err) res.status(404).send(err);
+		// take off @domain from email
+		var atSymbol = account.email.indexOf('@'); 
+		var username = account.email.substring(0, atSymbol);
+		var fullComment = {
+			username: username,
+			user_id : req.body.user_id,
+			message : req.body.comment,
+			created_at : created_at,
+			updated_at : updated_at
+		};
 	
-	var fullComment = {
-		username: "thisisausername",
-		user_id : "thisisauserid",
-		message : req.body.comment,
-		created_at : created_at,
-		updated_at : updated_at
-	};
-
-	Resource.findOneAndUpdate({_id: req.body._id},
-	
-		{$push: {comments: fullComment}},
-		{new: true},
-		(err, result) => {
-		console.log(result);
-		if(err){
-			console.log(err);
-			res.status(400).send(err);
-		}
-		else{res.json(result);}
+		Resource.findOneAndUpdate({_id: req.body._id},
 		
-		});
-
+			{$push: {comments: fullComment}},
+			{new: true},
+			(err, result) => {
+			console.log(result);
+			if(err){
+				console.log(err);
+				res.status(400).send(err);
+			}
+			else{res.json(result);}
+			
+			});
+	  });
 };
+
 
 //Handles deletion of resources (ADMIN FEATURE ONLY)
 exports.delete = function(req, res) {

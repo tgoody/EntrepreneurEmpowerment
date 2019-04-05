@@ -16,7 +16,6 @@ angular.module('listings').controller('blogController', ['$rootScope', '$scope',
         blog.user_id = $rootScope.userId;
         Listings.addComment(blog).then(function(response)  {
           console.log('Sucessfully added comment!', response);
-          window.location.href = "./blog.html";
         }, function(error) {
           console.log('Error in commenting!');
         });
