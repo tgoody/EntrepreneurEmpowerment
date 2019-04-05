@@ -1,5 +1,8 @@
-angular.module('listings').controller('adminController', ['$scope', 'Listings',
-  function($scope, Listings) {
+angular.module('listings').controller('adminController', ['$rootScope', '$scope', 'Listings', '$location',
+  function($rootScope, $scope, Listings, $location) {
+    if(!$rootScope.loggedIn) {
+        $location.path('home');
+    }
     $("#uploadFileForm").submit(function(e){
         e.preventDefault();
         // Upload file to database
@@ -43,23 +46,6 @@ angular.module('listings').controller('adminController', ['$scope', 'Listings',
                     //   deferred.resolve(uploadTask.snapshot.downloadURL);
                 });
         });
-
-        // $.ajax({
-        //     type: "POST",
-        //     enctype: 'multipart/form-data',
-        //     url: "/resources/create",
-        //     data: fileFormData,
-        //     processData: false,
-        //     contentType: false,
-        //     cache: false,
-        //     timeout: 600000,
-        //     success: function (data) {
-        //         console.log("SUCCESS : ", data);
-        //     },
-        //     error: function (e) {
-        //         console.log("ERROR : ", e);
-        //     }
-        // });
     });
 
     $scope.addPost = function() {

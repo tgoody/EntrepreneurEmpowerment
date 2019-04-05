@@ -1,27 +1,29 @@
-angular.module('app.auth').controller('navController', ['$scope', 'authService', '$location',
-  function($scope, authService, $location) {
+angular.module('app.auth').controller('navController', ['$rootScope', '$scope', 'authService', '$location',
+  function($rootScope, $scope, authService, $location) {
     $scope.isAdmin = false;
-    // console.log(authService.firebaseAuthObject);
     // highlight correct nav btn
-    activebtn($location.$$url.substring(1));
+    $scope.$on('$routeChangeStart', function($event, next, current) { 
+      // update nav bar active
+      $scope.currentPage = $location.$$url.substring(1);
+    });
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
           // User is signed in.
           console.log('logged in');
-          $scope.userId = user.uid;
-          authService.isAdmin({uid: $scope.userId}).then(function(response) {
+          $rootScope.userId = user.uid;
+          authService.isAdmin({uid: $rootScope.userId}).then(function(response) {
             // makes sure ng-show actually updates
             $scope.isAdmin = response.data;
           });
           $scope.$apply(function(){
-            $scope.loggedIn = true;
+            $rootScope.loggedIn = true;
           });
         } else {
           // No user is signed in.
           console.log('signed out');
-          $scope.userId = null;
+          $rootScope.userId = null;
           $scope.$apply(function(){
-            $scope.loggedIn = false;
+            $rootScope.loggedIn = false;
           });
           $scope.isAdmin = false;
         }
@@ -29,16 +31,16 @@ angular.module('app.auth').controller('navController', ['$scope', 'authService',
 
     $scope.logout = function() {
         authService.logout();
-        $scope.userId = null;
-        $scope.loggedIn = false;
+        $rootScope.userId = null;
+        $rootScope.loggedIn = false;
     };
 
-    $scope.setActiveBtn = function(id) {
-      activebtn(id);
-    };
+    // $scope.setActiveBtn = function(id) {
+    //   activebtn(id);
+    // };
 
-    function activebtn(id) {
-      $('.nav-btn').removeClass('active');
-      $('#nav-'+id).addClass('active');
-    }
+    // function activebtn(id) {
+    //   $('.nav-btn').removeClass('active');
+    //   $('#nav-'+id).addClass('active');
+    // }
   }]);
