@@ -36,7 +36,6 @@
               </button>
               <div class="navbar-brand">
                 <a href="#/home" class="web-header"><h1><span>E</span>E</h1></a>
-                <a href="#/home" class="mobile-header"><h1><span>E</span>E</h1></a>
               </div>
             </div>
             
@@ -49,8 +48,23 @@
               <div class="menu">
                 <ul class="nav nav-tabs" role="tablist" ng-controller="navController">
                   <li role="presentation" class="active-{{currentPage}}"><a href="#/home" id="nav-home">Home</a></li>
+                  <li role="presentation">
+                      <div class="dropdown active-{{currentPage}}">
+                          <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Information
+                            <span class="caret"></span>
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation" class="active-{{currentPage}}"><a href="#/about" id="nav-about">About</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li role="presentation" class="active-{{currentPage}}"><a href="#/spoder" id="nav-spoder">SPODER</a></li>
+                            <li role="presentation" class="active-{{currentPage}}"><a href="#/research" id="nav-research">Research</a></li>
+                            <li role="presentation" class="active-{{currentPage}}"><a href="#/resources" id="nav-resources">Resources</a></li>
+                          </ul>
+                        </div>
+                  </li>
                   <li role="presentation" class="active-{{currentPage}}"><a href="#/blog" id="nav-blog">Blog</a></li>
-                  <li role="presentation" class="active-{{currentPage}}"><a href="#/calendar" id="nav-calendar">Calendar</a></li>
+                  <li role="presentation" class="active-{{currentPage}}"><a href="#/calendar" id="nav-calendar">Events</a></li>
                   <li ng-show="!loggedIn" role="presentation" class="active-{{currentPage}}"><a href="#/login" id="nav-login">Login</a></li>
                   <li ng-show="!loggedIn" role="presentation" class="active-{{currentPage}}"><a href="#/register" id="nav-register">Register</a></li>
                   <li ng-show="loggedIn && isAdmin" role="presentation" class="active-{{currentPage}}"><a href="#/admin" id="nav-admin">Admin</a></li>
@@ -71,10 +85,10 @@
           <div class="col-md-4">
             <ul class="social-network">
               <li><a href="#" class="fb tool-tip"><i class="fa fa-facebook"></i></a></li>
-              <li><a href="#" class="twitter tool-tip"><i class="fa fa-twitter"></i></a></li>
+              <!-- <li><a href="#" class="twitter tool-tip"><i class="fa fa-twitter"></i></a></li>
               <li><a href="#" class="gplus tool-tip"><i class="fa fa-google-plus"></i></a></li>
               <li><a href="#" class="linkedin tool-tip"><i class="fa fa-linkedin"></i></a></li>
-              <li><a href="#" class="ytube tool-tip"><i class="fa fa-youtube-play"></i></a></li>
+              <li><a href="#" class="ytube tool-tip"><i class="fa fa-youtube-play"></i></a></li> -->
             </ul>
           </div>
 
@@ -121,6 +135,7 @@
     <script src="js/controllers/navController.js"></script>
     <script src="js/controllers/adminController.js"></script>
     <script src="js/controllers/blogController.js"></script>
+    <script src="js/controllers/blogPostController.js"></script>
     <script src="js/controllers/calendarController.js"></script>
     <script src="js/controllers/docsController.js"></script>
     <!-- Route config -->

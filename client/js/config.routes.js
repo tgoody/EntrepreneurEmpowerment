@@ -21,6 +21,10 @@
             templateUrl: '../pages/blog.html',
             controller: 'blogController'
         })
+        .when('/blog/:blogId', {
+            templateUrl: '../pages/blogPost.html',
+            controller: 'blogPostController'
+        })
         .when('/calendar', {
             templateUrl: '../pages/calendar.html',
             controller: 'calendarController'

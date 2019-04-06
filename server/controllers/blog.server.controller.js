@@ -82,3 +82,32 @@ exports.update = function(req, res){
 exports.delete = function(req, res) {
   res.send('Deletes a blog post');
 };
+
+exports.readById = function(req, res) {
+	res.json(req.blog);
+};
+
+//Handles the update of a blog post
+exports.updateById = function(req, res){
+res.send('Updating a blog post');
+};
+  
+//Handles the deletion of a blog post
+exports.deleteById = function(req, res) {
+res.send('Deletes a blog post');
+};
+
+exports.blogByID = function(req, res, next, id) {
+	if (id) {
+	  Blog.findById(id).exec(function(err, blog) {
+		if(err) {
+		  res.status(400).send(err);
+		} else {
+		  req.blog = blog;
+		  next();
+		}
+	  });
+	} else {
+	  res.status(400).send("Invalid id");
+	}
+  };

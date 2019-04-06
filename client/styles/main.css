@@ -182,6 +182,45 @@ textarea {
 	-o-transition: all 0.3s ease-in-out;
 }
 
+.active-about #nav-about, .active-spoder #nav-spoder,
+.active-research #nav-research, .active-resources #nav-resources {
+  color:  #018662;
+	border-radius:0;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+
+.dropdown-menu > li > a {
+  color: #333;
+}
+
+#dropdownMenu1:hover {
+  cursor:pointer !important;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+  background-color: white;
+  color:  #018662;
+	border-radius:0;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+
+
+.active-about #dropdownMenu1, .active-spoder #dropdownMenu1,
+.active-research #dropdownMenu1, .active-resources #dropdownMenu1 {
+  color:  #018662;
+	border-radius:0;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+
 .active-calendar #nav-calendar {
   color:  #018662;
 	border-radius:0;
@@ -218,13 +257,6 @@ textarea {
 	-o-transition: all 0.3s ease-in-out;
 }
 
-.web-header {
-  display: block;
-}
-.mobile-header {
-  display: none;
-}
-
 .menu {
 	font-size:12px;
 	float:right;
@@ -243,13 +275,13 @@ textarea {
 	float: left;
 	margin-bottom: 0;
 }
-.nav-tabs > li > a {
+.nav-tabs > li > a, .dropdown {
 	border-radius:0;
 	color:#333;
 	padding:30px;
 }
 
-.nav-tabs > li > a:hover {
+.nav-tabs > li > a:hover, .dropdown > a:hover {
 	color:  #018662;
 	border-color: #fff #fff #fff;
 	border-radius:0;
@@ -259,7 +291,7 @@ textarea {
 	-webkit-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 }
-.nav-tabs > li > a.active {
+.nav-tabs > li > a.active, .dropdown > a:active {
 	color:  #018662;
 	border-radius:0;
 	transition: all 0.3s ease-in-out;
@@ -271,12 +303,6 @@ textarea {
 /* 550px */
 
 @media (max-width: 768px) {
-  .web-header {
-		display: none;
-  }
-  .mobile-header {
-    display: block;
-  }
 
 	.navbar-brand {
 		padding-top: 6px;
@@ -298,12 +324,12 @@ textarea {
 		height: auto;
 	}
 
-	.nav-tabs > li > a {
+	.nav-tabs > li > a, .dropdown > a {
 		padding:15px 15px;
 		border-bottom: 1px solid #f3f3f3;
 	}
 
-	.nav-tabs > li > a:hover {
+	.nav-tabs > li > a:hover, .dropdown > a:hover {
 		border-color: #f3f3f3;
 	}
 }
@@ -452,6 +478,26 @@ textarea {
 
 .feature {
 	padding:50px;
+}
+
+.latestBlog {
+  background: #018662;
+  background: linear-gradient(45deg, rgb(32, 148, 129) 15%, #018662 85%);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.latestBlog .container p{
+  color: white;
+}
+
+.latestBlog .text-center h2 {
+	margin-top:20px;
+	margin-bottom:20px;
+	text-transform:uppercase;
+	font-size:18px;
+	color:  white;
 }
 
 .text-center i {

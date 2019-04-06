@@ -60,6 +60,10 @@ angular.module('listings', []).factory('Listings', function($http) {
     return $http.get('/calendar/events');
   },
 
+  getBlog: function(id) {
+    return $http.get('/blog/'+id);
+  },
+
   getBlogs: function() {
     return $http.get('/blog/all');
   },

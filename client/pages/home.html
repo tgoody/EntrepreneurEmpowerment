@@ -31,41 +31,43 @@
   <div class="feature">
     <div class="container">
       <div class="text-center">
-        <div class="col-md-4">
-          <div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
-            <a href="#/spoder">
-              <i class="fa fa-book"></i>
-              <h2>SPODER</h2>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
-            <a href="#/research">
-              <i class="fa fa-laptop"></i>
-              <h2>Research</h2>
-            </a>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms">
-            <a href="#/resources">
-              <i class="fa fa-book"></i>
-              <h2>Resources</h2>
-            </a>
-          </div>
-        </div>
+        <h1>SPODER</h1>
+        <p>The model is presented as a circle. This shape reflects the fact that a cycle is involved, one that is ongoing as the venture interfaces with the infrastructure to gain new inputs, and the entrepreneur continually learns and improves, new market opportunities are discovered, enhanced sources of differentiation are identified, the economic model is refined, and resources are leveraged to enable venture growth.</p>
+        <p>Pellentesque vitae nisl quis ante accumsan cursus eleifend sit amet leo. Duis nisi nibh, porttitor eu felis auctor, sollicitudin viverra mi. Aliquam non nulla vitae nisl pretium auctor ac et urna. Proin quis neque libero. Nam vestibulum, lorem nec molestie ultricies, mauris sem luctus dolor, a facilisis lectus urna nec nisi. Nam malesuada, neque posuere maximus sollicitudin, felis eros vulputate dui, a efficitur lacus massa sed enim. Nullam arcu arcu, malesuada vitae lorem et, vestibulum faucibus dolor. Fusce quis arcu eget tellus vestibulum tristique. Fusce vel nisl tortor. Donec rhoncus mi orci, luctus fringilla urna mattis vitae.</p>
       </div>
     </div>
   </div>
 
-  <div class="feature">
+  <div class="feature latestBlog">
     <div class="container">
       <div class="text-center">
-        <p> {{ latestPost.created_at }} </p>
+        <p ng-bind="latestPost.created_at | date:'MM/dd/yyyy hh:mm:ss'"></p>
         <h2> {{ latestPost.title }} </h2>
         <p> {{ latestPost.body }} </p>
         <a class="btn-slide animation animated-item-3" href="#/blog">Read More</a>
       </div>
     </div>
   </div>
+
+  <div class="feature">
+      <div class="container">
+        <div class="text-center">
+          <div class="col-md-6">
+            <div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+              <a href="#/research">
+                <i class="fa fa-laptop"></i>
+                <h2>Research</h2>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="900ms">
+              <a href="#/resources">
+                <i class="fa fa-book"></i>
+                <h2>Resources</h2>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

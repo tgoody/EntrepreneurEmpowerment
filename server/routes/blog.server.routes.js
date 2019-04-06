@@ -18,4 +18,11 @@ router.post('/add', blogController.addComment);
 //Deletes a blog post that the user created
 router.delete('/delete', blogController.delete);
 
+router.route('/:blogId')
+  .get(blogController.readById)
+  .put(blogController.updateById)
+  .delete(blogController.deleteById);
+
+router.param('blogId', blogController.blogByID);
+
 module.exports = router;
