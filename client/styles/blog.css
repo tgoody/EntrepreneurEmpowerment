@@ -53,8 +53,13 @@
 }
 
 .tag-container {
-    width: 150px;
-    height: 200px;
-    border: 1px solid black;
-    margin-top: 20px;
+    position: -webkit-sticky;
+    position: sticky;
+    left: 5vw;
+    top: 170px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.tag-container > li {
+
 }

@@ -2,6 +2,13 @@ angular.module('listings').controller('blogController', ['$rootScope', '$scope',
   function($rootScope, $scope, Listings, $location) {
     // initialize empty array for blog posts
     $scope.blogPosts = [];
+    $scope.tags = [
+      {val: 'getting started', state: false},
+      {val: 'models', state: false},
+      {val: 'marketing', state: false},
+      {val: 'financing', state: false},
+      {val: 'government', state: false},
+    ];
     $scope.latestPost = null;
 
     Listings.getBlogs().then(function(response) {
@@ -13,6 +20,11 @@ angular.module('listings').controller('blogController', ['$rootScope', '$scope',
 
     $scope.viewPost = function(id) {
       $location.path('blog/'+id);
+    };
+
+    $scope.tagFilter = function(tagState, id) {
+      $scope.tags[id].state = tagState;
+      // TODO: Filter blogs
     };
 
     Listings.getMostRecentBlog().then(function(response) {
