@@ -23,15 +23,23 @@ angular.module('listings', []).factory('Listings', function($http) {
       return $http.post('/resources/create', file);
     },
 
+    uploadVideo: function(video) {
+      return $http.post('/resources/createVideo', video);
+    },
+
     downloadFile:  function(filename) {
       return $http.post('/resources/read', {name: filename});
+    },
+
+    updateDocUrl:  function(url, id) {
+      return $http.post('/resources/updateUrl', {url: url, id: id});
     },
 
     getDocs: function(category) {
       return $http.post('/resources/docs', {'category': category});
     },
 
-    getViedos: function(category) {
+    getVideos: function(category) {
       return $http.post('/resources/videos', {'category': category} );
     },
 

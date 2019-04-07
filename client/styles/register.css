@@ -92,7 +92,7 @@
   margin-right: auto;
 }
 
-button {
+.registerContent button {
   border: none;
   background-color: #00529b;
   color: white;
@@ -103,7 +103,7 @@ button {
   width: 100%;
 }
 
-button:hover, a:active {
+.registerContent button:hover, .registerContent a:active {
   background-color: #4C87B5;
   transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
@@ -111,6 +111,6 @@ button:hover, a:active {
 	-o-transition: all 0.3s ease-in-out;
 }
 
-h4 {
+.registerContent h4 {
   text-align: center;
 }

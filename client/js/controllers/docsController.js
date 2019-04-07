@@ -1,46 +1,50 @@
 angular.module('listings').controller('docsController', ['$rootScope', '$scope', 'Listings',
   function($rootScope, $scope, Listings) { 
-      $scope.currentCategory = '0';
+      $scope.currentCategory = 0;
       $scope.docs = [];
       $scope.videos = [];
+      $scope.resourceType = 'Videos';
 
       Listings.getDocs($scope.currentCategory).then(function(response) {
           $scope.docs = response.data;
       });
 
-      $scope.downloadFile = function (index, fileId) {
-          var storageRef = firebase.storage().ref();
-          storageRef.child('resources/'+fileId).getDownloadURL().then(function(url) {
-              // `url` is the download URL for 'images/stars.jpg'
-          
-              // This can be downloaded directly:
-              // var xhr = new XMLHttpRequest();
-              // xhr.responseType = 'blob';
-              // xhr.onload = function(event) {
-              // var blob = xhr.response;
-              // };
-              // xhr.open('GET', url);
-              // xhr.send();
-          
-              // Or inserted into an <img> element:
-              var img = document.getElementById('doc'+index);
-              img.href = url;
-          }).catch(function(error) {
-              // Handle any errors
-          });
+      Listings.getVideos($scope.currentCategory).then(function(response) {
+        $scope.videos = response.data;
+      });
+
+      $scope.navClicked = function(index) {
+        // Update resources
+        Listings.getDocs(index).then(function(response) {
+          $scope.docs = response.data;
+        });
+        Listings.getVideos(index).then(function(response) {
+          $scope.videos = response.data;
+        });
+        // update scope index
+        $scope.currentCategory = index;
+        // Highlight section on side nav
+        $('.side-nav-item').removeClass('side-nav-active');
+        $('#nav-item-'+index.toString()).addClass('side-nav-active');
       };
 
-      $scope.addComment = function(doc)  {
-        if ($rootScope.loggedIn) {
-          doc.user_id = $rootScope.userId;
-          Listings.addDocComment(doc).then(function(response)  {
-            console.log('Sucessfully added comment!', response);
-          }, function(error) {
-            console.log('Error in commenting!');
-          });
+      $scope.toggleView = function() {
+        if ($scope.resourceType === 'Videos') {
+          $scope.resourceType = 'Documents';
+          // hide document container and show videos
+          $('.docList').addClass('hide');
+          $('.vidList').removeClass('hide');
         } else {
-          alert('not logged in');
+          $scope.resourceType = 'Videos';
+          // hide video container and show documents
+          $('.vidList').addClass('hide');
+          $('.docList').removeClass('hide');
         }
       };
+      // TODO
+      $("#requestUploadFileForm").submit(function(e){
+        e.preventDefault();
+        // send request to upload doc
+      });
     }
 ]);

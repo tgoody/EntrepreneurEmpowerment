@@ -9,8 +9,11 @@ router.post('/videos', resourceController.getVideos);
 
 router.post('/add', resourceController.addComment);
 
+router.post('/updateUrl', resourceController.updateUrl);
+
 //Adds a new resource
 router.post('/create', resourceController.create);
+router.post('/createVideo', resourceController.createVideo);
 
 // Download resource
 router.post('/read', resourceController.read);

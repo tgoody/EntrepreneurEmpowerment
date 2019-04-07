@@ -11,26 +11,11 @@ var Account = require('../models/account.server.model.js');
 
 //Handles adding new resources (ADMIN FEATURE ONLY)
 exports.create = function(req, res) {
-  // Upload file
-  // var gfs = Grid(conn.db);
-  // var writestream = gfs.createWriteStream({
-  //   filename: req.file.originalname,
-  //   mode: 'w',
-  //   content_type: req.file.mimetype,
-  //   metadata: req.body
-  // });
-
-  // fs.createReadStream(req.file.path).pipe(writestream);
-  // writestream.on('close', function(file) {
-  //   // Delete file locally
-  //     fs.unlink(req.file.path, function(err) {
-  //       // handle error
-  //     });
-  // });
   // Add to doc list
   var newDoc = new Resource({
     name: req.body.filename,
-    category: req.body.category
+    category: req.body.category,
+    url: req.body.url
   });
 
   newDoc.save(function(err){
@@ -40,6 +25,28 @@ exports.create = function(req, res) {
 		}
 		else{res.json(newDoc);}
 	});
+};
+
+exports.createVideo = function(req, res) {
+  // Add to doc list
+  var newVid = new Video(req.body);
+
+  newVid.save(function(err){
+		if(err){
+			console.log(err);
+			res.status(400).send(err);
+		}
+		else{res.json(newVid);}
+	});
+};
+
+exports.updateUrl = function(req, res) {
+  Resource.findByIdAndUpdate({_id: req.body.id}, {url: req.body.url},
+    {new: true}, function(err, doc) {
+      if (err) res.status(400).send(err);
+
+      res.send(doc);
+    });
 };
 
 exports.read = function(req, res) {

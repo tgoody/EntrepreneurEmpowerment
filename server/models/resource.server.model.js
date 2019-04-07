@@ -8,8 +8,11 @@ var resourceSchema = new Schema({
     required: true
   },
   category: {
-    type: String,
+    type: Number,
     required: true 
+  },
+  url: {
+    type: String
   },
   comments: [{
     username: {type: String, required: true},
