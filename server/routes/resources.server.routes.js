@@ -18,7 +18,11 @@ router.post('/createVideo', resourceController.createVideo);
 // Request for new resource
 router
     .get('/request', resourceController.getRequest)
-    .post('/request', resourceController.request);
+    .post('/request', resourceController.request)
+    .delete('/request/:requestId', resourceController.deleteRequest);
+
+router.param('requestId', resourceController.requestById);
+
 
 // Download resource
 router.post('/read', resourceController.read);

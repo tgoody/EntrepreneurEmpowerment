@@ -86,7 +86,6 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
                                 break;
                         }
                     }, function() {
-                        // TODO: Alert user that it was successful and clear input field
                         // update resource on database to have download url
                         storageRef.child('resources/'+response.data._id)
                         .getDownloadURL().then(function(url) {
@@ -181,15 +180,57 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
             $('.side-nav-item').removeClass('side-nav-active');
             $('#nav-item-'+index.toString()).addClass('side-nav-active');
         };
-        // TODO
+
         $scope.acceptRequest = function(request) {
             // Add to resource list in database
+            if (request.type === 'file') {
+                // Get file's downloadable url
+                var storageRef = firebase.storage().ref();
+                storageRef.child('resources/'+request._id)
+                .getDownloadURL().then(function(url) {
+                    const requestData = {
+                        filename: request.name,
+                        category: request.category,
+                        url: url
+                    };
+                    Listings.uploadFile(requestData)
+                    .then(function(response) {
+                        console.log('Uploaded file: ', response.data);
+                    });
+                }).catch(function(error) {
+                    // Handle any errors
+                });
+            } else if(request.type === 'video') {
+                Listings.uploadVideo({
+                    name: request.name,
+                    category: request.category,
+                    link: request.link
+                }).then(function(response) {
+                    console.log('video uploaded', response.data);
+                });
+            } else {
+                console.log('type does not exist');
+            }
             // Remove from request list
+            Listings.deleteRequest(request._id);
         };
 
         $scope.denyRequest = function(request) {
-            // Delete from storage
+            if (request.type === 'file') {
+                // Delete from storage
+                var storageRef = firebase.storage().ref();
+                var fileRef = storageRef.child('resources').child(request._id);
+                // Delete the file
+                fileRef.delete().then(function() {
+                    // File deleted successfully
+                    console.log('file removed');
+                }).catch(function(error) {
+                    // Uh-oh, an error occurred!
+                    console.log('file not removed: ', error);
+                });
+            }
             // Remove from request list
+            Listings.deleteRequest(request._id);
         };
     }
 ]);

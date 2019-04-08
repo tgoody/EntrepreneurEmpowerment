@@ -35,6 +35,10 @@ angular.module('listings', []).factory('Listings', function($http) {
       return $http.get('/resources/request');
     },
 
+    deleteRequest: function(id) {
+      return $http.delete('/resources/request/'+ id);
+    },
+
     downloadFile:  function(filename) {
       return $http.post('/resources/read', {name: filename});
     },

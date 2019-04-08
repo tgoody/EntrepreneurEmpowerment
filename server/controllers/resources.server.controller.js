@@ -49,6 +49,20 @@ exports.getRequest = function(req, res) {
 	});
 };
 
+exports.deleteRequest = function(req, res) {
+  var request = req.request;
+  var id = request._id;
+    /* Remove the article */
+		Request.findByIdAndRemove(id, function(err, deletedEvent){
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      res.json(deletedEvent);
+    }
+  });
+};
+
 exports.request = function(req, res) {
   // Add to doc list
   var newReq = new Request(req.body);
@@ -154,4 +168,15 @@ exports.addComment = function(req, res) {
 //Handles deletion of resources (ADMIN FEATURE ONLY)
 exports.delete = function(req, res) {
   res.send('deleting new resource (ADMIN FEATURE ONLY)');
+};
+
+exports.requestById = function(req, res, next, id) {
+  Request.findById(id).exec(function(err, event) {
+    if(err) {
+      res.status(400).send(err);
+    } else {
+      req.request = event;
+      next();
+    }
+  });
 };
