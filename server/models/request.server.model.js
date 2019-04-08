@@ -2,8 +2,12 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var resourceSchema = new Schema({
+var requestSchema = new Schema({
   name: {
+    type: String,
+    required: true
+  },
+  type: {
     type: String,
     required: true
   },
@@ -11,7 +15,7 @@ var resourceSchema = new Schema({
     type: Number,
     required: true 
   },
-  url: {
+  link: {
     type: String
   },
   created_at: Date,
@@ -19,7 +23,7 @@ var resourceSchema = new Schema({
 });
 
 
-resourceSchema.pre('save', function(next) {
+requestSchema.pre('save', function(next) {
   var currentTime = new Date;
   this.updated_at = currentTime;
   if(!this.created_at)
@@ -31,6 +35,6 @@ resourceSchema.pre('save', function(next) {
 
 
 /* Use your schema to instantiate a Mongoose model */
-var resource = mongoose.model('resource', resourceSchema);
+var request = mongoose.model('Request', requestSchema);
 /* Export the model to make it avaiable to other parts of your Node application */
-module.exports = resource;
+module.exports = request;

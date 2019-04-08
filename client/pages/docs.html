@@ -42,9 +42,10 @@
             </div>
           </div>
           <ul class="docList">
+            <!-- TODO: Make function for making requests -->
             <form id="requestUploadFileForm">
               <div class="formContainer centerAlign">
-                  <input class="resourceInput" type="file" demo-file-model="myFile" name="myFile"/>
+                  <input class="resourceInput" type="file" demo-file-model="resource" name="resource" id="resource"/>
                   <input class="formBtn btn-primary" type="submit" value="Request to upload resource"/>
               </div>
             </form>
@@ -56,7 +57,8 @@
           </ul>
           <ul class="vidList hide">
             <div>
-              <input type="text" placeholder="Video link"/>
+              <input ng-model="videoData.name" type="text" placeholder="Video name"/>
+              <input ng-model="videoData.link" type="text" placeholder="Video link"/>
               <button class="btn-secondary" ng-click="requestVideoUpload()">
                   Request to upload video
               </button>

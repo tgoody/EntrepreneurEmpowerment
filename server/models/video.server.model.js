@@ -16,13 +16,6 @@ var videoSchema = new Schema({
     type: Number,
     required: true 
   },
-  comments: [{
-    username: {type: String, required: true},
-    user_id: {type: String, required: true},
-    message: {type: String, required: true},
-    created_at: Date,
-    updated_at: Date
-  }],
   created_at: Date,
   updated_at: Date
 });

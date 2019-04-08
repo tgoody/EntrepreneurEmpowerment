@@ -45,9 +45,26 @@
         </div>
         <br>
         <h2>Requested Resources</h2>
-        <ul>
-
-        </ul>
+        <div class="tableWrapper">
+          <table class="table table-striped table-hover">
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Link</th>
+              <th></th>
+              <th></th>
+            </tr>
+            <tr ng-repeat="request in requests">
+              <td>{{request.name}}</td>
+              <td>{{request.type}}</td>
+              <td>{{request.category}}</td>
+              <td>{{request.link}}</td>
+              <td ng-click="acceptRequest(request)"><button  class="btn-primary">Approve</button></td>
+              <td ng-click="denyRequest(request)"><button  class="btn-primary">Deny</button></td>
+            </tr>
+          </table>
+        </div>
       </div>
       <div class="row blogContent hide">
         <div class="row">

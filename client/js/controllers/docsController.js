@@ -41,10 +41,77 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
           $('.docList').removeClass('hide');
         }
       };
-      // TODO
+
       $("#requestUploadFileForm").submit(function(e){
         e.preventDefault();
         // send request to upload doc
+        var file = $scope.resource;
+        if (file) {
+          const request = {
+            name: file.name,
+            category: $scope.currentCategory,
+            type: 'file'
+          };
+          Listings.requestResource(request)
+          .then(function(response) {
+            console.log('resource request sent', response.data);
+            // Clear file input
+            $('#resource').val('');
+            // Save file in storage
+            if (!response.data) {
+              console.log('no data');
+              return;
+            }
+            var storageRef = firebase.storage().ref();
+            var fileRef = storageRef.child('resources').child(response.data._id);
+            var uploadTask = fileRef.put(file);
+
+            uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+              function(snapshot) {
+                  var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                  console.log('Upload is ' + progress + '% done');
+                  switch (snapshot.state) {
+                      case firebase.storage.TaskState.PAUSED:
+                      console.log('Upload is paused');
+                      break;
+                      case firebase.storage.TaskState.RUNNING:
+                      console.log('Upload is running');
+                      break;
+                  }
+              },
+              function(error) {
+                  switch (error.code) {
+                      case 'storage/unauthorized':
+                          console.log('User does not have permission to access the object.');
+                          break;
+                      case 'storage/canceled':
+                          console.log('User canceled the upload.');
+                          break;
+                      case 'storage/unknown':
+                          console.log(' Unknown error occurred, Please try later.');
+                          break;
+                  }
+              }, function() {
+                  // TODO: Alert user that it was successful and clear input field
+              });
+          });
+        }
       });
+
+      $scope.requestVideoUpload = function() {
+        console.log("video", $scope.videoData);
+        if ($scope.videoData 
+          && $scope.videoData.name !== '' && $scope.videoData.link !== '') {
+            $scope.videoData.category = $scope.currentCategory;
+            $scope.videoData.type = 'video';
+            Listings.requestResource($scope.videoData).then(function(response) {
+              console.log('video request sent', response.data);
+              $scope.videoData.name = '';
+              $scope.videoData.link = '';
+            });
+        } else {
+          console.log ('Please fill in all the fields');
+        }
+      };
     }
 ]);

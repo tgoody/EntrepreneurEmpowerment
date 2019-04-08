@@ -15,6 +15,11 @@ router.post('/updateUrl', resourceController.updateUrl);
 router.post('/create', resourceController.create);
 router.post('/createVideo', resourceController.createVideo);
 
+// Request for new resource
+router
+    .get('/request', resourceController.getRequest)
+    .post('/request', resourceController.request);
+
 // Download resource
 router.post('/read', resourceController.read);
 

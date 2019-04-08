@@ -8,6 +8,7 @@ Grid.mongo = mongoose.mongo;
 var Resource = require('../models/resource.server.model.js');
 var Video = require('../models/video.server.model.js');
 var Account = require('../models/account.server.model.js');
+var Request = require('../models/request.server.model.js');
 
 //Handles adding new resources (ADMIN FEATURE ONLY)
 exports.create = function(req, res) {
@@ -37,6 +38,27 @@ exports.createVideo = function(req, res) {
 			res.status(400).send(err);
 		}
 		else{res.json(newVid);}
+	});
+};
+
+exports.getRequest = function(req, res) {
+	Request.find({}, function(err, requests) {
+		if (err) res.status(400).send(err);
+
+		res.json(requests);
+	});
+};
+
+exports.request = function(req, res) {
+  // Add to doc list
+  var newReq = new Request(req.body);
+
+  newReq.save(function(err){
+		if(err){
+			console.log(err);
+			res.status(400).send(err);
+		}
+		else{res.json(newReq);}
 	});
 };
 

@@ -29,6 +29,7 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
             ],
             selectedOption: {id: 0, name: 'Business Plans and Business Models'} //This sets the default value of the select in the ui
         };
+        $scope.requests = [];
 
         // Small delay to make sure loggedIn value is updated
         setTimeout(function() {
@@ -38,6 +39,11 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
                 });
             }
         }, 500);
+
+        Listings.getRequests().then(function(response) {
+            console.log(response.data);
+            $scope.requests = response.data;
+        });
         
         $("#uploadFileForm").submit(function(e){
             e.preventDefault();
@@ -174,6 +180,16 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
             // Highlight section on side nav
             $('.side-nav-item').removeClass('side-nav-active');
             $('#nav-item-'+index.toString()).addClass('side-nav-active');
+        };
+        // TODO
+        $scope.acceptRequest = function(request) {
+            // Add to resource list in database
+            // Remove from request list
+        };
+
+        $scope.denyRequest = function(request) {
+            // Delete from storage
+            // Remove from request list
         };
     }
 ]);

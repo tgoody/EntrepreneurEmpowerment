@@ -27,6 +27,14 @@ angular.module('listings', []).factory('Listings', function($http) {
       return $http.post('/resources/createVideo', video);
     },
 
+    requestResource: function(request) {
+      return $http.post('/resources/request', request);
+    },
+
+    getRequests: function() {
+      return $http.get('/resources/request');
+    },
+
     downloadFile:  function(filename) {
       return $http.post('/resources/read', {name: filename});
     },
