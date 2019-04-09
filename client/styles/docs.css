@@ -1,0 +1,114 @@
+.resourcesSection {
+    padding: 0;
+}
+
+.side-nav {
+    padding-top: 80px;
+    border-right: 1px solid black;
+    background-color: #25436B;
+    color: white;
+    height: 100vh;
+    position: sticky;
+    top: 80px;
+}
+
+.side-nav h2 {
+    text-align: center;
+    color: white;
+}
+
+.side-nav ul {
+    padding-left: 0;
+}
+
+.side-nav-btn {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    color: inherit;
+}
+
+.side-nav-btn:hover {
+    background: none;
+}
+
+.side-nav-btn:focus {
+    outline: none;
+}
+
+.side-nav li {
+    list-style: none;
+    padding: 8px;
+    border-bottom: 1px solid white;
+}
+
+.side-nav li:hover {
+    color: rgb(255, 243, 74);
+    font-weight: 400;
+}
+
+.side-nav-active {
+    color: rgb(255, 243, 74);
+    font-weight: 400;
+}
+
+.bot-border-none {
+    border-bottom: none !important;
+}
+
+.docContent {
+    padding: 80px 10px;
+}
+
+.contentHeader {
+    display: flex;
+    flex-direction: row
+}
+
+.contentHeader h2 {
+    margin-left: 25px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #25436B;
+}
+
+.btn-wrapper {
+    width: 100%;
+}
+
+.btn-wrapper button {
+    height: fit-content;
+    width: auto;
+    float: right;
+}
+
+.contentType {
+
+}
+
+.contentType li {
+    list-style: none;
+}
+
+.docItem {
+    padding: 10px 5px;
+}
+
+.centerAlign {
+    justify-content: center;
+}
+
+.docItem a {
+    
+}
+
+.commentInput {
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.commentInput input {
+    margin-right: 5px;
+}

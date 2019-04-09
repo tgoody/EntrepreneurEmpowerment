@@ -23,15 +23,35 @@ angular.module('listings', []).factory('Listings', function($http) {
       return $http.post('/resources/create', file);
     },
 
+    uploadVideo: function(video) {
+      return $http.post('/resources/createVideo', video);
+    },
+
+    requestResource: function(request) {
+      return $http.post('/resources/request', request);
+    },
+
+    getRequests: function() {
+      return $http.get('/resources/request');
+    },
+
+    deleteRequest: function(id) {
+      return $http.delete('/resources/request/'+ id);
+    },
+
     downloadFile:  function(filename) {
       return $http.post('/resources/read', {name: filename});
+    },
+
+    updateDocUrl:  function(url, id) {
+      return $http.post('/resources/updateUrl', {url: url, id: id});
     },
 
     getDocs: function(category) {
       return $http.post('/resources/docs', {'category': category});
     },
 
-    getViedos: function(category) {
+    getVideos: function(category) {
       return $http.post('/resources/videos', {'category': category} );
     },
 
@@ -58,6 +78,10 @@ angular.module('listings', []).factory('Listings', function($http) {
 
   getEvents: function() {
     return $http.get('/calendar/events');
+  },
+
+  getBlog: function(id) {
+    return $http.get('/blog/'+id);
   },
 
   getBlogs: function() {

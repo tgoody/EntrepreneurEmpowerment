@@ -4,22 +4,18 @@ var mongoose = require('mongoose'),
 
 
 var videoSchema = new Schema({
+  name: {
+    type: String,
+    required: true
+  },
   link: {
     type: String,
     required: true
   },
   category: {
-    type: String,
+    type: Number,
     required: true 
   },
-  forUsers: Boolean,
-  comments: [{
-    username: {type: String, required: true},
-    user_id: {type: String, required: true},
-    message: {type: String, required: true},
-    created_at: Date,
-    updated_at: Date
-  }],
   created_at: Date,
   updated_at: Date
 });

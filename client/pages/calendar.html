@@ -1,0 +1,38 @@
+<section class="calendarContent">
+  <div class="container" >
+    <div class="googleCalendar">
+        <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=mq4sttje198ocf2o9cekh76m9s%40group.calendar.google.com&amp;color=%23711616&amp;ctz=America%2FNew_York" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>
+  </div>
+
+
+  <section id="submit">
+      <button id="myBtn" class="btn-primary">Submit new event</button>
+
+      <div id="myModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+
+          <form class="form-horizontal">
+              <input class="form-input" type="text" placeholder="Event name" ng-model="event.eventName"></input>
+
+              <input class="form-input" type="date" placeholder="Date" ng-model="event.eventDate"></input>
+
+              <input class="form-input" type="text" placeholder="Address" ng-model="event.address"></input>
+
+              <input class="form-input" type="text" placeholder="Details" ng-model="event.details"></input>
+
+              <input class="form-input" type="text" placeholder="Hosted by" ng-model="event.host"></input>
+
+              <input class="form-input" type="time" placeholder="Time" ng-model="event.time"></input>
+
+              <button class="btn-primary" type="submit" ng-click="addEvent()">Submit event</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  <!--the next 3 might actually be built into google calendar idk-->
+</section>

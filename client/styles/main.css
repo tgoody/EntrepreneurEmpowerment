@@ -43,6 +43,12 @@ a {
 	color:#333;
 }
 
+section {
+  padding-top: 90px;
+  color: black;
+  padding-bottom: 50px;
+}
+
 a:hover {
 	text-decoration: none;
 	color:#eee;
@@ -67,6 +73,10 @@ a:hover {
 	color: #018662;
 }
 
+.btn-primary:focus {
+  outline: none;
+}
+
 .btn-secondary {
   padding: 8px 20px;
   background:  #25436B;
@@ -80,6 +90,10 @@ a:hover {
   background-color: white;
   border: 0.5px solid #25436B;
 	color: #25436B;
+}
+
+.btn-secondary:focus {
+  outline: none;
 }
 
 .text-center h2 {
@@ -158,11 +172,97 @@ textarea {
 	color:  #018662;
 }
 
-.web-header {
-  display: block;
+.active-home #nav-home {
+  color:  #018662;
+	border-radius:0;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
 }
-.mobile-header {
-  display: none;
+
+.active-blog #nav-blog {
+  color:  #018662;
+	border-radius:0;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+
+.active-about #nav-about, .active-spoder #nav-spoder,
+.active-research #nav-research, .active-resources #nav-resources {
+  color:  #018662;
+	border-radius:0;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+
+.dropdown-menu > li > a {
+  color: #333;
+}
+
+#dropdownMenu1:hover {
+  cursor:pointer !important;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+  background-color: white;
+  color:  #018662;
+	border-radius:0;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+
+
+.active-about #dropdownMenu1, .active-spoder #dropdownMenu1,
+.active-research #dropdownMenu1, .active-resources #dropdownMenu1 {
+  color:  #018662;
+	border-radius:0;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+
+.active-calendar #nav-calendar {
+  color:  #018662;
+	border-radius:0;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+
+.active-login #nav-login {
+  color:  #018662;
+	border-radius:0;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+
+.active-register #nav-register {
+  color:  #018662;
+	border-radius:0;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+
+.active-admin #nav-admin {
+  color:  #018662;
+	border-radius:0;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
 }
 
 .menu {
@@ -183,13 +283,13 @@ textarea {
 	float: left;
 	margin-bottom: 0;
 }
-.nav-tabs > li > a {
+.nav-tabs > li > a, .dropdown {
 	border-radius:0;
 	color:#333;
 	padding:30px;
 }
 
-.nav-tabs > li > a:hover {
+.nav-tabs > li > a:hover, .dropdown > a:hover {
 	color:  #018662;
 	border-color: #fff #fff #fff;
 	border-radius:0;
@@ -199,7 +299,7 @@ textarea {
 	-webkit-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
 }
-.nav-tabs > li > a.active {
+.nav-tabs > li > a.active, .dropdown > a:active {
 	color:  #018662;
 	border-radius:0;
 	transition: all 0.3s ease-in-out;
@@ -211,12 +311,6 @@ textarea {
 /* 550px */
 
 @media (max-width: 768px) {
-  .web-header {
-		display: none;
-  }
-  .mobile-header {
-    display: block;
-  }
 
 	.navbar-brand {
 		padding-top: 6px;
@@ -238,12 +332,12 @@ textarea {
 		height: auto;
 	}
 
-	.nav-tabs > li > a {
+	.nav-tabs > li > a, .dropdown > a {
 		padding:15px 15px;
 		border-bottom: 1px solid #f3f3f3;
 	}
 
-	.nav-tabs > li > a:hover {
+	.nav-tabs > li > a:hover, .dropdown > a:hover {
 		border-color: #f3f3f3;
 	}
 }
@@ -392,6 +486,26 @@ textarea {
 
 .feature {
 	padding:50px;
+}
+
+.latestBlog {
+  background: #018662;
+  background: linear-gradient(45deg, rgb(32, 148, 129) 15%, #018662 85%);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.latestBlog .container p{
+  color: white;
+}
+
+.latestBlog .text-center h2 {
+	margin-top:20px;
+	margin-bottom:20px;
+	text-transform:uppercase;
+	font-size:18px;
+	color:  white;
 }
 
 .text-center i {
@@ -882,6 +996,47 @@ ul.social-network li a {
   transition: none;
 }
 
+/* --- Checkbox  --- */
+.checkbox label:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.checkbox .cr {
+  position: relative;
+  display: inline-block;
+  border: 1px solid #a9a9a9;
+  border-radius: .25em;
+  width: 1.3em;
+  height: 1.3em;
+  float: left;
+  margin-right: .5em;
+}
+
+.checkbox .cr .cr-icon {
+  position: absolute;
+  font-size: .8em;
+  line-height: 0;
+  top: 50%;
+  left: 15%;
+}
+
+.checkbox label input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox label input[type="checkbox"]+.cr>.cr-icon {
+  opacity: 0;
+}
+
+.checkbox label input[type="checkbox"]:checked+.cr>.cr-icon {
+  opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled+.cr {
+  opacity: .5;
+}
 
 /* --- Map --- */
 .map{

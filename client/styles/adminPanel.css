@@ -1,0 +1,33 @@
+.adminSection {
+    padding-top: 80px;
+    padding-bottom: 0;
+    color: black;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.formContainer input {
+    width: auto;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.formInput {
+    width: 350px !important;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.formBtn {
+    width: auto;
+    margin-top: 5px;
+    height: 40px;
+}
+
+.vidForm {
+    display: flex;
+    flex-direction: column;
+}

@@ -7,36 +7,16 @@ var fs = require('fs');
 Grid.mongo = mongoose.mongo;
 var Resource = require('../models/resource.server.model.js');
 var Video = require('../models/video.server.model.js');
-
-//TODO: Define model for resources
-
-//Homepage for resources page
-exports.list = function(req, res) {
-  res.redirect("/pages/docs/docs.html");
-};
+var Account = require('../models/account.server.model.js');
+var Request = require('../models/request.server.model.js');
 
 //Handles adding new resources (ADMIN FEATURE ONLY)
 exports.create = function(req, res) {
-  // Upload file
-  // var gfs = Grid(conn.db);
-  // var writestream = gfs.createWriteStream({
-  //   filename: req.file.originalname,
-  //   mode: 'w',
-  //   content_type: req.file.mimetype,
-  //   metadata: req.body
-  // });
-
-  // fs.createReadStream(req.file.path).pipe(writestream);
-  // writestream.on('close', function(file) {
-  //   // Delete file locally
-  //     fs.unlink(req.file.path, function(err) {
-  //       // handle error
-  //     });
-  // });
   // Add to doc list
   var newDoc = new Resource({
     name: req.body.filename,
-    category: req.body.category
+    category: req.body.category,
+    url: req.body.url
   });
 
   newDoc.save(function(err){
@@ -46,6 +26,63 @@ exports.create = function(req, res) {
 		}
 		else{res.json(newDoc);}
 	});
+};
+
+exports.createVideo = function(req, res) {
+  // Add to doc list
+  var newVid = new Video(req.body);
+
+  newVid.save(function(err){
+		if(err){
+			console.log(err);
+			res.status(400).send(err);
+		}
+		else{res.json(newVid);}
+	});
+};
+
+exports.getRequest = function(req, res) {
+	Request.find({}, function(err, requests) {
+		if (err) res.status(400).send(err);
+
+		res.json(requests);
+	});
+};
+
+exports.deleteRequest = function(req, res) {
+  var request = req.request;
+  var id = request._id;
+    /* Remove the article */
+		Request.findByIdAndRemove(id, function(err, deletedEvent){
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      res.json(deletedEvent);
+    }
+  });
+};
+
+exports.request = function(req, res) {
+  // Add to doc list
+  var newReq = new Request(req.body);
+
+  newReq.save(function(err){
+		if(err){
+			console.log(err);
+			res.status(400).send(err);
+		}
+		else{res.json(newReq);}
+	});
+};
+
+exports.updateUrl = function(req, res) {
+  Resource.findByIdAndUpdate({_id: req.body.id}, {url: req.body.url},
+    {new: true}, function(err, doc) {
+      if (err) res.status(400).send(err);
+
+      res.send(doc);
+    });
 };
 
 exports.read = function(req, res) {
@@ -97,33 +134,49 @@ exports.addComment = function(req, res) {
 	var updated_at = currentTime;
 	var created_at = currentTime;
 
-	//TODO: TAKE IN USERNAME
+	// get email
+	Account.findOne({uid: req.body.user_id}, function(err, account) {
+		if (err) res.status(404).send(err);
+		// take off @domain from email
+		var atSymbol = account.email.indexOf('@'); 
+		var username = account.email.substring(0, atSymbol);
+		var fullComment = {
+			username: username,
+			user_id : req.body.user_id,
+			message : req.body.comment,
+			created_at : created_at,
+			updated_at : updated_at
+		};
 	
-	var fullComment = {
-		username: "thisisausername",
-		user_id : "thisisauserid",
-		message : req.body.comment,
-		created_at : created_at,
-		updated_at : updated_at
-	};
-
-	Resource.findOneAndUpdate({_id: req.body._id},
-	
-		{$push: {comments: fullComment}},
-		{new: true},
-		(err, result) => {
-		console.log(result);
-		if(err){
-			console.log(err);
-			res.status(400).send(err);
-		}
-		else{res.json(result);}
+		Resource.findOneAndUpdate({_id: req.body._id},
 		
-		});
-
+			{$push: {comments: fullComment}},
+			{new: true},
+			(err, result) => {
+			console.log(result);
+			if(err){
+				console.log(err);
+				res.status(400).send(err);
+			}
+			else{res.json(result);}
+			
+			});
+	  });
 };
+
 
 //Handles deletion of resources (ADMIN FEATURE ONLY)
 exports.delete = function(req, res) {
   res.send('deleting new resource (ADMIN FEATURE ONLY)');
+};
+
+exports.requestById = function(req, res, next, id) {
+  Request.findById(id).exec(function(err, event) {
+    if(err) {
+      res.status(400).send(err);
+    } else {
+      req.request = event;
+      next();
+    }
+  });
 };

@@ -1,0 +1,75 @@
+<section class="resourcesSection">
+  <!-- sub nav -->
+  <div class="row">
+    <div class="col-md-3 side-nav">
+        <h2>Topics</h2>
+        <ul>
+          <li class="side-nav-item side-nav-active" id="nav-item-0">
+            <button class="side-nav-btn" ng-click="navClicked(0)">Business Plans and Business Models</button>
+          </li>
+          <li class="side-nav-item" id="nav-item-1">
+            <button class="side-nav-btn" ng-click="navClicked(1)">Entrepreneurial Marketing</button>
+          </li>
+          <li class="side-nav-item" id="nav-item-2">
+            <button class="side-nav-btn" ng-click="navClicked(2)">Developing the Entrepreneur</button>
+          </li>
+          <li class="side-nav-item" id="nav-item-3">
+            <button class="side-nav-btn" ng-click="navClicked(3)">Financing</button>
+          </li>
+          <li class="side-nav-item" id="nav-item-4">
+            <button class="side-nav-btn" ng-click="navClicked(4)">Getting Started</button>
+          </li>
+          <li class="side-nav-item" id="nav-item-5">
+            <button class="side-nav-btn" ng-click="navClicked(5)">Government Support Programs</button>
+          </li>
+          <li class="side-nav-item" id="nav-item-6">
+            <button class="side-nav-btn" ng-click="navClicked(6)">Women Entrepreneurs</button>
+          </li>
+          <li class="side-nav-item" id="nav-item-7">
+            <button class="side-nav-btn" ng-click="navClicked(7)">Social Entrepreneurship</button>
+          </li>
+          <li class="side-nav-item bot-border-none" id="nav-item-8">
+            <button class="side-nav-btn" ng-click="navClicked(8)">Videos on Entrepreneurship</button>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-9 docContent">
+        <div class="contentType">
+          <div class="contentHeader">
+            <h2>Resources</h2>
+            <div class="btn-wrapper">         
+              <button class="btn-secondary" ng-click="toggleView()">View {{ resourceType }}</button>
+            </div>
+          </div>
+          <ul class="docList">
+            <!-- TODO: Make function for making requests -->
+            <form id="requestUploadFileForm">
+              <div class="formContainer centerAlign">
+                  <input class="resourceInput" type="file" demo-file-model="resource" name="resource" id="resource"/>
+                  <input class="formBtn btn-primary" type="submit" value="Request to upload resource"/>
+              </div>
+            </form>
+            <li class="docItem" ng-repeat="doc in docs">
+              <a id="doc{{$index}}" target="_blank" href="{{ doc.url }}" download="{{ doc.name }}">
+                {{ doc.name }}
+              </a>
+            </li>
+          </ul>
+          <ul class="vidList hide">
+            <div>
+              <input ng-model="videoData.name" type="text" placeholder="Video name"/>
+              <input ng-model="videoData.link" type="text" placeholder="Video link"/>
+              <button class="btn-secondary" ng-click="requestVideoUpload()">
+                  Request to upload video
+              </button>
+            </div>
+            <li class="docItem" ng-repeat="vid in videos">
+              <a target="_blank" href="{{ vid.link }}">
+                {{ vid.name }}
+              </a>
+            </li>
+            </ul>
+        </div>
+    </div>
+  </div>
+</section>

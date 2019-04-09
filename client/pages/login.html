@@ -1,0 +1,17 @@
+<div class="loginContent">
+  <form novalidate class="simple-form form-container">
+    <h2 class="form-title">Log in</h2>
+    <input class="form-input" type="text" placeholder="Email address" ng-model="account.email" /><br/>
+    <input class="form-input" type="password" placeholder="Password" ng-model="account.password" /><br/>
+    <!-- <button class="btn slateGray bot-margin" ng-click="addAccount()">Log In</button> -->
+    <button ng-click="login()">Log in</button>
+    
+    <button ng-click="googleLogin()" class="btn-primary">Google Sign In</button>
+
+    <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+    <hr class="u-bw0 u-bbw1 u-bss u-bc--light-gray u-mt24 u-mb24">
+
+    <h4><a href="/register">Create a new account</a></h4>
+  </form>
+
+</div>

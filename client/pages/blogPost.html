@@ -1,0 +1,36 @@
+<section>
+    <h3>Blog Post</h3>
+    <div class="posts">
+        <div class="blogPost">
+            <div class="postHeader">
+            <h3>
+                {{ blog.title }}
+                <span class="postDate" ng-bind="blog.created_at | date:'MM/dd/yyyy hh:mm:ss'"></span>
+            </h3>
+            </div>
+            <p class="postContent">
+            {{ blog.body }}
+            </p>
+
+            <div class="commentSection">
+            <h2>Comments</h2>
+            <ul>
+            <li ng-repeat="comment in blog.comments">
+                name: {{ comment.username }} <br>
+                message: {{ comment.message }}
+            </li>
+            </ul>
+            <!-- input for comment -->
+            <input type="text" placeholder="comment text" ng-model="blog.comment"/>
+            <div class="btnContainer">
+            <!-- add comment -->
+            <button class="btn-secondary" ng-click="addComment(blog)">Add Comment</button>
+            <!-- edit comment -->
+            <!--<button class="btn-secondary">Edit Comment</button> -->
+            <!-- delete comment -->
+            <!--<button class="btn-secondary">Delete Comment</button> -->
+            </div>
+            </div>
+        </div>
+    </div>
+</section>

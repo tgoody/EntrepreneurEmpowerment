@@ -1,0 +1,32 @@
+.researchContent    {
+    margin: auto;
+  
+    padding: 100px;
+    align-self: auto;
+}
+
+.researchContent li {    
+    list-style: none;
+    /* padding: 10px; */
+}
+
+.readmore-details {
+    max-height: 100px;
+    transition: height 2s;
+    transition-timing-function: linear;
+        overflow: hidden;
+}
+
+.readmore-details.hidden {
+    max-height: 0;
+}
+
+.researchContent .description    {
+    margin-top: 20px;
+    height: 160px;
+    text-align:justify;
+}
+
+#research   {
+    padding-top: 75px;
+}
