@@ -1,44 +1,24 @@
-<section> 
+<section>
   <div class="blogSection">
     <div class="row">
       <div class="col-md-3 tag-container">
         <!-- Tag Filters -->
         <h3 class="align-center">Tags</h3>
-        <div class="checkbox">
+        <div class="checkbox" ng-repeat="tag in tagList">
           <label>
-            <input id="tag0" type="checkbox" value="getting started" ng-model="state" ng-change="tagFilter(state, 0)">
+            <input type="checkbox" ng-model="tag.state">
             <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
-            Getting Started
-            </label>
+            {{tag.name}}
+          </label>
         </div>
-        <div class="checkbox">
-          <label>
-            <input id="tag1" type="checkbox" value="models" ng-model="state" ng-change="tagFilter(state, 1)">
-            <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
-            Models
-            </label>
+      <span class="cr">
+        <h3> Applied Filters </h3>
+        <div ng-repeat="tag in appliedTags">
+          {{tag}}
         </div>
-        <div class="checkbox">
-          <label>
-            <input id="tag2" type="checkbox" value="marketing" ng-model="state" ng-change="tagFilter(state, 2)">
-            <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
-            Marketing
-            </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input id="tag3" type="checkbox" value="financing" ng-model="state" ng-change="tagFilter(state, 3)">
-            <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
-            Financing
-            </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input id="tag4" type="checkbox" value="government" ng-model="state" ng-change="tagFilter(state, 4)">
-            <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
-            Government
-            </label>
-        </div>
+      </span>
+      <button ng-click="applyFilter()" class="btn-primary">Apply Filters</button>
+      <button ng-click="removeFilter()" class="btn-primary">Remove Filters</button>
       </div>
       <div class="col-md-9 align-center">
         <h2>Latest Blogs</h2>
@@ -48,12 +28,16 @@
               <h3>
                 {{ blog.title }}
                 <span class="postDate" ng-bind="blog.created_at | date:'MM/dd/yyyy hh:mm:ss'"></span>
+                <h5> Tags: </h5>
+                <ul ng-repeat="blogTags in blog.tags" style="list-style-type:disc;">
+                  <li> {{ blogTags }} </li>
+                </ul>
               </h3>
             </div>
             <p class="postContent">
               {{ blog.body }}
             </p>
-            <button class="btn-primary" ng-click="viewPost(blog._id)">View Blog Post</button> 
+            <button class="btn-primary" ng-click="viewPost(blog._id)">View Blog Post</button>
           </div>
         </div>
       </div>

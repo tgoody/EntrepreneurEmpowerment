@@ -73,6 +73,20 @@
             <!-- input for blog -->
             <input type="text" placeholder="Post title" ng-model="blogpost.title"/>
             <textarea type="text" placeholder="Enter post" ng-model="blogpost.body"></textarea>
+            <!-- List of Tags -->
+            <div ng-repeat="tag in tagList">
+              <label>{{tag.name}}:
+                  <input type="checkbox" ng-model="tag.state">
+              </label><br/>
+            </div>
+            <div ng-repeat="tag in tagList">
+              <tt>{{tag.name}} = {{tag.state}}</tt><br/>
+            </div>
+            <h3> Tags </h3>
+            <div ng-repeat="tag in tagList" ng-if="tag.state === true">
+              {{tag.name}}
+            </div>
+
             <div class="btnContainer">
               <!-- add post -->
               <button class="btn-secondary" ng-click="addPost()">Add Post</button>
