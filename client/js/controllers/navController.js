@@ -11,6 +11,7 @@ angular.module('app.auth').controller('navController', ['$rootScope', '$scope', 
           // User is signed in.
           console.log('logged in');
           $rootScope.userId = user.uid;
+          $rootScope.email = user.email;
           authService.isAdmin({uid: $rootScope.userId}).then(function(response) {
             // makes sure ng-show actually updates
             $scope.isAdmin = response.data;
@@ -22,6 +23,7 @@ angular.module('app.auth').controller('navController', ['$rootScope', '$scope', 
           // No user is signed in.
           console.log('signed out');
           $rootScope.userId = null;
+          $rootScope.email = null;
           $scope.$apply(function(){
             $rootScope.loggedIn = false;
           });

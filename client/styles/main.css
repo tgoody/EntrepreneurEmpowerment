@@ -47,6 +47,7 @@ section {
   padding-top: 90px;
   color: black;
   padding-bottom: 50px;
+  min-height: 81.5vh;
 }
 
 a:hover {
@@ -230,6 +231,15 @@ textarea {
 }
 
 .active-calendar #nav-calendar {
+  color:  #018662;
+	border-radius:0;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+}
+
+.active-settings #nav-settings {
   color:  #018662;
 	border-radius:0;
 	transition: all 0.3s ease-in-out;

@@ -38,7 +38,7 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
                     $location.path("home");
                 });
             }
-        }, 500);
+        }, 100);
 
         Listings.getRequests().then(function(response) {
             console.log(response.data);

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="styles/register.css">
     <link rel="stylesheet" href="styles/research.css">
     <link rel="stylesheet" href="styles/spoder.css">
+    <link rel="stylesheet" href="styles/settings.css">
     <link rel="stylesheet" href="styles/animate.css">
     <link rel="stylesheet" href="styles/font-awesome.min.css">
   </head>
@@ -68,6 +69,7 @@
                   <li ng-show="!loggedIn" role="presentation" class="active-{{currentPage}}"><a href="#/login" id="nav-login">Login</a></li>
                   <li ng-show="!loggedIn" role="presentation" class="active-{{currentPage}}"><a href="#/register" id="nav-register">Register</a></li>
                   <li ng-show="loggedIn && isAdmin" role="presentation" class="active-{{currentPage}}"><a href="#/admin" id="nav-admin">Admin</a></li>
+                  <li ng-show="loggedIn && !isAdmin" role="presentation" class="active-{{currentPage}}"><a href="#/settings" id="nav-settings">Settings</a></li>
                   <li ng-show="loggedIn" role="presentation" ng-click="logout()"><a href="#/home">Logout</a></li>
                 </ul>
               </div>
@@ -138,6 +140,7 @@
     <script src="js/controllers/blogPostController.js"></script>
     <script src="js/controllers/calendarController.js"></script>
     <script src="js/controllers/docsController.js"></script>
+    <script src="js/controllers/settingsController.js"></script>
     <!-- Route config -->
     <script src="js/config.routes.js"></script>
 

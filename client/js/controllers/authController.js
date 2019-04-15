@@ -1,5 +1,6 @@
-angular.module('app.auth').controller('AuthController', ['$scope', 'authService', '$location',
-  function($scope, authService, $location) {
+angular.module('app.auth').controller('AuthController', ['$rootScope', '$scope', 'authService', '$location',
+  function($rootScope, $scope, authService, $location) {
+
     $scope.addAccount = function() {
         if ($scope.account.email !== '' 
             && $scope.account.password != '' && $scope.confirmPassword != '') {
