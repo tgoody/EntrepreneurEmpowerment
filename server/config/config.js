@@ -10,7 +10,7 @@ if (port == null || port == "") {
 
 module.exports = {
   db: {
-    uri: realDataBase, //place the URI of your mongo database here.
+    uri: testDataBase, //place the URI of your mongo database here.
   },
   port: port
 };

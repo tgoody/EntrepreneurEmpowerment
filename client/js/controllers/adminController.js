@@ -30,7 +30,13 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
             selectedOption: {id: 0, name: 'Business Plans and Business Models'} //This sets the default value of the select in the ui
         };
         $scope.requests = [];
-
+        $scope.tagList = [
+          {name: 'Getting Started', state: false},
+          {name: 'Models', state: false},
+          {name: 'Marketing', state: false},
+          {name: 'Financing', state: false},
+          {name: 'Government', state: false}
+        ];
         // Small delay to make sure loggedIn value is updated
         setTimeout(function() {
             if(!$rootScope.loggedIn) {
@@ -44,7 +50,7 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
             console.log(response.data);
             $scope.requests = response.data;
         });
-        
+
         $("#uploadFileForm").submit(function(e){
             e.preventDefault();
             // Upload file to database
@@ -102,11 +108,23 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
         });
 
         $scope.addPost = function() {
+          var tags = [];
+          //Searches for tags that were selected.
+          for (var i = 0; i < $scope.tagList.length; i++) {
+            if ($scope.tagList[i].state === true) {
+              tags.push($scope.tagList[i].name);
+            }
+          }
+          //Binds tags to blogpost.
+          $scope.blogpost.tags = tags;
             Listings.addPost($scope.blogpost).then(function(response) {
                 console.log('Sucessfully tried to add post!');
+                console.log($scope.tagList[0].name);
+                console.log($scope.tagList[0].state);
                 $scope.blogpost.title = '';
                 $scope.blogpost.body = '';
-                                                    
+                $scope.blogpost.tags = [];
+
             }, function(error) {
                 console.log('Error in trying to add post!');
             });
