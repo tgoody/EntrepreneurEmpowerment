@@ -91,9 +91,17 @@ angular.module('listings', []).factory('Listings', function($http) {
   getMostRecentBlog: function() {
     return $http.get('/blog/recent');
   },
+
+  deleteBlog: function(id) {
+    return $http.delete('/blog/'+id);
+  },
   
   addComment: function(blog){
   	return $http.post('/blog/add', blog);
+  },
+
+  deleteComment: function(blogId, id) {
+    return $http.delete('/blog/comment/'+blogId+'/'+id);
   },
 
   addDocComment: function(doc){
