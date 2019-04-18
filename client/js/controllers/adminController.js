@@ -44,7 +44,7 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
                     $location.path("home");
                 });
             }
-        }, 100);
+        }, 1000);
 
         Listings.getRequests().then(function(response) {
             console.log(response.data);
@@ -119,12 +119,13 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
           $scope.blogpost.tags = tags;
             Listings.addPost($scope.blogpost).then(function(response) {
                 console.log('Sucessfully tried to add post!');
-                console.log($scope.tagList[0].name);
-                console.log($scope.tagList[0].state);
                 $scope.blogpost.title = '';
                 $scope.blogpost.body = '';
                 $scope.blogpost.tags = [];
-
+                // reset selected tags
+                for(var i = 0; i < $scope.tagList.length; i++) {
+                    $scope.tagList[i].state = false;
+                }
             }, function(error) {
                 console.log('Error in trying to add post!');
             });
@@ -175,20 +176,43 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
                 console.log('Error in trying to get events!');
         });
 
+        $scope.addSpotlight = function() {
+            //Binds tags to spotlight.
+            $scope.spotlight.tags = ['spotlight'];
+            Listings.addPost($scope.spotlight).then(function(response) {
+                console.log('Sucessfully tried to add post!');
+                $scope.spotlight.title = '';
+                $scope.spotlight.body = '';
+                $scope.spotlight.tags = [];
+
+            }, function(error) {
+                console.log('Error in trying to add post!');
+            });
+        };
+
         $scope.navClicked = function(index) {
             if (index == 0) {
                 // Show Resources
                 $('.resourceContent').removeClass('hide');
                 $('.blogContent').addClass('hide');
+                $('.spotlightContent').addClass('hide');
                 $('.calendarContent').addClass('hide');
             } else if (index == 1) {
+                // Show Community Spotlight
+                $('.spotlightContent').removeClass('hide');
+                $('.blogContent').addClass('hide');
+                $('.resourceContent').addClass('hide');
+                $('.calendarContent').addClass('hide');
+            } else if (index == 2) {
                 // Show Blog
                 $('.blogContent').removeClass('hide');
+                $('.spotlightContent').addClass('hide');
                 $('.resourceContent').addClass('hide');
                 $('.calendarContent').addClass('hide');
             } else {
                 // Show Calendar Events
                 $('.calendarContent').removeClass('hide');
+                $('.spotlightContent').addClass('hide');
                 $('.blogContent').addClass('hide');
                 $('.resourceContent').addClass('hide');
             }

@@ -11,9 +11,16 @@ exports.getBlogs = function(req, res) {
 };
 
 exports.recentBlog = function(req, res) {
-	Blog.findOne({}, {},{ sort: {'updated_at': -1} }, function(err, blog){
+	Blog.find({}, {},{ sort: {'updated_at': -1} }, function(err, blogs){
 		if(err) res.status(400).send("Error in getting most recent blog: ", err);
-		res.json(blog)
+		for(var i = 0; i < blogs.length; i++) {
+			if (!blogs[i].tags.includes('spotlight')) {
+				res.json(blogs[i]);
+				res.end();
+				return;
+			}
+		}
+		res.json(null);
 	});
 };
 

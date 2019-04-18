@@ -8,18 +8,26 @@ angular.module('listings').controller('blogController', ['$rootScope', '$scope',
       {name: 'Marketing', state: false},
       {name: 'Financing', state: false},
       {name: 'Government', state: false},
+      {name: 'spotlight', state: false},
     ];
     $scope.latestPost = null;
+    $scope.spotlight = null;
     $scope.appliedTags = [];
 
-    if ($scope.appliedTags.length === 0) {
-      Listings.getBlogs().then(function(response) {
-        console.log(response);
-        if (response.status === 200) {
-          $scope.blogPosts = response.data;
+    Listings.getBlogs().then(function(response) {
+      if (response.status === 200) {
+        $scope.blogPosts = response.data;
+        // get latest spotlight
+        for(var i = 0; i < $scope.blogPosts.length; i++) {
+          for(var j = 0; j <$scope.blogPosts[i].tags.length; j++) {
+            if ($scope.blogPosts[i].tags[j] === 'spotlight') {
+              $scope.spotlight = $scope.blogPosts[i];
+              return;
+            }
+          }
         }
-      });
-    }
+      }
+    });
 
     $scope.viewPost = function(id) {
       $location.path('blog/'+id);
@@ -44,6 +52,7 @@ angular.module('listings').controller('blogController', ['$rootScope', '$scope',
         });
         return;
       }
+
       Listings.getBlogs().then(function(response) {
         if (response.status === 200) {
           for (var i = 0; i < response.data.length; i++) {
@@ -84,4 +93,6 @@ angular.module('listings').controller('blogController', ['$rootScope', '$scope',
       console.log(response);
       $scope.latestPost = response.data;
     });
+
+ 
   }]);

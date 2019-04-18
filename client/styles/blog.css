@@ -61,6 +61,6 @@
     padding-bottom: 10px;
 }
 
-.tag-container > li {
-
+.checkbox > label {
+    text-transform: capitalize !important;
 }
