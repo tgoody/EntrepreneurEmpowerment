@@ -53,6 +53,7 @@
               <a id="doc{{$index}}" target="_blank" href="{{ doc.url }}" download="{{ doc.name }}">
                 {{ doc.name }}
               </a>
+              <button ng-if="isAdmin" ng-click="removeDoc(doc._id)" class="btn-primary">Remove</button>              
             </li>
           </ul>
           <ul class="vidList hide">
@@ -67,6 +68,7 @@
               <a target="_blank" href="{{ vid.link }}">
                 {{ vid.name }}
               </a>
+              <button ng-if="isAdmin" ng-click="removeVid(vid._id)" class="btn-primary">Remove</button>              
             </li>
             </ul>
         </div>

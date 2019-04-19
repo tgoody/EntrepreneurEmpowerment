@@ -167,7 +167,57 @@ exports.addComment = function(req, res) {
 
 //Handles deletion of resources (ADMIN FEATURE ONLY)
 exports.delete = function(req, res) {
-  res.send('deleting new resource (ADMIN FEATURE ONLY)');
+  Resource.findByIdAndRemove(req.doc._id, function(err, deletedEvent){
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      res.json(deletedEvent);
+    }
+  });
+};
+
+
+exports.resourceByID = function(req, res, next, id) {
+	if (id) {
+	  Resource.findById(id).exec(function(err, doc) {
+		if(err) {
+			res.status(404).send(err);
+		} else {
+			req.doc = doc;
+		  next();
+		}
+	  });
+	} else {
+		res.status(400).send("Invalid id");
+	}
+};
+
+exports.deleteVideo = function(req, res) {
+  Video.findByIdAndRemove(req.vid._id, function(err, deletedEvent){
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+      res.json(deletedEvent);
+    }
+  });
+};
+
+
+exports.videoByID = function(req, res, next, id) {
+	if (id) {
+	  Video.findById(id).exec(function(err, vid) {
+		if(err) {
+			res.status(404).send(err);
+		} else {
+			req.vid = vid;
+		  next();
+		}
+	  });
+	} else {
+		res.status(400).send("Invalid id");
+	}
 };
 
 exports.requestById = function(req, res, next, id) {

@@ -31,6 +31,12 @@ angular.module('listings').controller('blogPostController',
         });
     };
 
+    $scope.editBlog = function(blog) {
+        Listings.editBlog(blog).then(function(response) {
+            console.log(response.data);
+        });
+    };
+
     $scope.deleteBlog = function(id) {
         Listings.deleteBlog(id).then(function(response) {
             console.log(response.data);

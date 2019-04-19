@@ -10,7 +10,7 @@ router.get('/recent', blogController.recentBlog);
 router.post('/', blogController.create);
 
 //Updates a blog post that the user created
-router.put('/update', blogController.update);
+router.post('/update', blogController.update);
 
 //add comment
 router.post('/add', blogController.addComment);

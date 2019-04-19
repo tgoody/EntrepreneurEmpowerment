@@ -113,5 +113,32 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
           console.log ('Please fill in all the fields');
         }
       };
+
+      $scope.removeDoc = function(id) {
+        // Delete from storage
+        if (!id) {
+          console.log('id does not exist');
+          return;
+        }
+        var storageRef = firebase.storage().ref();
+        var fileRef = storageRef.child('resources').child(id);
+        // Delete the file
+        fileRef.delete().then(function() {
+            // File deleted successfully
+            console.log('file removed');
+            Listings.removeFile(id).then(function(response) {
+              console.log(response.data);
+            });
+        }).catch(function(error) {
+            // Uh-oh, an error occurred!
+            console.log('file not removed: ', error);
+        });
+      };
+
+      $scope.removeVid = function(id) {
+        Listings.removeVideo(id).then(function(response) {
+          console.log(response.data);
+        })
+      };
     }
 ]);

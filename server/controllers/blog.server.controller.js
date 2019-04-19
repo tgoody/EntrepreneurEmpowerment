@@ -82,7 +82,13 @@ exports.create = function(req, res) {
 
 //Handles the update of a blog post
 exports.update = function(req, res){
-  res.send('Updating a blog post');
+	var blog = req.body;
+	console.log(blog);
+	Blog.findByIdAndUpdate(blog._id, blog, {new: true}, function(err, blog) {
+		if (err) res.status(400).send(err);
+
+		res.send(blog);
+	})
 };
 
 //Handles the deletion of a blog post
@@ -96,7 +102,7 @@ exports.readById = function(req, res) {
 
 //Handles the update of a blog post
 exports.updateById = function(req, res){
-res.send('Updating a blog post');
+  res.send('Updating a blog post');
 };
   
 //Handles the deletion of a blog post

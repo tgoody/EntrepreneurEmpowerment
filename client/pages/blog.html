@@ -4,19 +4,17 @@
       <div class="col-md-3 tag-container">
         <!-- Tag Filters -->
         <h3 class="align-center">Tags</h3>
-        <div class="checkbox" ng-repeat="tag in tagList">
-          <label>
-            <input type="checkbox" ng-model="tag.state">
-            <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
-            {{tag.name}}
-          </label>
+        <button ng-click="applyFilter()" class="btn-primary">Apply Filters</button>
+        <div class="checkboxContainer">
+          <div class="checkbox" ng-repeat="tag in tagList">
+            <label>
+              <input type="checkbox" ng-model="tag.state">
+              <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+              {{tag.name}}
+            </label>
+          </div>
         </div>
-      <button ng-click="applyFilter()" class="btn-primary">Apply Filters</button>
-      <h3> Applied Filters </h3>
-      <div ng-repeat="tag in appliedTags">
-        {{ tag }}
-      </div>
-      <button ng-click="removeFilter()" class="btn-primary">Remove Filters</button>
+        <button ng-click="removeFilter()" class="btn-primary">Remove Filters</button>
     </div>
     <div class="col-md-9 align-center">
       <h2>Latest Blogs</h2>
