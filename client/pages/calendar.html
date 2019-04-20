@@ -6,7 +6,7 @@
   </div>
 
 
-  <section id="submit">
+  <div id="submit">
       <button id="myBtn" class="btn-primary">Submit new event</button>
 
       <div id="myModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
@@ -18,11 +18,11 @@
           <form class="form-horizontal">
               <input class="form-input" type="text" placeholder="Event name" ng-model="event.eventName"></input>
 
-              <input class="form-input" type="date" placeholder="Date" ng-model="event.eventDate"></input>
+              <!--input class="form-input" type="date" placeholder="Date" ng-model="event.eventDate"></input-->
 
-              <input class="form-input" type="time" placeholder="Time" ng-model="event.startTime"></input>
+              <input class="form-input" type="datetime-local" placeholder="Time" ng-model="event.startTime"></input>
 
-              <input class="form-input" type="time" placeholder="Time" ng-model="event.endTime"></input>
+              <input class="form-input" type="datetime-local" placeholder="Time" ng-model="event.endTime"></input>
 
               <input class="form-input" type="text" placeholder="Address" ng-model="event.address"></input>
 
@@ -34,7 +34,7 @@
           </form>
         </div>
       </div>
-    </section>
+    </div>
 
   <!--the next 3 might actually be built into google calendar idk-->
 </section>

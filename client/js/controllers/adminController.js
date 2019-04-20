@@ -46,10 +46,6 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
             }
         }, 1000);
 
-        Listings.createEvent({'event': 'event'}).then(function() {
-            console.log('added to google calendar');
-        });
-
         Listings.getRequests().then(function(response) {
             console.log(response.data);
             $scope.requests = response.data;
@@ -139,9 +135,26 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
             console.log('verify Event');
             Listings.verifyEvent(id).then(function(response) {
                 console.log('Sucessfully verified a post!');
+                calendarEvent = {
+                  'summary': response.data.eventName,
+                  'location': response.data.address,
+                  'description': response.data.details,
+                  'start': {
+                    'dateTime': response.data.startTime,
+                    //'timeZone': 'America/Florida',
+                  },
+                  'end': {
+                    'dateTime': response.data.endTime,
+                    //'timeZone': 'America/Florida',
+                  }
+                };
+                Listings.createEvent(calendarEvent).then(function(response) {
+                  console.log('Added to google calendars!');
+                });
             }, function(error) {
                 console.log('Error in verifying a post!');
             });
+
         };
 
         $scope.deleteEvent = function(id) {

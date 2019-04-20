@@ -7,7 +7,6 @@ angular.module('listings').controller('calendarController', ['$rootScope', '$sco
             Listings.addEvent($scope.event).then(function(response) {
                 console.log('Sucessfully tried to add event!');
                 $scope.event.eventName = '';
-                $scope.event.eventDate = '';
                 $scope.event.address = '';
                 $scope.event.details = '';
                 $scope.event.host = '';
