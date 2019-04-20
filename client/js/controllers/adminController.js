@@ -134,10 +134,36 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
         $scope.verifyEvent = function(id) {
             console.log('verify Event');
             Listings.verifyEvent(id).then(function(response) {
+                var event = response.data;
+                // calendarEvent = {
+                //     summary: event.name,
+                //     location: event.address,
+                //     description: event.details,
+                //     start: {
+                //         dateTime: 
+                //     },
+                // };
                 console.log('Sucessfully verified a post!');
+                calendarEvent = {
+                  'summary': response.data.eventName,
+                  'location': response.data.address,
+                  'description': response.data.details,
+                  'start': {
+                    'dateTime': response.data.startTime,
+                    //'timeZone': 'America/Florida',
+                  },
+                  'end': {
+                    'dateTime': response.data.endTime,
+                    //'timeZone': 'America/Florida',
+                  }
+                };
+                Listings.createEvent(calendarEvent).then(function(response) {
+                  console.log('Added to google calendars!');
+                });
             }, function(error) {
                 console.log('Error in verifying a post!');
             });
+
         };
 
         $scope.deleteEvent = function(id) {
@@ -238,6 +264,10 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
                     Listings.uploadFile(requestData)
                     .then(function(response) {
                         console.log('Uploaded file: ', response.data);
+                        Listings.updateFbId(request._id, response.data._id)
+                        .then(function(response2) {
+                            console.log('id updated', response2.data);
+                        });
                     });
                 }).catch(function(error) {
                     // Handle any errors

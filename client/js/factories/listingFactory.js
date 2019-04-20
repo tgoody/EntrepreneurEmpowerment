@@ -28,7 +28,7 @@ angular.module('listings', []).factory('Listings', function($http) {
     },
 
     removeFile: function(id) {
-      return $http.delete('/resources/delete/'+id);
+      return $http.post('/resources/delete/', {id: id});
     },
 
     removeVideo: function(id) {
@@ -53,6 +53,10 @@ angular.module('listings', []).factory('Listings', function($http) {
 
     updateDocUrl:  function(url, id) {
       return $http.post('/resources/updateUrl', {url: url, id: id});
+    },
+
+    updateFbId:  function(newId, id) {
+      return $http.post('/resources/updateFbId', {newId: newId, id: id});
     },
 
     getDocs: function(category) {
@@ -88,6 +92,10 @@ angular.module('listings', []).factory('Listings', function($http) {
     return $http.get('/calendar/events');
   },
 
+  createEvent: function (calendarEvent) {
+    return $http.post('/calendar/add', calendarEvent);
+  },
+
   getBlog: function(id) {
     return $http.get('/blog/'+id);
   },
@@ -107,7 +115,7 @@ angular.module('listings', []).factory('Listings', function($http) {
   deleteBlog: function(id) {
     return $http.delete('/blog/'+id);
   },
-  
+
   addComment: function(blog){
   	return $http.post('/blog/add', blog);
   },
@@ -119,6 +127,8 @@ angular.module('listings', []).factory('Listings', function($http) {
   addDocComment: function(doc){
   	return $http.post('/resources/add', doc);
   },
+
+  
 
     GoToBlog: function() {
       return $http.get('/blog');

@@ -8,14 +8,17 @@ var calendarSchema = new Schema({
     type: String,
     required: true
   },
-  eventDate: {
-    type: String,
-    required: true,
-  },
   address: String,
   details: String,
   host: String,
-  time: String,
+  startTime: {
+    type: String,
+    required: true
+  },
+  endTime: {
+    type: String,
+    required: true
+  },
   created_at: Date,
   updated_at: Date,
   approved: Boolean

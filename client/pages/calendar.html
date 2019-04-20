@@ -1,32 +1,33 @@
 <section class="calendarContent">
+  <div id="submit">
+      <button id="myBtn" class="btn-primary">Submit new event</button>
 
+      <div id="myModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
 
-    <section id="submit">
-        <button id="myBtn" class="btn-primary">Submit new event</button>
-          <div id="myModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
-            <!-- Modal content -->
-            <div class="modal-content">
-              <span class="close">&times;</span>
-    
-              <p><b>Submit an upcoming event you are hosting or have heard about to share with the community. Or request for us to come to your event.</b></p>
-              <form class="form-horizontal">
-                  <input class="form-input" type="text" placeholder="Event name" ng-model="event.eventName"></input>
-    
-                  <input class="form-input" type="date" placeholder="Date" ng-model="event.eventDate"></input>
-    
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+
+          <form class="form-horizontal">
+              <input class="form-input" type="text" placeholder="Event name" ng-model="event.eventName"></input>
+
+              <!--input class="form-input" type="date" placeholder="Date" ng-model="event.eventDate"></input-->
+
+              <input class="form-input" type="datetime-local" placeholder="Time" ng-model="event.startTime"></input>
+
+              <input class="form-input" type="datetime-local" placeholder="Time" ng-model="event.endTime"></input>
+
                   <input class="form-input" type="text" placeholder="Address" ng-model="event.address"></input>
     
                   <input class="form-input" type="text" placeholder="Details" ng-model="event.details"></input>
     
                   <input class="form-input" type="text" placeholder="Hosted by" ng-model="event.host"></input>
     
-                  <input class="form-input" type="time" placeholder="Time" ng-model="event.time"></input>
-    
                   <button class="btn-primary" type="submit" ng-click="addEvent()">Submit event</button>
               </form>
             </div>
         </div>
-      </section>
+    </div>
   
   <div class="container" >      
     <div class="googleCalendar">
@@ -34,8 +35,4 @@
       <a target="_blank" href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=Nm8zNzM0NGFtNzNvMTdqdXVjZzkybDRiYWUgZW50cmVtcG93ZXJtZW50QG0&amp;tmsrc=entrempowerment%40gmail.com"><img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_en.gif"></a>
     </div>
   </div>
-
-
-
-<!-- </div> -->
 </section>

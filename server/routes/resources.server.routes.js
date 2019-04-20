@@ -10,6 +10,7 @@ router.post('/videos', resourceController.getVideos);
 router.post('/add', resourceController.addComment);
 
 router.post('/updateUrl', resourceController.updateUrl);
+router.post('/updateFbId', resourceController.updateFbId);
 
 //Adds a new resource
 router.post('/create', resourceController.create);
@@ -28,7 +29,7 @@ router.param('requestId', resourceController.requestById);
 router.post('/read', resourceController.read);
 
 //Deletes a resource
-router.delete('/delete/:resourceId', resourceController.delete);
+router.post('/delete', resourceController.delete);
 router.delete('/deleteVideo/:videoId', resourceController.deleteVideo);
 
 router.param('resourceId', resourceController.resourceByID);

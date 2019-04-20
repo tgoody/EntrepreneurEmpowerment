@@ -7,15 +7,15 @@ angular.module('listings').controller('calendarController', ['$rootScope', '$sco
             Listings.addEvent($scope.event).then(function(response) {
                 console.log('Sucessfully tried to add event!');
                 $scope.event.eventName = '';
-                $scope.event.eventDate = '';
                 $scope.event.address = '';
                 $scope.event.details = '';
                 $scope.event.host = '';
-                $scope.event.time = '';
-        
+                $scope.event.startTime = '';
+                $scope.event.endTime = '';
+
                 }, function(error) {
                 console.log('Error in trying to add event!');
-                });   
+                });
         } else {
             alert('Not logged in');
         }
