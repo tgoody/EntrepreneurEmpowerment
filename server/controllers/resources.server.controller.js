@@ -208,12 +208,12 @@ exports.deleteVideo = function(req, res) {
 exports.videoByID = function(req, res, next, id) {
 	if (id) {
 	  Video.findById(id).exec(function(err, vid) {
-		if(err) {
-			res.status(404).send(err);
-		} else {
-			req.vid = vid;
-		  next();
-		}
+      if(err) {
+        res.status(404).send(err);
+      } else {
+        req.vid = vid;
+        next();
+      }
 	  });
 	} else {
 		res.status(400).send("Invalid id");
