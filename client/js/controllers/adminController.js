@@ -46,7 +46,7 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
             }
         }, 1000);
 
-        Listings.createEvent({}).then(function() {
+        Listings.createEvent({'event': 'event'}).then(function() {
             console.log('added to google calendar');
         });
 
