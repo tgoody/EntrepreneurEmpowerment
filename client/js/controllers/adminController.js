@@ -39,7 +39,7 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
         ];
         // Small delay to make sure loggedIn value is updated
         setTimeout(function() {
-            if(!$rootScope.loggedIn) {
+            if(!$rootScope.loggedIn && !$rootScope.isAdmin) {
                 $scope.$apply(function() {
                     $location.path("home");
                 });

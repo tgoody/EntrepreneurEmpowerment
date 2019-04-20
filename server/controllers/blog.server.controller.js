@@ -82,7 +82,13 @@ exports.create = function(req, res) {
 
 //Handles the update of a blog post
 exports.update = function(req, res){
-  res.send('Updating a blog post');
+	var blog = req.body;
+	console.log(blog);
+	Blog.findByIdAndUpdate(blog._id, blog, {new: true}, function(err, blog) {
+		if (err) res.status(400).send(err);
+
+		res.send(blog);
+	})
 };
 
 //Handles the deletion of a blog post
@@ -96,25 +102,66 @@ exports.readById = function(req, res) {
 
 //Handles the update of a blog post
 exports.updateById = function(req, res){
-res.send('Updating a blog post');
+  res.send('Updating a blog post');
 };
   
 //Handles the deletion of a blog post
 exports.deleteById = function(req, res) {
-res.send('Deletes a blog post');
+	var blog = req.blog;
+	Blog.findByIdAndRemove(blog._id, function(err, deletedBlog){
+    if(err) {
+      console.log(err);
+      res.status(400).send(err);
+    } else {
+			res.json(deletedBlog);
+    }
+  });
+};
+
+exports.deleteComment = function(req, res) {
+	var blog = req.blog;
+	var commentId = req.commentId;
+	for(var i = 0; i < blog.comments.length; i++) {
+		if (blog.comments[i]._id == commentId) {
+			blog.comments.splice(i, 1);
+			break;
+		}
+	}
+
+	Blog.findOneAndUpdate({_id: blog._id},
+		{comments: blog.comments},
+		{new: true},
+		(err, result) => {
+		console.log(result);
+		if(err){
+			console.log(err);
+			res.status(400).send(err);
+		}
+		else{res.json(result);}
+		
+		});
 };
 
 exports.blogByID = function(req, res, next, id) {
 	if (id) {
 	  Blog.findById(id).exec(function(err, blog) {
 		if(err) {
-		  res.status(400).send(err);
+			res.status(404).send(err);
 		} else {
-		  req.blog = blog;
+			req.blog = blog;
 		  next();
 		}
 	  });
 	} else {
+		res.status(400).send("Invalid id");
+	}
+};
+
+exports.commentByID = function(req, res, next, id) {
+	if (id) {
+		req.commentId = id;
+		next();
+	} else {
 	  res.status(400).send("Invalid id");
 	}
-  };
+};
