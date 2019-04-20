@@ -28,6 +28,10 @@ router.param('requestId', resourceController.requestById);
 router.post('/read', resourceController.read);
 
 //Deletes a resource
-router.delete('/delete', resourceController.delete);
+router.delete('/delete/:resourceId', resourceController.delete);
+router.delete('/deleteVideo/:videoId', resourceController.deleteVideo);
+
+router.param('resourceId', resourceController.resourceByID);
+router.param('videoId', resourceController.videoByID);
 
 module.exports = router;

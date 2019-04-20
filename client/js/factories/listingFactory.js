@@ -27,6 +27,14 @@ angular.module('listings', []).factory('Listings', function($http) {
       return $http.post('/resources/createVideo', video);
     },
 
+    removeFile: function(id) {
+      return $http.delete('/resources/delete/'+id);
+    },
+
+    removeVideo: function(id) {
+      return $http.delete('/resources/deleteVideo/'+id);
+    },
+
     requestResource: function(request) {
       return $http.post('/resources/request', request);
     },
@@ -91,9 +99,21 @@ angular.module('listings', []).factory('Listings', function($http) {
   getMostRecentBlog: function() {
     return $http.get('/blog/recent');
   },
+
+  editBlog: function(blog) {
+    return $http.post('/blog/update', blog);
+  },
+
+  deleteBlog: function(id) {
+    return $http.delete('/blog/'+id);
+  },
   
   addComment: function(blog){
   	return $http.post('/blog/add', blog);
+  },
+
+  deleteComment: function(blogId, id) {
+    return $http.delete('/blog/comment/'+blogId+'/'+id);
   },
 
   addDocComment: function(doc){

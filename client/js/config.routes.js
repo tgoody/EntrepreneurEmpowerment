@@ -50,6 +50,10 @@
         .when('/spoder', {
             templateUrl: '../pages/spoder.html'
         })
+        .when('/settings', {
+            templateUrl: '../pages/settings.html',
+            controller: 'SettingsController'
+        })
         .otherwise({
             redirectTo: 'home'
         })

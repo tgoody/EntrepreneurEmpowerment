@@ -8,18 +8,26 @@ angular.module('listings').controller('blogController', ['$rootScope', '$scope',
       {name: 'Marketing', state: false},
       {name: 'Financing', state: false},
       {name: 'Government', state: false},
+      {name: 'spotlight', state: false},
     ];
     $scope.latestPost = null;
+    $scope.spotlight = null;
     $scope.appliedTags = [];
 
-    if ($scope.appliedTags.length === 0) {
-      Listings.getBlogs().then(function(response) {
-        console.log(response);
-        if (response.status === 200) {
-          $scope.blogPosts = response.data;
+    Listings.getBlogs().then(function(response) {
+      if (response.status === 200) {
+        $scope.blogPosts = response.data;
+        // get latest spotlight
+        for(var i = 0; i < $scope.blogPosts.length; i++) {
+          for(var j = 0; j <$scope.blogPosts[i].tags.length; j++) {
+            if ($scope.blogPosts[i].tags[j] === 'spotlight') {
+              $scope.spotlight = $scope.blogPosts[i];
+              return;
+            }
+          }
         }
-      });
-    }
+      }
+    });
 
     $scope.viewPost = function(id) {
       $location.path('blog/'+id);
@@ -34,23 +42,34 @@ angular.module('listings').controller('blogController', ['$rootScope', '$scope',
           $scope.appliedTags.push($scope.tagList[i].name);
         }
       }
-      console.log('applied tags: ', $scope.appliedTags.length);
-      console.log('length of applied tags: ', $scope.appliedTags.length);
+      if ($scope.appliedTags.length === 0) {
+        // show all if no tags selected
+        Listings.getBlogs().then(function(response) {
+          console.log(response);
+          if (response.status === 200) {
+            $scope.blogPosts = response.data;
+          }
+        });
+        return;
+      }
+
       Listings.getBlogs().then(function(response) {
         if (response.status === 200) {
           for (var i = 0; i < response.data.length; i++) {
-            if ($scope.compareTags($scope.appliedTags, response.data[i].tags) === true) {
+            if ($scope.compareTags($scope.appliedTags, response.data[i].tags)) {
               $scope.blogPosts.push(response.data[i]);
-              console.log("Added blog post!");
             }
           }
         }
       });
-      console.log("Filtered Blogs: ", $scope.blogPosts);
     };
 
     $scope.removeFilter = function() {
       $scope.appliedTags = [];
+      // set all checkbox states to false
+      for (var i = 0; i < $scope.tagList.length; i++) {
+        $scope.tagList[i].state = false;
+      }
       Listings.getBlogs().then(function(response) {
         console.log(response);
         if (response.status === 200) {
@@ -61,6 +80,8 @@ angular.module('listings').controller('blogController', ['$rootScope', '$scope',
 
     //Helper function for applyFilter()
     $scope.compareTags = function(tagList, blogTags) {
+      // TODO: Should we show only blogs that meet all conditions
+      // or as long as they meet one of the conditions
       for (var i = 0; i < tagList.length; i++) {
         if (blogTags.indexOf(tagList[i]) > -1) {
           return true;
@@ -68,13 +89,10 @@ angular.module('listings').controller('blogController', ['$rootScope', '$scope',
       }
     };
 
-    /*$scope.tagFilter = function(tagState, id) {
-      $scope.tags[id].state = tagState;
-      // TODO: Filter blogs
-    };*/
-
     Listings.getMostRecentBlog().then(function(response) {
       console.log(response);
       $scope.latestPost = response.data;
     });
+
+ 
   }]);

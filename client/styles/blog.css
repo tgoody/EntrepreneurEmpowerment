@@ -56,10 +56,36 @@
     position: -webkit-sticky;
     position: sticky;
     left: 5vw;
-    top: 170px;
+    top: 160px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding-bottom: 10px;
 }
 
-.tag-container > li {
+.tag-container button {
+    margin-top: 0;
+}
 
+.checkbox > label {
+    text-transform: capitalize !important;
+}
+
+.checkboxContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 1000px) {
+    .tag-container {
+        position: relative;
+        top: 20px;
+        left: 0;
+        width: 80%;
+        margin-left: 10%;
+        margin-bottom: 60px;
+    }
+
+    .checkboxContainer {
+        flex-direction: row;
+        flex-flow: wrap;
+    }
 }

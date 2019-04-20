@@ -1,6 +1,5 @@
 angular.module('app.auth').controller('navController', ['$rootScope', '$scope', 'authService', '$location',
   function($rootScope, $scope, authService, $location) {
-    $scope.isAdmin = false;
     // highlight correct nav btn
     $scope.$on('$routeChangeStart', function($event, next, current) { 
       // update nav bar active
@@ -11,9 +10,10 @@ angular.module('app.auth').controller('navController', ['$rootScope', '$scope', 
           // User is signed in.
           console.log('logged in');
           $rootScope.userId = user.uid;
+          $rootScope.email = user.email;
           authService.isAdmin({uid: $rootScope.userId}).then(function(response) {
             // makes sure ng-show actually updates
-            $scope.isAdmin = response.data;
+            $rootScope.isAdmin = response.data;
           });
           $scope.$apply(function(){
             $rootScope.loggedIn = true;
@@ -22,10 +22,11 @@ angular.module('app.auth').controller('navController', ['$rootScope', '$scope', 
           // No user is signed in.
           console.log('signed out');
           $rootScope.userId = null;
+          $rootScope.email = null;
           $scope.$apply(function(){
             $rootScope.loggedIn = false;
           });
-          $scope.isAdmin = false;
+          $rootScope.isAdmin = false;
         }
     });
 

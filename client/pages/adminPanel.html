@@ -8,10 +8,13 @@
             <button class="side-nav-btn" ng-click="navClicked(0)">Resources</button>
           </li>
           <li class="side-nav-item" id="nav-item-1">
-            <button class="side-nav-btn" ng-click="navClicked(1)">Blog</button>
-          </li>
+              <button class="side-nav-btn" ng-click="navClicked(1)">Community Spotlight</button>
+            </li>
           <li class="side-nav-item" id="nav-item-2">
-            <button class="side-nav-btn" ng-click="navClicked(2)">Calendar Events</button>
+            <button class="side-nav-btn" ng-click="navClicked(2)">Blog Post</button>
+          </li>
+          <li class="side-nav-item" id="nav-item-3">
+            <button class="side-nav-btn" ng-click="navClicked(3)">Calendar Events</button>
           </li>
         </ul>
     </div>
@@ -66,25 +69,42 @@
           </table>
         </div>
       </div>
+      <div class="row spotlightContent hide">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Community Spotlight</h2>
+            <!-- input for spotlight -->
+            <input type="text" placeholder="spotlight title" ng-model="spotlight.title"/>
+            <textarea type="text" placeholder="Enter spotlight" ng-model="spotlight.body"></textarea>
+            <div class="btnContainer">
+              <!-- add post -->
+              <button class="btn-secondary" ng-click="addSpotlight()">Add Community Spotlight</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="row blogContent hide">
         <div class="row">
           <div class="col-md-12">
             <h2>Post to blog</h2>
+            <!-- List of Tags -->
+            <div class="tagHorizontal">
+              <div class="checkbox" ng-repeat="tag in tagList">
+                <label>
+                  <input type="checkbox" ng-model="tag.state">
+                  <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                  {{tag.name}}
+                </label>
+              </div>
+            </div>
             <!-- input for blog -->
             <input type="text" placeholder="Post title" ng-model="blogpost.title"/>
             <textarea type="text" placeholder="Enter post" ng-model="blogpost.body"></textarea>
-            <!-- List of Tags -->
-            <div ng-repeat="tag in tagList">
-              <label>{{tag.name}}:
-                  <input type="checkbox" ng-model="tag.state">
-              </label><br/>
-            </div>
-            <div ng-repeat="tag in tagList">
-              <tt>{{tag.name}} = {{tag.state}}</tt><br/>
-            </div>
             <h3> Tags </h3>
-            <div ng-repeat="tag in tagList" ng-if="tag.state === true">
-              {{tag.name}}
+            <div class="tagHorizontal">
+              <div style="padding: 5px 10px" ng-repeat="tag in tagList" ng-if="tag.state === true">
+                {{tag.name}}
+              </div>
             </div>
 
             <div class="btnContainer">
