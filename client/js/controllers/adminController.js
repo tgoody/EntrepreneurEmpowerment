@@ -138,6 +138,15 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
         $scope.verifyEvent = function(id) {
             console.log('verify Event');
             Listings.verifyEvent(id).then(function(response) {
+                var event = response.data;
+                // calendarEvent = {
+                //     summary: event.name,
+                //     location: event.address,
+                //     description: event.details,
+                //     start: {
+                //         dateTime: 
+                //     },
+                // };
                 console.log('Sucessfully verified a post!');
             }, function(error) {
                 console.log('Error in verifying a post!');
@@ -242,6 +251,10 @@ angular.module('listings').controller('adminController', ['$rootScope', '$scope'
                     Listings.uploadFile(requestData)
                     .then(function(response) {
                         console.log('Uploaded file: ', response.data);
+                        Listings.updateFbId(request._id, response.data._id)
+                        .then(function(response2) {
+                            console.log('id updated', response2.data);
+                        });
                     });
                 }).catch(function(error) {
                     // Handle any errors

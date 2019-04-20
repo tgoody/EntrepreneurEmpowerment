@@ -16,16 +16,31 @@ exports.create = function(req, res) {
   var newDoc = new Resource({
     name: req.body.filename,
     category: req.body.category,
-    url: req.body.url
+    url: req.body.url,
+    fbId: ''
   });
 
-  newDoc.save(function(err){
+  newDoc.save(function(err, doc){
 		if(err){
 			console.log(err);
 			res.status(400).send(err);
 		}
-		else{res.json(newDoc);}
-	});
+		else{
+      // save id again in a temp parameter for firebase access later
+      newDoc.fbId = doc._id;
+      // save this again with updated temp id
+      newDoc.save(function(err){
+        if(err){
+          console.log(err);
+          res.status(400).send(err);
+        }
+        else{
+          // save this again with updated temp id
+          res.json(newDoc);
+        }
+      });
+    }
+  });
 };
 
 exports.createVideo = function(req, res) {
@@ -78,6 +93,15 @@ exports.request = function(req, res) {
 
 exports.updateUrl = function(req, res) {
   Resource.findByIdAndUpdate({_id: req.body.id}, {url: req.body.url},
+    {new: true}, function(err, doc) {
+      if (err) res.status(400).send(err);
+
+      res.send(doc);
+    });
+};
+
+exports.updateFbId = function(req, res) {
+  Resource.findByIdAndUpdate({_id: req.body.id}, {fbId: req.body.newId},
     {new: true}, function(err, doc) {
       if (err) res.status(400).send(err);
 
@@ -167,7 +191,7 @@ exports.addComment = function(req, res) {
 
 //Handles deletion of resources (ADMIN FEATURE ONLY)
 exports.delete = function(req, res) {
-  Resource.findByIdAndRemove(req.doc._id, function(err, deletedEvent){
+  Resource.findOneAndRemove({fbId: req.body.id}, function(err, deletedEvent){
     if(err) {
       console.log(err);
       res.status(400).send(err);

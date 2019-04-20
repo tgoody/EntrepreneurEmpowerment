@@ -28,7 +28,7 @@ angular.module('listings', []).factory('Listings', function($http) {
     },
 
     removeFile: function(id) {
-      return $http.delete('/resources/delete/'+id);
+      return $http.post('/resources/delete/', {id: id});
     },
 
     removeVideo: function(id) {
@@ -53,6 +53,10 @@ angular.module('listings', []).factory('Listings', function($http) {
 
     updateDocUrl:  function(url, id) {
       return $http.post('/resources/updateUrl', {url: url, id: id});
+    },
+
+    updateFbId:  function(newId, id) {
+      return $http.post('/resources/updateFbId', {newId: newId, id: id});
     },
 
     getDocs: function(category) {
