@@ -120,6 +120,8 @@ angular.module('listings', []).factory('Listings', function($http) {
   	return $http.post('/resources/add', doc);
   },
 
+  
+
     GoToBlog: function() {
       return $http.get('/blog');
     },
