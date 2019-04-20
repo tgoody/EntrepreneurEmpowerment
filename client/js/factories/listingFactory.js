@@ -88,6 +88,10 @@ angular.module('listings', []).factory('Listings', function($http) {
     return $http.get('/calendar/events');
   },
 
+  createEvent: function (calendarEvent) {
+    return $http.post('/calendar/add', calendarEvent);
+  },
+
   getBlog: function(id) {
     return $http.get('/blog/'+id);
   },
@@ -107,7 +111,7 @@ angular.module('listings', []).factory('Listings', function($http) {
   deleteBlog: function(id) {
     return $http.delete('/blog/'+id);
   },
-  
+
   addComment: function(blog){
   	return $http.post('/blog/add', blog);
   },
