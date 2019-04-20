@@ -2,27 +2,44 @@
   height: 100%;
   position: relative;
   padding-bottom: 97px;
+  padding-top: 175px;
+
 }
 
-.top-padding {
+/* .top-padding {
   padding-top: 150px;
-}
+} */
 
-.form-container {
+.registerContent .form-container {
+  /* margin-top: 15px; */
+
+  margin-left: auto;
+  margin-right: auto;
+
   padding: 2px 16px;
+  width: 400px;
+
+  border:none;
 }
 
 .form-title {
   text-align: center;
+  margin-bottom: 20px;
 }
 
-.form-label {
-  width: 100%;
-}
 
 .registerContent .form-input {
-  margin-bottom: 15px;
+  margin-top: 15px;
+  width: 100%;
+  height:50px;
   color: black;
+  border-color: #E0E5E6;
+  border-width: 1px;
+  background-color: #F8F8F8;
+}
+
+
+.form-label {
   width: 100%;
 }
 
@@ -37,36 +54,6 @@
 .red {
   background-color: rgb(230, 84, 84);
   color: white;
-}
-
-.form-container {
-  margin-left: auto;
-  margin-right: auto;
-
-  padding: 2px 16px;
-  /* padding-top: 150px; */
-  width: 400px;
-
-  border:none;
-}
-
-.form-title {
-  text-align: center;
-  margin-bottom: 20px;
-
-}
-
-.form-label {
-  width: 100%;
-}
-
-
-.form-input {
-  width: 100%;
-  height:50px;
-  border-color: #E0E5E6;
-  border-width: 1px;
-  background-color: #F8F8F8;
 }
 
 .details-container {
