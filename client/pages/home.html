@@ -55,7 +55,12 @@
         <div class="col-md-8 spotlightInfo">
           <h4>Spotlight: High Impact Community Programs</h4>
           <h1>{{ spotlight.title }}</h1>
-          <p>{{ spotlight.body }}</p>
+          <!-- <p class="more">  -->
+            <p>
+            {{ spotlight.body }} 
+          </p>
+          <a class="btn-slide animation animated-item-3" href="#/blog">Read More</a>
+
         </div>
       </div>
     </div>
@@ -83,7 +88,7 @@
       <div class="text-center">
         <p ng-bind="latestPost.created_at | date:'MM/dd/yyyy hh:mm:ss'"></p>
         <h2> {{ latestPost.title }} </h2>
-        <p> {{ latestPost.body }} </p>
+        <p class="more"> {{ latestPost.body }} </p>
         <a class="btn-slide animation animated-item-3" href="#/blog">Read More</a>
       </div>
     </div>
@@ -111,3 +116,4 @@
         </div>
       </div>
     </div>
+    
