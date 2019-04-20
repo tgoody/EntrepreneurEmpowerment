@@ -15,7 +15,8 @@ var calendarSchema = new Schema({
   address: String,
   details: String,
   host: String,
-  time: String,
+  startTime: String,
+  endTime: String,
   created_at: Date,
   updated_at: Date,
   approved: Boolean
