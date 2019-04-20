@@ -20,13 +20,15 @@
 
               <input class="form-input" type="date" placeholder="Date" ng-model="event.eventDate"></input>
 
+              <input class="form-input" type="time" placeholder="Time" ng-model="event.startTime"></input>
+
+              <input class="form-input" type="time" placeholder="Time" ng-model="event.endTime"></input>
+
               <input class="form-input" type="text" placeholder="Address" ng-model="event.address"></input>
 
               <input class="form-input" type="text" placeholder="Details" ng-model="event.details"></input>
 
               <input class="form-input" type="text" placeholder="Hosted by" ng-model="event.host"></input>
-
-              <input class="form-input" type="time" placeholder="Time" ng-model="event.time"></input>
 
               <button class="btn-primary" type="submit" ng-click="addEvent()">Submit event</button>
           </form>

@@ -40,7 +40,8 @@ exports.update = function(req, res) {
     address: req.event.address,
     details: req.event.details,
     host: req.event.host,
-    time: req.event.time,
+    startTime: req.event.startTime,
+    endTime: req.event.endTime,
     created_at: req.event.created_at,
     updated_at: new Date,
     approved: true
