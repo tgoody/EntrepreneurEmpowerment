@@ -6,19 +6,42 @@
   -->
 
 <section class="researchContent"> 
+  <!-- <div class="col-m></div> -->
   <div class="container">
-    <h1>Research</h1>
-    <div class="row">
-      <div class="col-md-7">
+    <!-- <div class="row"> -->
+      <div class="col-md-12">
+        <h1>Research</h1>
         <h2>Short blurb title</h2>
         <p>We have been gathering this data etc etc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae lobortis nisi, a faucibus ligula. Maecenas imperdiet aliquam sem, id vestibulum ex euismod faucibus. Mauris ac iaculis ligula. Cras cursus a lacus sed tristique. Ut pretium dapibus nunc condimentum tempor. Nunc porttitor convallis justo, eu egestas odio sollicitudin in. Nunc hendrerit ultrices gravida.</p>
         <p>Morbi faucibus auctor eleifend. Nunc varius lacus ut tortor placerat, et scelerisque nisl semper. Nullam efficitur nulla vitae tellus congue consequat. Phasellus ac arcu eu enim sollicitudin interdum eu vitae neque. Sed sapien mauris, tincidunt volutpat quam vitae, ultrices hendrerit sapien. Morbi et dignissim libero. Ut et arcu eu ipsum rhoncus egestas. Aenean pharetra mattis orci, at luctus massa aliquam finibus.</p>
       </div>
-      <div class="col-md-4 col-md-offset-1">
-        <h2>MORE info?</h2>
-        <p>on my page? its more likely than youd think varius lacus ut tortor placerat, et scelerisque nisl semper. Nullam efficitur nulla vitae tellus congue consequat. Phasellus ac arcu eu enim sollicitudin interdum eu vitae neque. Sed sapien mauris, tincidunt volutpat quam vitae, ultrices hendrerit sapien. Morbi et dignissim libero. Ut et arcu eu ipsum rhoncus egestas.</p>
-      </div>
+      <div class="col-md-12">
+          <div class="researchBook">
+              <div class="row">
+                  <div class="col-md-9">
+                      <h2>Poverty and Entrepreneurship in Developed Economies</h2>
+                      <h5>by Michael H. Morris, Susana C. Santos, Xaver Neumeyer</h5>
+                      <p>While extensively explored as a solution to poverty at the base of the pyramid, this is the first in-depth examination of entrepreneurship and the poor within advanced economies. The authors explore the underlying nature of poverty and draw implications for new venture creation. Entrepreneurship is presented as a source of empowerment that represents an alternative pathway out of poverty. </p>
+                      <hr>
+                      <p>Purchase on: <a href="https://www.amazon.com/Poverty-Entrepreneurship-Developed-Economies-Michael/dp/1788111532"><b>Amazon</b></a></p>
+                  
+                    </div>
+                  <div class="col-md-3">
+                      <img src="../images/book.jpg">
+                  </div>
+                </div>
+                </div>
     </div>
+    <!-- </div> -->
+
+    <script>
+    $('.one').on('click',function(){
+        $(this).next('.two').slideToggle();
+    });
+        </script>
+        
+        
+
 
     <section id="research">
       <div class="row">
@@ -28,52 +51,57 @@
         <div class="col-md-6">
           <div class="description">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis vel tortor ac rhoncus. Donec ut eros ut felis imperdiet aliquam. Ut aliquam quam a ipsum tristique, ut consequat ante tempus. Curabitur bibendum nisi quis condimentum lobortis. Donec nec pellentesque neque, in suscipit diam.</p>
-            <p class="readmore">
-              <b ng-click="showDetails = ! showDetails">Learn more</a></b>
-              <div class="readmore-details" ng-class="{ 'hidden': ! showDetails }">
+            <p class="one"><b>Learn more</a></b>
+              <div class="two">
+                <p>links to extra books, articles, videos, etc related</p>
+                <p>links to extra books, articles, videos, etc related</p>
+                <p>links to extra books, articles, videos, etc related</p>
+                <p>links to extra books, articles, videos, etc related</p>
+                <p>links to extra books, articles, videos, etc related</p>
+                <p>links to extra books, articles, videos, etc related</p>
                 <p>links to extra books, articles, videos, etc related</p>
               </div>
-            </p>
           </div>
         </div>
       </div>
 
 
       <div class="row">
-          <div class="col-md-4 col-md-offset-1">
-            <h2>Topic Title that maybe will be long who knows</h2>
-          </div>
-          <div class="col-md-6">
-            <div class="description">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis vel tortor ac rhoncus. Donec ut eros ut felis imperdiet aliquam. Ut aliquam quam a ipsum tristique, ut consequat ante tempus. Curabitur bibendum nisi quis condimentum lobortis. Donec nec pellentesque neque, in suscipit diam.</p>
-              <p class="readmore">
-                <b ng-click="showDetails = ! showDetails">Learn more</b>
-                <div class="readmore-details" ng-class="{ 'hidden': ! showDetails }">
-                  <p>links to extra books, articles, videos, etc related</p>
-                </div>
-              </p>
-            </div>
-          </div>
-        </div>
-    </section>
-
-    <div class="row">
         <div class="col-md-4 col-md-offset-1">
-          <h2>Topic Title thats medium</h2>
+          <h2>Topic Title that maybe will be long who knows</h2>
         </div>
         <div class="col-md-6">
           <div class="description">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis vel tortor ac rhoncus. Donec ut eros ut felis imperdiet aliquam. Ut aliquam quam a ipsum tristique, ut consequat ante tempus. Curabitur bibendum nisi quis condimentum lobortis. Donec nec pellentesque neque, in suscipit diam.</p>
-            <p class="readmore">
-              <b ng-click="showDetails = ! showDetails">Learn more</a></b>
-              <div class="readmore-details" ng-class="{ 'hidden': ! showDetails }">
-                <p>links to extra books, articles, videos, etc related</p>
+            <p class="one"><b>Learn more</a></b>
+              <div class="two">
+                  <p>links to extra books, articles, videos, etc related</p>
               </div>
-            </p>
           </div>
         </div>
       </div>
 
+      <div class="row">
+          <div class="col-md-4 col-md-offset-1">
+            <h2>Topic Title thats medium</h2>
+          </div>
+          <div class="col-md-6">
+            <div class="description">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis vel tortor ac rhoncus. Donec ut eros ut felis imperdiet aliquam. Ut aliquam quam a ipsum tristique, ut consequat ante tempus. Curabitur bibendum nisi quis condimentum lobortis. Donec nec pellentesque neque, in suscipit diam.</p>
+              <p class="one"><b>Learn more</a></b>
+                <div class="two">
+                  <p>links to extra books, articles, videos, etc related</p>
+                  <p>links to extra books, articles, videos, etc related</p>
+                  <p>links to extra books, articles, videos, etc related</p>
+                  <p>links to extra books, articles, videos, etc related</p>
+                  <p>links to extra books, articles, videos, etc related</p>
+                  <p>links to extra books, articles, videos, etc related</p>
+                  <p>links to extra books, articles, videos, etc related</p>
+                </div>
+            </div>
+          </div>
+        </div>
+  
 
 
   </div>
