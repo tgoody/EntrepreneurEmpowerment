@@ -3,7 +3,7 @@
     padding-bottom: 100px;
 }
 
-#letters h1 span {
+.letters h1 span {
     font-size: 150px;
     font-weight:bold;
     text-align-last: center;
@@ -22,11 +22,12 @@
     height: 180px;
     width:180px;
     padding-top: 65px;
-    margin-left: 15px;
+    /* margin-left: 15px; */
 }
 
-.spoderContent .description    {
-    margin-left: -170px;
+#spoderContent .description    {
+    padding-top: 20px;
+    margin-left: 30px;
     margin-top: 25px;
     /* margin-bottom: 20px; */
     height: 160px;
