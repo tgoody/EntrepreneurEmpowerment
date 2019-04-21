@@ -4,30 +4,40 @@
         <div class="titleContainer">
           <h2>Resources</h2>
         </div>
-        <div>
-          <select class="formInput" name="categorySelect" id="categorySelect" ng-change="categorySelected()"
-          ng-options="option.name for option in categorySelect.availableOptions track by option.id"
-          ng-model="categorySelect.selectedOption">
-          </select>
+        <div class="selectContainer">
+          <div class="headerSelect">
+              <select class="formInput" name="categorySelect" id="categorySelect" ng-change="categorySelected()"
+              ng-options="option.name for option in categorySelect.availableOptions track by option.id"
+              ng-model="categorySelect.selectedOption">
+              </select>
+            </div>
+            <button class="btn-secondary" ng-click="toggleView()">View {{ resourceType }}</button>
         </div>
-        <button class="btn-secondary" ng-click="toggleView()">View {{ resourceType }}</button>
       </div>
       <ul class="docList">
-        <form id="requestUploadFileForm">
-          <div class="formContainer centerAlign">
-              <input class="resourceInput" type="file" demo-file-model="resource" name="resource" id="resource"/>
-              <input class="btn-primary" type="submit" value="Request to upload resource"/>
-          </div>
-        </form>
         <li class="docItem" ng-repeat="doc in docs">
+          <i ng-if="isAdmin" ng-click="removeDoc($index, doc.fbId)" class="fa fa-times-circle"></i>           
           <a id="doc{{$index}}" target="_blank" href="{{ doc.url }}" download="{{ doc.name }}">
             {{ doc.name }}
           </a>
-          <button ng-if="isAdmin" ng-click="removeDoc(doc.fbId)" class="btn-primary">Remove</button>              
         </li>
+        <form id="requestUploadFileForm">
+            <h4>Would you like to contribute to our Resources?</h4>
+            <div class="formContainer centerAlign">
+                <input class="resourceInput" type="file" demo-file-model="resource" name="resource" id="resource"/>
+                <input class="btn-primary" type="submit" value="Request to upload resource"/>
+            </div>
+          </form>
       </ul>
       <ul class="vidList hide">
+        <li class="docItem" ng-repeat="vid in videos">
+          <i ng-if="isAdmin" ng-click="removeVid($index, vid._id)" class="fa fa-times-circle"></i>              
+          <a target="_blank" href="{{ vid.link }}">
+            {{ vid.name }}
+          </a>
+        </li>
         <div class="vidRequestContainer">
+          <h4>Would you like to contribute to our Resources?</h4>
           <div class="horizontalInput">
             <input ng-model="videoData.name" type="text" placeholder="Video name"/>
             <input ng-model="videoData.link" type="text" placeholder="Video link"/>
@@ -36,12 +46,32 @@
               Request to upload video
           </button>
         </div>
-        <li class="docItem" ng-repeat="vid in videos">
-          <a target="_blank" href="{{ vid.link }}">
-            {{ vid.name }}
-          </a>
-          <button ng-if="isAdmin" ng-click="removeVid(vid._id)" class="btn-primary">Remove</button>              
-        </li>
       </ul>
   </div>
 </section>
+
+    <!-- alert modal -->
+    <div id="alertModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h1>Are you sure you want to delete this?</h1>
+          <button class="btn-primary" ng-click="cancelDelete()">Cancel</button>
+          <button class="btn-secondary" ng-click="confirmDelete()">Delete</button>
+        </div>
+    </div>
+
+    <!-- message modal -->
+    <div id="msgModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
+        <!-- Modal content -->
+        <div class="popup-content">
+          <div ng-if="msgModalParam.success" class="o-circle c-container__circle o-circle__sign--success">
+            <div class="o-circle__sign"></div>  
+          </div>   
+          
+          <div ng-if="!msgModalParam.success" class="o-circle c-container__circle o-circle__sign--failure">
+            <div class="o-circle__sign"></div>  
+          </div>   
+          <h2>{{ msgModalParam.popupMessage }}</h2>
+        </div>
+    </div>
