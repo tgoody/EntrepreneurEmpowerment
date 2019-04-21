@@ -23,10 +23,38 @@
 
 .researchContent .description    {
     margin-top: 20px;
-    height: 160px;
+    /* height: 160px; */
     text-align:justify;
 }
 
 #research   {
     padding-top: 75px;
+}
+
+.researchContent h1,h2{
+    text-align: left;
+}
+
+.researchBook   {
+    margin:50px;
+    background: rgb(0,0,0,.1);
+    padding:50px;
+}
+
+.researchBook img{
+    width: 90%;
+    float: right;
+}
+
+
+.one {
+    position: relative;
+    top: 0;
+    z-index: 1;
+}
+
+.two {
+    position: relative;
+    z-index: -1;
+    display:none;
 }
