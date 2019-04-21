@@ -45,7 +45,7 @@
     margin: auto;
     padding: 20px 20px 30px 20px;
     border: 1px solid #888;
-    width: 45%;
+    width: 40%;
 
   }
   
@@ -65,12 +65,13 @@
   }
 
 .form-horizontal  {
-    margin: 5% 15%;
+    text-align: justify;
+    margin: 5% 10%;
 }
 
 .form-group   {
     margin:auto;
-    width: 80%;
+    /* width: 100%; */
 }
 
 
@@ -94,4 +95,8 @@
 
 .modal-content p   {
     margin: 20px 50px 0px 50px ;
+}
+
+.control-label   {
+    padding-top:15px !important;
 }
