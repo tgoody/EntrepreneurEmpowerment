@@ -51,6 +51,13 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
         }
       };
 
+      // Modal setup
+      // Get the modal
+      var modal = document.getElementById('alertModal');
+      var msgModal = document.getElementById('msgModal');
+      $scope.modalParams = {};
+      $scope.msgModalParam = {};
+
       $("#requestUploadFileForm").submit(function(e){
         e.preventDefault();
         // send request to upload doc
@@ -64,45 +71,28 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
           Listings.requestResource(request)
           .then(function(response) {
             console.log('resource request sent', response.data);
-            // Clear file input
-            $('#resource').val('');
             // Save file in storage
             if (!response.data) {
               console.log('no data');
+              $scope.msgModalParam.popupMessage = "Failed to send request";
+              $scope.msgModalParam.success = false;
+              $('#resource').val('');
+              setTimeout(function() {
+                msgModal.style.display = 'block';
+              }, 500);
               return;
             }
             var storageRef = firebase.storage().ref();
             var fileRef = storageRef.child('resources').child(response.data._id);
             var uploadTask = fileRef.put(file);
 
-            uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-              function(snapshot) {
-                  var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                  console.log('Upload is ' + progress + '% done');
-                  switch (snapshot.state) {
-                      case firebase.storage.TaskState.PAUSED:
-                      console.log('Upload is paused');
-                      break;
-                      case firebase.storage.TaskState.RUNNING:
-                      console.log('Upload is running');
-                      break;
-                  }
-              },
-              function(error) {
-                  switch (error.code) {
-                      case 'storage/unauthorized':
-                          console.log('User does not have permission to access the object.');
-                          break;
-                      case 'storage/canceled':
-                          console.log('User canceled the upload.');
-                          break;
-                      case 'storage/unknown':
-                          console.log(' Unknown error occurred, Please try later.');
-                          break;
-                  }
-              }, function() {
-                  // TODO: Alert user that it was successful and clear input field
-              });
+            $scope.msgModalParam.popupMessage = "Resource request sent";
+            $scope.msgModalParam.success = true;
+            $('#resource').val('');
+            setTimeout(function() {
+              msgModal.style.display = 'block';
+            }, 500);
+        
           });
         }
       });
@@ -114,40 +104,139 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
             $scope.videoData.category = $scope.categorySelect.selectedOption.id;
             $scope.videoData.type = 'video';
             Listings.requestResource($scope.videoData).then(function(response) {
-              console.log('video request sent', response.data);
+              if (!response.data) {
+                $scope.msgModalParam.popupMessage = "Resource request failed";
+                $scope.msgModalParam.success = false;
+              } else {
+                $scope.msgModalParam.popupMessage = "Resource request sent";
+                $scope.msgModalParam.success = true;
+              }
               $scope.videoData.name = '';
               $scope.videoData.link = '';
+              setTimeout(function() {
+                msgModal.style.display = 'block';
+              }, 500);
             });
         } else {
-          console.log ('Please fill in all the fields');
+          $scope.msgModalParam.popupMessage = "Please fill in all the fields";
+          $scope.msgModalParam.success = false;
+          setTimeout(function() {
+            msgModal.style.display = 'block';
+          }, 500);
         }
       };
 
-      $scope.removeDoc = function(id) {
-        // Delete from storage
-        if (!id) {
-          console.log('id does not exist');
-          return;
-        }
-        var storageRef = firebase.storage().ref();
-        var fileRef = storageRef.child('resources').child(id);
-        // Delete the file
-        fileRef.delete().then(function() {
-            // File deleted successfully
-            console.log('file removed');
-            Listings.removeFile(id).then(function(response) {
-              console.log(response.data);
+      $scope.removeDoc = function(index, id) {
+        $scope.modalParams.type = 'file';
+        $scope.modalParams.id = id;
+        $scope.modalParams.index = index;
+        setTimeout(function() {
+          modal.style.display = 'block';
+        }, 500);
+      };
+
+      $scope.removeVid = function(index, id) {
+        $scope.modalParams.type = 'video';
+        $scope.modalParams.id = id;
+        $scope.modalParams.index = index;
+        setTimeout(function() {
+          modal.style.display = 'block';
+        }, 500);
+      };
+
+      $scope.cancelDelete = function() {
+        modal.style.display = 'none';
+        $scope.modalParams.type = null;
+        $scope.modalParams.id = null;
+        $scope.modalParams.index = null;
+      };
+
+      $scope.confirmDelete = function() {
+        if ($scope.modalParams.type && $scope.modalParams.id && $scope.modalParams.index !== null) {
+          if($scope.modalParams.type == 'file') {
+            // Delete from storage
+            if (!$scope.modalParams.id) {
+              console.log('id does not exist');
+              return;
+            }
+            var id = $scope.modalParams.id;
+            var index = $scope.modalParams.index;
+            var storageRef = firebase.storage().ref();
+            var fileRef = storageRef.child('resources').child(id);
+            // Delete the file
+            fileRef.delete().then(function() {
+                // File deleted successfully
+                Listings.removeFile(id).then(function(response) {
+                  if (response.data) {
+                    // Show message
+                    $scope.msgModalParam.popupMessage = "File removed";
+                    $scope.msgModalParam.success = true;
+                    // remove item from list
+                    $scope.docs.splice(index, 1);
+                  } else {
+                    $scope.msgModalParam.popupMessage = "Failed to remove file";
+                    $scope.msgModalParam.success = false;
+                  }
+                  setTimeout(function() {
+                    msgModal.style.display = 'block';
+                  }, 500);
+                });
+            }.bind(this)).catch(function(error) {
+              $scope.msgModalParam.success = false;
+              $scope.msgModalParam.popupMessage = "Failed to remove file";
+              setTimeout(function() {
+                msgModal.style.display = 'block';
+              }, 500);
             });
-        }).catch(function(error) {
-            // Uh-oh, an error occurred!
-            console.log('file not removed: ', error);
-        });
+          } else {
+            // video
+            Listings.removeVideo($scope.modalParams.id).then(function(response) {
+              if (response.data) {
+                // Show message
+                  $scope.msgModalParam.success = true;
+                  $scope.msgModalParam.popupMessage = "Video removed";
+                  // remove item from list
+                  $scope.videos.splice($scope.modalParams.index, 1);
+              } else {
+                  $scope.msgModalParam.success = false;
+                  $scope.msgModalParam.popupMessage = "Failed to remove video";
+              }
+              setTimeout(function() {
+                msgModal.style.display = 'block';
+              }, 500);
+            });
+          }
+        }
+
+        modal.style.display = 'none';
+        $scope.modalParams.type = null;
+        $scope.modalParams.id = null;
+        $scope.modalParams.index = null;
       };
 
-      $scope.removeVid = function(id) {
-        Listings.removeVideo(id).then(function(response) {
-          console.log(response.data);
-        })
-      };
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+          modal.style.display = "none";
+          $scope.modalParams.type = null;
+          $scope.modalParams.id = null;
+          $scope.modalParams.index = null;
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = 'none';
+            $scope.modalParams.type = null;
+            $scope.modalParams.id = null;
+            $scope.modalParams.index = null;
+          } else if (event.target == msgModal) {
+            msgModal.style.display = "none";
+            $scope.msgModalParam.type = null;
+            $scope.msgModalParam.id = null;
+          }
+      }
     }
 ]);

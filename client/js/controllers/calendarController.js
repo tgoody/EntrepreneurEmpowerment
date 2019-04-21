@@ -1,20 +1,32 @@
 angular.module('listings').controller('calendarController', ['$rootScope', '$scope', 'Listings',
  function($rootScope, $scope, Listings) {
 
+    var msgModal = document.getElementById('msgModal');
+    $scope.msgModalParam = {};
+
     $scope.addEvent = function() {
-        console.log('add event');
         if ($rootScope.loggedIn) {
             Listings.addEvent($scope.event).then(function(response) {
-                console.log('Sucessfully tried to add event!');
                 $scope.event.eventName = '';
                 $scope.event.address = '';
                 $scope.event.details = '';
                 $scope.event.host = '';
                 $scope.event.startTime = '';
                 $scope.event.endTime = '';
-
+                if (response.data) {
+                    $scope.msgModalParam.popupMessage = 'Request Successful!';
+                    $scope.msgModalParam.success = true;
+                } else {
+                    $scope.msgModalParam.popupMessage = 'Request Failed';
+                    $scope.msgModalParam.success = false;
+                }
+                openMsgModal();
+                closeMsgModal(2500);
                 }, function(error) {
-                console.log('Error in trying to add event!');
+                    $scope.msgModalParam.popupMessage = 'Failed to request event.';
+                    $scope.msgModalParam.success = false;            
+                    openMsgModal();
+                    closeMsgModal(2500);
                 });
         } else {
             alert('Not logged in');
@@ -45,6 +57,22 @@ angular.module('listings').controller('calendarController', ['$rootScope', '$sco
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+        } else if (event.target == msgModal) {
+            closeMsgModal(100);
         }
+    }
+
+    function openMsgModal() {
+        setTimeout(function() {
+            msgModal.style.display = 'block';
+        }, 500);
+    }
+
+    function closeMsgModal(delay) {
+        setTimeout(function() {
+            msgModal.style.display = "none";
+            $scope.msgModalParam.popupMessage = '';
+            $scope.msgModalParam.success = null;
+        }.bind(this), delay);
     }
 }]);
