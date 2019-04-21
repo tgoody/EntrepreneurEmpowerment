@@ -16,6 +16,8 @@
             addUser: addUser,
             userExists: userExists,
             isAdmin: isAdmin,
+            updateEmail: updateEmail,
+            updatePassword: updatePassword,
             login: login,
             googleSignIn: googleSignIn,
             logout: logout
@@ -39,6 +41,14 @@
 
         function isAdmin(uid) {
             return $http.post('/api/accounts/checkAdmin', uid);
+        }
+
+        function updateEmail(email) {
+            return firebaseAuthObject.$updateEmail(email);
+        }
+
+        function updatePassword(password) {
+            return firebaseAuthObject.$updatePassword(password);
         }
 
         function login(user) {

@@ -1,12 +1,5 @@
 <section class="calendarContent">
-  <div class="container" >
-    <div class="googleCalendar">
-        <iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=mq4sttje198ocf2o9cekh76m9s%40group.calendar.google.com&amp;color=%23711616&amp;ctz=America%2FNew_York" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-    </div>
-  </div>
-
-
-  <section id="submit">
+  <div id="submit">
       <button id="myBtn" class="btn-primary">Submit new event</button>
 
       <div id="myModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
@@ -16,23 +9,63 @@
           <span class="close">&times;</span>
 
           <form class="form-horizontal">
-              <input class="form-input" type="text" placeholder="Event name" ng-model="event.eventName"></input>
+              <p>Submit a community hosted event to share with the rest of the community. Or request for us to hold a workshop for your organization.</p>
+              <br>
+                  <div class="form-group">
+                    <label>Event name</label>
+                    <input class="form-input" type="text" ng-model="event.eventName"></input>
+                  </div>
+            
+                  <div class="form-group">
+                    <label>Start time</label>
+                    <input class="form-input" type="datetime-local" ng-model="event.startTime"></input>
+                  </div>
+            
+                  <div class="form-group">
+                    <label>End time</label>
+                    <input class="form-input" type="datetime-local" ng-model="event.endTime"></input>
+                  </div>
+            
+                  <div class="form-group">
+                    <label>Address</label>
+                    <input class="form-input" type="text"ng-model="event.address"></input>
+                  </div>
+            
+                  <div class="form-group">
+                    <label>Details</label>
+                    <input class="form-input" type="text" ng-model="event.details"></input>
+                  </div>
 
-              <input class="form-input" type="date" placeholder="Date" ng-model="event.eventDate"></input>
-
-              <input class="form-input" type="text" placeholder="Address" ng-model="event.address"></input>
-
-              <input class="form-input" type="text" placeholder="Details" ng-model="event.details"></input>
-
-              <input class="form-input" type="text" placeholder="Hosted by" ng-model="event.host"></input>
-
-              <input class="form-input" type="time" placeholder="Time" ng-model="event.time"></input>
-
-              <button class="btn-primary" type="submit" ng-click="addEvent()">Submit event</button>
-          </form>
+                  <div class="form-group">
+                    <label>Hosted by</label>
+                    <input class="form-input" type="text" ng-model="event.host"></input>
+                  </div>
+        
+                  <button class="btn-primary" type="submit" ng-click="addEvent()">Submit event</button>
+              </form>
         </div>
       </div>
-    </section>
-
-  <!--the next 3 might actually be built into google calendar idk-->
+    </div>
+  
+  <div class="container" >      
+    <div class="googleCalendar">
+      <iframe src="https://calendar.google.com/calendar/b/2/embed?showTitle=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=entrempowerment%40gmail.com&amp;color=%231B887A&amp;ctz=America%2FNew_York" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+      <a target="_blank" href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=Nm8zNzM0NGFtNzNvMTdqdXVjZzkybDRiYWUgZW50cmVtcG93ZXJtZW50QG0&amp;tmsrc=entrempowerment%40gmail.com"><img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_en.gif"></a>
+    </div>
+  </div>
 </section>
+
+  <!-- message modal -->
+  <div id="msgModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
+      <!-- Modal content -->
+      <div class="popup-content">
+        <div ng-if="msgModalParam.success" class="o-circle c-container__circle o-circle__sign--success">
+          <div class="o-circle__sign"></div>  
+        </div>   
+        
+        <div ng-if="!msgModalParam.success" class="o-circle c-container__circle o-circle__sign--failure">
+          <div class="o-circle__sign"></div>  
+        </div>   
+        <h2>{{ msgModalParam.popupMessage }}</h2>
+      </div>
+  </div>

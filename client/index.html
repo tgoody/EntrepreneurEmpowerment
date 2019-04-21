@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="styles/register.css">
     <link rel="stylesheet" href="styles/research.css">
     <link rel="stylesheet" href="styles/spoder.css">
+    <link rel="stylesheet" href="styles/settings.css">
     <link rel="stylesheet" href="styles/animate.css">
     <link rel="stylesheet" href="styles/font-awesome.min.css">
   </head>
@@ -35,7 +36,7 @@
                 <span class="icon-bar"></span>
               </button>
               <div class="navbar-brand">
-                <a href="#/home" class="web-header"><h1><span>E</span>E</h1></a>
+                <a href="#/home" class="web-header"><span>E</span>E</a>
               </div>
             </div>
             
@@ -68,6 +69,7 @@
                   <li ng-show="!loggedIn" role="presentation" class="active-{{currentPage}}"><a href="#/login" id="nav-login">Login</a></li>
                   <li ng-show="!loggedIn" role="presentation" class="active-{{currentPage}}"><a href="#/register" id="nav-register">Register</a></li>
                   <li ng-show="loggedIn && isAdmin" role="presentation" class="active-{{currentPage}}"><a href="#/admin" id="nav-admin">Admin</a></li>
+                  <li ng-show="loggedIn && !isAdmin" role="presentation" class="active-{{currentPage}}"><a href="#/settings" id="nav-settings">Settings</a></li>
                   <li ng-show="loggedIn" role="presentation" ng-click="logout()"><a href="#/home">Logout</a></li>
                 </ul>
               </div>
@@ -77,14 +79,21 @@
       </nav>
     </header>
 
-    <div ng-view></div>
+    <div class="websiteStuff">
+      <div ng-view></div>
+      <div class="push"></div>
+    </div>
 
     <footer>
       <div class="footer">
         <div class="container">
           <div class="col-md-4">
             <ul class="social-network">
-              <li><a href="#" class="fb tool-tip"><i class="fa fa-facebook"></i></a></li>
+              123 Fake Address
+              <br>Gainesville, FL 12345
+              <br>
+              (123) 456-7890
+              <!-- <li><a href="#" class="fb tool-tip"><i class="fa fa-facebook"></i></a></li> -->
               <!-- <li><a href="#" class="twitter tool-tip"><i class="fa fa-twitter"></i></a></li>
               <li><a href="#" class="gplus tool-tip"><i class="fa fa-google-plus"></i></a></li>
               <li><a href="#" class="linkedin tool-tip"><i class="fa fa-linkedin"></i></a></li>
@@ -94,8 +103,7 @@
 
           <div class="col-md-4 col-md-offset-4">
             <div class="copyright">
-              Address and Contact info <br>
-              &copy; Entrepreneur Empowerment. All Rights Reserved.
+              &copy; Entrepreneurship Empowerment<br>by Michael H. Morris<br>All Rights Reserved
             </div>
           </div>
         </div>
@@ -115,12 +123,12 @@
     <script>
       // Set up Firebase configurations
       var config = {
-          apiKey: "AIzaSyBXnHZlfDp1gZZTelro4wmI_9k7AFfrGQI",
-          authDomain: "entrepreneurship-9edce.firebaseapp.com",
-          databaseURL: "https://entrepreneurship-9edce.firebaseio.com",
-          projectId: "entrepreneurship-9edce",
-          storageBucket: "gs://entrepreneurship-9edce.appspot.com/",
-          messagingSenderId: "1058715944518"
+        apiKey: "AIzaSyCwL630KvhwEy9yQDbohtZBUiuxqu6QoN4",
+        authDomain: "empowerment-b6bf4.firebaseapp.com",
+        databaseURL: "https://empowerment-b6bf4.firebaseio.com",
+        projectId: "empowerment-b6bf4",
+        storageBucket: "empowerment-b6bf4.appspot.com",
+        messagingSenderId: "176754797356"
         };
         firebase.initializeApp(config);
     </script>
@@ -138,6 +146,7 @@
     <script src="js/controllers/blogPostController.js"></script>
     <script src="js/controllers/calendarController.js"></script>
     <script src="js/controllers/docsController.js"></script>
+    <script src="js/controllers/settingsController.js"></script>
     <!-- Route config -->
     <script src="js/config.routes.js"></script>
 

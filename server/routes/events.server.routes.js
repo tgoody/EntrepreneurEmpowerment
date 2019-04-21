@@ -1,5 +1,6 @@
 /* Dependencies */
 var events = require('../controllers/event.server.controller.js'),
+    calendarApi = require('../controllers/calendar/calendar.server.controller.js'),
     express = require('express'),
     router = express.Router();
 
@@ -9,6 +10,9 @@ var events = require('../controllers/event.server.controller.js'),
  */
 
 //TODO: What to do with this?
+router.route('/add')
+  .post(calendarApi.addEvent);
+  
 router.route('/')
   .post(events.create);
 

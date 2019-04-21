@@ -1,5 +1,7 @@
 .blogSection {
     padding: 10px;
+    text-align: center;
+
 }
 
 .blogSection input {
@@ -7,31 +9,34 @@
 }
 
 .posts {
-    display: flex;
+    text-align: center;
+    /* display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; */
+    /* width:80%; */
 }
 
 .blogPost {
+    /* display: inline-block; */
+    /* margin:auto; */
     text-align: left;
     /* Add shadows to create the "card" effect */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
     transition: 0.3s;
-    width: 80%;
-}
-
-.blogPost:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    background: rgba(218, 218, 218, 0.2);
+    margin-bottom: 30px;
+    padding: 0 30px 30px 30px;
 }
 
 .postHeader {
-    padding: 5px;
+    /* padding: 0px 0px 0px 15px; */
     border-bottom: 0.5px solid #25436B;
 }
 
 .postDate {
+    margin-top:20px;
     font-size: 13px;
-    float: right;
+    /* float: right; */
 }
 
 .postContent {
@@ -39,8 +44,17 @@
     border-radius: 5px;
 }
 
+#blogContent .postContent   {
+    padding-top: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+}
+
 .commentSection {
     padding: 30px;
+    /* width:90%; */
 }
 
 .btnContainer {
@@ -53,13 +67,87 @@
 }
 
 .tag-container {
-    position: -webkit-sticky;
-    position: sticky;
-    left: 5vw;
-    top: 170px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    text-align: left;
+    /* position: -webkit-sticky; */
+    /* position: sticky; */
+    left: 1vw;
+    top: 60px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+    padding-bottom: 10px;
 }
 
-.tag-container > li {
+.tag-container button {
+    margin-top: 5px;
 
+}
+
+.checkbox > label {
+    text-transform: capitalize !important;
+}
+
+.checkboxContainer {
+    /* display: flex; */
+    flex-direction: column;
+}
+
+@media (max-width: 1000px) {
+    .tag-container {
+        position: relative;
+        top: 20px;
+        left: 0;
+        width: 80%;
+        margin-left: 10%;
+        margin-bottom: 60px;
+    }
+
+    .checkboxContainer {
+        flex-direction: row;
+        flex-flow: wrap;
+    }
+}
+
+
+#postContent .blogPost {
+    padding-top:10px;
+    /* display: inline-block; */
+    margin:auto;
+    text-align: left;
+    /* Add shadows to create the "card" effect */
+    /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); */
+    transition: 0.3s;
+    width: 60%;
+    background: rgba(218, 218, 218, 0.2);
+    margin-bottom: 30px;
+}
+
+#postContent .postContent {
+    padding: 2px 16px;
+    border-radius: 5px;
+    padding-top:10px;
+    text-align: justify;
+}
+
+#postContent ul {
+    padding:0;
+}
+
+.blogSection ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.blogSection  li {
+    float: left;
+}
+  
+
+.blogTagList{
+    float:left;
+}
+ 
+.blogTagList h5  {
+    font-weight: 100;
+    text-emphasis: none;   
 }

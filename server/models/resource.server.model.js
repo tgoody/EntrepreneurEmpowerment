@@ -14,6 +14,7 @@ var resourceSchema = new Schema({
   url: {
     type: String
   },
+  fbId: String,
   created_at: Date,
   updated_at: Date
 });

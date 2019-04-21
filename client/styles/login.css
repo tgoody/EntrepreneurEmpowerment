@@ -1,7 +1,8 @@
 .loginContent  {
   height: 100%;
   position: relative;
-  padding-bottom: 97px;
+  padding-bottom: 205px;
+  padding-top: 150px;
 }
 
 ul {
@@ -13,7 +14,7 @@ ul {
   margin-right: auto;
 
   padding: 2px 16px;
-  padding-top: 150px;
+  /* padding-top: 150px; */
   width: 400px;
 
   border:none;
@@ -27,7 +28,7 @@ ul {
   width: 100%;
 }
 
-.form-input {
+.loginContent .form-input {
   margin-top: 15px;
   width: 100%;
   height:50px;
