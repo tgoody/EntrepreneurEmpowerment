@@ -4,28 +4,37 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
       $scope.docs = [];
       $scope.videos = [];
       $scope.resourceType = 'Videos';
+      $scope.categorySelect = {
+        availableOptions: [
+          {id: 0, name: 'Business Plans and Business Models'},
+          {id: 1, name: 'Entrepreneurial Marketing'},
+          {id: 2, name: 'Developing the Entrepreneur'},
+          {id: 3, name: 'Financing'},
+          {id: 4, name: 'Getting Started'},
+          {id: 5, name: 'Government Support Programs'},
+          {id: 6, name: 'Women Entrepreneurs'},
+          {id: 7, name: 'Social Entrepreneurship'},
+          {id: 8, name: 'Videos on Entrepreneurship'}
+        ],
+        selectedOption: {id: 0, name: 'Business Plans and Business Models'} //This sets the default value of the select in the ui
+    };
 
-      Listings.getDocs($scope.currentCategory).then(function(response) {
+      Listings.getDocs($scope.categorySelect.selectedOption.id).then(function(response) {
           $scope.docs = response.data;
       });
 
-      Listings.getVideos($scope.currentCategory).then(function(response) {
+      Listings.getVideos($scope.categorySelect.selectedOption.id).then(function(response) {
         $scope.videos = response.data;
       });
 
-      $scope.navClicked = function(index) {
+      $scope.categorySelected = function() {
         // Update resources
-        Listings.getDocs(index).then(function(response) {
+        Listings.getDocs($scope.categorySelect.selectedOption.id).then(function(response) {
           $scope.docs = response.data;
         });
-        Listings.getVideos(index).then(function(response) {
+        Listings.getVideos($scope.categorySelect.selectedOption.id).then(function(response) {
           $scope.videos = response.data;
         });
-        // update scope index
-        $scope.currentCategory = index;
-        // Highlight section on side nav
-        $('.side-nav-item').removeClass('side-nav-active');
-        $('#nav-item-'+index.toString()).addClass('side-nav-active');
       };
 
       $scope.toggleView = function() {
@@ -49,7 +58,7 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
         if (file) {
           const request = {
             name: file.name,
-            category: $scope.currentCategory,
+            category: $scope.categorySelect.selectedOption.id,
             type: 'file'
           };
           Listings.requestResource(request)
@@ -102,7 +111,7 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
         console.log("video", $scope.videoData);
         if ($scope.videoData 
           && $scope.videoData.name !== '' && $scope.videoData.link !== '') {
-            $scope.videoData.category = $scope.currentCategory;
+            $scope.videoData.category = $scope.categorySelect.selectedOption.id;
             $scope.videoData.type = 'video';
             Listings.requestResource($scope.videoData).then(function(response) {
               console.log('video request sent', response.data);

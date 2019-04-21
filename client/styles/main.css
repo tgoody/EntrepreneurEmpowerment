@@ -48,7 +48,7 @@ a {
 }
 
 section {
-  padding-top: 60px;
+  padding-top: 9vh;
   color: black;
   padding-bottom: 50px;
   min-height: 81.5vh;
@@ -73,13 +73,23 @@ a:hover {
 }
 
 .btn-primary:hover {
-  background-color: white;
+  background-color: white !important;
   border: 0.5px solid #018662;
 	color: #018662;
 }
 
 .btn-primary:focus {
   outline: none;
+  background:  #018662;
+}
+
+.btn-primary:active {
+  outline: none;
+}
+/* Overwriting bootstrap class */
+.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open>.dropdown-toggle.btn-primary.focus, .open>.dropdown-toggle.btn-primary:focus, .open>.dropdown-toggle.btn-primary:hover {
+  background:  #018662;
+  color: white;
 }
 
 .btn-secondary {
@@ -164,16 +174,17 @@ textarea {
 	padding:0;
 }
 
-.navbar-brand h1 {
-	margin-top:9px;
-	padding-top:5px;
-	float: left;
+.navbar-toggle {
+  margin-right: 0 !important;
+}
+
+.navbar-brand a {
 	font-size: 25px;
 	color:#333;
 	text-transform:uppercase;
 	font-weight:900;
 }
-.navbar-brand h1 span {
+.navbar-brand a span {
 	color:  #018662;
 }
 
@@ -300,7 +311,7 @@ textarea {
 .nav-tabs > li > a, .dropdown {
 	border-radius:0;
 	color:#333;
-	padding:30px;
+	padding: 15px;
 }
 
 .nav-tabs > li > a:hover, .dropdown > a:hover {
@@ -327,10 +338,7 @@ textarea {
 @media (max-width: 768px) {
 
 	.navbar-brand {
-		padding-top: 6px;
-	}
-	.navbar-brand h1 {
-		margin-top: 0;
+		display: none;
 	}
 
 	.nav-tabs > li {
