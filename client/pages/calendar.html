@@ -36,3 +36,18 @@
     </div>
   </div>
 </section>
+
+  <!-- message modal -->
+  <div id="msgModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
+      <!-- Modal content -->
+      <div class="popup-content">
+        <div ng-if="msgModalParam.success" class="o-circle c-container__circle o-circle__sign--success">
+          <div class="o-circle__sign"></div>  
+        </div>   
+        
+        <div ng-if="!msgModalParam.success" class="o-circle c-container__circle o-circle__sign--failure">
+          <div class="o-circle__sign"></div>  
+        </div>   
+        <h2>{{ msgModalParam.popupMessage }}</h2>
+      </div>
+  </div>

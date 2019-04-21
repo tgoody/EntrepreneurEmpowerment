@@ -165,8 +165,8 @@ angular.module('listings').controller('blogPostController',
     function closeMsgModal(delay) {
         setTimeout(function() {
             msgModal.style.display = "none";
-            $scope.msgModalParam.type = null;
-            $scope.msgModalParam.id = null;
+            $scope.msgModalParam.popupMessage = null;
+            $scope.msgModalParam.success = null;
         }.bind(this), delay);
     }
   }]);

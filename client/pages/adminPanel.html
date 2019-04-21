@@ -63,8 +63,8 @@
               <td>{{request.type}}</td>
               <td>{{request.category}}</td>
               <td>{{request.link}}</td>
-              <td ng-click="acceptRequest(request)"><button  class="btn-primary">Approve</button></td>
-              <td ng-click="denyRequest(request)"><button  class="btn-primary">Deny</button></td>
+              <td ng-click="acceptRequest(request, $index)"><button  class="btn-primary">Approve</button></td>
+              <td ng-click="denyRequest(request, $index)"><button  class="btn-primary">Deny</button></td>
             </tr>
           </table>
         </div>
@@ -130,8 +130,8 @@
               <td>{{event.eventName}}</td>
               <td>{{event.eventDate}}</td>
               <td>{{event.details}}</td>
-              <td ng-click="verifyEvent(event._id)"><button  class="btn-primary">Approve</button></td-->
-              <td ng-click="deleteEvent(event._id)"><button  class="btn-primary">Deny</button></td-->
+              <td ng-click="verifyEvent(event._id, $index)"><button  class="btn-primary">Approve</button></td-->
+              <td ng-click="deleteEvent(event._id, $index)"><button  class="btn-primary">Deny</button></td-->
             </tr>
           </table>
         </div>
@@ -139,3 +139,29 @@
     </div>
   </div>
 </section>
+
+  <!-- alert modal -->
+  <div id="alertModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>{{ modalParams.title }}</h1>
+        <button class="btn-primary" ng-click="cancel()">Cancel</button>
+        <button class="btn-secondary" ng-click="confirm()">Confirm</button>
+      </div>
+  </div>
+
+  <!-- message modal -->
+  <div id="msgModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
+      <!-- Modal content -->
+      <div class="popup-content">
+        <div ng-if="msgModalParam.success" class="o-circle c-container__circle o-circle__sign--success">
+          <div class="o-circle__sign"></div>  
+        </div>   
+        
+        <div ng-if="!msgModalParam.success" class="o-circle c-container__circle o-circle__sign--failure">
+          <div class="o-circle__sign"></div>  
+        </div>   
+        <h2>{{ msgModalParam.popupMessage }}</h2>
+      </div>
+  </div>
