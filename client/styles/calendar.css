@@ -85,7 +85,9 @@
 }
 
 .form-group   {
-    margin:auto;
+    display: flex;
+    flex-direction: column;
+    /* margin:auto; */
     /* width: 100%; */
 }
 
@@ -109,7 +111,7 @@
 }
 
 .modal-content p   {
-    margin: 20px 50px 0px 50px ;
+    margin: 5px 10px 0px 10px ;
 }
 
 .control-label   {
