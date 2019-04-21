@@ -113,25 +113,6 @@ a:hover {
   outline: none;
 }
 
-.btn-danger {
-  padding: 8px 20px;
-  background:  red;
-  color: #fff;
-  border-radius: 4px;
-  border: 0.5px solid transparent;
-  /* border:none; */
-}
-
-.btn-danger:hover {
-  background-color: white;
-  border: 0.5px solid red;
-	color: red;
-}
-
-.btn-danger:focus {
-  outline: none;
-}
-
 .text-center h2 {
 	margin-bottom:30px;
 }
@@ -147,7 +128,7 @@ input {
   box-sizing: border-box;
   border: 2px solid #018662;
   border-radius: 4px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 textarea {
@@ -817,6 +798,7 @@ textarea {
 
 /* --- footer --- */
 .footer {
+  color:white;
   background: #018662;
   z-index: 100001 !important;
 
@@ -1648,6 +1630,7 @@ a.scrollup:hover{
 }
 
 .spotlightInfo::before {
+  color:white;
   content: "\f0c0";
   display: block;
   position: absolute;
