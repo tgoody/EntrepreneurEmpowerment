@@ -14,7 +14,7 @@
             {{ blog.body }}
             </p>
             <button ng-if="isAdmin" class="btn-primary" ng-click="editBlog(blog)">Edit Blog</button>
-            <button ng-if="isAdmin" class="btn-primary" ng-click="deleteBlog(blog._id)">Delete Blog</button>
+            <button ng-if="isAdmin" class="btn-danger" ng-click="deleteBlog(blog._id)">Delete Blog</button>
             <div class="commentSection">
             <h2>Comments</h2>
             <ul>
@@ -22,7 +22,7 @@
                     name: {{ comment.username }} <br>
                     message: {{ comment.message }}
                      <!-- delete comment -->
-                    <button ng-if="isAdmin" class="btn-primary" ng-click="deleteComment(blog._id, comment._id)">Delete Comment</button>
+                    <button ng-if="isAdmin" class="btn-primary" ng-click="deleteComment(blog._id, comment._id, $index)">Delete Comment</button>
                 </li>
             </ul>
             <!-- input for comment -->
@@ -35,3 +35,31 @@
         </div>
     </div>
 </section>
+
+    <!-- alert modal -->
+    <div id="alertModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <h1 ng-if="modalParams.type !== 'edit'">Confirm Delete?</h1>
+              <h1 ng-if="modalParams.type === 'edit'">Confirm Edit?</h1>
+              <button class="btn-primary" ng-click="cancelDelete()">Cancel</button>
+              <button ng-if="modalParams.type !== 'edit'" class="btn-secondary" ng-click="confirmDelete()">Delete</button>
+              <button ng-if="modalParams.type === 'edit'" class="btn-secondary" ng-click="confirmDelete()">Confirm</button>
+            </div>
+        </div>
+    
+        <!-- message modal -->
+        <div id="msgModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
+            <!-- Modal content -->
+            <div class="popup-content">
+              <div ng-if="msgModalParam.success" class="o-circle c-container__circle o-circle__sign--success">
+                <div class="o-circle__sign"></div>  
+              </div>   
+              
+              <div ng-if="!msgModalParam.success" class="o-circle c-container__circle o-circle__sign--failure">
+                <div class="o-circle__sign"></div>  
+              </div>   
+              <h2>{{ msgModalParam.popupMessage }}</h2>
+            </div>
+        </div>
