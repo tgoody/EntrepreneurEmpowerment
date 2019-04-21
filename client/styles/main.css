@@ -128,6 +128,7 @@ input {
   box-sizing: border-box;
   border: 2px solid #018662;
   border-radius: 4px;
+  margin-bottom: 5px;
 }
 
 textarea {
@@ -797,7 +798,9 @@ textarea {
 
 /* --- footer --- */
 .footer {
-	background: #018662;
+  background: #018662;
+  z-index: 100001 !important;
+
 	/* padding:5px 15px; */
 }
 
@@ -1684,11 +1687,15 @@ p.more {
 
 .websiteStuff {
   min-height: 100%;
-  /* height: 100%; */
-  margin-bottom: -117px; /* the bottom margin is the negative value of the footer's height */
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -116px; /* the bottom margin is the negative value of the footer's height */
+  position: relative
 
 }
 
 .footer, .push {
-  height: 117px; /* .push must be the same height as .footer */
+  z-index: 100001 !important;
+
+  height: 116px; /* .push must be the same height as .footer */
 }

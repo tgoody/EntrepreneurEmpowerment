@@ -1,6 +1,18 @@
-.adminSection {
-    padding-bottom: 0;
-    color: black;
+#adminContent {
+    /* min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    position: relative */
+
+    height:100%;
+}
+
+.topicContent   {
+    width:65%;
+    color:black;
+    padding-top:70px;
+    margin-left: 330px;
+    padding-bottom:4vh;
 }
 
 .formContainer {
@@ -43,13 +55,17 @@
 
 
 .side-nav {
-    padding-top: 80px;
-    border-right: 1px solid black;
+    width:300px;
+    padding-top: 70px;
     background-color: #25436B;
-    color: white;
-    height: 100vh;
-    position: sticky;
-    top: 80px;
+    /* color: white; */
+
+
+    position: absolute;
+    left: 0;
+    top: 0px;
+    bottom: 116px;
+
 }
 
 .side-nav h2 {
@@ -105,4 +121,24 @@
         padding-top: 20px;
         margin-bottom: 80px;
     }
+}
+
+.tableWrapper button{
+    margin-top:0;
+}
+
+.topicContent .calendarContent  {
+    padding-bottom:507px;
+
+    text-align: left;
+}
+
+.topicContent .spotlightContent   {
+    padding-bottom:290px;
+
+}
+
+.topicContent .blogContent  {
+    padding-bottom:250px;
+
 }
