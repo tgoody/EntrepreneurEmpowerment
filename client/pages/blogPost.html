@@ -1,37 +1,54 @@
-<section>
-    <h3>Blog Post</h3>
+<section id="postContent">
     <div class="posts">
         <div class="blogPost">
-            <div class="postHeader">
-            <h3>
-                {{ blog.title }}
-                <span class="postDate" ng-bind="blog.created_at | date:'MM/dd/yyyy hh:mm:ss'"></span>
-            </h3>
-            </div>
-            <textarea ng-if="isAdmin" ng-model="blog.body" class="postContent">
-            </textarea>
-            <p ng-if="!isAdmin" class="postContent">
-            {{ blog.body }}
-            </p>
-            <button ng-if="isAdmin" class="btn-primary" ng-click="editBlog(blog)">Edit Blog</button>
-            <button ng-if="isAdmin" class="btn-danger" ng-click="deleteBlog(blog._id)">Delete Blog</button>
-            <div class="commentSection">
-            <h2>Comments</h2>
-            <ul>
-                <li ng-repeat="comment in blog.comments">
-                    name: {{ comment.username }} <br>
-                    message: {{ comment.message }}
-                     <!-- delete comment -->
-                    <button ng-if="isAdmin" class="btn-primary" ng-click="deleteComment(blog._id, comment._id, $index)">Delete Comment</button>
-                </li>
-            </ul>
-            <!-- input for comment -->
-            <input type="text" placeholder="comment text" ng-model="blog.comment"/>
-            <div class="btnContainer">
-                <!-- add comment -->
-                <button class="btn-secondary" ng-click="addComment(blog)">Add Comment</button>
-                </div>
-            </div>
+            <!-- <div class="container"> -->
+                <!-- <div class="col-md-12"> -->
+                    <!-- <div class="postHeader">
+                        <h2> 
+                            {{ blog.title }}
+                            <span class="postDate" ng-bind="blog.created_at | date:'MM/dd/yyyy'"></span>
+                        </h2>
+                    </div> -->
+
+
+
+                    <div class="postHeader">
+                            <div class="row">
+                              <div class="col-md-10">
+                                <h3> {{ blog.title }} </h3>
+                              </div>
+                              <div class="col-md-1">
+                                <p class="postDate" ng-bind="blog.created_at | date:'MM/dd/yyyy'"></p>
+                              </div>
+                            </div>
+                          </div>
+                
+
+                    <textarea ng-if="isAdmin" ng-model="blog.body" class="postContent"></textarea>
+                    <p ng-if="!isAdmin" class="postContent"> {{ blog.body }} </p>
+                    <button ng-if="isAdmin" class="btn-primary" ng-click="editBlog(blog)">Edit Blog</button>
+                    <button ng-if="isAdmin" class="btn-danger" ng-click="deleteBlog(blog._id)">Delete Blog</button>
+            
+                    <div class="commentSection">
+                        <h3>Comments</h3>
+                        <ul>
+                            <li ng-repeat="comment in blog.comments">
+                                <p> <b>{{ comment.username }}</b>
+                                    {{ comment.message }} <br>
+                                </p>
+                                <!-- delete comment -->
+                                <button ng-if="isAdmin" class="btn-danger" ng-click="deleteComment(blog._id, comment._id, $index)">Delete Comment</button>
+                            </li>
+                        </ul>
+                    <!-- input for comment -->
+                        <input type="text" placeholder="Share your comments" ng-model="blog.comment"/>
+                        <div class="btnContainer">
+                            <!-- add comment -->
+                            <button class="btn-secondary" ng-click="addComment(blog)">Add Comment</button>
+                        </div>
+                    </div>
+                <!-- </div> -->
+            <!-- </div> -->
         </div>
     </div>
 </section>
@@ -44,7 +61,7 @@
               <h1 ng-if="modalParams.type !== 'edit'">Confirm Delete?</h1>
               <h1 ng-if="modalParams.type === 'edit'">Confirm Edit?</h1>
               <button class="btn-primary" ng-click="cancelDelete()">Cancel</button>
-              <button ng-if="modalParams.type !== 'edit'" class="btn-secondary" ng-click="confirmDelete()">Delete</button>
+              <button ng-if="modalParams.type !== 'edit'" class="btn-danger" ng-click="confirmDelete()">Delete</button>
               <button ng-if="modalParams.type === 'edit'" class="btn-secondary" ng-click="confirmDelete()">Confirm</button>
             </div>
         </div>

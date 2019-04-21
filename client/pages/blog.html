@@ -1,10 +1,60 @@
-<section>
+<section id ="blogContent">
   <div class="blogSection">
+      <div class="container">
+
     <div class="row">
-      <div class="col-md-3 tag-container">
+    <div class="col-md-8">
+      <h2>Latest Blogs</h2>
+      <div class="posts">
+        <div class="blogPost" ng-repeat="blog in blogPosts" >
+            <!-- ng-click="viewPost(blog._id)" -->
+          <div class="postHeader">
+            <div class="row">
+              <div class="col-md-10">
+                <h3> {{ blog.title }} </h3>
+              </div>
+              <div class="col-md-1">
+                <p class="postDate" ng-bind="blog.created_at | date:'MM/dd/yyyy'"></p>
+              </div>
+            </div>
+          </div>
+          <p class="postContent">
+            {{ blog.body }}
+          </p>
+          <div class="row">
+              <div class="col-md-1">
+                  <h5>TAGS</h5>
+                </div>
+              <div class="col-md-10">
+                  <ul class="blogTagList" ng-repeat="blogTags in blog.tags">
+                      <h5>{{ blogTags }} &nbsp&nbsp</h5>
+                      <!-- <li class="list-group-item">About</li>
+                      <li class="list-group-item">Projects</li>
+                      <li class="list-group-item">Contact</li> -->
+                  </ul>
+              </div>
+  
+
+          </div>
+
+
+          <!-- <ul class="blogTagList" >
+              <li ng-repeat="blogTags in blog.tags">
+            
+              </li>
+          </ul> -->
+        
+
+
+          <button class="btn-primary" ng-click="viewPost(blog._id)">View Blog Post</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-3 tag-container">
         <!-- Tag Filters -->
-        <h3 class="align-center">Tags</h3>
-        <button ng-click="applyFilter()" class="btn-primary">Apply Filters</button>
+        <h3 class="align-center">Sort by topic</h3>
         <div class="checkboxContainer">
           <div class="checkbox" ng-repeat="tag in tagList">
             <label>
@@ -14,28 +64,10 @@
             </label>
           </div>
         </div>
+        <button ng-click="applyFilter()" class="btn-primary">Apply Filters</button>
         <button ng-click="removeFilter()" class="btn-primary">Remove Filters</button>
     </div>
-    <div class="col-md-9 align-center">
-      <h2>Latest Blogs</h2>
-      <div class="posts">
-        <div class="blogPost" ng-repeat="blog in blogPosts" ng-click="viewPost(blog._id)">
-          <div class="postHeader">
-            <h3>
-              {{ blog.title }}
-              <span class="postDate" ng-bind="blog.created_at | date:'MM/dd/yyyy hh:mm:ss'"></span>
-              <h5> Tags: </h5>
-              <ul ng-repeat="blogTags in blog.tags" style="list-style-type:disc;">
-                <li> {{ blogTags }} </li>
-              </ul>
-            </h3>
-          </div>
-          <p class="postContent">
-            {{ blog.body }}
-          </p>
-          <button class="btn-primary" ng-click="viewPost(blog._id)">View Blog Post</button>
-        </div>
-      </div>
-    </div>
+
   </div>
+</div>
 </section>
