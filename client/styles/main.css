@@ -1571,10 +1571,6 @@ a.scrollup:hover{
 }
 
 .spotlight i {
-  /* text-align: center; */
-  /* float: right; */
-  /* margin: auto; */
-
   font-size:100px;
   color:#fff;
 }
@@ -1655,22 +1651,11 @@ p.more {
   text-align: center;
 }
 
-
 .partnerCards .card {
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1); */
   text-align: center;
-  /* width: 500px;
-  height:300px;
-  margin: auto;
-  text-align: center;
-  font-family: arial;
-  display: inline-block;
-
-  padding-right:150px; */
   background-color:grey;
   opacity: .5;
   padding: 40px 0 20px 0;
-  /* margin-right: 15px; */
   margin-bottom: 30px;
 }
 
@@ -1681,19 +1666,10 @@ p.more {
 
 }
 
-
 .partnerCards i {
   display: inline-block;
-
-  /* width: 300px;
-  height:300px; */
-
 	font-size:100px;
-	/* margin-top:70px; */
-  /* margin-bottom:30px; */
-
 	color:#fff;
-	/* padding:50px; */
   background: grey;
   display: inline-block;
 }

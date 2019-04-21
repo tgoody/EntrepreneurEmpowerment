@@ -1,9 +1,9 @@
 .registerContent  {
   height: 100%;
   position: relative;
-  padding-bottom: 97px;
-  padding-top: 175px;
-
+  padding-bottom: 165px;
+  padding-top: 150px;
+  text-align: justify;
 }
 
 /* .top-padding {
@@ -11,9 +11,10 @@
 } */
 
 .registerContent .form-container {
+  display: inline-block;
   /* margin-top: 15px; */
 
-  margin-left: auto;
+  margin-left: 15%;
   margin-right: auto;
 
   padding: 2px 16px;
@@ -29,6 +30,7 @@
 
 
 .registerContent .form-input {
+  display: inline-block;
   margin-top: 15px;
   width: 100%;
   height:50px;
@@ -79,16 +81,6 @@
   margin-right: auto;
 }
 
-.registerContent button {
-  border: none;
-  background-color: #00529b;
-  color: white;
-  padding: 15px 0px;
-  /* margin-top: 20px; */
-  text-align: center;
-  display: inline-block;
-  width: 100%;
-}
 
 .registerContent button:hover, .registerContent a:active {
   background-color: #4C87B5;
@@ -100,4 +92,10 @@
 
 .registerContent h4 {
   text-align: center;
+}
+
+.regBio {
+  background: rgb(0,0,0,0.05);
+  padding:50px;
+  margin:50px;
 }
