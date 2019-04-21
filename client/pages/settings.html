@@ -1,18 +1,22 @@
 <section>
     <div class="settingsContainer">
-        <h1>Settings</h1>
+        <div class="container">
+            <div class="col-md-8">
+                <h1>Settings</h1>
 
-        <label>Update email</label>
-        <div class="inputContainer">
-            <input ng-model="settingsEmail" type="text" placeholder="email"/>
-            <button class="btn-primary" ng-click="updateEmail()">Update</button>
-        </div>
+                <label>Update email</label>
+                <div class="inputContainer">
+                    <input ng-model="settingsEmail" type="text" placeholder="New email"/>
+                    <button class="btn-primary" ng-click="updateEmail()">Update</button>
+                </div>
 
-        <label>Change password</label>
-        <div class="inputContainer">
-            <input ng-model="settingsPassword" type="password" placeholder="password"/>
-            <input ng-model="settingsConfirmPassword" type="password" placeholder="confirm password"/>
-            <button class="btn-primary" ng-click="updatePassword()">Update</button>
+                <label>Change password</label>
+                <div class="inputContainer">
+                    <input ng-model="settingsPassword" type="password" placeholder="New password"/>
+                    <input ng-model="settingsConfirmPassword" type="password" placeholder="Confirm new password"/>
+                    <button class="btn-primary" ng-click="updatePassword()">Update</button>
+                </div>
+            </div>
         </div>
     </div>
 </section>
