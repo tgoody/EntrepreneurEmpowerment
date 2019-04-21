@@ -59,7 +59,7 @@
             <p>
             {{ spotlight.body }} 
           </p>
-          <a class="btn-slide animation animated-item-3" href="#/blog">Read More</a>
+          <a class="btn-slide animation animated-item-3" href="#/blog/{{ spotlight._id }}">Read More</a>
 
         </div>
       </div>
@@ -70,7 +70,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-            <h4><a href="/research">RESEARCH</a></h4>
+            <h4><a href="/#/research">RESEARCH</a></h4>
             <h1>Poverty and Entrepreneurship in Developed Economies</h1>
             <h5>by Michael H. Morris, Susana C. Santos, Xaver Neumeyer</h5>
             <p>While extensively explored as a solution to poverty at the base of the pyramid, this is the first in-depth examination of entrepreneurship and the poor within advanced economies. The authors explore the underlying nature of poverty and draw implications for new venture creation. Entrepreneurship is presented as a source of empowerment that represents an alternative pathway out of poverty. </p>
@@ -89,7 +89,7 @@
         <p ng-bind="latestPost.created_at | date:'MM/dd/yyyy hh:mm:ss'"></p>
         <h2> {{ latestPost.title }} </h2>
         <p class="more"> {{ latestPost.body }} </p>
-        <a class="btn-slide animation animated-item-3" href="#/blog">Read More</a>
+        <a class="btn-slide animation animated-item-3" href="#/blog/{{ latestPost._id }}">Read More</a>
       </div>
     </div>
   </div>
