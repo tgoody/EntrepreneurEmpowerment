@@ -127,6 +127,10 @@
 .tableWrapper button{
     margin-top:0;
 }
+.topicContent .resourceContent  {
+    padding-bottom:56px;
+}
+
 
 .topicContent .calendarContent  {
     padding-bottom:507px;
