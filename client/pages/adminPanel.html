@@ -76,8 +76,8 @@
             <div class="col-md-12">
               <h2>Community Spotlight</h2>
               <!-- input for spotlight -->
-              <input type="text" placeholder="spotlight title" ng-model="spotlight.title"/>
-              <textarea type="text" placeholder="Enter spotlight" ng-model="spotlight.body"></textarea>
+              <input type="text" placeholder="Title" ng-model="spotlight.title"/>
+              <textarea type="text" placeholder="Enter post" ng-model="spotlight.body"></textarea>
               <div class="btnContainer">
                 <!-- add post -->
                 <button class="btn-secondary" ng-click="addSpotlight()">Add Community Spotlight</button>
@@ -102,12 +102,12 @@
               <!-- input for blog -->
               <input type="text" placeholder="Post title" ng-model="blogpost.title"/>
               <textarea type="text" placeholder="Enter post" ng-model="blogpost.body"></textarea>
-              <h3> Tags </h3>
+              <!-- <h3> Tags </h3>
               <div class="tagHorizontal">
                 <div style="padding: 5px 10px" ng-repeat="tag in tagList" ng-if="tag.state === true">
                   {{tag.name}}
                 </div>
-              </div>
+              </div> -->
   
               <div class="btnContainer">
                 <!-- add post -->
@@ -126,6 +126,7 @@
                 <th>Event</th>
                 <th>Date</th>
                 <th>Details</th>
+                <th></th>
                 <th></th>
               </tr>
               <tr ng-repeat="event in eventList">
