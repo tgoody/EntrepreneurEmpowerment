@@ -1,167 +1,170 @@
 <section class="adminSection">
-  <div class="row">
-    <!-- sub nav -->
-    <div class="col-md-3 side-nav">
-        <h2>Topics</h2>
-        <ul>
-          <li class="side-nav-item side-nav-active" id="nav-item-0">
-            <button class="side-nav-btn" ng-click="navClicked(0)">Resources</button>
-          </li>
-          <li class="side-nav-item" id="nav-item-1">
-              <button class="side-nav-btn" ng-click="navClicked(1)">Community Spotlight</button>
+    <!-- <div class="row"> -->
+      <!-- sub nav -->
+      <div class="side-nav">
+          <h2>Pages</h2>
+          <ul>
+            <li class="side-nav-item side-nav-active" id="nav-item-0">
+              <button class="side-nav-btn" ng-click="navClicked(0)">Resources</button>
             </li>
-          <li class="side-nav-item" id="nav-item-2">
-            <button class="side-nav-btn" ng-click="navClicked(2)">Blog Post</button>
-          </li>
-          <li class="side-nav-item" id="nav-item-3">
-            <button class="side-nav-btn" ng-click="navClicked(3)">Calendar Events</button>
-          </li>
-        </ul>
-    </div>
-    <div class="col-md-9">
-      <div class="row resourceContent">
-        <form id="uploadFileForm">
-          <h2>Upload New Resource</h2>
-          <select class="formInput" name="categorySelect" id="categorySelect"
-          ng-options="option.name for option in categorySelect.availableOptions track by option.id"
-          ng-model="categorySelect.selectedOption">
-          </select>
-          <div class="formContainer">
-            <input class="formInput" type="file" demo-file-model="myFile" name="myFile" id="myFile"/>
-            <input class="formBtn btn-primary" type="submit" value="Add Resource"/>
-          </div>
-        </form>
-        <br>
-        <h2>Upload New Video Resource</h2>
-        <div class="vidForm">
-          <select class="formInput" name="vidCategorySelect" id="vidCategorySelect"
-          ng-options="option.name for option in vidCategorySelect.availableOptions track by option.id"
-          ng-model="vidCategorySelect.selectedOption">
-          </select>
-          <input class="formInput" ng-model="videoData.name" type="text" placeholder="Video name"/>
-          <div class="formContainer">
-            <input class="formInput" ng-model="videoData.link" type="text" placeholder="Video link"/>
-            <button class="formBtn btn-secondary" ng-click="uploadVideo()">
-                Upload video
-            </button>
-          </div>
-        </div>
-        <br>
-        <h2>Requested Resources</h2>
-        <div class="tableWrapper">
-          <table class="table table-striped table-hover">
-            <tr>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Category</th>
-              <th>Link</th>
-              <th></th>
-              <th></th>
-            </tr>
-            <tr ng-repeat="request in requests">
-              <td>{{request.name}}</td>
-              <td>{{request.type}}</td>
-              <td>{{request.category}}</td>
-              <td>{{request.link}}</td>
-              <td ng-click="acceptRequest(request, $index)"><button  class="btn-primary">Approve</button></td>
-              <td ng-click="denyRequest(request, $index)"><button  class="btn-primary">Deny</button></td>
-            </tr>
-          </table>
-        </div>
+            <li class="side-nav-item" id="nav-item-1">
+                <button class="side-nav-btn" ng-click="navClicked(1)">Community Spotlight</button>
+              </li>
+            <li class="side-nav-item" id="nav-item-2">
+              <button class="side-nav-btn" ng-click="navClicked(2)">Blog Post</button>
+            </li>
+            <li class="side-nav-item" id="nav-item-3">
+              <button class="side-nav-btn" ng-click="navClicked(3)">Calendar Events</button>
+            </li>
+          </ul>
       </div>
-      <div class="row spotlightContent hide">
-        <div class="row">
-          <div class="col-md-12">
-            <h2>Community Spotlight</h2>
-            <!-- input for spotlight -->
-            <input type="text" placeholder="spotlight title" ng-model="spotlight.title"/>
-            <textarea type="text" placeholder="Enter spotlight" ng-model="spotlight.body"></textarea>
-            <div class="btnContainer">
-              <!-- add post -->
-              <button class="btn-secondary" ng-click="addSpotlight()">Add Community Spotlight</button>
+      <div class="topicContent">
+
+      <!-- <div class="col-md-9"> -->
+        <div class="resourceContent">
+          <form id="uploadFileForm">
+            <h2>Upload New Resource</h2>
+            <select class="formInput" name="categorySelect" id="categorySelect"
+            ng-options="option.name for option in categorySelect.availableOptions track by option.id"
+            ng-model="categorySelect.selectedOption">
+            </select>
+            <div class="formContainer">
+              <input class="formInput" type="file" demo-file-model="myFile" name="myFile" id="myFile"/>
+              <input class="formBtn btn-primary" type="submit" value="Add Resource"/>
+            </div>
+          </form>
+          <br>
+          <h2>Upload New Video Resource</h2>
+          <div class="vidForm">
+            <select class="formInput" name="vidCategorySelect" id="vidCategorySelect"
+            ng-options="option.name for option in vidCategorySelect.availableOptions track by option.id"
+            ng-model="vidCategorySelect.selectedOption">
+            </select>
+            <input class="formInput" ng-model="videoData.name" type="text" placeholder="Video name"/>
+            <div class="formContainer">
+              <input class="formInput" ng-model="videoData.link" type="text" placeholder="Video link"/>
+              <button class="formBtn btn-secondary" ng-click="uploadVideo()">
+                  Upload video
+              </button>
+            </div>
+          </div>
+          <br>
+          <h2>Requested Resources</h2>
+          <div class="tableWrapper">
+            <table class="table table-striped table-hover">
+              <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Category</th>
+                <th>Link</th>
+                <th></th>
+                <th></th>
+              </tr>
+              <tr ng-repeat="request in requests">
+                <td>{{request.name}}</td>
+                <td>{{request.type}}</td>
+                <td>{{request.category}}</td>
+                <td>{{request.link}}</td>
+                <td ng-click="acceptRequest(request, $index)"><button  class="btn-primary">Approve</button></td>
+                <td ng-click="denyRequest(request, $index)"><button  class="btn-primary">Deny</button></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="row spotlightContent hide">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Community Spotlight</h2>
+              <!-- input for spotlight -->
+              <input type="text" placeholder="Title" ng-model="spotlight.title"/>
+              <textarea type="text" placeholder="Enter post" ng-model="spotlight.body"></textarea>
+              <div class="btnContainer">
+                <!-- add post -->
+                <button class="btn-secondary" ng-click="addSpotlight()">Add Community Spotlight</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row blogContent hide">
-        <div class="row">
-          <div class="col-md-12">
-            <h2>Post to blog</h2>
-            <!-- List of Tags -->
-            <div class="tagHorizontal">
-              <div class="checkbox" ng-repeat="tag in tagList">
-                <label>
-                  <input type="checkbox" ng-model="tag.state">
-                  <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+        <div class="row blogContent hide">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Post to blog</h2>
+              <!-- List of Tags -->
+              <div class="tagHorizontal">
+                <div class="checkbox" ng-repeat="tag in tagList">
+                  <label>
+                    <input type="checkbox" ng-model="tag.state">
+                    <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                    {{tag.name}}
+                  </label>
+                </div>
+              </div>
+              <!-- input for blog -->
+              <input type="text" placeholder="Post title" ng-model="blogpost.title"/>
+              <textarea type="text" placeholder="Enter post" ng-model="blogpost.body"></textarea>
+              <!-- <h3> Tags </h3>
+              <div class="tagHorizontal">
+                <div style="padding: 5px 10px" ng-repeat="tag in tagList" ng-if="tag.state === true">
                   {{tag.name}}
-                </label>
+                </div>
+              </div> -->
+  
+              <div class="btnContainer">
+                <!-- add post -->
+                <button class="btn-secondary" ng-click="addPost()">Add Post</button>
               </div>
-            </div>
-            <!-- input for blog -->
-            <input type="text" placeholder="Post title" ng-model="blogpost.title"/>
-            <textarea type="text" placeholder="Enter post" ng-model="blogpost.body"></textarea>
-            <h3> Tags </h3>
-            <div class="tagHorizontal">
-              <div style="padding: 5px 10px" ng-repeat="tag in tagList" ng-if="tag.state === true">
-                {{tag.name}}
-              </div>
-            </div>
-
-            <div class="btnContainer">
-              <!-- add post -->
-              <button class="btn-secondary" ng-click="addPost()">Add Post</button>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row calendarContent hide">
-        <!--<button  class="btn-primary">Delete event</button>
-        <button  class="btn-primary">Edit Events</button>-->
-        <h2>Pending Events</h2>
-        <div class="tableWrapper">
-          <table class="table table-striped table-hover">
-            <tr>
-              <th>Event</th>
-              <th>Date</th>
-              <th>Details</th>
-              <th></th>
-            </tr>
-            <tr ng-repeat="event in eventList">
-              <td>{{event.eventName}}</td>
-              <td>{{event.eventDate}}</td>
-              <td>{{event.details}}</td>
-              <td ng-click="verifyEvent(event._id, $index)"><button  class="btn-primary">Approve</button></td-->
-              <td ng-click="deleteEvent(event._id, $index)"><button  class="btn-primary">Deny</button></td-->
-            </tr>
-          </table>
+        <div class="row calendarContent hide">
+          <!--<button  class="btn-primary">Delete event</button>
+          <button  class="btn-primary">Edit Events</button>-->
+          <h2>Pending Events</h2>
+          <div class="tableWrapper">
+            <table class="table table-striped table-hover">
+              <tr>
+                <th>Event</th>
+                <th>Date</th>
+                <th>Details</th>
+                <th></th>
+                <th></th>
+              </tr>
+              <tr ng-repeat="event in eventList">
+                <td>{{event.eventName}}</td>
+                <td>{{event.eventDate}}</td>
+                <td>{{event.details}}</td>
+                <td ng-click="verifyEvent(event._id, $index)"><button  class="btn-primary">Approve</button></td-->
+                <td ng-click="deleteEvent(event._id, $index)"><button  class="btn-primary">Deny</button></td-->
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
+    <!-- </div> -->
+  </section>
+  
+    <!-- alert modal -->
+    <div id="alertModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h1>{{ modalParams.title }}</h1>
+          <button class="btn-primary" ng-click="cancel()">Cancel</button>
+          <button class="btn-secondary" ng-click="confirm()">Confirm</button>
+        </div>
     </div>
-  </div>
-</section>
-
-  <!-- alert modal -->
-  <div id="alertModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
-      <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h1>{{ modalParams.title }}</h1>
-        <button class="btn-primary" ng-click="cancel()">Cancel</button>
-        <button class="btn-secondary" ng-click="confirm()">Confirm</button>
-      </div>
-  </div>
-
-  <!-- message modal -->
-  <div id="msgModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
-      <!-- Modal content -->
-      <div class="popup-content">
-        <div ng-if="msgModalParam.success" class="o-circle c-container__circle o-circle__sign--success">
-          <div class="o-circle__sign"></div>  
-        </div>   
-        
-        <div ng-if="!msgModalParam.success" class="o-circle c-container__circle o-circle__sign--failure">
-          <div class="o-circle__sign"></div>  
-        </div>   
-        <h2>{{ msgModalParam.popupMessage }}</h2>
-      </div>
-  </div>
+  
+    <!-- message modal -->
+    <div id="msgModal" class="modal wow fadeInDown" data-wow-duration="1000ms">
+        <!-- Modal content -->
+        <div class="popup-content">
+          <div ng-if="msgModalParam.success" class="o-circle c-container__circle o-circle__sign--success">
+            <div class="o-circle__sign"></div>  
+          </div>   
+          
+          <div ng-if="!msgModalParam.success" class="o-circle c-container__circle o-circle__sign--failure">
+            <div class="o-circle__sign"></div>  
+          </div>   
+          <h2>{{ msgModalParam.popupMessage }}</h2>
+        </div>
+    </div>

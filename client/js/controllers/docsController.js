@@ -70,16 +70,13 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
           };
           Listings.requestResource(request)
           .then(function(response) {
-            console.log('resource request sent', response.data);
             // Save file in storage
             if (!response.data) {
-              console.log('no data');
               $scope.msgModalParam.popupMessage = "Failed to send request";
               $scope.msgModalParam.success = false;
               $('#resource').val('');
-              setTimeout(function() {
-                msgModal.style.display = 'block';
-              }, 500);
+              openMsgModal();
+              closeMsgModal(2500);
               return;
             }
             var storageRef = firebase.storage().ref();
@@ -89,16 +86,13 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
             $scope.msgModalParam.popupMessage = "Resource request sent";
             $scope.msgModalParam.success = true;
             $('#resource').val('');
-            setTimeout(function() {
-              msgModal.style.display = 'block';
-            }, 500);
-        
+            openMsgModal();
+            closeMsgModal(2500);
           });
         }
       });
 
       $scope.requestVideoUpload = function() {
-        console.log("video", $scope.videoData);
         if ($scope.videoData 
           && $scope.videoData.name !== '' && $scope.videoData.link !== '') {
             $scope.videoData.category = $scope.categorySelect.selectedOption.id;
@@ -113,16 +107,14 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
               }
               $scope.videoData.name = '';
               $scope.videoData.link = '';
-              setTimeout(function() {
-                msgModal.style.display = 'block';
-              }, 500);
+              openMsgModal();
+              closeMsgModal(2500);
             });
         } else {
           $scope.msgModalParam.popupMessage = "Please fill in all the fields";
           $scope.msgModalParam.success = false;
-          setTimeout(function() {
-            msgModal.style.display = 'block';
-          }, 500);
+          openMsgModal();
+          closeMsgModal(2500);
         }
       };
 
@@ -130,25 +122,18 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
         $scope.modalParams.type = 'file';
         $scope.modalParams.id = id;
         $scope.modalParams.index = index;
-        setTimeout(function() {
-          modal.style.display = 'block';
-        }, 500);
+        openAlertModal();
       };
 
       $scope.removeVid = function(index, id) {
         $scope.modalParams.type = 'video';
         $scope.modalParams.id = id;
         $scope.modalParams.index = index;
-        setTimeout(function() {
-          modal.style.display = 'block';
-        }, 500);
+        openAlertModal();
       };
 
       $scope.cancelDelete = function() {
-        modal.style.display = 'none';
-        $scope.modalParams.type = null;
-        $scope.modalParams.id = null;
-        $scope.modalParams.index = null;
+        closeAlertModal();
       };
 
       $scope.confirmDelete = function() {
@@ -156,7 +141,10 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
           if($scope.modalParams.type == 'file') {
             // Delete from storage
             if (!$scope.modalParams.id) {
-              console.log('id does not exist');
+              $scope.msgModalParam.popupMessage = "File does not exist.";
+              $scope.msgModalParam.success = false;
+              openMsgModal();
+              closeMsgModal(2500);
               return;
             }
             var id = $scope.modalParams.id;
@@ -177,16 +165,14 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
                     $scope.msgModalParam.popupMessage = "Failed to remove file";
                     $scope.msgModalParam.success = false;
                   }
-                  setTimeout(function() {
-                    msgModal.style.display = 'block';
-                  }, 500);
+                  openMsgModal();
+                  closeMsgModal(2500);
                 });
             }.bind(this)).catch(function(error) {
               $scope.msgModalParam.success = false;
               $scope.msgModalParam.popupMessage = "Failed to remove file";
-              setTimeout(function() {
-                msgModal.style.display = 'block';
-              }, 500);
+              openMsgModal();
+              closeMsgModal(2500);
             });
           } else {
             // video
@@ -201,17 +187,13 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
                   $scope.msgModalParam.success = false;
                   $scope.msgModalParam.popupMessage = "Failed to remove video";
               }
-              setTimeout(function() {
-                msgModal.style.display = 'block';
-              }, 500);
+              openMsgModal();
+              closeMsgModal(2500);
             });
           }
         }
 
-        modal.style.display = 'none';
-        $scope.modalParams.type = null;
-        $scope.modalParams.id = null;
-        $scope.modalParams.index = null;
+        closeAlertModal();
       };
 
       // Get the <span> element that closes the modal
@@ -219,24 +201,43 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
 
       // When the user clicks on <span> (x), close the modal
       span.onclick = function() {
-          modal.style.display = "none";
-          $scope.modalParams.type = null;
-          $scope.modalParams.id = null;
-          $scope.modalParams.index = null;
+        closeAlertModal();
       }
 
       // When the user clicks anywhere outside of the modal, close it
       window.onclick = function(event) {
           if (event.target == modal) {
-            modal.style.display = 'none';
-            $scope.modalParams.type = null;
-            $scope.modalParams.id = null;
-            $scope.modalParams.index = null;
+            closeAlertModal();
           } else if (event.target == msgModal) {
-            msgModal.style.display = "none";
-            $scope.msgModalParam.type = null;
-            $scope.msgModalParam.id = null;
+            closeMsgModal(100);
           }
       }
+
+      function openAlertModal() {
+        setTimeout(function() {
+            modal.style.display = 'block';
+        }, 500);
+    }
+
+    function closeAlertModal() {
+      modal.style.display = 'none';
+      $scope.modalParams.type = null;
+      $scope.modalParams.id = null;
+      $scope.modalParams.index = null;
+    }
+
+    function openMsgModal() {
+        setTimeout(function() {
+            msgModal.style.display = 'block';
+        }, 500);
+    }
+
+    function closeMsgModal(delay) {
+        setTimeout(function() {
+          msgModal.style.display = "none";
+          $scope.msgModalParam.popupMessage = null;
+          $scope.msgModalParam.success = null;
+        }.bind(this), delay);
+    }
     }
 ]);
