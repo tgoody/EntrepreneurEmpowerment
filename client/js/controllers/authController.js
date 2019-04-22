@@ -1,17 +1,20 @@
 angular.module('app.auth').controller('AuthController', ['$rootScope', '$scope', 'authService', '$location',
   function($rootScope, $scope, authService, $location) {
+    $scope.userMsg = '';
 
     $scope.addAccount = function() {
-        if ($scope.account.email !== '' 
-            && $scope.account.password != '' && $scope.confirmPassword != '') {
+        if ($scope.account) {
+                if(!validateEmail($scope.account.email)) {
+                    $scope.userMsg = 'Not a valid email';
+                    $('#userMsg').removeClass('hide');
+                    return;
+                }
                 if ( $scope.account.password == $scope.confirmPassword) {
                     // Sign in user
                     authService.register($scope.account).then(function(response) {
-                        console.log('registered user', response);
                         // Create user object in database
                         $scope.account.uid = response.uid;
                         authService.addUser($scope.account).then(function(response) {
-                            console.log('added user', response);
                             $scope.userId = $scope.account.uid;
                 
                             // send to home page
@@ -21,13 +24,17 @@ angular.module('app.auth').controller('AuthController', ['$rootScope', '$scope',
                             $scope.account.password = '';
                             $scope.confirmPassword = '';
                             $scope.account.uid = '';
+                            $scope.userMsg = '';
+                            $('#userMsg').addClass('hide');
                         });
                     });
                 } else {
-                    console.log('Passwords do not match');
+                    $scope.userMsg = 'Passwords do not match';
+                    $('#userMsg').removeClass('hide');
                 }
         } else {
-            console.log('Empty fields');
+            $scope.userMsg = 'Empty fields';
+            $('#userMsg').removeClass('hide');
         }
     }
 
@@ -80,9 +87,13 @@ angular.module('app.auth').controller('AuthController', ['$rootScope', '$scope',
     }
 
     $scope.login = function() {
-        if ($scope.account.email !== '' && $scope.account.password != '') {
+        if ($scope.account) {
+            if(!validateEmail($scope.account.email)) {
+                $scope.userMsg = 'Not a valid email';
+                $('#userMsg').removeClass('hide');
+                return;
+            }
             authService.login($scope.account).then(function(response) {
-                console.log('logged in', response);
                 var id = response.uid;
                 $scope.userId = id;
                 
@@ -92,7 +103,18 @@ angular.module('app.auth').controller('AuthController', ['$rootScope', '$scope',
                 $scope.account.password = '';
                 $scope.confirmPassword = '';
                 $scope.account.uid = '';
+            }).catch( function(err) {
+                $scope.userMsg = err.message;
+                $('#userMsg').removeClass('hide');
             });
+        } else {
+            $scope.userMsg = 'Empty fields';
+            $('#userMsg').removeClass('hide');
         }
     };
+
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
   }]);
