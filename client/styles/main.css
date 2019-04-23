@@ -1714,6 +1714,16 @@ p.more {
   margin-bottom: 30px;
 }
 
+.partnerCards a {
+  color:black;
+  font-weight: 400;
+}
+
+.partnerCards a:hover {
+	text-decoration: none;
+	color:#eee;
+}
+
 .partnerCards .title {
   color: white;
   font-size: 18px;
