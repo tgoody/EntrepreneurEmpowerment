@@ -60,8 +60,8 @@
               <span class="close">&times;</span>
               <h1 ng-if="modalParams.type !== 'edit'">Confirm Delete?</h1>
               <h1 ng-if="modalParams.type === 'edit'">Confirm Edit?</h1>
-              <button class="btn-primary" ng-click="cancelDelete()">Cancel</button>
-              <button ng-if="modalParams.type !== 'edit'" class="btn-danger" ng-click="confirmDelete()">Delete</button>
+              <button class="btn-neutral" ng-click="cancelDelete()">Cancel</button>
+              <button ng-if="modalParams.type !== 'edit'" class="btn-red" ng-click="confirmDelete()">Delete</button>
               <button ng-if="modalParams.type === 'edit'" class="btn-secondary" ng-click="confirmDelete()">Confirm</button>
             </div>
         </div>
