@@ -1,52 +1,93 @@
 <section class="resourcesSection">
-  <div class="docContent">
+  <!-- <div class="docContent"> -->
+      <div class="container">
+<div class="col-md-12">
       <div class="contentHeader">
-        <div class="titleContainer">
-          <h2>Resources</h2>
-        </div>
-        <div class="selectContainer">
-          <div class="headerSelect">
-              <select class="formInput" name="categorySelect" id="categorySelect" ng-change="categorySelected()"
-              ng-options="option.name for option in categorySelect.availableOptions track by option.id"
-              ng-model="categorySelect.selectedOption">
-              </select>
-            </div>
+        <table>
+          <tr>
+          <td>
+          <div class="titleContainer">
+            <h2>Resources</h2>
+          </div>
+        </td>
+
+        <td align="right">
             <button class="btn-secondary" ng-click="toggleView()">View {{ resourceType }}</button>
-        </div>
+        </td>
+
+
+        <!-- </div> -->
+        <!-- <div class="col-md-8"> -->
+         </tr>
+        </table>
       </div>
-      <ul class="docList">
+
+      <div class="selectSection">
+        <table>
+          <td>
+            <h4>{{ categorySelect.selectedOption.name }}</h4>
+          </td>
+          <td align="right">
+            <div class="selectContainer">
+              <div class="headerSelect">
+                <h5>SORT BY TOPIC&nbsp&nbsp</h5>
+                <select class="formInput" name="categorySelect" id="categorySelect" ng-change="categorySelected()"
+                  ng-options="option.name for option in categorySelect.availableOptions track by option.id"
+                  ng-model="categorySelect.selectedOption">
+                </select>
+              </div>
+            </div>
+          </td>
+        </table>
+    </div>
+
+    <ul class="docList">
+      <div class="docsList">
         <li class="docItem" ng-repeat="doc in docs">
           <i ng-if="isAdmin" ng-click="removeDoc($index, doc.fbId)" class="fa fa-times-circle"></i>           
           <a id="doc{{$index}}" target="_blank" href="{{ doc.url }}" download="{{ doc.name }}">
             {{ doc.name }}
           </a>
         </li>
-        <form id="requestUploadFileForm">
-            <h4>Would you like to contribute to our Resources?</h4>
-            <div class="formContainer centerAlign">
-                <input class="resourceInput" type="file" demo-file-model="resource" name="resource" id="resource"/>
-                <input class="btn-primary" type="submit" value="Request to upload resource"/>
-            </div>
-          </form>
-      </ul>
-      <ul class="vidList hide">
-        <li class="docItem" ng-repeat="vid in videos">
-          <i ng-if="isAdmin" ng-click="removeVid($index, vid._id)" class="fa fa-times-circle"></i>              
-          <a target="_blank" href="{{ vid.link }}">
-            {{ vid.name }}
-          </a>
-        </li>
-        <div class="vidRequestContainer">
+      </div>
+      <form id="requestUploadFileForm">
           <h4>Would you like to contribute to our Resources?</h4>
-          <div class="horizontalInput">
-            <input ng-model="videoData.name" type="text" placeholder="Video name"/>
-            <input ng-model="videoData.link" type="text" placeholder="Video link"/>
+          <div class="formContainer centerAlign">
+              <input class="resourceInput" type="file" demo-file-model="resource" name="resource" id="resource"/>
+              <input class="btn-primary" type="submit" value="Request to upload resource"/>
           </div>
-          <button class="btn-secondary" ng-click="requestVideoUpload()">
-              Request to upload video
-          </button>
+        </form>
+    </ul>
+    <ul class="vidList hide">
+        <div class="docsList">
+          <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" ng-repeat="vid in videos">
+            <div class="docItem video">
+              <h5 ng-if="isAdmin">
+                <i  ng-click="removeVid($index, vid._id)" class="fa fa-times-circle"></i>  
+                {{ vid.name }}
+              </h5>
+            
+              <iframe width="500" height="315" ng-src="{{ getVideoURL(vid.link) }}" frameborder="0 " allowfullscreen></iframe>
+
+              <!-- <a target="_blank" href="{{ vid.link }}">
+              {{ vid.name }}
+            </a> -->
+          </div>
         </div>
-      </ul>
+        </div>
+        </div>
+      <div class="vidRequestContainer">
+        <h4>Would you like to contribute to our Resources?</h4>
+        <div class="horizontalInput">
+          <input ng-model="videoData.name" type="text" placeholder="Video title"/>
+          <input ng-model="videoData.link" type="text" placeholder="Video URL"/>
+        </div>
+        <button class="btn-secondary" ng-click="requestVideoUpload()">
+            Request to upload video
+        </button>
+      </div>
+    </ul>
   </div>
 </section>
 
