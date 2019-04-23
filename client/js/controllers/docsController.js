@@ -91,6 +91,12 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
         }
       });
 
+      $scope.getVideoURL = function(url) {
+        var video_id = url.split('v=')[1].split('&')[0];
+        return 'https://www.youtube.com/embed/' + video_id;
+      };
+    
+
       $scope.requestVideoUpload = function() {
         if ($scope.videoData 
           && $scope.videoData.name !== '' && $scope.videoData.link !== '') {
@@ -239,4 +245,5 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
         }.bind(this), delay);
     }
     }
+    
 ]);
