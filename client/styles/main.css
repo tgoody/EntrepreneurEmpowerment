@@ -113,6 +113,54 @@ a:hover {
   outline: none;
 }
 
+.btn-red {
+  padding: 8px 20px;
+  background:  red;
+  color: #fff;
+  border-radius: 4px;
+  border: 0.5px solid transparent;
+  /* border:none; */
+}
+
+.btn-red:hover {
+  background-color: white !important;
+  border: 0.5px solid red;
+	color: red;
+}
+
+.btn-red:focus {
+  outline: none;
+  background:  red;
+}
+
+.btn-red:active {
+  outline: none;
+}
+
+.btn-neutral {
+  padding: 8px 20px;
+  background: gray;
+  color: #fff;
+  border-radius: 4px;
+  border: 0.5px solid transparent;
+  /* border:none; */
+}
+
+.btn-neutral:hover {
+  background-color: white !important;
+  border: 0.5px solid gray;
+	color: gray;
+}
+
+.btn-neutral:focus {
+  outline: none;
+  background:  gray;
+}
+
+.btn-neutral:active {
+  outline: none;
+}
+
 .text-center h2 {
 	margin-bottom:30px;
 }
