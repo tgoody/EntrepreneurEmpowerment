@@ -1,5 +1,4 @@
 .resourcesSection {
-    padding: 0;
     min-height: 85.5vh;
 }
 
@@ -12,42 +11,56 @@
 }
 
 .contentHeader {
+    /* padding-top:100px; */
     display: flex;
     flex-direction: row;
     align-items: baseline;
     flex-wrap: wrap;
     justify-content: start;
     margin-bottom: 10px;
+    border-bottom: 1px solid #25436B;
+    
 }
 
-.contentHeader h2 {
-    margin-left: 25px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #25436B;
+.selectSection h4 {
+    /* margin-left: 25px; */
+    /* padding-bottom: 5px; */
+    /* border-bottom: 1px solid #25436B; */
+    text-align: left;
+    padding-left:10px;
 }
+
+/* .resourcesSection .row    {
+
+} */
 
 .titleContainer {
     text-align: left;
 }
 
 .contentHeader div {
-    padding: 0 10px;
+    /* padding: 0 10px; */
 }
 
 .contentHeader button {
     width: fit-content;
+    margin: 20px 0px 5px 0;
+    height: 33px;
+    padding: 5px 15px;
 }
 
 .headerSelect {
     display: flex;
     justify-content: flex-end;
+    float: right;
 }
 
 .selectContainer {
-    width: 75%;
+    float: right;
+    /* width: 75%; */
     display: flex;
     flex-direction: row;
-    flex-flow: wrap;
+    /* flex-flow: wrap; */
     align-items: flex-end;
     justify-content: flex-end;
 }
@@ -63,6 +76,16 @@
 .docItem {
     padding: 10px 30px;
     font-size: 18px;
+
+}
+
+.docItem.video  {
+    padding: 10px 0px;
+
+}
+
+.docsList {
+    padding-bottom:100px;
 }
 
 .docItem a {
@@ -347,3 +370,7 @@ HTML {
     HTML { font-size: 1.5625em; } /* 25 / 16 = 1.5625 */
     
   }
+
+table{
+    width:100%;
+}
