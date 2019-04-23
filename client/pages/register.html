@@ -1,10 +1,10 @@
 <div class="registerContent">
-  <div class="container"
+  <div class="container">
     <div class="row">
     <div class="col-md-6">    
       <form novalidate class="simple-form form-container">
         <h2 class="form-title">Register</h2>
-
+        <h4 class="hide" id="userMsg" style="color: red">{{ userMsg }}</h4>
         <input class="form-input" type="text" placeholder="Email address" ng-model="account.email" /><br/>
         <input class="form-input" type="password" placeholder="Password" ng-model="account.password" /><br/>
         <input class="form-input" type="password" placeholder="Confirm password" ng-model="confirmPassword" /><br/>
@@ -18,10 +18,9 @@
         <h2>Join a unique community of fellow entrepreneurs</h2>
         <p>By signing up for Entrepreneurship Empowerment, you and your company will be able to access resources, blog posts, and events, collected by us and shared by others. Network with others while also learning how to overcome poverty in your community.</p>
       </div>
-      </div>
+    </div>
     </div>
 
 
     </div>
   </div>
-</div>
