@@ -50,7 +50,7 @@
           </a>
         </li>
       </div>
-      <form id="requestUploadFileForm">
+      <form ng-show="loggedIn" id="requestUploadFileForm">
           <h4>Would you like to contribute to our Resources?</h4>
           <div class="formContainer centerAlign">
               <input class="resourceInput" type="file" demo-file-model="resource" name="resource" id="resource"/>
@@ -77,7 +77,7 @@
         </div>
         </div>
         </div>
-      <div class="vidRequestContainer">
+      <div ng-show="loggedIn" class="vidRequestContainer">
         <h4>Would you like to contribute to our Resources?</h4>
         <div class="horizontalInput">
           <input ng-model="videoData.name" type="text" placeholder="Video title"/>

@@ -63,7 +63,7 @@
               <tr ng-repeat="request in requests">
                 <td>{{request.name}}</td>
                 <td>{{request.type}}</td>
-                <td>{{request.category}}</td>
+                <td>{{categorySelect.availableOptions[request.category].name}}</td>
                 <td>{{request.link}}</td>
                 <td ng-click="acceptRequest(request, $index)"><button  class="btn-primary">Approve</button></td>
                 <td ng-click="denyRequest(request, $index)"><button  class="btn-primary">Deny</button></td>
