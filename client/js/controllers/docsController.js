@@ -13,8 +13,7 @@ angular.module('listings').controller('docsController', ['$rootScope', '$scope',
           {id: 4, name: 'Getting Started'},
           {id: 5, name: 'Government Support Programs'},
           {id: 6, name: 'Women Entrepreneurs'},
-          {id: 7, name: 'Social Entrepreneurship'},
-          {id: 8, name: 'Videos on Entrepreneurship'}
+          {id: 7, name: 'Social Entrepreneurship'}
         ],
         selectedOption: {id: 0, name: 'Business Plans and Business Models'} //This sets the default value of the select in the ui
     };
