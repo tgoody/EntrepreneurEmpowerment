@@ -4,13 +4,14 @@
 let port = process.env.PORT;
 let testDataBase = 'mongodb://Carl:123abc@ds349175.mlab.com:49175/registering_accounts_test';
 let realDataBase = 'mongodb://root:notr00t@ds249035.mlab.com:49035/entrepreneurempowerment';
+let otherDataBase = 'mongodb+srv://root:<password>@entrepreneurempowerment-qbynl.azure.mongodb.net/test?retryWrites=true';
 if (port == null || port == "") {
   port = 8080;
 }
 
 module.exports = {
   db: {
-    uri: realDataBase, //place the URI of your mongo database here.
+    uri: otherDataBase, //place the URI of your mongo database here.
   },
   port: port
 };
