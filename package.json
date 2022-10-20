@@ -14,7 +14,7 @@
     "google-auth-library": "^3.1.2",
     "googleapis": "^27.0.0",
     "gridfs-stream": "^1.1.1",
-    "mongoose": "^4.2.9",
+    "mongoose": "^4.13.21",
     "morgan": "^1.6.1",
     "multer": "^1.4.1",
     "multer-gridfs-storage": "^3.2.3",
